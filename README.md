@@ -1,2 +1,2 @@
 # RaniPaper
-라니페이퍼 iOS 앱
+라니페이퍼 iOS 앱 
