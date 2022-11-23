@@ -12,8 +12,10 @@ import SwiftUI
 final class MainViewModel : ObservableObject {
     @Published var isLoading:Bool
     @Published var lockState:LockState
+    @Published var isMenuOpen:Bool
     init(){
         self.isLoading = true
+        self.isMenuOpen = true
         self.lockState = .locked
     }
     

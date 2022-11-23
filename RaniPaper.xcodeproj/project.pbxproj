@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4921D85C292E7F010089A696 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4921D85B292E7F010089A696 /* MenuView.swift */; };
+		4921D860292E83860089A696 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4921D85F292E83860089A696 /* MenuViewModel.swift */; };
 		7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E2D09292A05BA000EA21C /* InfoPlist.strings */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4921D85B292E7F010089A696 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		4921D85F292E83860089A696 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		7B5E2D08292A05BA000EA21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B5E2D0A292A05BE000EA21C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -49,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4921D85A292E7EEC0089A696 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				4921D85B292E7F010089A696 /* MenuView.swift */,
+			);
+			path = MenuView;
+			sourceTree = "<group>";
+		};
 		D86ACE18292DDD93002C8E89 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +74,7 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4921D85A292E7EEC0089A696 /* MenuView */,
 				D86ACE2A292DF562002C8E89 /* LockView */,
 				D86ACE26292DF3FA002C8E89 /* BlurView */,
 				D86ACE1E292DE0CF002C8E89 /* LaunchView */,
@@ -83,6 +96,7 @@
 			children = (
 				D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */,
 				D86ACE30292DFCAD002C8E89 /* LockViewModel.swift */,
+				4921D85F292E83860089A696 /* MenuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -249,6 +263,8 @@
 				D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */,
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
+				4921D860292E83860089A696 /* MenuViewModel.swift in Sources */,
+				4921D85C292E7F010089A696 /* MenuView.swift in Sources */,
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
 				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,

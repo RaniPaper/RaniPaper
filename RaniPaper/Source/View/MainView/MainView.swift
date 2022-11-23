@@ -32,7 +32,28 @@ struct MainView: View {
             }
             else
             {
-                Text("Hello")
+                ZStack {
+                    Button( action: {
+                        viewModel.isMenuOpen.toggle()
+                        }) {
+                            Text("Open Menu")
+                    }
+                    
+                    Color.black
+                    .opacity(viewModel.isMenuOpen ? 0.2 : 0)
+                    .animation(.easeIn, value: viewModel.isMenuOpen)
+                    .onTapGesture {
+                            viewModel.isMenuOpen.toggle()
+                    }
+                    // isMenuOpen 상태에 따라 MenuView display
+                    if viewModel.isMenuOpen{
+                        MenuView(isOpen: $viewModel.isMenuOpen)
+                            .offset(x: ScreenSize.width * 0.45)
+                            .transition(.move(edge: .trailing))
+                            .animation(.easeIn(duration: 0.5).delay(0.25), value: viewModel.isMenuOpen)
+                    }
+                }
+                .ignoresSafeArea()
             }
         }
         
