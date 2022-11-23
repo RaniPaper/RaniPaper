@@ -18,6 +18,7 @@ struct MainView: View {
                 .transition(.opacity)
                 
                 
+                
         }
         else{
             if viewModel.isLoading{

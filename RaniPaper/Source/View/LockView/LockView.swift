@@ -42,13 +42,14 @@ struct LockView: View {
                         .foregroundColor(.white)
                       
                 }.frame(width:ScreenSize.width/3)
-                    
                     .padding(.horizontal,30)
+                    .offset(y: viewModel.keyboardHeight == .zero ? 0 : -viewModel.keyboardHeight)
+                    
                 
                 
                     
                 
-            }.padding(50)
+            }//.padding(50)
                
         }
         .ignoresSafeArea()
