@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E2D09292A05BA000EA21C /* InfoPlist.strings */; };
+		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
+		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
+		D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE23292DE28E002C8E89 /* Extension.swift */; };
 		D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06922929FD5000F5D408 /* RaniPaperApp.swift */; };
-		D89A06952929FD5000F5D408 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* ContentView.swift */; };
+		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
 		D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06992929FD5000F5D408 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -17,9 +20,12 @@
 /* Begin PBXFileReference section */
 		7B5E2D08292A05BA000EA21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B5E2D0A292A05BE000EA21C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		D86ACE23292DE28E002C8E89 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D89A068F2929FD5000F5D408 /* RaniPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaniPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89A06922929FD5000F5D408 /* RaniPaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaniPaperApp.swift; sourceTree = "<group>"; };
-		D89A06942929FD5000F5D408 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D89A06942929FD5000F5D408 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D89A06962929FD5000F5D408 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D89A06992929FD5000F5D408 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,6 +41,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D86ACE18292DDD93002C8E89 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE22292DE272002C8E89 /* Extension */,
+				D86ACE1B292DDF00002C8E89 /* ViewModel */,
+				D86ACE19292DDDA4002C8E89 /* View */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D86ACE19292DDDA4002C8E89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE1E292DE0CF002C8E89 /* LaunchView */,
+				D86ACE1A292DDEF0002C8E89 /* MainView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D86ACE1A292DDEF0002C8E89 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				D89A06942929FD5000F5D408 /* MainView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		D86ACE1B292DDF00002C8E89 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D86ACE1E292DE0CF002C8E89 /* LaunchView */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */,
+			);
+			path = LaunchView;
+			sourceTree = "<group>";
+		};
+		D86ACE21292DE264002C8E89 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D86ACE22292DE272002C8E89 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE23292DE28E002C8E89 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D89A06862929FD5000F5D408 = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +118,10 @@
 		D89A06912929FD5000F5D408 /* RaniPaper */ = {
 			isa = PBXGroup;
 			children = (
+				D86ACE21292DE264002C8E89 /* Resource */,
+				D86ACE18292DDD93002C8E89 /* Source */,
 				7B5E2D09292A05BA000EA21C /* InfoPlist.strings */,
 				D89A06922929FD5000F5D408 /* RaniPaperApp.swift */,
-				D89A06942929FD5000F5D408 /* ContentView.swift */,
 				D89A06962929FD5000F5D408 /* Assets.xcassets */,
 				D89A06982929FD5000F5D408 /* Preview Content */,
 			);
@@ -143,8 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D89A06952929FD5000F5D408 /* ContentView.swift in Sources */,
+				D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */,
+				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
+				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,
+				D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
