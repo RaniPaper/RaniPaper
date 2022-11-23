@@ -12,19 +12,32 @@ struct MainView: View {
     @StateObject var viewModel = MainViewModel()
     
     var body: some View {
-        if viewModel.isLoading{
-            LaunchView().transition(.opacity).onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now()+2) {
-                    withAnimation {
-                        viewModel.isLoading.toggle()
+        
+        if viewModel.lockState == .locked {
+            LockView(lockState: $viewModel.lockState)
+                .transition(.opacity)
+                
+                
+        }
+        else{
+            if viewModel.isLoading{
+                LaunchView().transition(.opacity).onAppear{
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                        withAnimation {
+                            viewModel.isLoading.toggle()
 
+                        }
                     }
                 }
             }
+            else
+            {
+                Text("Hello")
+            }
         }
-        else{
-            Text("Hello")
-        }
+        
+        
+        
     }
 }
 
