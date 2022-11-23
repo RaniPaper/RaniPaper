@@ -13,7 +13,7 @@ final class MainViewModel : ObservableObject {
     @Published var isLoading:Bool
     
     init(){
-        self.isLoading = false
+        self.isLoading = true
     }
     
 }

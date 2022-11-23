@@ -42,7 +42,25 @@ extension Color
         return Color.init(hexcode: "84764F")
     }
     
-    
-    
-    
+}
+
+extension UIDevice {
+
+    var hasNotch: Bool {
+
+        if #available(iOS 15.0, *) {
+            let bottom = UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first?.safeAreaInsets.bottom ?? 0
+
+            return bottom > 0
+
+        } else {
+            let bottom = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0
+            return bottom > 0
+        }
+        // UIWindowScene.windows
+    }
 }

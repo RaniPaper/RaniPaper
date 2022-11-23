@@ -12,21 +12,24 @@ struct LaunchView: View {
     let title = "비챤님의 일상에 자그마한 행복을"
     
     var body: some View {
-        ZStack{
+        ZStack(alignment:.top){
             Color.white
             VStack{
-    
                 Image("Launch")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(.horizontal)
+                    .padding(.top,50)
+                    .padding(.horizontal,50)
                 Text(title).font(.title2)
                 
             }
+            
+          
            
             
             
         }.ignoresSafeArea()
+
     }
 }
 
