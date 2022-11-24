@@ -40,16 +40,11 @@ struct MainView: View {
             }
             else
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 ZStack{
                     Image("mainTmp")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                 }
-=======
-=======
->>>>>>> origin/feature/option
                 ZStack {
                     Button( action: {
                         viewModel.isMenuOpen.toggle()
@@ -72,10 +67,6 @@ struct MainView: View {
                     }
                 }
                 .ignoresSafeArea()
-<<<<<<< HEAD
->>>>>>> 6a80ac7 (:lipstick: add Menu View)
-=======
->>>>>>> origin/feature/option
             }
         }
         

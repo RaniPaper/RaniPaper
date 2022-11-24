@@ -12,8 +12,7 @@ import SwiftUI
 final class MainViewModel : ObservableObject {
     @Published var isLoading:Bool
     @Published var lockState:LockState
-<<<<<<< HEAD
-<<<<<<< HEAD
+    @Published var isMenuOpen:Bool //사이드메뉴 토글
     @Published private(set) var keyboardHeight: CGFloat = 0
     private var subscription: AnyCancellable?
     private let keyboardWillShow =  NotificationCenter.default
@@ -26,13 +25,7 @@ final class MainViewModel : ObservableObject {
     private let keyboardWillHide = NotificationCenter.default
         .publisher(for: UIResponder.keyboardWillHideNotification)
         .map { _ in CGFloat.zero}
-    
-=======
-    @Published var isMenuOpen:Bool
->>>>>>> 6a80ac7 (:lipstick: add Menu View)
-=======
-    @Published var isMenuOpen:Bool
->>>>>>> origin/feature/option
+
     init(){
         self.isLoading = true
         self.isMenuOpen = true

@@ -11,7 +11,7 @@ struct MenuView: View {
     @ObservedObject var viewModel = MenuViewModel()
     @Binding var isOpen: Bool
     
-    var body: some View {        
+    var body: some View {
         ZStack() {
             Color.white
             List(){
