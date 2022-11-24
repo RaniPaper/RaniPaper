@@ -9,30 +9,67 @@ import SwiftUI
 
 struct ConfirmView: View {
     @State var isMenuOpen: Bool = false
+    @State var offset: CGFloat = 0
+    @State var menuOffset = ScreenSize.width
     var body: some View {
+        let maxOffset = ScreenSize.width * 0.3
+        let threshold = ScreenSize.width * 0.65
+        let drag = DragGesture()
+            .onChanged{
+                if isMenuOpen{
+                    if $0.location.x > maxOffset{
+                        menuOffset = $0.location.x
+                    }
+                } else {
+                    if $0.startLocation.x > 320{
+                        menuOffset = ScreenSize.width + $0.translation.width > maxOffset ? ScreenSize.width + $0.translation.width : maxOffset
+                    }
+                }
+            }
+            .onEnded{ _ in
+                if self.menuOffset < threshold{
+                    withAnimation{
+                        self.isMenuOpen = true
+                        self.menuOffset = maxOffset
+                    }
+                }
+                else {
+                    withAnimation{
+                        self.isMenuOpen = false
+                        self.menuOffset = ScreenSize.width
+                    }
+                }
+        }
+        
         ZStack {
+            Image("mainTmp")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 300)
+                .gesture(drag)
+            
             Button( action: {
                 self.isMenuOpen.toggle()
+                menuOffset = maxOffset
                 }) {
-                    Text("Open Menu")
-                        .font(Font.efDiary(size: 10))
-            }
+                    Text("Menu Open")
+                        .font(Font.efDiary(size: 30))
+            }.background(Color(.white))
             
             Color.black
-            .opacity(self.isMenuOpen ? 0.2 : 0)
-            .animation(.easeIn, value: self.isMenuOpen)
+                .opacity(Double((360-self.menuOffset))/1300)
+            .animation(.easeIn, value: self.menuOffset)
             .onTapGesture {
-                    self.isMenuOpen.toggle()
+                self.menuOffset = ScreenSize.width
             }
-            // isMenuOpen 상태에 따라 MenuView display
-            if self.isMenuOpen{
-                MenuView(isOpen: $isMenuOpen)
-                    .offset(x: ScreenSize.width * 0.45)
-                    .transition(.move(edge: .trailing))
-                    .animation(.easeIn(duration: 0.5).delay(0.25), value: self.isMenuOpen)
-            }
+
+            MenuView(isOpen: $isMenuOpen)
+                .offset(x: menuOffset)
+                .transition(.move(edge: .trailing))
+                .animation(.easeIn, value: self.menuOffset)
         }
         .ignoresSafeArea()
+        .gesture(drag)
     }
 }
 
