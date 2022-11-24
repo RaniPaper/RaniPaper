@@ -86,10 +86,14 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				D86ACE32292F09F7002C8E89 /* ConfirmView */,
 =======
 				4921D85A292E7EEC0089A696 /* MenuView */,
 >>>>>>> 6a80ac7 (:lipstick: add Menu View)
+=======
+				4921D85A292E7EEC0089A696 /* MenuView */,
+>>>>>>> origin/feature/option
 				D86ACE2A292DF562002C8E89 /* LockView */,
 				D86ACE26292DF3FA002C8E89 /* BlurView */,
 				D86ACE1E292DE0CF002C8E89 /* LaunchView */,

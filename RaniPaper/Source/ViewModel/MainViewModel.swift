@@ -13,6 +13,7 @@ final class MainViewModel : ObservableObject {
     @Published var isLoading:Bool
     @Published var lockState:LockState
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Published private(set) var keyboardHeight: CGFloat = 0
     private var subscription: AnyCancellable?
     private let keyboardWillShow =  NotificationCenter.default
@@ -29,6 +30,9 @@ final class MainViewModel : ObservableObject {
 =======
     @Published var isMenuOpen:Bool
 >>>>>>> 6a80ac7 (:lipstick: add Menu View)
+=======
+    @Published var isMenuOpen:Bool
+>>>>>>> origin/feature/option
     init(){
         self.isLoading = true
         self.isMenuOpen = true
