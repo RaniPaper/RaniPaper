@@ -12,25 +12,27 @@ struct ConfirmView: View {
     @State var offset: CGFloat = 0
     @State var menuOffset = ScreenSize.width
     var body: some View {
-        let maxOffset = ScreenSize.width * 0.3
-        let threshold = ScreenSize.width * 0.65
         let drag = DragGesture()
             .onChanged{
                 if isMenuOpen{
-                    if $0.location.x > maxOffset{
-                        menuOffset = $0.location.x
+                    let cmp = Menu.maxOffset - $0.startLocation.x
+                    if ($0.translation.width > 0) && (cmp > 0) {
+                        menuOffset = Menu.maxOffset + $0.translation.width - cmp
+                    }
+                    else if ($0.translation.width > 0) && (cmp < 0) {
+                        menuOffset = Menu.maxOffset + $0.translation.width
                     }
                 } else {
                     if $0.startLocation.x > 320{
-                        menuOffset = ScreenSize.width + $0.translation.width > maxOffset ? ScreenSize.width + $0.translation.width : maxOffset
+                        menuOffset = ScreenSize.width + $0.translation.width > Menu.maxOffset ? ScreenSize.width + $0.translation.width : Menu.maxOffset
                     }
                 }
             }
             .onEnded{ _ in
-                if self.menuOffset < threshold{
+                if self.menuOffset < Menu.threshold{
                     withAnimation{
                         self.isMenuOpen = true
-                        self.menuOffset = maxOffset
+                        self.menuOffset = Menu.maxOffset
                     }
                 }
                 else {
@@ -50,7 +52,7 @@ struct ConfirmView: View {
             
             Button( action: {
                 self.isMenuOpen.toggle()
-                menuOffset = maxOffset
+                menuOffset = Menu.maxOffset
                 }) {
                     Text("Menu Open")
                         .font(Font.efDiary(size: 30))

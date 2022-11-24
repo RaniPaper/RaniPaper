@@ -19,3 +19,8 @@ enum ScreenSize {
     static let height = UIScreen.main.bounds.size.height
 }
 
+enum Menu {
+    static let maxOffset = ScreenSize.width * 0.3
+    static let threshold = ScreenSize.width * 0.65
+}
+
