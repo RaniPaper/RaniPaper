@@ -64,3 +64,23 @@ extension UIDevice {
         // UIWindowScene.windows
     }
 }
+
+extension Font{
+    public static func efDiary(size:CGFloat)->Font{
+        return Font.custom("EF_Diary",size: size)
+    }
+    
+    public static func beomsuk(size:CGFloat)->Font{
+        return Font.custom("Undefined",size: size)
+    }
+    
+    public static func jua(size:CGFloat)->Font{
+        return Font.custom("BMJUAOTF",size: size)
+    }
+    
+    public static func samanco(size:CGFloat)->Font{
+        return Font.custom("BinggraeSamanco-Bold",size: size)
+    }
+    
+    
+}

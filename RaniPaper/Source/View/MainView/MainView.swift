@@ -18,10 +18,18 @@ struct MainView: View {
                 .transition(.opacity)
                 
                 
+                
         }
         else{
             if viewModel.isLoading{
                 LaunchView().transition(.opacity).onAppear{
+                    for family: String in UIFont.familyNames{
+                        print(family)
+                        for names : String in UIFont.fontNames(forFamilyName: family){
+                            print("=== \(names)")
+                        }
+                    }
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                         withAnimation {
                             viewModel.isLoading.toggle()
@@ -32,7 +40,11 @@ struct MainView: View {
             }
             else
             {
-                Text("Hello")
+                ZStack{
+                    Image("mainTmp")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                }
             }
         }
         

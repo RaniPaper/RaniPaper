@@ -15,6 +15,11 @@
 		D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE2B292DF57F002C8E89 /* LockView.swift */; };
 		D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE2E292DF6E2002C8E89 /* Enum.swift */; };
 		D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE30292DFCAD002C8E89 /* LockViewModel.swift */; };
+		D86ACE34292F0A3E002C8E89 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE33292F0A3E002C8E89 /* ConfirmView.swift */; };
+		D86ACE43292F43B4002C8E89 /* SSAMANCO-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE3F292F43B4002C8E89 /* SSAMANCO-Bold.otf */; };
+		D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE40292F43B4002C8E89 /* BEOMSUK.otf */; };
+		D86ACE45292F43B4002C8E89 /* JUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE41292F43B4002C8E89 /* JUA_otf.otf */; };
+		D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE42292F43B4002C8E89 /* EF_Diary.ttf */; };
 		D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06922929FD5000F5D408 /* RaniPaperApp.swift */; };
 		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
@@ -31,6 +36,12 @@
 		D86ACE2B292DF57F002C8E89 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		D86ACE2E292DF6E2002C8E89 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		D86ACE30292DFCAD002C8E89 /* LockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewModel.swift; sourceTree = "<group>"; };
+		D86ACE33292F0A3E002C8E89 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
+		D86ACE3E292F3DA9002C8E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D86ACE3F292F43B4002C8E89 /* SSAMANCO-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SSAMANCO-Bold.otf"; sourceTree = "<group>"; };
+		D86ACE40292F43B4002C8E89 /* BEOMSUK.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BEOMSUK.otf; sourceTree = "<group>"; };
+		D86ACE41292F43B4002C8E89 /* JUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JUA_otf.otf; sourceTree = "<group>"; };
+		D86ACE42292F43B4002C8E89 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		D89A068F2929FD5000F5D408 /* RaniPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaniPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89A06922929FD5000F5D408 /* RaniPaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaniPaperApp.swift; sourceTree = "<group>"; };
 		D89A06942929FD5000F5D408 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -62,6 +73,7 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D86ACE32292F09F7002C8E89 /* ConfirmView */,
 				D86ACE2A292DF562002C8E89 /* LockView */,
 				D86ACE26292DF3FA002C8E89 /* BlurView */,
 				D86ACE1E292DE0CF002C8E89 /* LaunchView */,
@@ -135,6 +147,25 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		D86ACE32292F09F7002C8E89 /* ConfirmView */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE33292F0A3E002C8E89 /* ConfirmView.swift */,
+			);
+			path = ConfirmView;
+			sourceTree = "<group>";
+		};
+		D86ACE35292F3AF7002C8E89 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE40292F43B4002C8E89 /* BEOMSUK.otf */,
+				D86ACE42292F43B4002C8E89 /* EF_Diary.ttf */,
+				D86ACE41292F43B4002C8E89 /* JUA_otf.otf */,
+				D86ACE3F292F43B4002C8E89 /* SSAMANCO-Bold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D89A06862929FD5000F5D408 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +185,8 @@
 		D89A06912929FD5000F5D408 /* RaniPaper */ = {
 			isa = PBXGroup;
 			children = (
+				D86ACE3E292F3DA9002C8E89 /* Info.plist */,
+				D86ACE35292F3AF7002C8E89 /* Fonts */,
 				D86ACE21292DE264002C8E89 /* Resource */,
 				D86ACE18292DDD93002C8E89 /* Source */,
 				7B5E2D09292A05BA000EA21C /* InfoPlist.strings */,
@@ -233,7 +266,11 @@
 			files = (
 				D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */,
 				7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */,
+				D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */,
 				D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */,
+				D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */,
+				D86ACE45292F43B4002C8E89 /* JUA_otf.otf in Resources */,
+				D86ACE43292F43B4002C8E89 /* SSAMANCO-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +284,7 @@
 				D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */,
+				D86ACE34292F0A3E002C8E89 /* ConfirmView.swift in Sources */,
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
@@ -399,6 +437,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RaniPaper/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -436,6 +475,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RaniPaper/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

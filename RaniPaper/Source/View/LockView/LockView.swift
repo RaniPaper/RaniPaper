@@ -20,6 +20,7 @@ struct LockView: View {
                 Text("코드를 입력해주세요")
                     .foregroundColor(.white)
                     .font(.title3)
+                
                 Image(systemName: "lock.circle")
                     .font(.custom("lock", size: 50))
                      .padding(30)
@@ -42,13 +43,14 @@ struct LockView: View {
                         .foregroundColor(.white)
                       
                 }.frame(width:ScreenSize.width/3)
-                    
                     .padding(.horizontal,30)
+                    .offset(y: viewModel.keyboardHeight == .zero ? 0 : -viewModel.keyboardHeight)
+                    
                 
                 
                     
                 
-            }.padding(50)
+            }//.padding(50)
                
         }
         .ignoresSafeArea()
