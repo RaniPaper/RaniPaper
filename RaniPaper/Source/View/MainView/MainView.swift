@@ -33,7 +33,11 @@ struct MainView: View {
             }
             else
             {
-                Text("Hello")
+                ZStack{
+                    Image("mainTmp")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                }
             }
         }
         
