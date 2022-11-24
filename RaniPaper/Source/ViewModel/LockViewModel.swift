@@ -30,5 +30,8 @@ final class LockViewModel : ObservableObject{
                    .subscribe(on: DispatchQueue.main) // UI 변화 이므로 메인. 쓰레드
                    .assign(to: \.self.keyboardHeight, on: self)
     }
+    deinit{
+        print("❌ LockViewModel 소멸")
+    }
     
 }

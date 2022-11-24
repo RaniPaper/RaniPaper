@@ -20,6 +20,7 @@
 		D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE40292F43B4002C8E89 /* BEOMSUK.otf */; };
 		D86ACE45292F43B4002C8E89 /* JUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE41292F43B4002C8E89 /* JUA_otf.otf */; };
 		D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE42292F43B4002C8E89 /* EF_Diary.ttf */; };
+		D86ACE49292F793C002C8E89 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = D86ACE48292F793C002C8E89 /* PopupView */; };
 		D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06922929FD5000F5D408 /* RaniPaperApp.swift */; };
 		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86ACE49292F793C002C8E89 /* PopupView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +223,9 @@
 			dependencies = (
 			);
 			name = RaniPaper;
+			packageProductDependencies = (
+				D86ACE48292F793C002C8E89 /* PopupView */,
+			);
 			productName = RaniPaper;
 			productReference = D89A068F2929FD5000F5D408 /* RaniPaper.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +255,9 @@
 				ko,
 			);
 			mainGroup = D89A06862929FD5000F5D408;
+			packageReferences = (
+				D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */,
+			);
 			productRefGroup = D89A06902929FD5000F5D408 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -521,6 +529,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D86ACE48292F793C002C8E89 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D89A06872929FD5000F5D408 /* Project object */;
 }
