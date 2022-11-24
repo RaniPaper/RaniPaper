@@ -12,24 +12,42 @@ struct ConfirmView: View {
     var body: some View {
         ZStack{
             Color.white.edgesIgnoringSafeArea(.vertical)
-            VStack{
+            VStack(spacing:40){
                 Text("당신은 누구??")
                     .font(Font.jua(size: 30))
                 
-                HStack{
-                    Button {
-                        print("hello")
-                    } label: {
-                        CircleImage(source: "vlic1",color:Color.green1)
-                        
+                HStack(spacing:30){
+                    VStack{
+                        Button {
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                                withAnimation {
+                                    lockState = .vlichan
+                                }
+                            }
+                        } label: {
+                            CircleImage(source: "vlic1",color:Color.green1)
+                            
+                        }
+                        Text("비챤")
+                            .font(Font.samanco(size: 30))
                     }
+                    VStack{
+                        Button {
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                                withAnimation {
+                                    lockState = .rani
+                                }
+                            }
+                        } label: {
+                            CircleImage(source: "vlic1",color:Color.lightBrown)
+                            
+                        }
+                        Text("이파리")
+                            .font(Font.samanco(size: 30))
+                    }
+                   
                     
-                    Button {
-                        print("hello")
-                    } label: {
-                        CircleImage(source: "vlic1",color:Color.lightBrown)
-                        
-                    }
+                    
                 }
                 
             }
@@ -39,7 +57,7 @@ struct ConfirmView: View {
 
 struct ConfirmView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfirmView()
+        ConfirmView(lockState: .constant(.locked))
     }
 }
 

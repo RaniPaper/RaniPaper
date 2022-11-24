@@ -14,8 +14,7 @@ struct MainView: View {
     var body: some View {
         
         if viewModel.lockState == .locked {
-            LockView(lockState: $viewModel.lockState)
-                .transition(.opacity)
+            ConfirmView(lockState: $viewModel.lockState)
                 
                 
                 
