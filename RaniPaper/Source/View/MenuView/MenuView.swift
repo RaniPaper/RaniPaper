@@ -22,6 +22,7 @@ struct MenuView: View {
                         Text(menu)
                             .foregroundColor(.black)
                             .bold()
+                            .font(Font.beomsuk(size: 20))
                     }
                 }.listRowBackground(Color.clear)
                     .padding(10)
