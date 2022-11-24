@@ -20,6 +20,7 @@ struct LockView: View {
                 Text("코드를 입력해주세요")
                     .foregroundColor(.white)
                     .font(.title3)
+                
                 Image(systemName: "lock.circle")
                     .font(.custom("lock", size: 50))
                      .padding(30)
