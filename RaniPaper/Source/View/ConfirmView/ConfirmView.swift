@@ -8,13 +8,53 @@
 import SwiftUI
 
 struct ConfirmView: View {
+    @Binding var lockState:LockState
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Color.white.edgesIgnoringSafeArea(.vertical)
+            VStack{
+                Text("당신은 누구??")
+                    .font(Font.jua(size: 30))
+                
+                HStack{
+                    Button {
+                        print("hello")
+                    } label: {
+                        CircleImage(source: "vlic1",color:Color.green1)
+                        
+                    }
+                    
+                    Button {
+                        print("hello")
+                    } label: {
+                        CircleImage(source: "vlic1",color:Color.lightBrown)
+                        
+                    }
+                }
+                
+            }
+        }
     }
 }
 
 struct ConfirmView_Previews: PreviewProvider {
     static var previews: some View {
         ConfirmView()
+    }
+}
+
+struct CircleImage: View {
+    let source:String
+    let color:Color
+    
+    var body: some View {
+        ZStack{
+            Circle().strokeBorder(color, lineWidth: 3)
+            Image(source)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .mask(Circle())
+                .padding(7)
+        }.frame(width:ScreenSize.width/4,height: ScreenSize.width/4).zIndex(1)
     }
 }
