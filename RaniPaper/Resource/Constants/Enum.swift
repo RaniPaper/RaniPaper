@@ -21,7 +21,8 @@ enum ScreenSize {
 
 enum Menu {
     static let minOffset = ScreenSize.width
-    static let maxOffset = ScreenSize.width * 0.3
-    static let threshold = ScreenSize.width * 0.65
+    static let maxOffset = ScreenSize.width * 0.5
+    static let threshold = Menu.maxOffset * 1.3
+    static let openEdge: CGFloat = 300
 }
 

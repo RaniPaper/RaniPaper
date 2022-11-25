@@ -23,7 +23,7 @@ struct MenuView: View {
                         viewModel.Offset = Menu.maxOffset + $0.translation.width
                     }
                 } else {
-                    if $0.startLocation.x > 310{
+                    if $0.startLocation.x > Menu.openEdge{
                         viewModel.Offset = Menu.minOffset + $0.translation.width > Menu.maxOffset ? Menu.minOffset + $0.translation.width : Menu.maxOffset
                     }
                 }

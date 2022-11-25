@@ -10,28 +10,63 @@ import SwiftUI
 struct SideMenuView: View {
     @Binding var isOpen: Bool
     @Binding var offset: CGFloat
-    let menuList: [String]
+    let menuList: [MenuContent]
     
     var body: some View{
         ZStack() {
             Color.white
-            List(){
-                ForEach(menuList, id: \.self) { menu in
-                    Button(action:{
-                        isOpen.toggle()
-                    }) {
-                        Text(menu)
-                            .foregroundColor(.black)
-                            .bold()
-                            .font(Font.beomsuk(size: 20))
+            HStack() {
+                VStack(alignment: .leading){
+                    ForEach(menuList) { menu in
+                        if !menu.isUnder{
+                            if !menu.isSetting {
+                                Button(action:{
+                                    isOpen.toggle()
+                                    offset = Menu.minOffset
+                                }) {
+                                    Text(menu.title)
+                                        .foregroundColor(.black)
+                                        .bold()
+                                        .font(Font.beomsuk(size: 24))
+                                }
+                            } else {
+                                Button(action:{
+                                    
+                                }) {
+                                    Text(menu.title)
+                                        .foregroundColor(.black)
+                                        .bold()
+                                        .font(Font.beomsuk(size: 24))
+                                }
+                            }
+                        }
                     }
-                }.listRowBackground(Color.clear)
                     .padding(10)
+                    
+                    Spacer().frame(height: ScreenSize.height * 0.48)
+                    
+                    ForEach(menuList) { menu in
+                        if menu.isUnder {
+                            Button(action:{
+                                isOpen.toggle()
+                                offset = Menu.minOffset
+                            }) {
+                                Text(menu.title)
+                                    .foregroundColor(.secondary)
+                                    .font(Font.beomsuk(size: 20))
+                            }
+                        }
+                        
+                    }
+                    .padding(5)
+                }
+                .padding(EdgeInsets(top: 60, leading: 0, bottom: 20, trailing: 0))
+                
+                Spacer().frame(width: ScreenSize.width * 0.6)
             }
-            .listStyle(.plain)
-            .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
         }
         .ignoresSafeArea()
+        .frame(height: ScreenSize.height)
     }
 }
 
@@ -39,10 +74,12 @@ struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
         SideMenuView(isOpen: .constant(true),
                      offset: .constant(10),
-                     menuList: ["오늘의 할 일",
-                                "단어 검색",
-                                "다이어리 꾸미기",
-                                "설정",
-                                "크레딧"])
+                     menuList:[MenuContent(title: "홈",                                                   navigationPath: "홈"),
+                               MenuContent(title: "다이어리", navigationPath: "다이어리"),
+                               MenuContent(title: "기록", navigationPath: "기록"),
+                               MenuContent(title: "설정", navigationPath: "설정", isSetting: true),
+                               MenuContent(title: "앱정보", navigationPath: "앱정보", isUnder: true),
+                               MenuContent(title: "크레딧", navigationPath: "크레딧", isUnder: true)]
+        )
     }
 }
