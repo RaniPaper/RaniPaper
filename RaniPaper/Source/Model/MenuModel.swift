@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class MenuList: ObservableObject, Identifiable {
+class MenuContent: ObservableObject, Identifiable {
     let id: UUID
     let title: String
     let navigationPath: String

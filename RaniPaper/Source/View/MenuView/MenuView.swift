@@ -51,7 +51,9 @@ struct MenuView: View {
                     viewModel.Offset = Menu.minOffset
                 }
             
-            SideMenuView(isOpen: $viewModel.isOpen, offset: $viewModel.Offset, menuList: viewModel.menuList)
+            SideMenuView(isOpen: $viewModel.isOpen,
+                         offset: $viewModel.Offset,
+                         menuList: viewModel.menuList)
                 .offset(x: viewModel.Offset)
                 .transition(.move(edge: .trailing))
                 .animation(.linear, value: viewModel.Offset)
@@ -67,30 +69,4 @@ struct MenuView_Previews: PreviewProvider {
     }
 }
 
-struct SideMenuView: View {
-    @Binding var isOpen: Bool
-    @Binding var offset: CGFloat
-    let menuList: [String]
-    
-    var body: some View{
-        ZStack() {
-            Color.white
-            List(){
-                ForEach(menuList, id: \.self) { menu in
-                    Button(action:{
-                        isOpen.toggle()
-                    }) {
-                        Text(menu)
-                            .foregroundColor(.black)
-                            .bold()
-                            .font(Font.beomsuk(size: 20))
-                    }
-                }.listRowBackground(Color.clear)
-                    .padding(10)
-            }
-            .listStyle(.plain)
-            .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
-        }
-        .ignoresSafeArea()
-    }
-}
+
