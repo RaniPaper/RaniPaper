@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MenuView: View {
-    @ObservedObject var viewModel = MenuViewModel()
-    
+    @StateObject var viewModel = MenuViewModel()
+    @Binding var selection: ViewSelection
     var body: some View {
                 
         let drag = DragGesture()
@@ -42,8 +42,8 @@ struct MenuView: View {
                     }
                 }
             }
-        
         ZStack{
+            Color.white.opacity(0.1)
             Color.black
                 .opacity(Double((360-viewModel.Offset))/1300)
                 .animation(.easeIn, value: viewModel.Offset)
@@ -53,10 +53,11 @@ struct MenuView: View {
             
             SideMenuView(isOpen: $viewModel.isOpen,
                          offset: $viewModel.Offset,
+                         selection: $selection,
                          menuList: viewModel.menuList)
-                .offset(x: viewModel.Offset)
-                .transition(.move(edge: .trailing))
-                .animation(.linear, value: viewModel.Offset)
+            .offset(x: viewModel.Offset)
+            .transition(.move(edge: .trailing))
+            .animation(.linear, value: viewModel.Offset)
         }
         .gesture(drag)
         .ignoresSafeArea()
@@ -65,7 +66,7 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(selection: .constant(.home))
     }
 }
 

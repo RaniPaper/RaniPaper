@@ -11,14 +11,14 @@ import SwiftUI
 class MenuContent: ObservableObject, Identifiable {
     let id: UUID
     let title: String
-    let navigationPath: String
+    let viewSelection: ViewSelection
     let isUnder: Bool
     let isSetting: Bool
     
-    init(title: String, navigationPath: String, isUnder: Bool = false, isSetting: Bool = false){
+    init(title: String, viewSelection: ViewSelection, isUnder: Bool = false, isSetting: Bool = false){
         id = UUID()
         self.title = title
-        self.navigationPath = navigationPath
+        self.viewSelection = viewSelection
         self.isUnder = isUnder
         self.isSetting = isSetting
     }

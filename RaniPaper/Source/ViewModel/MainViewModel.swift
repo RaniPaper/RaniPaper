@@ -12,6 +12,7 @@ import SwiftUI
 final class MainViewModel : ObservableObject {
     @Published var isLoading:Bool
     @Published var lockState:LockState
+    @Published var selection: ViewSelection
     @Published private(set) var keyboardHeight: CGFloat = 0
     private var subscription: AnyCancellable?
     private let keyboardWillShow =  NotificationCenter.default
@@ -28,6 +29,7 @@ final class MainViewModel : ObservableObject {
     init(){
         self.isLoading = true
         self.lockState = .locked
+        self.selection = .home
         subscription = Publishers.Merge(keyboardWillShow, keyboardWillHide)
                    .subscribe(on: DispatchQueue.main) // UI 변화 이므로 메인. 쓰레드
                    .assign(to: \.self.keyboardHeight, on: self)

@@ -10,6 +10,7 @@ import SwiftUI
 struct SideMenuView: View {
     @Binding var isOpen: Bool
     @Binding var offset: CGFloat
+    @Binding var selection: ViewSelection
     let menuList: [MenuContent]
     
     var body: some View{
@@ -23,6 +24,7 @@ struct SideMenuView: View {
                                 Button(action:{
                                     isOpen.toggle()
                                     offset = Menu.minOffset
+                                    selection = menu.viewSelection
                                 }) {
                                     Text(menu.title)
                                         .foregroundColor(.black)
@@ -74,12 +76,13 @@ struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
         SideMenuView(isOpen: .constant(true),
                      offset: .constant(10),
-                     menuList:[MenuContent(title: "홈",                                                   navigationPath: "홈"),
-                               MenuContent(title: "다이어리", navigationPath: "다이어리"),
-                               MenuContent(title: "기록", navigationPath: "기록"),
-                               MenuContent(title: "설정", navigationPath: "설정", isSetting: true),
-                               MenuContent(title: "앱정보", navigationPath: "앱정보", isUnder: true),
-                               MenuContent(title: "크레딧", navigationPath: "크레딧", isUnder: true)]
+                     selection: .constant(.home),
+                     menuList:[MenuContent(title: "홈",    viewSelection: .home),
+                               MenuContent(title: "다이어리", viewSelection: .home),
+                               MenuContent(title: "기록", viewSelection: .home),
+                               MenuContent(title: "설정", viewSelection: .home, isSetting: true),
+                               MenuContent(title: "앱정보", viewSelection: .home, isUnder: true),
+                               MenuContent(title: "크레딧", viewSelection: .home, isUnder: true)]
         )
     }
 }

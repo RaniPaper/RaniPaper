@@ -9,9 +9,7 @@ import SwiftUI
 
 
 struct MainView: View {
-    
     @StateObject var viewModel = MainViewModel()
-    
     var body: some View {
         
         if viewModel.lockState == .locked {
@@ -30,7 +28,7 @@ struct MainView: View {
                             print("=== \(names)")
                         }
                     }
-                    
+
                     DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                         withAnimation {
                             viewModel.isLoading.toggle()
@@ -43,18 +41,25 @@ struct MainView: View {
             {
                 NavigationView {
                     ZStack{
-                        Image("mainTmp")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    MenuView()
+                        TabView(selection: $viewModel.selection){
+                            Image("mainTmp")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .tag(ViewSelection.home)
+                            DummyView1() //테스트용으로 만든 더미 뷰
+                                .tag(ViewSelection.diary)
+                            DummyView2() //해당 부분에 전환할 view 입력
+                                .tag(ViewSelection.memo)
+                                //tag 내부에 view를 구분할 수 있는 tag 입력, constant에서 새로 생성 가능
+                        }
+                        .transition(.slide)
+                        .animation(.linear, value: viewModel.selection)
+                        MenuView(selection: $viewModel.selection)
                     }
                 }
                 
             }
         }
-        
-        
-        
     }
 }
 

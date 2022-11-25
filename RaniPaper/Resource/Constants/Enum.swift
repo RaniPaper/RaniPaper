@@ -26,3 +26,8 @@ enum Menu {
     static let openEdge: CGFloat = 300
 }
 
+enum ViewSelection: CaseIterable {
+    case home
+    case diary
+    case memo
+}
