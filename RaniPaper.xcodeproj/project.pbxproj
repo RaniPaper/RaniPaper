@@ -23,6 +23,11 @@
 		D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE40292F43B4002C8E89 /* BEOMSUK.otf */; };
 		D86ACE45292F43B4002C8E89 /* JUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE41292F43B4002C8E89 /* JUA_otf.otf */; };
 		D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE42292F43B4002C8E89 /* EF_Diary.ttf */; };
+		D86ACE49292F793C002C8E89 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = D86ACE48292F793C002C8E89 /* PopupView */; };
+		D86ACE4B29309772002C8E89 /* Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE4A29309772002C8E89 /* Bold.otf */; };
+		D86ACE4D2930977A002C8E89 /* KOTRA_HOPE.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE4C2930977A002C8E89 /* KOTRA_HOPE.otf */; };
+		D86ACE50293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE4E293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf */; };
+		D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE4F293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf */; };
 		D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06922929FD5000F5D408 /* RaniPaperApp.swift */; };
 		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
@@ -48,6 +53,10 @@
 		D86ACE40292F43B4002C8E89 /* BEOMSUK.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BEOMSUK.otf; sourceTree = "<group>"; };
 		D86ACE41292F43B4002C8E89 /* JUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JUA_otf.otf; sourceTree = "<group>"; };
 		D86ACE42292F43B4002C8E89 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
+		D86ACE4A29309772002C8E89 /* Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bold.otf; sourceTree = "<group>"; };
+		D86ACE4C2930977A002C8E89 /* KOTRA_HOPE.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KOTRA_HOPE.otf; sourceTree = "<group>"; };
+		D86ACE4E293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONE_Mobile_OTF_Bold.otf; sourceTree = "<group>"; };
+		D86ACE4F293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONE_Mobile_Title_OTF.otf; sourceTree = "<group>"; };
 		D89A068F2929FD5000F5D408 /* RaniPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaniPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89A06922929FD5000F5D408 /* RaniPaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaniPaperApp.swift; sourceTree = "<group>"; };
 		D89A06942929FD5000F5D408 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -60,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86ACE49292F793C002C8E89 /* PopupView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +193,10 @@
 		D86ACE35292F3AF7002C8E89 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				D86ACE4E293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf */,
+				D86ACE4F293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf */,
+				D86ACE4C2930977A002C8E89 /* KOTRA_HOPE.otf */,
+				D86ACE4A29309772002C8E89 /* Bold.otf */,
 				D86ACE40292F43B4002C8E89 /* BEOMSUK.otf */,
 				D86ACE42292F43B4002C8E89 /* EF_Diary.ttf */,
 				D86ACE41292F43B4002C8E89 /* JUA_otf.otf */,
@@ -246,6 +260,9 @@
 			dependencies = (
 			);
 			name = RaniPaper;
+			packageProductDependencies = (
+				D86ACE48292F793C002C8E89 /* PopupView */,
+			);
 			productName = RaniPaper;
 			productReference = D89A068F2929FD5000F5D408 /* RaniPaper.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +292,9 @@
 				ko,
 			);
 			mainGroup = D89A06862929FD5000F5D408;
+			packageReferences = (
+				D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */,
+			);
 			productRefGroup = D89A06902929FD5000F5D408 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,12 +309,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86ACE4B29309772002C8E89 /* Bold.otf in Resources */,
 				D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */,
 				7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */,
+				D86ACE50293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf in Resources */,
 				D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */,
+				D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */,
 				D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */,
 				D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */,
 				D86ACE45292F43B4002C8E89 /* JUA_otf.otf in Resources */,
+				D86ACE4D2930977A002C8E89 /* KOTRA_HOPE.otf in Resources */,
 				D86ACE43292F43B4002C8E89 /* SSAMANCO-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +573,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D86ACE48292F793C002C8E89 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D89A06872929FD5000F5D408 /* Project object */;
 }

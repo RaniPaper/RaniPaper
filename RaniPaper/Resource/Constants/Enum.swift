@@ -10,7 +10,7 @@ import SwiftUI
 
 enum LockState{
     case locked
-    case vlichan
+    case viichan
     case rani
 }
 

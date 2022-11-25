@@ -13,7 +13,8 @@ final class LockViewModel : ObservableObject{
     
     @Published var text:String = ""
     @Published private(set) var keyboardHeight: CGFloat = 0
-    private var subscription: AnyCancellable?
+    @Published var error:Bool = false
+    /*private var subscription: AnyCancellable?
     private let keyboardWillShow =  NotificationCenter.default
         .publisher(for: UIResponder.keyboardWillShowNotification)
         .compactMap { output in
@@ -24,11 +25,16 @@ final class LockViewModel : ObservableObject{
     private let keyboardWillHide = NotificationCenter.default
         .publisher(for: UIResponder.keyboardWillHideNotification)
         .map { _ in CGFloat.zero}
-    
+    */
     init(){
-        subscription = Publishers.Merge(keyboardWillShow, keyboardWillHide)
+       /* subscription = Publishers.Merge(keyboardWillShow, keyboardWillHide)
                    .subscribe(on: DispatchQueue.main) // UI 변화 이므로 메인. 쓰레드
                    .assign(to: \.self.keyboardHeight, on: self)
+        */
+        print("Init ViewModel")
+    }
+    deinit{
+        print("❌ LockViewModel 소멸")
     }
     
 }
