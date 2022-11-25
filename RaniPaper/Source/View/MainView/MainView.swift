@@ -41,11 +41,15 @@ struct MainView: View {
             }
             else
             {
-                ZStack{
-                    Image("mainTmp")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                NavigationView {
+                    ZStack{
+                        Image("mainTmp")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    MenuView()
+                    }
                 }
+                
             }
         }
         

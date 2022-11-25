@@ -54,7 +54,7 @@ struct MenuView: View {
             SideMenuView(isOpen: $viewModel.isOpen, offset: $viewModel.Offset, menuList: viewModel.menuList)
                 .offset(x: viewModel.Offset)
                 .transition(.move(edge: .trailing))
-                .animation(.easeIn, value: viewModel.Offset)
+                .animation(.linear, value: viewModel.Offset)
         }
         .gesture(drag)
         .ignoresSafeArea()

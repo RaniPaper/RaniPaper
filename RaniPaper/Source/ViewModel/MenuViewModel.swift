@@ -16,4 +16,13 @@ final class MenuViewModel: ObservableObject {
                                          , "크레딧"]
     @Published var Offset: CGFloat = Menu.minOffset
     @Published var isOpen: Bool = false
+    
+    init()
+    {
+        print("✅ MenuViewModel 생성")
+    }
+    
+    deinit{
+        print("❌ MenuViewModel 소멸")
+    }
 }
