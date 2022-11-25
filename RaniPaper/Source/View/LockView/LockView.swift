@@ -10,57 +10,94 @@ import Combine
 
 struct LockView: View {
     @Binding var lockState:LockState
-    @ObservedObject var viewModel = LockViewModel()
+    @Binding var showLockView:Bool
+    @StateObject var viewModel = LockViewModel()
+    let gangfont:Font = Font.gangwonBold(size: 20)
+    fileprivate let bgGradient = Color(hexcode: "e7f4ea")
+    fileprivate let textFieldColor = Color(hexcode: "69ad72")
+    fileprivate let textColor = Color(hexcode: "3e6c45")
+    let secretCode:String = "1234"
     
-
+    
     var body: some View {
-        ZStack(){
-            Color.gray
-            VStack{
-                Text("코드를 입력해주세요")
+        VStack(spacing:10){
+            HStack(spacing:5){
+                Text("안녕하세요").font(gangfont)
+                Text("비챤님").font(gangfont).foregroundColor(textColor)
+            }
+            HStack(spacing:0){
+                Text("비밀번호").font(gangfont).foregroundColor(textColor)
+                Text("를 입력해주세요").font(gangfont)
+                Text("💚").font(.caption)
+            }.padding(.bottom,20)
+            
+            if(viewModel.error)
+            {
+                Text("잘못된 비밀번호입니다.").font(.oneMobileRegular(size:15))
+                    .foregroundColor(.red)
+            }
+            
+            
+            HStack{
+                TextField("", text: $viewModel.text)
+                    .font(Font.oneMobileRegular(size: 20))
                     .foregroundColor(.white)
-                    .font(.title3)
-                
-                Image(systemName: "lock.circle")
-                    .font(.custom("lock", size: 50))
-                     .padding(30)
-                
-                VStack{
-                    SecureField("", text: $viewModel.text)
-                        .foregroundColor(.white)
-                        .font(.callout)
-                        .onChange(of: viewModel.text) { newValue in
-                            if(newValue == "1234"){
-                                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                                    withAnimation {
-                                        lockState = .vlichan
-                                    }
-                                }
-                            }
+                    .autocorrectionDisabled()
+                    .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 20).foregroundColor(textFieldColor)
+                    .shadow(radius: 5)
+            )
+            .padding(.bottom,10)
+            
+           
+            
+            
+            
+            Button(action: {
+                if(viewModel.text == secretCode)
+                {
+                    showLockView = false
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                        withAnimation {
+                            lockState = .viichan
                         }
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(.white)
-                      
-                }.frame(width:ScreenSize.width/3)
-                    .padding(.horizontal,30)
-                    .offset(y: viewModel.keyboardHeight == .zero ? 0 : -viewModel.keyboardHeight)
-                    
-                
-                
-                    
-                
-            }//.padding(50)
-               
+                    }
+                }
+                else
+                {
+                    viewModel.error = true
+                }
+            }, label: {
+                Text("확인").font(Font.kotra(size: 20))
+                    .foregroundColor(textColor)
+                    .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
+            })
+            .background(
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.white)
+                .shadow(radius: 3)
+            )
+            
+            
+            
         }
-        .ignoresSafeArea()
-            
-            
+        .padding(50)
+        .background(
+            bgGradient
+                .cornerRadius(10)
+                .shadow(radius: 3)
+        )
+        .frame(maxWidth: 300,maxHeight: 300)
+        .offset(y:-ScreenSize.height/8)
+       
+        
     }
 }
 
 struct LockView_Previews: PreviewProvider {
     static var previews: some View {
-        LockView(lockState: .constant(.locked))
+        LockView(lockState: .constant(.locked),showLockView: .constant(false))
     }
 }
