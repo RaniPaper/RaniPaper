@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		493526F5292F57470066F083 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526F4292F57470066F083 /* MenuViewModel.swift */; };
+		493526FA292F59460066F083 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526F9292F59460066F083 /* MenuView.swift */; };
+		493526FE292FFC030066F083 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FD292FFC030066F083 /* MenuModel.swift */; };
 		7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E2D09292A05BA000EA21C /* InfoPlist.strings */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		493526F4292F57470066F083 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		493526F9292F59460066F083 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		493526FD292FFC030066F083 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		7B5E2D08292A05BA000EA21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B5E2D0A292A05BE000EA21C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -70,9 +76,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		493526F8292F59300066F083 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				493526F9292F59460066F083 /* MenuView.swift */,
+			);
+			path = MenuView;
+			sourceTree = "<group>";
+		};
+		493526FB292FFBE30066F083 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				493526FD292FFC030066F083 /* MenuModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D86ACE18292DDD93002C8E89 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				493526FB292FFBE30066F083 /* Model */,
 				D86ACE22292DE272002C8E89 /* Extension */,
 				D86ACE1B292DDF00002C8E89 /* ViewModel */,
 				D86ACE19292DDDA4002C8E89 /* View */,
@@ -83,6 +106,7 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				493526F8292F59300066F083 /* MenuView */,
 				D86ACE32292F09F7002C8E89 /* ConfirmView */,
 				D86ACE2A292DF562002C8E89 /* LockView */,
 				D86ACE26292DF3FA002C8E89 /* BlurView */,
@@ -103,6 +127,7 @@
 		D86ACE1B292DDF00002C8E89 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				493526F4292F57470066F083 /* MenuViewModel.swift */,
 				D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */,
 				D86ACE30292DFCAD002C8E89 /* LockViewModel.swift */,
 			);
@@ -306,12 +331,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */,
+				493526FA292F59460066F083 /* MenuView.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */,
 				D86ACE34292F0A3E002C8E89 /* ConfirmView.swift in Sources */,
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
+				493526F5292F57470066F083 /* MenuViewModel.swift in Sources */,
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
+				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,
 				D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */,

@@ -24,7 +24,7 @@ final class MainViewModel : ObservableObject {
     private let keyboardWillHide = NotificationCenter.default
         .publisher(for: UIResponder.keyboardWillHideNotification)
         .map { _ in CGFloat.zero}
-    
+
     init(){
         self.isLoading = true
         self.lockState = .locked
