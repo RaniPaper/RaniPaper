@@ -31,6 +31,12 @@ final class MainViewModel : ObservableObject {
         subscription = Publishers.Merge(keyboardWillShow, keyboardWillHide)
                    .subscribe(on: DispatchQueue.main) // UI 변화 이므로 메인. 쓰레드
                    .assign(to: \.self.keyboardHeight, on: self)
+        
+        print("✅ MainViewModel 생성")
+    }
+    
+    deinit{
+        print("❌ MainViewModel 소멸")
     }
     
 }

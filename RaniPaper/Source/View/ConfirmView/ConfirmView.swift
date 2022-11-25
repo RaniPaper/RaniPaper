@@ -31,7 +31,7 @@ struct ConfirmView: View {
                                 }
                             
                         } label: {
-                            CircleImage(source: "vlic1",color:Color.green1)
+                            CircleImage(source: "viic1",color:Color.green1)
                             
                         }
                         Text("비챤")
@@ -57,11 +57,12 @@ struct ConfirmView: View {
                 }
                 
             }
-        }.popup(isPresented: $showLockView,backgroundColor: .black.opacity(0.2)) {
+        }.popup(isPresented: $showLockView,closeOnTap: false,backgroundColor: .black.opacity(0.2)) {
             
-            LockView(lockState: $lockState)
+            LockView(lockState: $lockState,showLockView:$showLockView)
         }
         .edgesIgnoringSafeArea(.vertical)
+    
     }
 }
 

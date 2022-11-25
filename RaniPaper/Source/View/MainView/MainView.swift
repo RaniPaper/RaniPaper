@@ -16,6 +16,7 @@ struct MainView: View {
         
         if viewModel.lockState == .locked {
             ConfirmView(lockState: $viewModel.lockState)
+               
                 
                 
                 
