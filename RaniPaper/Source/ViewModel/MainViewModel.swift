@@ -12,7 +12,6 @@ import SwiftUI
 final class MainViewModel : ObservableObject {
     @Published var isLoading:Bool
     @Published var lockState:LockState
-    @Published var isMenuOpen:Bool //사이드메뉴 토글
     @Published private(set) var keyboardHeight: CGFloat = 0
     private var subscription: AnyCancellable?
     private let keyboardWillShow =  NotificationCenter.default
@@ -28,7 +27,6 @@ final class MainViewModel : ObservableObject {
 
     init(){
         self.isLoading = true
-        self.isMenuOpen = true
         self.lockState = .locked
         subscription = Publishers.Merge(keyboardWillShow, keyboardWillHide)
                    .subscribe(on: DispatchQueue.main) // UI 변화 이므로 메인. 쓰레드

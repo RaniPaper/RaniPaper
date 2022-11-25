@@ -20,6 +20,7 @@ enum ScreenSize {
 }
 
 enum Menu {
+    static let minOffset = ScreenSize.width
     static let maxOffset = ScreenSize.width * 0.3
     static let threshold = ScreenSize.width * 0.65
 }
