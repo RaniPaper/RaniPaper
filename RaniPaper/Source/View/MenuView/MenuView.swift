@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     @StateObject var viewModel = MenuViewModel()
-    @Binding var selection: ViewSelection?
+    @Binding var selection: ViewSelection
     var body: some View {
                 
         let drag = DragGesture()

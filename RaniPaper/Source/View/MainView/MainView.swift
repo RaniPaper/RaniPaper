@@ -10,7 +10,6 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel = MainViewModel()
-    @State var isHome: Bool = true
     
     var body: some View {
         
@@ -40,26 +39,19 @@ struct MainView: View {
             {
                 ZStack{
                     NavigationView{
-                        HStack{
+                        TabView(selection: $viewModel.selection){
                             Image("mainTmp")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
+                                .tag(ViewSelection.home)
                             
-                            NavigationLink(tag: ViewSelection.diary, selection: $viewModel.selection,
-                                           destination: {
-                                DummyView1() //다이어리 뷰로 대체
-                                    .navigationBarBackButtonHidden(true)
-                                }
-                            ){EmptyView()}
+                            DummyView1()// 다이어리 뷰로 대체
+                                .tag(ViewSelection.diary)
                             
-                            NavigationLink(tag: ViewSelection.memo, selection: $viewModel.selection,
-                                           destination: {
-                                DummyView2()//기록 뷰로 대체
-                                    .navigationBarBackButtonHidden(true)
-                            }){EmptyView()}
+                            DummyView2()// 기록 뷰로 대체
+                                .tag(ViewSelection.memo)
                         }
                     }
-                    
                     MenuView(selection: $viewModel.selection)
                 }
             }
