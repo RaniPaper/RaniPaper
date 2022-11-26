@@ -9,8 +9,15 @@ import SwiftUI
 
 struct DummyView1: View {
     var body: some View {
-        VStack{
-            Color.red
+        NavigationView{
+            ZStack{
+                Color.red
+                Button(action:{
+                    
+                }){
+                    Text("Dummy View 1")
+                }.foregroundColor(.white)
+            }.ignoresSafeArea()
         }
     }
 }

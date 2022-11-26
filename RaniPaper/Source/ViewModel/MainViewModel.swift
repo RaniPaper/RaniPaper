@@ -12,7 +12,7 @@ import SwiftUI
 final class MainViewModel : ObservableObject {
     @Published var isLoading:Bool
     @Published var lockState:LockState
-    @Published var selection: ViewSelection
+    @Published var selection: ViewSelection?
     @Published private(set) var keyboardHeight: CGFloat = 0
     private var subscription: AnyCancellable?
     private let keyboardWillShow =  NotificationCenter.default

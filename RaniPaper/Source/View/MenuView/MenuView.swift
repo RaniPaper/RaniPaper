@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     @StateObject var viewModel = MenuViewModel()
-    @Binding var selection: ViewSelection
+    @Binding var selection: ViewSelection?
     var body: some View {
                 
         let drag = DragGesture()
@@ -42,10 +42,10 @@ struct MenuView: View {
                     }
                 }
             }
+        
         ZStack{
-            Color.white.opacity(0.1)
             Color.black
-                .opacity(Double((360-viewModel.Offset))/1300)
+                .opacity(viewModel.Offset == Menu.minOffset ? 0 : Double((360-viewModel.Offset))/1300)
                 .animation(.easeIn, value: viewModel.Offset)
                 .onTapGesture {
                     viewModel.Offset = Menu.minOffset
@@ -59,6 +59,7 @@ struct MenuView: View {
             .transition(.move(edge: .trailing))
             .animation(.linear, value: viewModel.Offset)
         }
+        .contentShape(Rectangle())
         .gesture(drag)
         .ignoresSafeArea()
     }

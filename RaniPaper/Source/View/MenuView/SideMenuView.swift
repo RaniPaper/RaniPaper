@@ -10,7 +10,7 @@ import SwiftUI
 struct SideMenuView: View {
     @Binding var isOpen: Bool
     @Binding var offset: CGFloat
-    @Binding var selection: ViewSelection
+    @Binding var selection: ViewSelection?
     let menuList: [MenuContent]
     
     var body: some View{
