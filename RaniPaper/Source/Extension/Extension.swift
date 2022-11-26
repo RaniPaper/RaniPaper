@@ -103,3 +103,17 @@ extension Font{
     
     
 }
+
+extension ViewSelection: Equatable{
+    var Name: String{
+        switch self {
+        case .home: return "home"
+        case .diary: return "diary"
+        case .memo: return "memo"
+        }
+    }
+    
+    static func ==(lhs: Self, rhs: Self) -> Bool{
+        return lhs.Name == rhs.Name
+    }
+}

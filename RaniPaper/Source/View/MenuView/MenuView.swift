@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MenuView: View {
-    @ObservedObject var viewModel = MenuViewModel()
-    
+    @StateObject var viewModel = MenuViewModel()
+    @Binding var selection: ViewSelection
     var body: some View {
                 
         let drag = DragGesture()
@@ -23,7 +23,7 @@ struct MenuView: View {
                         viewModel.Offset = Menu.maxOffset + $0.translation.width
                     }
                 } else {
-                    if $0.startLocation.x > 310{
+                    if $0.startLocation.x > Menu.openEdge{
                         viewModel.Offset = Menu.minOffset + $0.translation.width > Menu.maxOffset ? Menu.minOffset + $0.translation.width : Menu.maxOffset
                     }
                 }
@@ -45,17 +45,21 @@ struct MenuView: View {
         
         ZStack{
             Color.black
-                .opacity(Double((360-viewModel.Offset))/1300)
+                .opacity(viewModel.Offset == Menu.minOffset ? 0 : Double((360-viewModel.Offset))/1300)
                 .animation(.easeIn, value: viewModel.Offset)
                 .onTapGesture {
                     viewModel.Offset = Menu.minOffset
                 }
             
-            SideMenuView(isOpen: $viewModel.isOpen, offset: $viewModel.Offset, menuList: viewModel.menuList)
-                .offset(x: viewModel.Offset)
-                .transition(.move(edge: .trailing))
-                .animation(.linear, value: viewModel.Offset)
+            SideMenuView(isOpen: $viewModel.isOpen,
+                         offset: $viewModel.Offset,
+                         selection: $selection,
+                         menuList: viewModel.menuList)
+            .offset(x: viewModel.Offset)
+            .transition(.move(edge: .trailing))
+            .animation(.linear, value: viewModel.Offset)
         }
+        .contentShape(Rectangle())
         .gesture(drag)
         .ignoresSafeArea()
     }
@@ -63,34 +67,8 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(selection: .constant(.home))
     }
 }
 
-struct SideMenuView: View {
-    @Binding var isOpen: Bool
-    @Binding var offset: CGFloat
-    let menuList: [String]
-    
-    var body: some View{
-        ZStack() {
-            Color.white
-            List(){
-                ForEach(menuList, id: \.self) { menu in
-                    Button(action:{
-                        isOpen.toggle()
-                    }) {
-                        Text(menu)
-                            .foregroundColor(.black)
-                            .bold()
-                            .font(Font.beomsuk(size: 20))
-                    }
-                }.listRowBackground(Color.clear)
-                    .padding(10)
-            }
-            .listStyle(.plain)
-            .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
-        }
-        .ignoresSafeArea()
-    }
-}
+

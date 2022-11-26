@@ -9,17 +9,13 @@ import SwiftUI
 
 
 struct MainView: View {
-    
     @StateObject var viewModel = MainViewModel()
     
     var body: some View {
         
         if viewModel.lockState == .locked {
             ConfirmView(lockState: $viewModel.lockState)
-               
-                
-                
-                
+
         }
         else{
             if viewModel.isLoading{
@@ -30,7 +26,7 @@ struct MainView: View {
                             print("=== \(names)")
                         }
                     }
-                    
+
                     DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                         withAnimation {
                             viewModel.isLoading.toggle()
@@ -41,20 +37,25 @@ struct MainView: View {
             }
             else
             {
-                NavigationView {
-                    ZStack{
-                        Image("mainTmp")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    MenuView()
+                ZStack{
+                    NavigationView{
+                        TabView(selection: $viewModel.selection){
+                            Image("mainTmp")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .tag(ViewSelection.home)
+                            
+                            DummyView1()// 다이어리 뷰로 대체
+                                .tag(ViewSelection.diary)
+                            
+                            DummyView2()// 기록 뷰로 대체
+                                .tag(ViewSelection.memo)
+                        }
                     }
+                    MenuView(selection: $viewModel.selection)
                 }
-                
             }
         }
-        
-        
-        
     }
 }
 
