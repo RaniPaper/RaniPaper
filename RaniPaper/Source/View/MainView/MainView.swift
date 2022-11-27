@@ -48,7 +48,7 @@ struct MainView: View {
                             DummyView1()// 다이어리 뷰로 대체
                                 .tag(ViewSelection.diary)
                             
-                            DummyView2()// 기록 뷰로 대체
+                            MemoView()// 기록 뷰로 대체
                                 .tag(ViewSelection.memo)
                         }
                     }

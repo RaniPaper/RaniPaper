@@ -66,32 +66,32 @@ extension UIDevice {
 }
 
 extension Font{
-    public static func efDiary(size:CGFloat = 10)->Font{
+    public static func efDiary(_ size:CGFloat = 10)->Font{
         return Font.custom("EF_Diary",size: size)
     }
     
-    public static func beomsuk(size:CGFloat = 10)->Font{
+    public static func beomsuk(_ size:CGFloat = 10)->Font{
         return Font.custom("Undefined",size: size)
     }
     
-    public static func jua(size:CGFloat = 10)->Font{
+    public static func jua(_ size:CGFloat = 10)->Font{
         return Font.custom("BMJUAOTF",size: size)
     }
     
-    public static func samanco(size:CGFloat = 10)->Font{
+    public static func samanco(_ size:CGFloat = 10)->Font{
         return Font.custom("BinggraeSamanco-Bold",size: size)
     }
     
-    public static func kotra(size:CGFloat = 10)->Font{
+    public static func kotra(_ size:CGFloat = 10)->Font{
         return Font.custom("KOTRAHOPE",size: size)
     }
-    public static func oneMobileTilte(size:CGFloat = 10)->Font{
+    public static func oneMobileTilte(_ size:CGFloat = 10)->Font{
         return Font.custom("ONE Mobile Title OTF",size: size)
     }
-    public static func oneMobileRegular(size:CGFloat = 10)->Font{
+    public static func oneMobileRegular(_ size:CGFloat = 10)->Font{
         return Font.custom("Optima",size: size)
     }
-    public static func gangwonBold(size:CGFloat = 10)->Font{
+    public static func gangwonBold(_ size:CGFloat = 10)->Font{
         return Font.custom("GangwonEduAll-OTFBold",size: size)
     }
     

@@ -21,7 +21,7 @@ struct ConfirmView: View {
                 .aspectRatio(contentMode: .fill)
             VStack(spacing:30){
                 Text("나는..")
-                    .font(Font.efDiary(size: 30))
+                    .font(.efDiary(30))
                 
                 HStack(spacing:30){
                     VStack{
@@ -35,7 +35,7 @@ struct ConfirmView: View {
                             
                         }
                         Text("비챤")
-                            .font(Font.efDiary(size: textSize))
+                            .font(.efDiary(textSize))
                     }
                     VStack{
                         Button {
@@ -49,7 +49,7 @@ struct ConfirmView: View {
                             
                         }
                         Text("이파리")
-                            .font(Font.efDiary(size: textSize))
+                            .font(.efDiary(textSize))
                     }
                    
                     

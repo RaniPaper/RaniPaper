@@ -12,7 +12,7 @@ struct LockView: View {
     @Binding var lockState:LockState
     @Binding var showLockView:Bool
     @StateObject var viewModel = LockViewModel()
-    let gangfont:Font = Font.gangwonBold(size: 20)
+    let gangfont:Font = Font.gangwonBold(20)
     fileprivate let bgGradient = Color(hexcode: "e7f4ea")
     fileprivate let textFieldColor = Color(hexcode: "69ad72")
     fileprivate let textColor = Color(hexcode: "3e6c45")
@@ -33,14 +33,14 @@ struct LockView: View {
             
             if(viewModel.error)
             {
-                Text("잘못된 비밀번호입니다.").font(.oneMobileRegular(size:15))
+                Text("잘못된 비밀번호입니다.").font(.oneMobileRegular(15))
                     .foregroundColor(.red)
             }
             
             
             HStack{
                 TextField("", text: $viewModel.text)
-                    .font(Font.oneMobileRegular(size: 20))
+                    .font(.oneMobileRegular(20))
                     .foregroundColor(.white)
                     .autocorrectionDisabled()
                     .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
@@ -70,7 +70,7 @@ struct LockView: View {
                     viewModel.error = true
                 }
             }, label: {
-                Text("확인").font(Font.kotra(size: 20))
+                Text("확인").font(Font.kotra(20))
                     .foregroundColor(textColor)
                     .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
             })

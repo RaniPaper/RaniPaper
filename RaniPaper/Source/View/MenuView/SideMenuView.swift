@@ -29,7 +29,7 @@ struct SideMenuView: View {
                                     Text(menu.title)
                                         .foregroundColor(.black)
                                         .bold()
-                                        .font(Font.beomsuk(size: 24))
+                                        .font(.beomsuk(24))
                                 }
                             } else {
                                 Button(action:{
@@ -38,7 +38,7 @@ struct SideMenuView: View {
                                     Text(menu.title)
                                         .foregroundColor(.black)
                                         .bold()
-                                        .font(Font.beomsuk(size: 24))
+                                        .font(.beomsuk(24))
                                 }
                             }
                         }
@@ -55,7 +55,7 @@ struct SideMenuView: View {
                             }) {
                                 Text(menu.title)
                                     .foregroundColor(.secondary)
-                                    .font(Font.beomsuk(size: 20))
+                                    .font(.beomsuk(20))
                             }
                         }
                         
