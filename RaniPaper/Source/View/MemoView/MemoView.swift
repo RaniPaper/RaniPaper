@@ -10,13 +10,16 @@ import SwiftUI
 struct MemoView: View {
     var body: some View {
         NavigationView {
-            VStack{
-                Text("Hello")
-            }
+            ScrollView(showsIndicators: true,content: {
+                
+            })
             
             .toolbar(content: {
                 ToolbarItem(placement:.principal,content: {
-                    Text("기록").font(.efDiary(30))
+                    VStack(spacing:10){
+                        Text("기록(\(5)개)").font(.efDiary(25))
+                        Divider()
+                    }
                 })
             })
         }
