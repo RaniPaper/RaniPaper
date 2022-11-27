@@ -35,7 +35,7 @@ struct SideMenuView: View {
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 37, trailing: 0))
                         }
                     }
-                    
+
                     Spacer()
                     
                     ForEach(viewModel.menuList) { menu in
@@ -57,6 +57,7 @@ struct SideMenuView: View {
         }
         .ignoresSafeArea()
         .frame(height: ScreenSize.height)
+        .animation(.default, value: viewModel.isSettingOn)
     }
 }
 
