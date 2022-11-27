@@ -53,8 +53,7 @@ struct MenuView: View {
             
             SideMenuView(isOpen: $viewModel.isOpen,
                          offset: $viewModel.Offset,
-                         selection: $selection,
-                         menuList: viewModel.menuList)
+                         selection: $selection)
             .offset(x: viewModel.Offset)
             .transition(.move(edge: .trailing))
             .animation(.linear, value: viewModel.Offset)
