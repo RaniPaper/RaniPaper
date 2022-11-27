@@ -9,7 +9,17 @@ import SwiftUI
 
 struct MemoView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack{
+                Text("Hello")
+            }
+            
+            .toolbar(content: {
+                ToolbarItem(placement:.principal,content: {
+                    Text("기록").font(.efDiary(30))
+                })
+            })
+        }
     }
 }
 
