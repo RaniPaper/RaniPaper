@@ -42,6 +42,7 @@
 		D86ACE50293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE4E293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf */; };
 		D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE4F293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf */; };
 		D86ACE572933B00A002C8E89 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE562933B00A002C8E89 /* MemoView.swift */; };
+		D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE5A293475F7002C8E89 /* CalendarView.swift */; };
 		D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06922929FD5000F5D408 /* RaniPaperApp.swift */; };
 		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
@@ -84,6 +85,7 @@
 		D86ACE4E293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONE_Mobile_OTF_Bold.otf; sourceTree = "<group>"; };
 		D86ACE4F293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONE_Mobile_Title_OTF.otf; sourceTree = "<group>"; };
 		D86ACE562933B00A002C8E89 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
+		D86ACE5A293475F7002C8E89 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D89A068F2929FD5000F5D408 /* RaniPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaniPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89A06922929FD5000F5D408 /* RaniPaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaniPaperApp.swift; sourceTree = "<group>"; };
 		D89A06942929FD5000F5D408 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				49E703F1293543B80035215F /* InfoView */,
 				49E703EE293539C00035215F /* CreditView */,
 				7B796F712935F44F00799616 /* HomeView */,
+				D86ACE59293475BE002C8E89 /* CalendarView */,
 				D86ACE552933AFD6002C8E89 /* MemoView */,
 				492DB73E29311FE60027EEB1 /* DummyView */,
 				493526F8292F59300066F083 /* MenuView */,
@@ -300,6 +303,14 @@
 				D86ACE562933B00A002C8E89 /* MemoView.swift */,
 			);
 			path = MemoView;
+			sourceTree = "<group>";
+		};
+		D86ACE59293475BE002C8E89 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				D86ACE5A293475F7002C8E89 /* CalendarView.swift */,
+			);
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
 		D89A06862929FD5000F5D408 = {
@@ -452,6 +463,7 @@
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
+				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
 				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,
 				D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */,
