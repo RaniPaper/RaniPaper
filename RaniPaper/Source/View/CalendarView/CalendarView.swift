@@ -17,6 +17,7 @@ struct CalendarView: View {
                 
                 CustomDatePicker(currentDate: $currentDate)
             }
+            .padding(.vertical)
         }
     }
 }
