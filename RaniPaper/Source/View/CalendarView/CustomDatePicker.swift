@@ -54,7 +54,6 @@ struct CustomDatePicker: View {
             .padding(.horizontal)
             //Day View
             
-            
             HStack(spacing:0)
             {
                 ForEach(days,id:\.self){ day in
@@ -87,6 +86,42 @@ struct CustomDatePicker: View {
                 }
             }
             
+            
+            VStack(spacing:15){
+                Text("Tasks")
+                    .font(.title2.bold())
+                    .frame(maxWidth:.infinity,alignment: .leading)
+                    
+                
+                if let task = tasks.first(where: { task in
+                    return isSameDate(date1: task.taskDate, date2: currentDate)
+                })
+                {
+                    ForEach(task.task){ task in
+                        VStack(alignment: .leading,spacing: 10) {
+                            Text(task.time.addingTimeInterval(CGFloat.random(in: 0...5000)),style: .time)
+                            
+                            Text(task.title)
+                                .font(.title2.bold())
+                                
+                        }
+                        .padding(.vertical,10)
+                        .padding(.horizontal)
+                        .frame(maxWidth: .infinity,alignment: .leading)
+                        .background {
+                            Color.pink.opacity(0.5)
+                                .cornerRadius(10)
+                        }
+                        
+                    }
+                }
+                
+                else
+                {
+                    Text("오늘은 할 일이 없어요")
+                }
+            }
+            .padding(15)
             
         }
         .onChange(of: currentMonth) { newValue in
