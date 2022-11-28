@@ -45,7 +45,7 @@ struct MainView: View {
                                 .aspectRatio(contentMode: .fill)
                                 .tag(ViewSelection.home)
                             
-                            DummyView1()// 다이어리 뷰로 대체
+                            CalendarView()// 다이어리 뷰로 대체
                                 .tag(ViewSelection.diary)
                             
                             MemoView()// 기록 뷰로 대체
