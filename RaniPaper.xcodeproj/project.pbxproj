@@ -14,6 +14,8 @@
 		493526FA292F59460066F083 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526F9292F59460066F083 /* MenuView.swift */; };
 		493526FE292FFC030066F083 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FD292FFC030066F083 /* MenuModel.swift */; };
 		493527002930F46C0066F083 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FF2930F46C0066F083 /* SideMenuView.swift */; };
+		49E703F029353A150035215F /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703EF29353A150035215F /* CreditView.swift */; };
+		49E703F3293543EC0035215F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703F2293543EC0035215F /* InfoView.swift */; };
 		7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E2D09292A05BA000EA21C /* InfoPlist.strings */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
@@ -47,6 +49,8 @@
 		493526F9292F59460066F083 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		493526FD292FFC030066F083 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		493526FF2930F46C0066F083 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		49E703EF29353A150035215F /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
+		49E703F2293543EC0035215F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		7B5E2D08292A05BA000EA21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B5E2D0A292A05BE000EA21C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -112,6 +116,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		49E703EE293539C00035215F /* CreditView */ = {
+			isa = PBXGroup;
+			children = (
+				49E703EF29353A150035215F /* CreditView.swift */,
+			);
+			path = CreditView;
+			sourceTree = "<group>";
+		};
+		49E703F1293543B80035215F /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				49E703F2293543EC0035215F /* InfoView.swift */,
+			);
+			path = InfoView;
+			sourceTree = "<group>";
+		};
 		D86ACE18292DDD93002C8E89 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +146,8 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49E703F1293543B80035215F /* InfoView */,
+				49E703EE293539C00035215F /* CreditView */,
 				D86ACE552933AFD6002C8E89 /* MemoView */,
 				492DB73E29311FE60027EEB1 /* DummyView */,
 				493526F8292F59300066F083 /* MenuView */,
@@ -366,8 +388,10 @@
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				4911D3D42933E93C00E7FE03 /* SideMenuViewModel.swift in Sources */,
+				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				492DB7442931202B0027EEB1 /* DummyView2.swift in Sources */,
 				D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */,
+				49E703F3293543EC0035215F /* InfoView.swift in Sources */,
 				D86ACE34292F0A3E002C8E89 /* ConfirmView.swift in Sources */,
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
 				493526F5292F57470066F083 /* MenuViewModel.swift in Sources */,

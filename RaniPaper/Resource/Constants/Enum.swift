@@ -30,4 +30,6 @@ enum ViewSelection: CaseIterable {
     case home
     case diary
     case memo
+    case info
+    case credit
 }

@@ -110,6 +110,8 @@ extension ViewSelection: Equatable{
         case .home: return "home"
         case .diary: return "diary"
         case .memo: return "memo"
+        case .info: return "info"
+        case .credit: return "credit"
         }
     }
     

@@ -18,8 +18,8 @@ final class SideMenuViewModel: ObservableObject {
                     MenuContent(title: "다이어리", viewSelection: .diary),
                     MenuContent(title: "기록", viewSelection: .memo),
                     MenuContent(title: "설정", viewSelection: .home, isSetting: true),
-                    MenuContent(title: "앱정보", viewSelection: .home, isUnder: true),
-                    MenuContent(title: "크레딧", viewSelection: .home, isUnder: true)]
+                    MenuContent(title: "앱정보", viewSelection: .info, isUnder: true),
+                    MenuContent(title: "크레딧", viewSelection: .credit, isUnder: true)]
         settingList = ["배경음",
                          "효과음",
                          "알람"]

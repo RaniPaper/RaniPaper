@@ -65,13 +65,13 @@ struct SideMenuView: View {
                                         let label = "-   \(setting)" + (viewModel.isBgmOn ? " ON" : " OFF")
                                         Text("\(label)")
                                             .foregroundColor(.black)
-                                            .font(.beomsuk(14))
+                                            .font(.beomsuk(18))
                                             .frame(width: 100, height: 25, alignment: .leading)
                                     } else {
                                         let label = "-   \(setting) ON"
                                         Text("\(label)")
                                             .foregroundColor(.black)
-                                            .font(.beomsuk(14))
+                                            .font(.beomsuk(18))
                                             .frame(width: 100, height: 25, alignment: .leading)
                                     }
                                 }
