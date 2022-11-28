@@ -9,12 +9,11 @@ import Foundation
 import SwiftUI
 
 final class SideMenuViewModel: ObservableObject {
-    @Published var isSettingOn: Bool
     @Published var menuList: [MenuContent]
     @Published var settingList: [String]
+    @Published var isBgmOn: Bool
     
     init(){
-        isSettingOn = false
         menuList = [MenuContent(title: "홈",                                                   viewSelection: .home),
                     MenuContent(title: "다이어리", viewSelection: .diary),
                     MenuContent(title: "기록", viewSelection: .memo),
@@ -23,8 +22,8 @@ final class SideMenuViewModel: ObservableObject {
                     MenuContent(title: "크레딧", viewSelection: .home, isUnder: true)]
         settingList = ["배경음",
                          "효과음",
-                         "알람",
-                         "파일추출"]
+                         "알람"]
+        isBgmOn = true
         
         print("✅ SideMenuViewModel 생성")
     }

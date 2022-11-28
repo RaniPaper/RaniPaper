@@ -14,6 +14,7 @@ struct MenuView: View {
                 
         let drag = DragGesture()
             .onChanged{
+                viewModel.isSettingOn = false
                 if viewModel.isOpen{
                     let cmp = Menu.maxOffset - $0.startLocation.x
                     if ($0.translation.width > 0) && (cmp > 0) {
@@ -31,8 +32,8 @@ struct MenuView: View {
             .onEnded{ _ in
                 if viewModel.Offset < Menu.threshold{
                     withAnimation{
-                        viewModel.isOpen = true
                         viewModel.Offset = Menu.maxOffset
+                        viewModel.isOpen = true
                     }
                 }
                 else {
@@ -49,10 +50,13 @@ struct MenuView: View {
                 .animation(.easeIn, value: viewModel.Offset)
                 .onTapGesture {
                     viewModel.Offset = Menu.minOffset
+                    viewModel.isOpen = false
+                    viewModel.isSettingOn = false
                 }
             
             SideMenuView(isOpen: $viewModel.isOpen,
                          offset: $viewModel.Offset,
+                         isSettingOpen: $viewModel.isSettingOn,
                          selection: $selection)
             .offset(x: viewModel.Offset)
             .transition(.move(edge: .trailing))
@@ -66,7 +70,9 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(selection: .constant(.home))
+        VStack{
+            MenuView(selection: .constant(.home))
+        }
     }
 }
 

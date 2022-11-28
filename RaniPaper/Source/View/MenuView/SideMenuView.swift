@@ -10,19 +10,24 @@ import SwiftUI
 struct SideMenuView: View {
     @Binding var isOpen: Bool
     @Binding var offset: CGFloat
+    @Binding var isSettingOpen: Bool
     @Binding var selection: ViewSelection
     @StateObject var viewModel = SideMenuViewModel()
     
     var body: some View{
         ZStack() {
             Color.white
+                .onTapGesture {
+                    isSettingOpen = false
+                }
             HStack() {
                 VStack(alignment: .leading){
                     ForEach(viewModel.menuList) { menu in
-                        if !menu.isUnder{
+                        if !menu.isUnder {
                             if !menu.isSetting {
                                 Button(action:{
                                     isOpen.toggle()
+                                    isSettingOpen = false
                                     offset = Menu.minOffset
                                     selection = menu.viewSelection
                                 }) {
@@ -30,35 +35,49 @@ struct SideMenuView: View {
                                         .foregroundColor(.black)
                                         .bold()
                                         .font(.beomsuk(24))
+                                        .frame(width: 100, height: 40, alignment: .leading)
                                 }
                             } else {
                                 Button(action:{
-                                    viewModel.isSettingOn.toggle()
+                                    isSettingOpen.toggle()
                                 }) {
                                     Text(menu.title)
                                         .foregroundColor(.black)
                                         .bold()
                                         .font(.beomsuk(24))
+                                        .frame(width: 100, height: 40, alignment: .leading)
                                 }
+                                
                             }
                         }
                     }
-                    .padding(10)
                     
                     
                     VStack(alignment: .leading, spacing: 3){
-                        if viewModel.isSettingOn {
+                        if isSettingOpen && isOpen {
                             ForEach(viewModel.settingList,id: \.self){ setting in
                                 Button(action: {
-                                    
+                                    if setting == "배경음"{
+                                        viewModel.isBgmOn.toggle()
+                                    }
                                 }){
-                                    Text("-   \(setting)")
-                                        .foregroundColor(.black)
-                                        .font(.beomsuk(14))
+                                    if setting == "배경음"{
+                                        let label = "-   \(setting)" + (viewModel.isBgmOn ? " ON" : " OFF")
+                                        Text("\(label)")
+                                            .foregroundColor(.black)
+                                            .font(.beomsuk(14))
+                                            .frame(width: 100, height: 25, alignment: .leading)
+                                    } else {
+                                        let label = "-   \(setting) ON"
+                                        Text("\(label)")
+                                            .foregroundColor(.black)
+                                            .font(.beomsuk(14))
+                                            .frame(width: 100, height: 25, alignment: .leading)
+                                    }
                                 }
+
                             }
-                            .padding(8)
-                            .transition(.move(edge: .top))
+                            
                         }
                     }
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 60, trailing: 0))
@@ -74,20 +93,20 @@ struct SideMenuView: View {
                                 Text(menu.title)
                                     .foregroundColor(.secondary)
                                     .font(.beomsuk(20))
+                                    .frame(width: 100, height: 30, alignment: .leading)
                             }
                         }
                         
                     }
-                    .padding(5)
                 }
-                .padding(EdgeInsets(top: 60, leading: 0, bottom: 60, trailing: 0))
+                .padding(EdgeInsets(top: 80, leading: 30, bottom: 60, trailing: 50))
                 
-                Spacer().frame(width: ScreenSize.width * 0.6)
+                Spacer()
             }
         }
         .ignoresSafeArea()
         .frame(height: ScreenSize.height)
-        .animation(.default, value: viewModel.isSettingOn)
+        .animation(.spring(), value: isSettingOpen)
     }
 }
 
@@ -96,8 +115,9 @@ struct SideMenuView_Previews: PreviewProvider {
         VStack{
             SideMenuView(isOpen: .constant(true),
                          offset: .constant(10),
+                         isSettingOpen: .constant(true),
                          selection: .constant(.home)
-            )
+                         )
         }
     }
 }
