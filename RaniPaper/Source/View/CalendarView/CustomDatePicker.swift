@@ -72,9 +72,22 @@ struct CustomDatePicker: View {
             
             LazyVGrid(columns: columns,spacing:15) {
                 ForEach(extractDate()){ value in
-                   CardView(value: value)
+                    CardView(value: value)
+                        .background(
+                            Capsule().fill(.pink)
+                                .padding(.horizontal,8)
+                                .opacity(isSameDate(date1: value.date, date2: currentDate) ? 1 : 0)
+                        )
+                        .onTapGesture {
+                            withAnimation {
+                                currentDate = value.date
+                            }
+                            
+                        }
                 }
             }
+            
+            
         }
         .onChange(of: currentMonth) { newValue in
             //udapteMonth
@@ -90,7 +103,7 @@ struct CustomDatePicker: View {
     func CardView(value:DateModel)->some View{
         
         let calendar = Calendar.current
-        var lastMonth = calendar.date(byAdding: .month, value:-1 , to: self.currentDate)!
+        let lastMonth = calendar.date(byAdding: .month, value:-1 , to: self.currentDate)!
         //이전 달 ,현재 Date에서 Month -1.
         
         
@@ -103,9 +116,44 @@ struct CustomDatePicker: View {
         VStack{
             
             // 음수 와 0은 이전 달 이므로, 이전달 마지막 일부터 + (-거리)해준다
-
-            Text("\(value.day <= 0 ? dayOfLastMonth + value.day : value.day)")
+            
+            if value.day != -1 {
+                if let task = tasks.first(where: { task in
+                    return isSameDate(date1: task.taskDate, date2: value.date)
+                })
+                {
+                    //만약 현재 날짜에 테스크가 존재하면
+                    let d1 = task.taskDate
+                    
+                    
+                    //현재 선택한 날짜와 cardView 날짜가 같으면
+                    Text("\(value.day)")
+                        .font(.title3.bold())
+                        .foregroundColor(isSameDate(date1:d1, date2: currentDate) ? .white : .black)
+                        .frame(maxWidth:.infinity)
+                    
+                    Spacer()
+                    Circle()
+                        .fill(isSameDate(date1:d1, date2: currentDate) ? .white : .pink)
+                        .frame(width:8,height: 8)
+                }
+                else
+                {
+            
+                    //만약 현재 날짜에 테스크가 없다면
+                    Text("\(value.day)")
+                    .font(.title3.bold())
+                    .foregroundColor(isSameDate(date1:value.date, date2: currentDate) ? .white : .black)
+                    .frame(maxWidth:.infinity)
+                    Spacer()
+                    
+                }
                 
+                
+                
+                
+                
+            }
         }
         .padding(.vertical,8)
         .frame(height:60,alignment: .top)
@@ -114,6 +162,11 @@ struct CustomDatePicker: View {
     
     
     //화면에 보여주기 위해 Year과 Month 추출하기
+    
+    func isSameDate(date1: Date, date2: Date)-> Bool{
+        let calendar = Calendar.current
+        return calendar.isDate(date1, inSameDayAs: date2)
+    }
     
     func extraData() ->[String] {
         let formatter = DateFormatter()
@@ -154,7 +207,7 @@ struct CustomDatePicker: View {
         //해당 날짜의 첫번째 주 평일을 갖고 온다
         
         for i in 0..<firstWeekDay-1 {
-            days.insert(DateModel(day: -i, date: Date()),at:0)
+            days.insert(DateModel(day: -1, date: Date()),at:0)
         } //부족한 갯수만큼 -1을 넣어줌
         
         return days
