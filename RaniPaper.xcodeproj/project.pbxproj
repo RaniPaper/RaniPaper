@@ -215,6 +215,22 @@
 				7B796F8429378CB300799616 /* HomeView.swift */,
 			);
 			path = HomeView;
+            sourceTree = "<group>";
+        };
+		49E703EE293539C00035215F /* CreditView */ = {
+			isa = PBXGroup;
+			children = (
+				49E703EF29353A150035215F /* CreditView.swift */,
+			);
+			path = CreditView;
+			sourceTree = "<group>";
+		};
+		49E703F1293543B80035215F /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				49E703F2293543EC0035215F /* InfoView.swift */,
+			);
+			path = InfoView;
 			sourceTree = "<group>";
 		};
 		D86ACE18292DDD93002C8E89 /* Source */ = {
@@ -239,6 +255,8 @@
 				7B796F8329378CB300799616 /* HomeView */,
 				D8D549C529365387001E4287 /* TaskCardView */,
 				D86ACE59293475BE002C8E89 /* CalendarView */,
+				49E703F1293543B80035215F /* InfoView */,
+				49E703EE293539C00035215F /* CreditView */,
 				D86ACE552933AFD6002C8E89 /* MemoView */,
 				492DB73E29311FE60027EEB1 /* DummyView */,
 				493526F8292F59300066F083 /* MenuView */,
@@ -522,6 +540,8 @@
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */,
+				4911D3D42933E93C00E7FE03 /* SideMenuViewModel.swift in Sources */,
+				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				492DB7442931202B0027EEB1 /* DummyView2.swift in Sources */,
 				D86ACE6129349E78002C8E89 /* TaskModel.swift in Sources */,
 				D8D549C2293611CB001E4287 /* EditTaskViewModel.swift in Sources */,
