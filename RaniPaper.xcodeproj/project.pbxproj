@@ -43,6 +43,8 @@
 		D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = D86ACE4F293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf */; };
 		D86ACE572933B00A002C8E89 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE562933B00A002C8E89 /* MemoView.swift */; };
 		D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE5A293475F7002C8E89 /* CalendarView.swift */; };
+		D86ACE5D293476BF002C8E89 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE5C293476BF002C8E89 /* CustomDatePicker.swift */; };
+		D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE5E29347D0B002C8E89 /* DateModel.swift */; };
 		D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06922929FD5000F5D408 /* RaniPaperApp.swift */; };
 		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
@@ -86,6 +88,8 @@
 		D86ACE4F293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONE_Mobile_Title_OTF.otf; sourceTree = "<group>"; };
 		D86ACE562933B00A002C8E89 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		D86ACE5A293475F7002C8E89 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		D86ACE5C293476BF002C8E89 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		D86ACE5E29347D0B002C8E89 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		D89A068F2929FD5000F5D408 /* RaniPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaniPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89A06922929FD5000F5D408 /* RaniPaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaniPaperApp.swift; sourceTree = "<group>"; };
 		D89A06942929FD5000F5D408 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			children = (
 				493526FD292FFC030066F083 /* MenuModel.swift */,
 				490A02632937D55400FD9384 /* SettingModel.swift */,
+				D86ACE5E29347D0B002C8E89 /* DateModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				D86ACE5A293475F7002C8E89 /* CalendarView.swift */,
+				D86ACE5C293476BF002C8E89 /* CustomDatePicker.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -447,6 +453,7 @@
 				7B796F7D2936DABC00799616 /* MyFileManager.swift in Sources */,
 				7B796F782935F6F100799616 /* HomeViewModel.swift in Sources */,
 				490A025E2937B7A100FD9384 /* SettingView.swift in Sources */,
+				D86ACE5D293476BF002C8E89 /* CustomDatePicker.swift in Sources */,
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
@@ -462,6 +469,7 @@
 				493527002930F46C0066F083 /* SideMenuView.swift in Sources */,
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
+				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
 				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
