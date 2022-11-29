@@ -14,9 +14,6 @@ struct EditTaskView: View {
      //keyboardHandler = KeyboardHander()
     let colors:[String ] =  ["Yel","Skyblue","Tree","Ren","Mint","Grape"]
     var body: some View {
-        
-        
-     
                 VStack(spacing: 12){
                     // - MARK: 타이틀 및 뒤로가기
                     Text("Edit Task")
@@ -24,6 +21,7 @@ struct EditTaskView: View {
                         .frame(maxWidth: .infinity)
                         .overlay(alignment:.leading) {
                             Button {
+                                UIApplication.shared.endEditing()
                                 showEdit = false
                             } label: {
                                 Image(systemName: "arrow.left")
@@ -52,6 +50,8 @@ struct EditTaskView: View {
                                     }
                                     .contentShape(Circle()) //탭 영역을 넓히기위해
                                     .onTapGesture {
+                                        //선택 색 변경
+                                        UIApplication.shared.endEditing()
                                         viewModel.taskColor = color
                                     }
                                 
@@ -82,7 +82,8 @@ struct EditTaskView: View {
                     .frame(maxWidth: .infinity,alignment: .leading)
                     .overlay(alignment:.bottomTrailing) {
                         Button {
-                            print("Hello")
+                            UIApplication.shared.endEditing()
+                            viewModel.showDatePicker.toggle()
                         } label: {
                             Image(systemName: "calendar")
                                 .foregroundColor(.black)
@@ -98,7 +99,7 @@ struct EditTaskView: View {
                             .font(.caption)
                             .foregroundColor(.gray)
                             .padding(.vertical,10)
-                        TextField("TASK",text: $viewModel.taskTitle)
+                        TextField("할 일",text: $viewModel.taskTitle)
                             .frame(maxWidth: .infinity)
                         Divider()
                     }
@@ -106,6 +107,7 @@ struct EditTaskView: View {
                     
                     
                     Button {
+                        UIApplication.shared.endEditing()
                        showEdit = false
                     } label: {
                         Text("스케쥴 저장하기")
@@ -124,12 +126,58 @@ struct EditTaskView: View {
                     .disabled(viewModel.taskTitle == "")
                     .opacity(viewModel.taskTitle == "" ? 0.6 : 1)
 
-                    
                 }
                 .frame(maxHeight: .infinity,alignment: .top)
-                .padding(.horizontal)
-               
-            .padding(.bottom,viewModel.keyboardHeight)
+                .padding()
+                .padding(.bottom,viewModel.keyboardHeight)
+                .overlay {
+                    ZStack{
+                        if viewModel.showDatePicker{
+                            Rectangle()
+                                .fill(.ultraThinMaterial)
+                                .ignoresSafeArea()
+                                .onTapGesture {
+                                    viewModel.showDatePicker = false
+                                }
+                            
+                            
+                            // MARK: DataPicker
+                            //현재부터 미래 까지
+                            //데이터 피커와 viewModel 데드라인 연겨
+                            VStack(spacing: 5) {
+                                DatePicker.init("", selection: $viewModel.taskDeadLine,
+                                                in:Date.now...Date.distantFuture)
+                                .datePickerStyle(.graphical) //달력과 시간을 그래픽컬하게
+                            //    .labelsHidden()
+                                .background(.white,in: RoundedRectangle(cornerRadius: 12,style: .continuous))
+                            .padding()
+                                Button {
+                                    viewModel.showDatePicker = false
+                                } label: {
+                                    Text("날짜 저장하기")
+                                        .font(.callout)
+                                        .fontWeight(.semibold)
+                                      
+                                        .padding(15)
+                                        .foregroundColor(.white)
+                                        .background {
+                                            Capsule()
+                                                .fill(.blue)
+                                                
+                                            
+                                        }
+                                }
+                            }
+                            
+                            
+                          
+                        }
+                        
+                        
+                    }
+                    
+                    .animation(.easeInOut, value: viewModel.showDatePicker)
+                }
          
     }
 }
