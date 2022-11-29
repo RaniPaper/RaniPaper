@@ -12,14 +12,18 @@ final class EditTaskViewModel:ObservableObject{
     @Published var taskColor:String = "Yel"
     @Published var taskTitle:String = ""
     @Published var taskDeadLine:Date = Date()
+    @Published var showDatePicker:Bool = false
     @Published private(set) var keyboardHeight: CGFloat = 0
+    
     private var subscription = Set<AnyCancellable>()
+    
     private let keyboardWillShow =  NotificationCenter.default
         .publisher(for: UIResponder.keyboardWillShowNotification)
         .compactMap { output in
             (output.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height
             // 유저 정보 맵에서 keyboard 높이를 얻는다.
         }
+    
     private let keyboardWillHide = NotificationCenter.default
         .publisher(for: UIResponder.keyboardWillHideNotification)
         .map { _ in CGFloat.zero}
