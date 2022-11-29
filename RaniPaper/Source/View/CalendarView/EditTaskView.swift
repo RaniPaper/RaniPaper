@@ -35,7 +35,7 @@ struct EditTaskView: View {
                     
                     // - MARK: Sample Card Colors
                     VStack(alignment:.leading,spacing: 12) {
-                        Text("Task Color")
+                        Text("제목")
                             .font(.caption)
                             .foregroundColor(.gray)
                         HStack(spacing: 15){
@@ -106,7 +106,7 @@ struct EditTaskView: View {
                     
                     
                     Button {
-                        print("Hello")
+                       showEdit = false
                     } label: {
                         Text("스케쥴 저장하기")
                             .font(.callout)
@@ -121,6 +121,8 @@ struct EditTaskView: View {
                     }
                     .frame(maxHeight: .infinity,alignment: .bottom)
                     .padding(.bottom,10)
+                    .disabled(viewModel.taskTitle == "")
+                    .opacity(viewModel.taskTitle == "" ? 0.6 : 1)
 
                     
                 }
