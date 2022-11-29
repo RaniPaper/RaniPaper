@@ -28,16 +28,14 @@ struct HomeView: View {
             if isAnimating {
                 LottieView(name: "mail-boxletter-box", loopMode: .playOnce)
                     .background(Color.black.opacity(0.6))
-                    .transition(.asymmetric(
-                        insertion: .move(edge: .bottom),
-                        removal: .opacity))
-                    //.transition(.move(edge: .bottom))
+                    .zIndex(1)
+                    .transition(.move(edge: .bottom))
                     .onTapGesture {
-                        withAnimation {
+                        withAnimation(.easeInOut) {
                             isAnimating = false
                         }
                     }
-                    
+
             }
         }
     }
