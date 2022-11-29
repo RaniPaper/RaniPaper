@@ -40,6 +40,10 @@
 		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
 		D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06992929FD5000F5D408 /* Preview Assets.xcassets */; };
+		D8D549BE2934B1A0001E4287 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549BD2934B1A0001E4287 /* CalendarViewModel.swift */; };
+		D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549BF2934FB06001E4287 /* EditTaskView.swift */; };
+		D8D549C2293611CB001E4287 /* EditTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */; };
+		D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C329362A47001E4287 /* KeyboardHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,10 @@
 		D89A06942929FD5000F5D408 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D89A06962929FD5000F5D408 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D89A06992929FD5000F5D408 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D8D549BD2934B1A0001E4287 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		D8D549BF2934FB06001E4287 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+		D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewModel.swift; sourceTree = "<group>"; };
+		D8D549C329362A47001E4287 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +169,9 @@
 				493526F4292F57470066F083 /* MenuViewModel.swift */,
 				D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */,
 				D86ACE30292DFCAD002C8E89 /* LockViewModel.swift */,
+				D8D549BD2934B1A0001E4287 /* CalendarViewModel.swift */,
+				D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */,
+				D8D549C329362A47001E4287 /* KeyboardHandler.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -249,6 +260,7 @@
 			children = (
 				D86ACE5A293475F7002C8E89 /* CalendarView.swift */,
 				D86ACE5C293476BF002C8E89 /* CustomDatePicker.swift */,
+				D8D549BF2934FB06001E4287 /* EditTaskView.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -383,8 +395,10 @@
 				D86ACE5D293476BF002C8E89 /* CustomDatePicker.swift in Sources */,
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
+				D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */,
 				492DB7442931202B0027EEB1 /* DummyView2.swift in Sources */,
 				D86ACE6129349E78002C8E89 /* TaskModel.swift in Sources */,
+				D8D549C2293611CB001E4287 /* EditTaskViewModel.swift in Sources */,
 				D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */,
 				D86ACE34292F0A3E002C8E89 /* ConfirmView.swift in Sources */,
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
@@ -396,8 +410,10 @@
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
+				D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */,
 				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,
+				D8D549BE2934B1A0001E4287 /* CalendarViewModel.swift in Sources */,
 				D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
