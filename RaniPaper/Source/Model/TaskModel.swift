@@ -12,7 +12,9 @@ import SwiftUI
 struct TaskModel: Identifiable{
     var id = UUID().uuidString
     var title:String
-    var time: Date = Date()
+    var deadLine: Date = Date()
+    var isComplete:Bool = false
+    var color:String = "Tree"
 }
 
 

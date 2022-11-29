@@ -44,6 +44,7 @@
 		D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549BF2934FB06001E4287 /* EditTaskView.swift */; };
 		D8D549C2293611CB001E4287 /* EditTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */; };
 		D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C329362A47001E4287 /* KeyboardHandler.swift */; };
+		D8D549C72936539B001E4287 /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C62936539B001E4287 /* TaskCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		D8D549BF2934FB06001E4287 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewModel.swift; sourceTree = "<group>"; };
 		D8D549C329362A47001E4287 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		D8D549C62936539B001E4287 /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D8D549C529365387001E4287 /* TaskCardView */,
 				D86ACE59293475BE002C8E89 /* CalendarView */,
 				D86ACE552933AFD6002C8E89 /* MemoView */,
 				492DB73E29311FE60027EEB1 /* DummyView */,
@@ -304,6 +307,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D8D549C529365387001E4287 /* TaskCardView */ = {
+			isa = PBXGroup;
+			children = (
+				D8D549C62936539B001E4287 /* TaskCardView.swift */,
+			);
+			path = TaskCardView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -415,6 +426,7 @@
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,
 				D8D549BE2934B1A0001E4287 /* CalendarViewModel.swift in Sources */,
 				D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */,
+				D8D549C72936539B001E4287 /* TaskCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
