@@ -99,7 +99,7 @@ struct CustomDatePicker: View {
                 {
                     ForEach(task.task){ task in
                         VStack(alignment: .leading,spacing: 10) {
-                            Text(task.time.addingTimeInterval(CGFloat.random(in: 0...5000)),style: .time)
+                            Text(task.deadLine.addingTimeInterval(CGFloat.random(in: 0...5000)),style: .time)
                             
                             Text(task.title)
                                 .font(.title2.bold())
