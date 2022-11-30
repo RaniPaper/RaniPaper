@@ -14,7 +14,7 @@ struct TaskCardView: View {
     var body: some View {
         VStack(alignment: .leading,spacing: 10) {
             HStack{
-                Text("GGGG")
+                Text(task.ticket)
                     .font(.callout)
                     .padding(.vertical,5)
                     .padding(.horizontal)
@@ -24,14 +24,14 @@ struct TaskCardView: View {
                     }
                 Spacer()
                 
-                if !task.isComplete{
+    
                     Button {
                         print("Hello")
                     } label: {
                         Image(systemName: "square.and.pencil")
                     }
 
-                }
+                
             }
             
             
@@ -71,6 +71,6 @@ struct TaskCardView: View {
 
 struct TaskCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCardView(task: TaskModel(title: "123"))
+        TaskCardView(task: TaskModel(title: "123",ticket: "우왁굳"))
     }
 }
