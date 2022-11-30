@@ -14,6 +14,7 @@ final class EditTaskViewModel:ObservableObject{
     @Published var taskDeadLine:Date = Date()
     @Published var showDatePicker:Bool = false
     @Published private(set) var keyboardHeight: CGFloat = 0
+    @Published var ticket:String = "우왁굳"
     
     private var subscription = Set<AnyCancellable>()
     

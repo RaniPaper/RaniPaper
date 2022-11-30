@@ -9,12 +9,12 @@ import SwiftUI
 
 
 //Task Model
-struct TaskModel: Identifiable{
+struct TaskModel: Identifiable,Codable{
     var id = UUID().uuidString
     var title:String
     var deadLine: Date = Date()
-    var isComplete:Bool = false
     var color:String = "Tree"
+    var ticket:String
 }
 
 
@@ -40,20 +40,20 @@ func getSampleDate(offset: Int)->Date {
 var tasks: [TaskMetaData] = [
     
     TaskMetaData(task: [
-        TaskModel(title: "Talk1_1 "),
-        TaskModel(title: "Talk1_2 "),
-        TaskModel(title: "Talk1_3 "),
+        TaskModel(title: "Talk1_1 ",ticket: "우왁굳"),
+        TaskModel(title: "Talk1_2 ",ticket: "아이네"),
+        TaskModel(title: "Talk1_3 ",ticket: "라라"),
     ], taskDate: getSampleDate(offset: 1) ),
     TaskMetaData(task: [
-        TaskModel(title: "Talk2_1 "),
-        TaskModel(title: "Talk2_2 "),
-        TaskModel(title: "Talk2_3 "),
+        TaskModel(title: "Talk2_1 ",ticket: "우왁굳"),
+        TaskModel(title: "Talk2_2 ",ticket: "우왁굳"),
+        TaskModel(title: "Talk2_3 ",ticket: "우왁굳"),
     ], taskDate: getSampleDate(offset: -3) ),
     
     TaskMetaData(task: [
-        TaskModel(title: "Talk3_1 "),
-        TaskModel(title: "Talk3_2 "),
-        TaskModel(title: "Talk3_3 "),
+        TaskModel(title: "Talk3_1 ",ticket: "우왁굳"),
+        TaskModel(title: "Talk3_2 ",ticket: "우왁굳"),
+        TaskModel(title: "Talk3_3 ",ticket: "우왁굳"),
     ], taskDate: getSampleDate(offset: -8) )
 ]
 

@@ -12,7 +12,11 @@ struct EditTaskView: View {
     @Binding var showEdit:Bool
     @StateObject var viewModel = EditTaskViewModel()
      //keyboardHandler = KeyboardHander()
-    let colors:[String ] =  ["Yel","Skyblue","Tree","Ren","Mint","Grape"]
+    let colors:[String] =  ["Yel","Skyblue","Tree","Ren","Mint","Grape"]
+    let tickets:[String] = ["우왁굳","아이네","징버거","릴파","주르르","고세구","비챤","현생"]
+    let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
+    @Namespace var animation
+    
     var body: some View {
                 VStack(spacing: 12){
                     // - MARK: 타이틀 및 뒤로가기
@@ -104,6 +108,46 @@ struct EditTaskView: View {
                         Divider()
                     }
                     
+                    VStack(alignment: .leading,spacing: 12) {
+                        Text("Ticket")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                            .padding(.vertical,10)
+                        
+                        LazyVGrid(columns: columns) {
+                            ForEach(tickets,id:\.self){ ticket in
+                                Text(ticket)
+                                    .font(.callout)
+                                    .padding(.vertical,8)
+                                    .frame(maxWidth:.infinity)
+                                    .foregroundColor(viewModel.ticket == ticket ? .white : .black)
+                                    .background{
+                                        if viewModel.ticket == ticket{
+                                            Capsule()
+                                                .fill(.black)
+                                                .matchedGeometryEffect(id: "Ticket", in: animation)
+                                        }
+                                        else{
+                                            Capsule()
+                                                .strokeBorder(.black)
+                                        }
+                                    }
+                                    .contentShape(Capsule())
+                                    .onTapGesture {
+                                        withAnimation{
+                                            UIApplication.shared.endEditing()
+                                            viewModel.ticket = ticket
+                                            
+                                        }
+                                    }
+                            }
+                        }
+                        
+                        Divider()
+                    }
+                    
+                    
+                    
                     
                     
                     Button {
@@ -143,7 +187,7 @@ struct EditTaskView: View {
                             
                             // MARK: DataPicker
                             //현재부터 미래 까지
-                            //데이터 피커와 viewModel 데드라인 연겨
+                            //데이터 피커와 viewModel 데드라인 연결
                             VStack(spacing: 5) {
                                 DatePicker.init("", selection: $viewModel.taskDeadLine,
                                                 in:Date.now...Date.distantFuture)
@@ -178,6 +222,8 @@ struct EditTaskView: View {
                     
                     .animation(.easeInOut, value: viewModel.showDatePicker)
                 }
+        
+        
          
     }
 }

@@ -86,7 +86,7 @@ struct CustomDatePicker: View {
                 }
             }
             
-            
+            // - MARK: 테스크 카드
             VStack(spacing:15){
                 Text("Tasks")
                     .font(.title2.bold())
@@ -98,20 +98,7 @@ struct CustomDatePicker: View {
                 })
                 {
                     ForEach(task.task){ task in
-                        VStack(alignment: .leading,spacing: 10) {
-                            Text(task.deadLine.addingTimeInterval(CGFloat.random(in: 0...5000)),style: .time)
-                            
-                            Text(task.title)
-                                .font(.title2.bold())
-                                
-                        }
-                        .padding(.vertical,10)
-                        .padding(.horizontal)
-                        .frame(maxWidth: .infinity,alignment: .leading)
-                        .background {
-                            Color.pink.opacity(0.5)
-                                .cornerRadius(10)
-                        }
+                        TaskCardView(task: task)
                         
                         
                     }
@@ -160,7 +147,7 @@ struct CustomDatePicker: View {
                 {
                     //만약 현재 날짜에 테스크가 존재하면
                     let d1 = task.taskDate
-                    
+                    //Circle()이 존재
                     
                     //현재 선택한 날짜와 cardView 날짜가 같으면
                     Text("\(value.day)")
