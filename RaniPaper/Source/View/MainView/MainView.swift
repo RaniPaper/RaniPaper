@@ -40,9 +40,7 @@ struct MainView: View {
                 ZStack{
                     NavigationView{
                         TabView(selection: $viewModel.selection){
-                            Image("mainTmp")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
+                            HomeView()
                                 .tag(ViewSelection.home)
                             
                             CalendarView()// 다이어리 뷰로 대체
