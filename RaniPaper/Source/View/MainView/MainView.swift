@@ -20,12 +20,12 @@ struct MainView: View {
         else{
             if viewModel.isLoading{
                 LaunchView().transition(.opacity).onAppear{
-                    for family: String in UIFont.familyNames{
-                        print(family)
-                        for names : String in UIFont.fontNames(forFamilyName: family){
-                            print("=== \(names)")
-                        }
-                    }
+//                    for family: String in UIFont.familyNames{
+//                        print(family)
+//                        for names : String in UIFont.fontNames(forFamilyName: family){
+//                            print("=== \(names)")
+//                        }
+//                    }
 
                     DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                         withAnimation {
@@ -43,7 +43,7 @@ struct MainView: View {
                             HomeView()
                                 .tag(ViewSelection.home)
                             
-                            DummyView1()// 다이어리 뷰로 대체
+                            CalendarView()// 다이어리 뷰로 대체
                                 .tag(ViewSelection.diary)
                             
                             MemoView()// 기록 뷰로 대체
