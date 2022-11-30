@@ -95,13 +95,6 @@ extension Font{
         return Font.custom("GangwonEduAll-OTFBold",size: size)
     }
     
-    
-    
-    
-   
-    
-    
-    
 }
 
 extension ViewSelection: Equatable{
@@ -115,5 +108,36 @@ extension ViewSelection: Equatable{
     
     static func ==(lhs: Self, rhs: Self) -> Bool{
         return lhs.Name == rhs.Name
+    }
+}
+
+extension Date {
+    
+    func getAllDates()->[Date]{
+        let calendar = Calendar.current // 달력 객체
+        
+        // year과 month를 사용할 객체를 , self 뽑은 후 date 객체로 변환
+        let startDate = calendar.date(from: Calendar.current.dateComponents([.year,.month], from: self))!
+        
+        
+        
+        let range = calendar.range(of: .day, in: .month, for: startDate)! //해당하는 달의 날짜가 몇일까지 있는지
+        
+        //(1..<31) ,(1..<32) 등 range를 리턴
+        
+       
+        
+        return range.compactMap { day -> Date in
+            
+            return calendar.date(byAdding: .day, value: day-1 , to: startDate)!
+        }
+    }
+    
+    
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) // 키보드 없애기
     }
 }

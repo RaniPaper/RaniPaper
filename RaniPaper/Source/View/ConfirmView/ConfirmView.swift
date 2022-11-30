@@ -57,7 +57,7 @@ struct ConfirmView: View {
                 }
                 
             }
-        }.popup(isPresented: $showLockView,closeOnTap: false,backgroundColor: .black.opacity(0.2)) {
+        }.popup(isPresented: $showLockView,closeOnTap: false,closeOnTapOutside: true,backgroundColor: .black.opacity(0.2)) {
             
             LockView(lockState: $lockState,showLockView:$showLockView)
         }
