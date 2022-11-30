@@ -263,6 +263,7 @@
 				7B796F8329378CB300799616 /* HomeView */,
 				D8D549C529365387001E4287 /* TaskCardView */,
 				D86ACE59293475BE002C8E89 /* CalendarView */,
+				490A025C2937B77C00FD9384 /* SettingView */,
 				49E703F1293543B80035215F /* InfoView */,
 				49E703EE293539C00035215F /* CreditView */,
 				D86ACE552933AFD6002C8E89 /* MemoView */,
@@ -299,6 +300,7 @@
 				D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */,
 				D8D549C329362A47001E4287 /* KeyboardHandler.swift */,
 				4911D3D32933E93C00E7FE03 /* SideMenuViewModel.swift */,
+				490A025F2937B9F600FD9384 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -544,6 +546,7 @@
 				7B796F7D2936DABC00799616 /* MyFileManager.swift in Sources */,
 				490A025E2937B7A100FD9384 /* SettingView.swift in Sources */,
 				D86ACE5D293476BF002C8E89 /* CustomDatePicker.swift in Sources */,
+				490A025E2937B7A100FD9384 /* SettingView.swift in Sources */,
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
@@ -567,6 +570,7 @@
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
+				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
 				D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */,

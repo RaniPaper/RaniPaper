@@ -1,0 +1,22 @@
+:bug: 화면 하단 클릭시 화면 전환되는 버그 수정
+
+탭뷰로 화면 전환을 구현해서 하단에 탭이 invisable하게 남아있어 발생, 이 외에도  UI 적용시 문제되는 부분이 있어 탭뷰 대신  Switch 이용해서 화면 전환 방식 변경
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# interactive rebase in progress; onto 53c54f4
+# Last commands done (6 commands done):
+#    pick 78c01d3 :lipstick: 사이드메뉴 UI 적용
+#    pick 74d1bf3 :bug: 화면 하단 클릭시 화면 전환되는 버그 수정
+# Next commands to do (3 remaining commands):
+#    pick 40b4193 :lipstick: 설정 뷰, 뷰모델 추가
+#    pick 78437da :sparkles: 설정 뷰 토글에 UserDefaults 적용해 로컬에 설정 저장 기능 추가
+# You are currently rebasing branch 'feature/setting' on '53c54f4'.
+#
+# Changes to be committed:
+#	modified:   RaniPaper/Source/View/CreditView/CreditView.swift
+#	modified:   RaniPaper/Source/View/InfoView/InfoView.swift
+#	modified:   RaniPaper/Source/View/MainView/MainView.swift
+#	modified:   RaniPaper/Source/View/MenuView/SideMenuView.swift
+#
