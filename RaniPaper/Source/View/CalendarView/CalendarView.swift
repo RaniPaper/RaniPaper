@@ -44,7 +44,7 @@ struct CalendarView: View {
             //HStack
             
         }
-        .popup(isPresented: $viewModel.showEdit,closeOnTap: false,closeOnTapOutside: false,backgroundColor: .white) {
+        .fullScreenCover(isPresented: $viewModel.showEdit) {
 
             EditTaskView(showEdit: $viewModel.showEdit)
         }
