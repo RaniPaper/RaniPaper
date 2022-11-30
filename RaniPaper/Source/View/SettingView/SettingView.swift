@@ -20,15 +20,15 @@ struct SettingView: View {
                 Image("viic1")
                 
                 List{
-                    ForEach(viewModel.settingList, id: \.self){ setting in
-                        Toggle(setting, isOn: $toggle)
+                    ForEach($viewModel.settingList){ $setting in
+                        Toggle(setting.key, isOn: $setting.isOn)
                     }
                     .background(Color.clear)
                     .listRowBackground(Color.clear)
                 }
                 .listStyle(.plain)
                 .padding(.horizontal, 20)
-
+                
             }
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
         }

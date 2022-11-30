@@ -9,14 +9,20 @@ import Foundation
 import SwiftUI
 
 final class SettingViewModel: ObservableObject {
-    @Published var settingList: [String]
-//    @Published var isSoundOn = UserDefaults.standard.bool(forKey: "배경음")
+    @Published var settingList: [SettingContent]
+    {
+        didSet{
+            for settingContent in settingList{
+                UserDefaults.standard.set(settingContent.isOn, forKey: settingContent.key)
+            }
+        }
+    }
+    
     
     init() {
-        settingList = ["배경음",
-                       "효과음",
-                       "설정3",
-                       "설정4"]
+        settingList =
+            [SettingContent(key: "배경음", isOn: UserDefaults.standard.bool(forKey: "배경음")),
+            SettingContent(key: "효과음", isOn: UserDefaults.standard.bool(forKey: "효과음"))]
         
         print("✅ SettingViewModel 생성")
     }
