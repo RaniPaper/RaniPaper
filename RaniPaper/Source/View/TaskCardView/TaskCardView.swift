@@ -27,6 +27,7 @@ struct TaskCardView: View {
     
                     Button {
                         print("Hello")
+                        // - MARK: 수정 작업
                     } label: {
                         Image(systemName: "square.and.pencil")
                     }
@@ -71,6 +72,6 @@ struct TaskCardView: View {
 
 struct TaskCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCardView(task: TaskModel(title: "123",ticket: "우왁굳"))
+        TaskCardView(task: TaskModel(title: "123",color:"ine",ticket: "우왁굳"))
     }
 }

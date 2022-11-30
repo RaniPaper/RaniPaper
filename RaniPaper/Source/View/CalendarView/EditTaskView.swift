@@ -12,7 +12,7 @@ struct EditTaskView: View {
     @Binding var showEdit:Bool
     @StateObject var viewModel = EditTaskViewModel()
      //keyboardHandler = KeyboardHander()
-    let colors:[String] =  ["Yel","Skyblue","Tree","Ren","Mint","Grape"]
+    let colors:[String] =  ["ine","jingburger","lilpa","jururu","gosegu","viichan"]
     let tickets:[String] = ["우왁굳","아이네","징버거","릴파","주르르","고세구","비챤","현생"]
     let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
     @Namespace var animation
