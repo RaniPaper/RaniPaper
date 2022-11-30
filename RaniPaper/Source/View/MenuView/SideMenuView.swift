@@ -89,6 +89,7 @@ struct SideMenuView: View {
                             Button(action:{
                                 isOpen.toggle()
                                 offset = Menu.minOffset
+                                selection = menu.viewSelection
                             }) {
                                 Text(menu.title)
                                     .foregroundColor(.secondary)
