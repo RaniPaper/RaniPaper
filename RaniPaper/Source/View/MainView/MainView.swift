@@ -39,15 +39,24 @@ struct MainView: View {
             {
                 ZStack{
                     NavigationView{
-                        TabView(selection: $viewModel.selection){
+                        switch viewModel.selection {
+                        case .diary:
+                            DummyView1()
+                            
+                        case .memo:
+                            MemoView()
+                            
+                        case .setting:
+                            DummyView2()
+                            
+                        case .credit:
+                            CreditView()
+                            
+                        case .home:
                             HomeView()
-                                .tag(ViewSelection.home)
                             
-                            DummyView1()// 다이어리 뷰로 대체
-                                .tag(ViewSelection.diary)
-                            
-                            MemoView()// 기록 뷰로 대체
-                                .tag(ViewSelection.memo)
+                        case .info:
+                            InfoView()
                         }
                     }
                     MenuView(selection: $viewModel.selection)

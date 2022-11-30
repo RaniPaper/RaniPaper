@@ -11,7 +11,6 @@ import SwiftUI
 struct CreditView: View {
     var body: some View {
         ZStack{
-            Color.lightGreen.opacity(0.6)
             VStack{
                 Text("라니 페이퍼")
                     .bold()

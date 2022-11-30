@@ -30,8 +30,7 @@ struct SideMenuView: View {
                                 offset = Menu.minOffset
                                 selection = menu.viewSelection
                             }) {
-                                let UIName = menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : "")
-                                Image(UIName)
+                                Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                             }
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 37, trailing: 0))
                         }
@@ -46,7 +45,7 @@ struct SideMenuView: View {
                                 offset = Menu.minOffset
                                 selection = menu.viewSelection
                             }) {
-                                Image(menu.viewSelection.Name)
+                                Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                             }
                         }
                     }
