@@ -233,6 +233,14 @@
 			path = InfoView;
 			sourceTree = "<group>";
 		};
+		7B796F712935F44F00799616 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				7B796F722935F46400799616 /* HomeView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
 		D86ACE18292DDD93002C8E89 /* Source */ = {
 			isa = PBXGroup;
 			children = (

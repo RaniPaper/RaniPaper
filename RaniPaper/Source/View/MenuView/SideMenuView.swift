@@ -57,7 +57,6 @@ struct SideMenuView: View {
         }
         .ignoresSafeArea()
         .frame(height: ScreenSize.height)
-        .animation(.default, value: viewModel.isSettingOn)
     }
 }
 
