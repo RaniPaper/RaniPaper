@@ -47,7 +47,7 @@ struct MainView: View {
                             MemoView()
                             
                         case .setting:
-                            DummyView2()
+                            SettingView()
                             
                         case .credit:
                             CreditView()
