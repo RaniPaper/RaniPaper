@@ -32,18 +32,18 @@ struct CustomDatePicker: View {
                     Spacer(minLength: 0)
                     
                     Button {
-                        withAnimation {
+                        
                             currentMonth -= 1
-                        }
+                        
                     } label: {
                         Image(systemName: "chevron.left")
                             .font(.title2)
                     }
                     
                     Button {
-                        withAnimation {
+                  
                             currentMonth += 1
-                        }
+                        
                     } label: {
                         Image(systemName: "chevron.right")
                             .font(.title2)
