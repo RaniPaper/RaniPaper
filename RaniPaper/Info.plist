@@ -13,5 +13,9 @@
 		<string>ONE_Mobile_OTF_Bold.otf</string>
 		<string>ONE_Mobile_Title_OTF.otf</string>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 </dict>
 </plist>
