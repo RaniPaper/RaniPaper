@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4911D3D42933E93C00E7FE03 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911D3D32933E93C00E7FE03 /* SideMenuViewModel.swift */; };
 		492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492DB73F29311FF80027EEB1 /* DummyView1.swift */; };
 		492DB7442931202B0027EEB1 /* DummyView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492DB7432931202B0027EEB1 /* DummyView2.swift */; };
 		493526F5292F57470066F083 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526F4292F57470066F083 /* MenuViewModel.swift */; };
@@ -46,7 +45,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4911D3D32933E93C00E7FE03 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		492DB73F29311FF80027EEB1 /* DummyView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView1.swift; sourceTree = "<group>"; };
 		492DB7432931202B0027EEB1 /* DummyView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView2.swift; sourceTree = "<group>"; };
 		493526F4292F57470066F083 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -138,8 +136,8 @@
 				49E703F2293543EC0035215F /* InfoView.swift */,
 			);
 			path = InfoView;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		7B796F712935F44F00799616 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +190,6 @@
 				493526F4292F57470066F083 /* MenuViewModel.swift */,
 				D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */,
 				D86ACE30292DFCAD002C8E89 /* LockViewModel.swift */,
-				4911D3D32933E93C00E7FE03 /* SideMenuViewModel.swift */,
 				7B796F772935F6F100799616 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
@@ -410,7 +407,6 @@
 				7B796F782935F6F100799616 /* HomeViewModel.swift in Sources */,
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
-				4911D3D42933E93C00E7FE03 /* SideMenuViewModel.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				492DB7442931202B0027EEB1 /* DummyView2.swift in Sources */,
 				D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */,
