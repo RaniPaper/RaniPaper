@@ -15,10 +15,10 @@
 		493527002930F46C0066F083 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FF2930F46C0066F083 /* SideMenuView.swift */; };
 		7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E2D09292A05BA000EA21C /* InfoPlist.strings */; };
 		7B796F702935F31800799616 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7B796F6F2935F31800799616 /* Lottie */; };
-		7B796F732935F46400799616 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F722935F46400799616 /* HomeView.swift */; };
 		7B796F762935F62E00799616 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F752935F62E00799616 /* LottieView.swift */; };
-		7B796F782935F6F100799616 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F772935F6F100799616 /* HomeViewModel.swift */; };
 		7B796F7D2936DABC00799616 /* MyFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F7C2936DABC00799616 /* MyFileManager.swift */; };
+		7B796F8529378CB300799616 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8429378CB300799616 /* HomeView.swift */; };
+		7B796F8729378CD500799616 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8629378CD500799616 /* HomeViewModel.swift */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
 		D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE23292DE28E002C8E89 /* Extension.swift */; };
@@ -65,6 +65,8 @@
 		7B796F752935F62E00799616 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		7B796F772935F6F100799616 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7B796F7C2936DABC00799616 /* MyFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFileManager.swift; sourceTree = "<group>"; };
+		7B796F8429378CB300799616 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7B796F8629378CD500799616 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		D86ACE23292DE28E002C8E89 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -140,20 +142,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7B796F712935F44F00799616 /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				7B796F722935F46400799616 /* HomeView.swift */,
-			);
-			path = HomeView;
-			sourceTree = "<group>";
-		};
 		7B796F7B2936DAA300799616 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				7B796F7C2936DABC00799616 /* MyFileManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7B796F8029378C4F00799616 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				7B796F772935F6F100799616 /* HomeViewModel.swift */,
+				7B796F722935F46400799616 /* HomeView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		7B796F8329378CB300799616 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				7B796F8429378CB300799616 /* HomeView.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		D86ACE18292DDD93002C8E89 /* Source */ = {
@@ -171,6 +182,7 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B796F8329378CB300799616 /* HomeView */,
 				D8D549C529365387001E4287 /* TaskCardView */,
 				D86ACE59293475BE002C8E89 /* CalendarView */,
 				D86ACE552933AFD6002C8E89 /* MemoView */,
@@ -197,6 +209,7 @@
 		D86ACE1B292DDF00002C8E89 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7B796F8629378CD500799616 /* HomeViewModel.swift */,
 				493526F4292F57470066F083 /* MenuViewModel.swift */,
 				D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */,
 				D86ACE30292DFCAD002C8E89 /* LockViewModel.swift */,
@@ -301,6 +314,7 @@
 			children = (
 				D89A06912929FD5000F5D408 /* RaniPaper */,
 				D89A06902929FD5000F5D408 /* Products */,
+				7B796F8029378C4F00799616 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -434,8 +448,8 @@
 				D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */,
 				7B796F762935F62E00799616 /* LottieView.swift in Sources */,
 				493526FA292F59460066F083 /* MenuView.swift in Sources */,
+				7B796F8729378CD500799616 /* HomeViewModel.swift in Sources */,
 				7B796F7D2936DABC00799616 /* MyFileManager.swift in Sources */,
-				7B796F782935F6F100799616 /* HomeViewModel.swift in Sources */,
 				D86ACE5D293476BF002C8E89 /* CustomDatePicker.swift in Sources */,
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
@@ -447,7 +461,7 @@
 				D86ACE34292F0A3E002C8E89 /* ConfirmView.swift in Sources */,
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
 				493526F5292F57470066F083 /* MenuViewModel.swift in Sources */,
-				7B796F732935F46400799616 /* HomeView.swift in Sources */,
+				7B796F8529378CB300799616 /* HomeView.swift in Sources */,
 				D86ACE572933B00A002C8E89 /* MemoView.swift in Sources */,
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
 				493527002930F46C0066F083 /* SideMenuView.swift in Sources */,

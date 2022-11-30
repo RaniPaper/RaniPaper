@@ -108,6 +108,7 @@ struct EditTaskView: View {
                         Divider()
                     }
                     
+                    // MARK:  Ticket
                     VStack(alignment: .leading,spacing: 12) {
                         Text("Ticket")
                             .font(.caption)
@@ -145,10 +146,6 @@ struct EditTaskView: View {
                         
                         Divider()
                     }
-                    
-                    
-                    
-                    
                     
                     Button {
                         UIApplication.shared.endEditing()
