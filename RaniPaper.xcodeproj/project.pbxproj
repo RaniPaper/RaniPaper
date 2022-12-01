@@ -18,6 +18,9 @@
 		493527002930F46C0066F083 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FF2930F46C0066F083 /* SideMenuView.swift */; };
 		49E703F029353A150035215F /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703EF29353A150035215F /* CreditView.swift */; };
 		49E703F3293543EC0035215F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703F2293543EC0035215F /* InfoView.swift */; };
+		49E879622938F9F00091A101 /* testBGM.flac in Resources */ = {isa = PBXBuildFile; fileRef = 49E879602938F9EF0091A101 /* testBGM.flac */; };
+		49E879632938F9F00091A101 /* testSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E879612938F9EF0091A101 /* testSFX.mp3 */; };
+		49E879652938FA450091A101 /* MySoundSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E879642938FA450091A101 /* MySoundSetting.swift */; };
 		7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E2D09292A05BA000EA21C /* InfoPlist.strings */; };
 		7B796F702935F31800799616 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7B796F6F2935F31800799616 /* Lottie */; };
 		7B796F762935F62E00799616 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F752935F62E00799616 /* LottieView.swift */; };
@@ -70,6 +73,9 @@
 		493526FF2930F46C0066F083 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		49E703EF29353A150035215F /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		49E703F2293543EC0035215F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		49E879602938F9EF0091A101 /* testBGM.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = testBGM.flac; sourceTree = "<group>"; };
+		49E879612938F9EF0091A101 /* testSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSFX.mp3; sourceTree = "<group>"; };
+		49E879642938FA450091A101 /* MySoundSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySoundSetting.swift; sourceTree = "<group>"; };
 		7B5E2D08292A05BA000EA21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B5E2D0A292A05BE000EA21C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B796F722935F46400799616 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -181,10 +187,20 @@
 			path = InfoView;
 			sourceTree = "<group>";
 		};
+		49E8795F2938F97E0091A101 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				49E879602938F9EF0091A101 /* testBGM.flac */,
+				49E879612938F9EF0091A101 /* testSFX.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		7B796F7B2936DAA300799616 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				7B796F7C2936DABC00799616 /* MyFileManager.swift */,
+				49E879642938FA450091A101 /* MySoundSetting.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -365,6 +381,7 @@
 		D89A06912929FD5000F5D408 /* RaniPaper */ = {
 			isa = PBXGroup;
 			children = (
+				49E8795F2938F97E0091A101 /* Audio */,
 				D86ACE3E292F3DA9002C8E89 /* Info.plist */,
 				D86ACE35292F3AF7002C8E89 /* Fonts */,
 				D86ACE21292DE264002C8E89 /* Resource */,
@@ -470,7 +487,9 @@
 			files = (
 				D86ACE4B29309772002C8E89 /* Bold.otf in Resources */,
 				D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */,
+				49E879622938F9F00091A101 /* testBGM.flac in Resources */,
 				7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */,
+				49E879632938F9F00091A101 /* testSFX.mp3 in Resources */,
 				D86ACE50293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf in Resources */,
 				D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */,
 				D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */,
@@ -494,6 +513,7 @@
 				7B796F762935F62E00799616 /* LottieView.swift in Sources */,
 				493526FA292F59460066F083 /* MenuView.swift in Sources */,
 				7B796F8729378CD500799616 /* HomeViewModel.swift in Sources */,
+				49E879652938FA450091A101 /* MySoundSetting.swift in Sources */,
 				7B796F7D2936DABC00799616 /* MyFileManager.swift in Sources */,
 				490A025E2937B7A100FD9384 /* SettingView.swift in Sources */,
 				D86ACE5D293476BF002C8E89 /* CustomDatePicker.swift in Sources */,
