@@ -54,6 +54,7 @@
 		D8D549D229385E96001E4287 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549D129385E96001E4287 /* MemoView.swift */; };
 		D8FF92FB2938C5A700B0F475 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF92FA2938C5A700B0F475 /* MemoViewModel.swift */; };
 		D8FF92FD2938D6A400B0F475 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF92FC2938D6A400B0F475 /* StickerView.swift */; };
+		D8FF92FF2938E97600B0F475 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF92FE2938E97600B0F475 /* EditMemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		D8D549D129385E96001E4287 /* MemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		D8FF92FA2938C5A700B0F475 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		D8FF92FC2938D6A400B0F475 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		D8FF92FE2938E97600B0F475 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +375,7 @@
 			children = (
 				D8D549D129385E96001E4287 /* MemoView.swift */,
 				D8FF92FC2938D6A400B0F475 /* StickerView.swift */,
+				D8FF92FE2938E97600B0F475 /* EditMemoView.swift */,
 			);
 			path = MemoView;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8FF92FF2938E97600B0F475 /* EditMemoView.swift in Sources */,
 				D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */,
 				7B796F762935F62E00799616 /* LottieView.swift in Sources */,
 				493526FA292F59460066F083 /* MenuView.swift in Sources */,

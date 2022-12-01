@@ -12,5 +12,6 @@ final class MemoViewModel:ObservableObject {
     @Published var wayToShow:String = "크게보기"
     @Published var deleteMode:Bool = false
     @Published var showDatePicker:Bool = false
+    @Published var showEditView:Bool = false
     
 }

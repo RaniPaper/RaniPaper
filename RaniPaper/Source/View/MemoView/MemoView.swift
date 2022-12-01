@@ -155,7 +155,7 @@ struct MemoView: View {
                 .zIndex(2)
                 //Header
                 
-                
+                //MARK: Scroll
                 ScrollView(.vertical)
                 {
                     LazyVGrid(columns: columns) {
@@ -167,9 +167,10 @@ struct MemoView: View {
                 .padding(.vertical)
                 .background(Color.init(hexcode: "B2BFAC"))
                 .overlay {
+                    //MARK: 플로팅 버튼
                     VStack{
                         Button {
-                            
+                            viewModel.showEditView = true
                         } label: {
                             Image("Floating")
                                 .resizable()
@@ -182,18 +183,22 @@ struct MemoView: View {
 
                 }
                 
-                
+                // MARK: 하단 배너
                 Image("memoBottomBanner")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
                     
                 
-            } //Header
+            }
             
             
         }
+ 
         .edgesIgnoringSafeArea(.vertical)
+        .fullScreenCover(isPresented: $viewModel.showEditView, content: {
+            EditMemoView(showEditView: $viewModel.showEditView)
+        })
     }
 }
 
