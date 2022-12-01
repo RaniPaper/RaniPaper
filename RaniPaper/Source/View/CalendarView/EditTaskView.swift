@@ -132,9 +132,9 @@ struct EditTaskView: View {
                                                 .font(.callout)
                                                 .padding(.vertical,8)
                                                 .frame(maxWidth:.infinity)
-                                                .foregroundColor(viewModel.ticket == ticket ? .white : .black)
+                                                .foregroundColor(viewModel.taskTicket == ticket ? .white : .black)
                                                 .background{
-                                                    if viewModel.ticket == ticket{
+                                                    if viewModel.taskTicket == ticket{
                                                         Capsule()
                                                             .fill(.black)
                                                             .matchedGeometryEffect(id: "Ticket", in: animation)
@@ -148,7 +148,7 @@ struct EditTaskView: View {
                                                 .onTapGesture {
                                                     withAnimation{
                                                         UIApplication.shared.endEditing()
-                                                        viewModel.ticket = ticket
+                                                        viewModel.taskTicket = ticket
                                                         
                                                     }
                                                 }
