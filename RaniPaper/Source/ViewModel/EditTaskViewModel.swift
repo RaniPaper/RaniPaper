@@ -64,4 +64,18 @@ final class EditTaskViewModel:ObservableObject{
         
     }
     
+    func update() -> Bool {
+        let taskModel = TaskModel(title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
+        let result = MyFileManager.shared.update(at: .diary, fileName: "\(taskTitle).json", taskModel)
+        
+        switch result {
+        case .success():
+            return true
+        case .failure(let error):
+            print(error.errorDescription)
+            return false
+        }
+        
+    }
+    
 }
