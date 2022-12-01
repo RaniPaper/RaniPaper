@@ -25,6 +25,7 @@
 		7B796F8529378CB300799616 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8429378CB300799616 /* HomeView.swift */; };
 		7B796F8729378CD500799616 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8629378CD500799616 /* HomeViewModel.swift */; };
 		7B796F8929384FEA00799616 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8829384FEA00799616 /* MemoModel.swift */; };
+		7B796F8E2938DA9D00799616 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7B796F8D2938DA9D00799616 /* AlertToast */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
 		D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE23292DE28E002C8E89 /* Extension.swift */; };
@@ -119,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B796F8E2938DA9D00799616 /* AlertToast in Frameworks */,
 				D86ACE49292F793C002C8E89 /* PopupView in Frameworks */,
 				7B796F702935F31800799616 /* Lottie in Frameworks */,
 			);
@@ -420,6 +422,7 @@
 			packageProductDependencies = (
 				D86ACE48292F793C002C8E89 /* PopupView */,
 				7B796F6F2935F31800799616 /* Lottie */,
+				7B796F8D2938DA9D00799616 /* AlertToast */,
 			);
 			productName = RaniPaper;
 			productReference = D89A068F2929FD5000F5D408 /* RaniPaper.app */;
@@ -453,6 +456,7 @@
 			packageReferences = (
 				D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */,
 				7B796F6E2935F31800799616 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				7B796F8C2938DA9D00799616 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = D89A06902929FD5000F5D408 /* Products */;
 			projectDirPath = "";
@@ -767,6 +771,14 @@
 				version = 3.5.0;
 			};
 		};
+		7B796F8C2938DA9D00799616 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.7;
+			};
+		};
 		D86ACE47292F793C002C8E89 /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/PopupView.git";
@@ -782,6 +794,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7B796F6E2935F31800799616 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		7B796F8D2938DA9D00799616 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B796F8C2938DA9D00799616 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		D86ACE48292F793C002C8E89 /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;

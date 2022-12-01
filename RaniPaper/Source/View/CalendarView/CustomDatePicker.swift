@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct CustomDatePicker: View {
-    @Binding var currentDate:Date
-    
+    @ObservedObject var viewModel: CalendarViewModel
     @State var currentMonth: Int = 0
-    
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
+    
+    init(viewModel: CalendarViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         
         VStack(spacing:35){
@@ -75,47 +78,22 @@ struct CustomDatePicker: View {
                         .background(
                             Capsule().fill(.pink)
                                 .padding(.horizontal,8)
-                                .opacity(isSameDate(date1: value.date, date2: currentDate) ? 1 : 0)
+                                .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
                         )
                         .onTapGesture {
                             withAnimation {
-                                currentDate = value.date
+                                viewModel.currentDate = value.date
                             }
                             
                         }
                 }
             }
             
-            // - MARK: 테스크 카드
-            VStack(spacing:15){
-                Text("Tasks")
-                    .font(.title2.bold())
-                    .frame(maxWidth:.infinity,alignment: .leading)
-                    
-                
-                if let task = tasks.first(where: { task in
-                    return isSameDate(date1: task.taskDate, date2: currentDate)
-                })
-                {
-                    ForEach(task.task){ task in
-                        TaskCardView(task: task)
-                        
-                        
-                    }
-                }
-                
-                else
-                {
-                    Text("오늘은 할 일이 없어요")
-                }
-            }
-            .padding(15)
-            
         }
         .onChange(of: currentMonth) { newValue in
             //udapteMonth
             
-            currentDate = getCurrentMonth()
+            viewModel.currentDate = getCurrentMonth()
         }
         //VStack
     }
@@ -123,10 +101,10 @@ struct CustomDatePicker: View {
     
     
     @ViewBuilder
-    func CardView(value:DateModel)->some View{
+    func CardView(value: DateModel)->some View{
         
         let calendar = Calendar.current
-        let lastMonth = calendar.date(byAdding: .month, value:-1 , to: self.currentDate)!
+        let lastMonth = calendar.date(byAdding: .month, value:-1 , to: viewModel.currentDate)!
         //이전 달 ,현재 Date에서 Month -1.
         
         
@@ -141,39 +119,29 @@ struct CustomDatePicker: View {
             // 음수 와 0은 이전 달 이므로, 이전달 마지막 일부터 + (-거리)해준다
             
             if value.day != -1 {
-                if let task = tasks.first(where: { task in
-                    return isSameDate(date1: task.taskDate, date2: value.date)
-                })
-                {
-                    //만약 현재 날짜에 테스크가 존재하면
-                    let d1 = task.taskDate
-                    //Circle()이 존재
+                // 모든 tasks 중 선택한 날짜의 tasks가 있으면
+                if !viewModel.tasks.filter({ value.date.isSameDay(with: $0.deadLine) }).isEmpty {
                     
                     //현재 선택한 날짜와 cardView 날짜가 같으면
                     Text("\(value.day)")
                         .font(.title3.bold())
-                        .foregroundColor(isSameDate(date1:d1, date2: currentDate) ? .white : .black)
+                        .foregroundColor(value.date.isSameDay(with: viewModel.currentDate) ? .white : .black)
                         .frame(maxWidth:.infinity)
                     
                     Spacer()
+                    
                     Circle()
-                        .fill(isSameDate(date1:d1, date2: currentDate) ? .white : .pink)
+                        .fill(value.date.isSameDay(with: viewModel.currentDate) ? .white : .pink)
                         .frame(width:8,height: 8)
                 }
-                else
-                {
-            
-                    //만약 현재 날짜에 테스크가 없다면
+                else { //만약 현재 날짜에 테스크가 없다면
                     Text("\(value.day)")
                     .font(.title3.bold())
-                    .foregroundColor(isSameDate(date1:value.date, date2: currentDate) ? .white : .black)
+                    .foregroundColor(value.date.isSameDay(with: viewModel.currentDate) ? .white : .black)
                     .frame(maxWidth:.infinity)
-                    Spacer()
                     
+                    Spacer()
                 }
-                
-                
-                
                 
                 
             }
@@ -185,17 +153,11 @@ struct CustomDatePicker: View {
     
     
     //화면에 보여주기 위해 Year과 Month 추출하기
-    
-    func isSameDate(date1: Date, date2: Date)-> Bool{
-        let calendar = Calendar.current
-        return calendar.isDate(date1, inSameDayAs: date2)
-    }
-    
     func extraData() ->[String] {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MMMM"
         
-        let date = formatter.string(from: currentDate)
+        let date = formatter.string(from: viewModel.currentDate)
         
         return date.components(separatedBy: " ")
     }
@@ -218,7 +180,7 @@ struct CustomDatePicker: View {
     func extractDate() -> [DateModel] {
         let calendar = Calendar.current
         
-        var days = self.currentDate.getAllDates().compactMap { date -> DateModel in
+        var days = viewModel.currentDate.getAllDates().compactMap { date -> DateModel in
             let day = calendar.component(.day, from: date)
             
             return DateModel(day: day, date: date)
@@ -229,7 +191,7 @@ struct CustomDatePicker: View {
         let firstWeekDay = calendar.component(.weekday, from: days.first?.date ?? Date())
         //해당 날짜의 첫번째 주 평일을 갖고 온다
         
-        for i in 0..<firstWeekDay-1 {
+        for _ in 0..<firstWeekDay-1 {
             days.insert(DateModel(day: -1, date: Date()),at:0)
         } //부족한 갯수만큼 -1을 넣어줌
         

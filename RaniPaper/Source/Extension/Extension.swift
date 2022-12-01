@@ -136,6 +136,11 @@ extension Date {
         }
     }
     
+    // 같은 날이면 true 반환
+    func isSameDay(with date2: Date)-> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(self, inSameDayAs: date2)
+    }
     
 }
 
