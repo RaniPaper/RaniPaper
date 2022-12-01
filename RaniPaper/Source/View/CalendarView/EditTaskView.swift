@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct EditTaskView: View {
-    
-    @Binding var showEdit:Bool
     @StateObject var viewModel = EditTaskViewModel()
+    @Binding var showEdit:Bool
+    @State private var showToast = false
+    
      //keyboardHandler = KeyboardHander()
     let colors:[String] =  ["ine","jingburger","lilpa","jururu","gosegu","viichan"]
     let tickets:[String] = ["우왁굳","아이네","징버거","릴파","주르르","고세구","비챤","현생"]
@@ -160,8 +162,13 @@ struct EditTaskView: View {
                           
                                 Spacer()
                                 Button {
-                                    UIApplication.shared.endEditing()
-                                   showEdit = false
+                                    if viewModel.save() {
+                                        UIApplication.shared.endEditing()
+                                        showEdit = false
+                                    } else {
+                                        showToast = true
+                                    }
+                                    
                                 } label: {
                                     Text("스케쥴 저장하기")
                                         .font(.callout)
@@ -248,6 +255,9 @@ struct EditTaskView: View {
                 }
                 .animation(.easeInOut, value: viewModel.showDatePicker)
         }
+            .toast(isPresenting: $showToast) {
+                AlertToast(displayMode: .hud, type: .error(.red), title: "이미 있는 제목이에요", subTitle: "다른 버그일수도?")
+            }
         
             
         
