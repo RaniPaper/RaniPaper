@@ -40,6 +40,9 @@ struct MainView: View {
                 ZStack{
                     NavigationView{
                         switch viewModel.selection {
+                        case .home:
+                            HomeView()
+                            
                         case .diary:
                             DummyView1()
                             
@@ -49,14 +52,11 @@ struct MainView: View {
                         case .setting:
                             SettingView()
                             
-                        case .credit:
-                            CreditView()
-                            
-                        case .home:
-                            HomeView()
-                            
                         case .info:
                             InfoView()
+                            
+                        case .credit:
+                            CreditView()
                         }
                     }
                     MenuView(selection: $viewModel.selection)
