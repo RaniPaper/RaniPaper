@@ -17,6 +17,7 @@ struct StickerView: View {
                 VStack{
                     Text(memo.title)
                         .font(.beomsuk(20))
+                        .lineLimit(1)
                     Divider()
                     Text(memo.content).lineLimit(2).frame(maxWidth:.infinity,alignment: .leading)
                         .font(.samanco(15))
