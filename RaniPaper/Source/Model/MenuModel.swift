@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class MenuContent: ObservableObject, Identifiable {
+struct MenuContent: Identifiable {
     let id: UUID
     let title: String
     let viewSelection: ViewSelection

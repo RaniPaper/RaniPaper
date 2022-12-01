@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class SettingContent: ObservableObject, Identifiable {
+struct SettingContent: Identifiable {
     let id: UUID
     let key: String
     var isOn: Bool
