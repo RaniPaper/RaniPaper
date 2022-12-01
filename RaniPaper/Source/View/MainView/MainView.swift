@@ -42,7 +42,7 @@ struct MainView: View {
                         switch viewModel.selection {
                         case .home:
                             HomeView()
-                            
+                        
                         case .diary:
                             CalendarView()
                             

@@ -232,10 +232,19 @@
 			path = InfoView;
 			sourceTree = "<group>";
 		};
-		7B796F712935F44F00799616 /* HomeView */ = {
+		7B796F8029378C4F00799616 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				7B796F772935F6F100799616 /* HomeViewModel.swift */,
 				7B796F722935F46400799616 /* HomeView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		7B796F8329378CB300799616 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				7B796F8429378CB300799616 /* HomeView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -262,10 +271,6 @@
 				7B796F8329378CB300799616 /* HomeView */,
 				D8D549C529365387001E4287 /* TaskCardView */,
 				D86ACE59293475BE002C8E89 /* CalendarView */,
-				490A025C2937B77C00FD9384 /* SettingView */,
-				49E703F1293543B80035215F /* InfoView */,
-				49E703EE293539C00035215F /* CreditView */,
-				D86ACE552933AFD6002C8E89 /* MemoView */,
 				492DB73E29311FE60027EEB1 /* DummyView */,
 				493526F8292F59300066F083 /* MenuView */,
 				D86ACE32292F09F7002C8E89 /* ConfirmView */,
@@ -569,7 +574,6 @@
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
-				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
 				D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */,
