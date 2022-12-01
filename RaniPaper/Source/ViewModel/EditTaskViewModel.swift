@@ -9,12 +9,14 @@ import SwiftUI
 import Combine
 
 final class EditTaskViewModel:ObservableObject{
-    @Published var taskColor:String = "Yel"
     @Published var taskTitle:String = ""
     @Published var taskDeadLine:Date = Date()
+    @Published var taskColor:String = "Yel"
+    @Published var taskTicket:String = "우왁굳"
+    
     @Published var showDatePicker:Bool = false
     @Published private(set) var keyboardHeight: CGFloat = 0
-    @Published var ticket:String = "우왁굳"
+    
     
     private var subscription = Set<AnyCancellable>()
     
@@ -46,6 +48,20 @@ final class EditTaskViewModel:ObservableObject{
     deinit{
         print("❌ EditTaskViewModel 소멸")
     
+    }
+    
+    func save() -> Bool {
+        let taskModel = TaskModel(title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
+        let result = MyFileManager.shared.create(at: .diary, fileName: "\(taskTitle).json", taskModel)
+        
+        switch result {
+        case .success():
+            return true
+        case .failure(let error):
+            print(error.errorDescription)
+            return false
+        }
+        
     }
     
 }
