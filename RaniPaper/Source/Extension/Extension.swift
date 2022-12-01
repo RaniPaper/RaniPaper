@@ -42,6 +42,14 @@ extension Color
         return Color.init(hexcode: "84764F")
     }
     
+    public static var memoBg:Color{
+        return Color.init(hexcode: "F3EFCC")
+    }
+    
+    public static var memoPrimary:Color{
+        return Color.init(hexcode: "BF9C9C")
+    }
+    
 }
 
 extension UIDevice {
