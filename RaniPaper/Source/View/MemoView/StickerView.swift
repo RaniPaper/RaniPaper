@@ -16,10 +16,10 @@ struct StickerView: View {
             .overlay() {
                 VStack{
                     Text(memo.title)
-                        .font(.title2)
+                        .font(.beomsuk(20))
                     Divider()
                     Text(memo.content).lineLimit(2).frame(maxWidth:.infinity,alignment: .leading)
-                        .font(.callout)
+                        .font(.samanco(15))
                 }
                 .padding()
                 .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
