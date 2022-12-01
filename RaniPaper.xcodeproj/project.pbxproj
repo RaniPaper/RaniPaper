@@ -56,6 +56,7 @@
 		D8D549C2293611CB001E4287 /* EditTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */; };
 		D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C329362A47001E4287 /* KeyboardHandler.swift */; };
 		D8D549C72936539B001E4287 /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C62936539B001E4287 /* TaskCardView.swift */; };
+		D8D549D529385EE5001E4287 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549D429385EE5001E4287 /* MemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewModel.swift; sourceTree = "<group>"; };
 		D8D549C329362A47001E4287 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		D8D549C62936539B001E4287 /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
+		D8D549D429385EE5001E4287 /* MemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +233,8 @@
 				490A025C2937B77C00FD9384 /* SettingView */,
 				49E703F1293543B80035215F /* InfoView */,
 				49E703EE293539C00035215F /* CreditView */,
-				7B796F712935F44F00799616 /* HomeView */,
+				D8D549D329385EE5001E4287 /* MemoView */,
+				7B796F8329378CB300799616 /* HomeView */,
 				D8D549C529365387001E4287 /* TaskCardView */,
 				D86ACE59293475BE002C8E89 /* CalendarView */,
 				D86ACE552933AFD6002C8E89 /* MemoView */,
@@ -408,6 +411,14 @@
 			path = TaskCardView;
 			sourceTree = "<group>";
 		};
+		D8D549D329385EE5001E4287 /* MemoView */ = {
+			isa = PBXGroup;
+			children = (
+				D8D549D429385EE5001E4287 /* MemoView.swift */,
+			);
+			path = MemoView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -518,6 +529,7 @@
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
 				493526F5292F57470066F083 /* MenuViewModel.swift in Sources */,
 				7B796F8529378CB300799616 /* HomeView.swift in Sources */,
+				D8D549D529385EE5001E4287 /* MemoView.swift in Sources */,
 				D86ACE572933B00A002C8E89 /* MemoView.swift in Sources */,
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
 				493527002930F46C0066F083 /* SideMenuView.swift in Sources */,
