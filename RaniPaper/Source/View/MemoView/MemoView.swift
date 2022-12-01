@@ -20,7 +20,7 @@ struct MemoView: View {
                              MemoModel(title: "제목8", content: "내용66666666666666666666"),
                              MemoModel(title: "제목9", content: "내용66666666666666666666")]
     var body: some View {
-        ZStack {
+        ZStack(alignment:.bottom) {
             VStack(spacing:0){
                 
                 GeometryReader { proxy in
@@ -166,6 +166,22 @@ struct MemoView: View {
                 }
                 .padding(.vertical)
                 .background(Color.init(hexcode: "B2BFAC"))
+                .overlay {
+                    VStack{
+                        Button {
+                            
+                        } label: {
+                            Image("Floating")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
+                                .padding(.bottom,10)
+                                .padding(.trailing,10)
+                        }
+                    }.frame(maxWidth:.infinity,maxHeight: .infinity,alignment: .bottomTrailing)
+
+                }
+                
                 
                 Image("memoBottomBanner")
                     .resizable()
@@ -174,6 +190,7 @@ struct MemoView: View {
                     
                 
             } //Header
+            
             
         }
         .edgesIgnoringSafeArea(.vertical)
