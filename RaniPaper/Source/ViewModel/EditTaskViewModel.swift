@@ -11,7 +11,7 @@ import Combine
 final class EditTaskViewModel:ObservableObject{
     @Published var taskTitle:String = ""
     @Published var taskDeadLine:Date = Date()
-    @Published var taskColor:String = "Yel"
+    @Published var taskColor:String = "ine"
     @Published var taskTicket:String = "우왁굳"
     
     @Published var showDatePicker:Bool = false
