@@ -69,7 +69,7 @@ struct CalendarView: View {
             if let tasks = viewModel.tasks.filter({ $0.deadLine.isSameDay(with: viewModel.currentDate)}) {
                 if !tasks.isEmpty {
                     ForEach(tasks) { task in
-                        TaskCardView(task: task)
+                        TaskCardView(viewModel: viewModel, task: task)
                     }
                 } else {
                     Text("오늘은 할 일이 없어요").foregroundColor(.gray)

@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct TaskCardView: View {
-    
+    @ObservedObject var viewModel: CalendarViewModel
+    @State var showEdit: Bool = false // viewModel.showEdit 공유하면 버그
     let task:TaskModel
+    
+    init(viewModel: CalendarViewModel, task: TaskModel) {
+        self.viewModel = viewModel
+        self.task = task
+    }
     
     var body: some View {
         VStack(alignment: .leading,spacing: 10) {
@@ -26,8 +32,7 @@ struct TaskCardView: View {
                 
     
                     Button {
-                        print("Hello")
-                        // - MARK: 수정 작업
+                        showEdit = true
                     } label: {
                         Image(systemName: "square.and.pencil")
                     }
@@ -67,11 +72,19 @@ struct TaskCardView: View {
             RoundedRectangle(cornerRadius: 12,style: .continuous)
                 .fill(Color(task.color))
         }
+        .fullScreenCover(isPresented: $showEdit) {
+            EditTaskView(showEdit: $showEdit, existTask: task).onDisappear {
+                viewModel.fetchTasks()
+            }
+        }
+        
+        
+        
     }
 }
 
 struct TaskCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCardView(task: TaskModel(title: "123",color:"ine",ticket: "우왁굳"))
+        TaskCardView(viewModel: CalendarViewModel(), task: TaskModel(title: "123",color:"ine",ticket: "우왁굳"))
     }
 }

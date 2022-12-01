@@ -10,8 +10,9 @@ import AlertToast
 
 struct EditTaskView: View {
     @StateObject var viewModel = EditTaskViewModel()
-    @Binding var showEdit:Bool
+    @Binding var showEdit: Bool
     @State private var showToast = false
+    var existTask: TaskModel? // 기존의 task
     
     //keyboardHandler = KeyboardHander()
     let colors:[String] =  ["ine","jingburger","lilpa","jururu","gosegu","viichan"]
@@ -162,7 +163,7 @@ struct EditTaskView: View {
                             
                             Spacer()
                             Button {
-                                if viewModel.save() {
+                                if viewModel.update() {
                                     UIApplication.shared.endEditing()
                                     showEdit = false
                                 } else {
@@ -255,7 +256,18 @@ struct EditTaskView: View {
             }
             .animation(.easeInOut, value: viewModel.showDatePicker)
         }
-        
+        .onAppear {
+            print("EditTaskview - onAppear")
+            guard let existTask else { return }
+            print(existTask)
+            viewModel.taskTitle = existTask.title
+            viewModel.taskColor = existTask.color
+            viewModel.taskDeadLine = existTask.deadLine
+            viewModel.taskTicket = existTask.ticket
+        }
+        .onDisappear {
+            print("EditTaskview - onDisAppear")
+        }
         .toast(isPresenting: $showToast) {
             AlertToast(displayMode: .hud, type: .error(.red), title: "이미 있는 제목이에요", subTitle: "다른 버그일수도?")
         }
