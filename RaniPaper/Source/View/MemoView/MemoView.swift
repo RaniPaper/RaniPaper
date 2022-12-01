@@ -24,8 +24,8 @@ struct MemoView: View {
                             .padding(.leading,thinPadding)
                     }.frame(maxWidth:proxy.size.width,alignment: .leading)
                     
-                    VStack(spacing: 0) {
-                        Image("memoPenㅋ")
+                    VStack(spacing: 5) {
+                    
                         Text("기록")
                             .font(.efDiary(30))
                             .foregroundColor(.memoPrimary)
@@ -35,27 +35,61 @@ struct MemoView: View {
                             .frame(maxWidth:proxy.size.width)
                             .overlay {
                                 HStack{
-                                    Text("크게보기").offset(x:thinPadding+5)
+                                    Button {
+                                        
+                                    } label: {
+                                        HStack(spacing: 0){
+                                            Text("크게보기")
+                                                .font(.kotra(20))
+                                                .foregroundColor(.memoPrimary)
+                                            Image(systemName: "arrowtriangle.down.fill").foregroundColor(.memoPrimary)
+                                        }
+                                    }
+                                    .overlay(alignment:.topLeading) {
+                                        
+                                        if true{
+                                            VStack(spacing:2){
+                                                
+                                                Text("크게보기")
+                                                    .font(.kotra(20))
+                                                    .foregroundColor(.memoDropDownText)
+                                                    .contentShape(Rectangle())
+                                                
+                                                Rectangle().frame(height: 1).padding(.horizontal,5)
+                                                    .foregroundColor(.memoDropDownText)
+                                                Text("작게보기")
+                                                    .font(.kotra (20))
+                                                    .foregroundColor(.memoDropDownText)
+                                                    .contentShape(Rectangle())
+                                            }
+                                            .padding(.horizontal,5)
+                                            .background(Color.memoDropDownBg)
+                                            .offset(y:25)
+                                            
+                                        }
+                                        
+                                    }
+                                    .zIndex(2.0)
+                                    .offset(x:thinPadding*2)
+                                
+                                    
                                     Spacer()
                                     
                                     Button {
                                         
                                     } label: {
-                                        Image(systemName: "calendar")
+                                        Image("memoCalendar")
                                     }
+                                  
                                     Button {
                                         
                                     } label: {
-                                        Image(systemName: "calendar")
-                                    }
-                                    Button {
-                                        
-                                    } label: {
-                                        Image(systemName: "calendar")
-                                    }.padding(.trailing,thinPadding+5)
+                                        Image("memoTrash")
+                                    }.padding(.trailing,thinPadding*2)
 
                                 }
                             }
+                            .zIndex(2)
                         
                         Rectangle()
                             .fill(Color.memoPrimary)

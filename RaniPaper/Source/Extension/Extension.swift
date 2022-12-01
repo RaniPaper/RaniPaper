@@ -50,6 +50,15 @@ extension Color
         return Color.init(hexcode: "BF9C9C")
     }
     
+    public static var memoDropDownBg:Color{
+        return Color.init(hexcode: "DEC7A5")
+    }
+    public static var memoDropDownText:Color{
+        return Color.init(hexcode: "8E6868")
+    }
+    
+    
+    
 }
 
 extension UIDevice {

@@ -52,6 +52,7 @@
 		D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C329362A47001E4287 /* KeyboardHandler.swift */; };
 		D8D549C72936539B001E4287 /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C62936539B001E4287 /* TaskCardView.swift */; };
 		D8D549D229385E96001E4287 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549D129385E96001E4287 /* MemoView.swift */; };
+		D8FF92F42938B84300B0F475 /* DropDownOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF92F32938B84300B0F475 /* DropDownOptionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		D8D549C329362A47001E4287 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		D8D549C62936539B001E4287 /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 		D8D549D129385E96001E4287 /* MemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
+		D8FF92F32938B84300B0F475 /* DropDownOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownOptionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				D86ACE5E29347D0B002C8E89 /* DateModel.swift */,
 				D86ACE6029349E78002C8E89 /* TaskModel.swift */,
 				7B796F8829384FEA00799616 /* MemoModel.swift */,
+				D8FF92F32938B84300B0F475 /* DropDownOptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
 				493527002930F46C0066F083 /* SideMenuView.swift in Sources */,
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
+				D8FF92F42938B84300B0F475 /* DropDownOptionModel.swift in Sources */,
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
