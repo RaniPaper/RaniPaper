@@ -221,10 +221,10 @@ struct EditTaskView: View {
                             DatePicker.init("", selection: $viewModel.taskDeadLine,
                                             in:Date.now...Date.distantFuture)
                             .datePickerStyle(.graphical) //달력과 시간을 그래픽컬하게
-                        //    .labelsHidden()
+                            .labelsHidden()
                             .background(.white,in: RoundedRectangle(cornerRadius: 12,style: .continuous))
-                        .padding()
-                            Button {
+                            .padding(30) //시간 선택창 짤림화면 방지 패딩 
+                           /* Button {
                                 viewModel.showDatePicker = false
                             } label: {
                                 Text("날짜 저장하기")
@@ -239,7 +239,7 @@ struct EditTaskView: View {
                                             
                                         
                                     }
-                            }
+                            }*/
                         }
                         
                         
