@@ -53,6 +53,7 @@ struct MemoView: View {
                                         } label: {
                                             HStack(spacing: 0){
                                                 Text(viewModel.wayToShow)
+                                                    .padding(.leading,10)
                                                     .font(.kotra(20))
                                                     .foregroundColor(.memoPrimary)
                                                 Image(systemName: "arrowtriangle.down.fill").foregroundColor(.memoPrimary)
@@ -64,6 +65,7 @@ struct MemoView: View {
                                                 VStack(spacing:0){
                                                     
                                                     Text("크게보기")
+                                                        
                                                         .font(.kotra(20))
                                                         .foregroundColor(.memoDropDownText)
                                                         .contentShape(Rectangle())
@@ -80,7 +82,10 @@ struct MemoView: View {
                                                     
                                                     Rectangle().frame(height: 1).padding(.horizontal,5)
                                                         .foregroundColor(.memoDropDownText)
+                                                        
+                                                    
                                                     Text("작게보기")
+                                                       
                                                         .font(.kotra (20))
                                                         .foregroundColor(.memoDropDownText)
                                                         .contentShape(Rectangle())
@@ -95,7 +100,7 @@ struct MemoView: View {
                                                             
                                                         }
                                                 }
-                                                .padding(.horizontal,5)
+                                               // .padding(.horizontal,5)
                                                 .background(Color.memoDropDownBg)
                                                 .offset(y:25)
                                                 
@@ -103,7 +108,7 @@ struct MemoView: View {
                                             
                                         }
                                         .zIndex(2.0)
-                                        .offset(x:thinPadding*2)
+                                        .offset(x:thinPadding+5)
                                     
                                         
                                         Spacer()
@@ -158,11 +163,24 @@ struct MemoView: View {
                 //MARK: Scroll
                 ScrollView(.vertical)
                 {
-                    LazyVGrid(columns: columns) {
-                        ForEach(memos){ memo in
-                            StickerView(memo: memo)
+                    if(viewModel.wayToShow == "크게보기")
+                    {
+                        LazyVGrid(columns: columns) {
+                            ForEach(memos){ memo in
+                                LargeStickerView(memo: memo)
+                            }
                         }
                     }
+                    else
+                    {
+                        LazyVGrid(columns:[GridItem(.flexible())])
+                        {
+                            ForEach(memos) { memo in
+                                SmallStickerView(memo: memo)
+                            }
+                        }
+                    }
+                    
                 }
                 .padding(.vertical)
                 .background(Color.init(hexcode: "B2BFAC"))
@@ -172,7 +190,7 @@ struct MemoView: View {
                         Button {
                             viewModel.showEditView = true
                         } label: {
-                            Image("Floating")
+                            Image("memoWriteFloating")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 50, height: 50)

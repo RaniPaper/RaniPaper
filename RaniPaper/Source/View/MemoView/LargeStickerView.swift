@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct StickerView: View {
+struct LargeStickerView: View {
     
     var memo:MemoModel
     
     var body: some View {
-        Image("sticker")
+        Image("largeSticker")
             .overlay() {
                 VStack{
                     Text(memo.title)
@@ -30,6 +30,6 @@ struct StickerView: View {
 
 struct StickerView_Previews: PreviewProvider {
     static var previews: some View {
-        StickerView(memo: MemoModel(title: "1234", content: "125521512"))
+        LargeStickerView(memo: MemoModel(title: "1234", content: "125521512"))
     }
 }
