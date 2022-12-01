@@ -44,7 +44,7 @@ struct MainView: View {
                             HomeView()
                             
                         case .diary:
-                            DummyView1()
+                            CalendarView()
                             
                         case .memo:
                             MemoView()
