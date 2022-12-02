@@ -44,7 +44,7 @@ struct TaskCardView: View {
             HStack(alignment: .bottom,spacing: 0) {
                 VStack(alignment: .leading,spacing: 10) {
                     Label{
-                        Text(task.deadLine.formatted(date: .long, time: .omitted))
+                        Text(Date.dateformat.string(from: task.deadLine))
                     } icon: {
                         Image(systemName: "calendar")
                     }

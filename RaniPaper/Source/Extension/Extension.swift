@@ -150,6 +150,12 @@ extension Date {
         }
     }
     
+    static let dateformat: DateFormatter = { //데이터 포멧터
+           let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY.M.dd"
+            return formatter
+        }()
+    
     
 }
 

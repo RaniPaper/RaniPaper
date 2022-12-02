@@ -56,6 +56,7 @@
 		D8FF92FD2938D6A400B0F475 /* LargeStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF92FC2938D6A400B0F475 /* LargeStickerView.swift */; };
 		D8FF92FF2938E97600B0F475 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF92FE2938E97600B0F475 /* EditMemoView.swift */; };
 		D8FF93012938F27800B0F475 /* SmallStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF93002938F27800B0F475 /* SmallStickerView.swift */; };
+		D8FF93032939F27900B0F475 /* EditMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF93022939F27900B0F475 /* EditMemoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		D8FF92FC2938D6A400B0F475 /* LargeStickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeStickerView.swift; sourceTree = "<group>"; };
 		D8FF92FE2938E97600B0F475 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
 		D8FF93002938F27800B0F475 /* SmallStickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallStickerView.swift; sourceTree = "<group>"; };
+		D8FF93022939F27900B0F475 /* EditMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */,
 				D8D549C329362A47001E4287 /* KeyboardHandler.swift */,
 				D8FF92FA2938C5A700B0F475 /* MemoViewModel.swift */,
+				D8FF93022939F27900B0F475 /* EditMemoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				D8D549D229385E96001E4287 /* MemoView.swift in Sources */,
 				D86ACE572933B00A002C8E89 /* MemoView.swift in Sources */,
 				D8FF93012938F27800B0F475 /* SmallStickerView.swift in Sources */,
+				D8FF93032939F27900B0F475 /* EditMemoViewModel.swift in Sources */,
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
 				D8FF92FD2938D6A400B0F475 /* LargeStickerView.swift in Sources */,
 				493527002930F46C0066F083 /* SideMenuView.swift in Sources */,
