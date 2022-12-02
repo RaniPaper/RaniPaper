@@ -42,6 +42,23 @@ extension Color
         return Color.init(hexcode: "84764F")
     }
     
+    public static var memoBg:Color{
+        return Color.init(hexcode: "F3EFCC")
+    }
+    
+    public static var memoPrimary:Color{
+        return Color.init(hexcode: "BF9C9C")
+    }
+    
+    public static var memoDropDownBg:Color{
+        return Color.init(hexcode: "DEC7A5")
+    }
+    public static var memoDropDownText:Color{
+        return Color.init(hexcode: "8E6868")
+    }
+    
+    
+    
 }
 
 extension UIDevice {
@@ -136,11 +153,17 @@ extension Date {
         }
     }
     
+    static let dateformat: DateFormatter = { //데이터 포멧터
+           let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY.M.dd"
+            return formatter
+        }()
+    
     // 같은 날이면 true 반환
-    func isSameDay(with date2: Date)-> Bool {
-        let calendar = Calendar.current
-        return calendar.isDate(self, inSameDayAs: date2)
-    }
+        func isSameDay(with date2: Date)-> Bool {
+            let calendar = Calendar.current
+            return calendar.isDate(self, inSameDayAs: date2)
+        }
     
 }
 
