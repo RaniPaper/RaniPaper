@@ -14,7 +14,7 @@ struct EditMemoView: View {
     
     var body: some View {
         ZStack {
-            Color.memoBg
+
             VStack(){
                 // - MARK: 타이틀 및 뒤로가기
                 Text("Edit Task")
@@ -47,10 +47,16 @@ struct EditMemoView: View {
                         .frame(maxWidth: .infinity,maxHeight: 10)
                 }
                 
+                ScrollView(){
+                    
+                }
+                
                 
                
             }
-        }.edgesIgnoringSafeArea(.vertical)
+        }
+        //.edgesIgnoringSafeArea(.vertical)
+        .background(Color.memoBg)
         
     }
 }
