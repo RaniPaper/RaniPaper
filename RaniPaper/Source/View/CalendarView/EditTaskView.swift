@@ -258,8 +258,10 @@ struct EditTaskView: View {
         }
         .onAppear {
             print("EditTaskview - onAppear")
+            // 기존 task가 있으면 뷰모델에 데이터 전달
             guard let existTask else { return }
-            print(existTask)
+            print("기존 task를 불러옵니다:", existTask)
+            viewModel.taskId = existTask.id
             viewModel.taskTitle = existTask.title
             viewModel.taskColor = existTask.color
             viewModel.taskDeadLine = existTask.deadLine
