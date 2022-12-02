@@ -14,37 +14,34 @@ struct HomeView: View {
     @State var isAnimating = false
     
     var body: some View {
-        ZStack {
-            Image("mainTmp")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .onTapGesture {
-                    withAnimation(.easeInOut) {
-                        isAnimating = true
-                    }
-                    
-                }
-            
-            fileManagerTestButtonView() // 테스트용입니다.
-            
-            if isAnimating {
-                LottieView(name: "mail-boxletter-box", loopMode: .playOnce)
-                    .background(Color.black.opacity(0.6))
-                    .zIndex(1)
-                    .transition(.move(edge: .bottom))
-                    .onTapGesture {
-                        withAnimation(.easeInOut) {
-                            isAnimating = false
+        NavigationView {
+            ZStack {
+                Image("main_static")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .overlay(content: {
+                        Circle().frame(width: 20).foregroundColor(.blue) // 이미지 중심
+                        NavigationLink {
+                            MailBoxAnimationView(viewModel: viewModel)
+                                .navigationBarBackButtonHidden()
+                        } label: {
+                            Rectangle().strokeBorder(lineWidth: 3) // 터치 범위
+                                .frame(width:100, height: 180)
+                                .contentShape(Rectangle())
                         }
-                    }
+                    })
 
+                
             }
             Button(action:{
                 MySoundSetting.SFX.play()
             }){
                 Text("play SFX")
             }
+            .ignoresSafeArea()
         }
+        
+        
     }
 }
 
