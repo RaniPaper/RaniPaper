@@ -9,12 +9,15 @@ import SwiftUI
 import Combine
 
 final class EditTaskViewModel:ObservableObject{
-    @Published var taskColor:String = "Yel"
+    var taskId: String?
     @Published var taskTitle:String = ""
     @Published var taskDeadLine:Date = Date()
+    @Published var taskColor:String = "ine"
+    @Published var taskTicket:String = "우왁굳"
+    
     @Published var showDatePicker:Bool = false
     @Published private(set) var keyboardHeight: CGFloat = 0
-    @Published var ticket:String = "우왁굳"
+    
     
     private var subscription = Set<AnyCancellable>()
     
@@ -46,6 +49,35 @@ final class EditTaskViewModel:ObservableObject{
     deinit{
         print("❌ EditTaskViewModel 소멸")
     
+    }
+    
+    func save() -> Bool {
+        let taskModel = TaskModel(title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
+        let result = MyFileManager.shared.create(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
+        
+        switch result {
+        case .success():
+            return true
+        case .failure(let error):
+            print(error.errorDescription)
+            return false
+        }
+        
+    }
+    
+    func update() -> Bool {
+        // 기존 task 편집시엔 이미 taskId가 있으므로 해당 taskId로 저장, 신규면 새 UUID
+        let taskModel = TaskModel(id: taskId ?? UUID().uuidString, title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
+        let result = MyFileManager.shared.update(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
+        
+        switch result {
+        case .success():
+            return true
+        case .failure(let error):
+            print(error.errorDescription)
+            return false
+        }
+        
     }
     
 }

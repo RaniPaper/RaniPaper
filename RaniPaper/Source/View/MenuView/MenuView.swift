@@ -31,8 +31,8 @@ struct MenuView: View {
             .onEnded{ _ in
                 if viewModel.Offset < Menu.threshold{
                     withAnimation{
-                        viewModel.isOpen = true
                         viewModel.Offset = Menu.maxOffset
+                        viewModel.isOpen = true
                     }
                 }
                 else {
@@ -49,12 +49,14 @@ struct MenuView: View {
                 .animation(.easeIn, value: viewModel.Offset)
                 .onTapGesture {
                     viewModel.Offset = Menu.minOffset
+                    viewModel.isOpen = false
                 }
             
             SideMenuView(isOpen: $viewModel.isOpen,
                          offset: $viewModel.Offset,
                          selection: $selection,
-                         menuList: viewModel.menuList)
+                         viewModel: viewModel)
+            .shadow(radius: 3)
             .offset(x: viewModel.Offset)
             .transition(.move(edge: .trailing))
             .animation(.linear, value: viewModel.Offset)
@@ -65,9 +67,18 @@ struct MenuView: View {
     }
 }
 
+struct prev: View{
+    @State var select: ViewSelection = .home
+    var body: some View{
+        MenuView(selection: $select)
+    }
+}
+
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(selection: .constant(.home))
+        VStack{
+            prev()
+        }
     }
 }
 

@@ -120,6 +120,9 @@ extension ViewSelection: Equatable{
         case .home: return "home"
         case .diary: return "diary"
         case .memo: return "memo"
+        case .setting: return "setting"
+        case .info: return "info"
+        case .credit: return "credit"
         }
     }
     
@@ -155,7 +158,11 @@ extension Date {
             formatter.dateFormat = "YYYY.M.dd"
             return formatter
         }()
-    
+    // 같은 날이면 true 반환
+    func isSameDay(with date2: Date)-> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(self, inSameDayAs: date2)
+    }
     
 }
 

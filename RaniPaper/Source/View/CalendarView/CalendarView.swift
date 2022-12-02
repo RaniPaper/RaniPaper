@@ -7,9 +7,12 @@
 
 import SwiftUI
 import PopupView
+import AlertToast
+
 struct CalendarView: View {
-    
     @StateObject var viewModel = CalendarViewModel()
+    @State var showDeleteErrorAlert: Bool = false
+    
     var body: some View {
         
         ZStack(alignment:.bottom) {
@@ -17,9 +20,22 @@ struct CalendarView: View {
             {
                 VStack(spacing: 20) {
                     
-                    CustomDatePicker(currentDate: $viewModel.currentDate)
+                    CustomDatePicker(viewModel: viewModel)
+                    
+                    HStack {
+                        Text("Tasks").font(.title2.bold())
+                        Spacer()
+                    }.padding(.horizontal, 15)
+                    
+                    TasksListView().padding(15)
+                    
+                    
                 }
                 .padding(.vertical)
+                .toast(isPresenting: $showDeleteErrorAlert) {
+                    AlertToast(displayMode: .hud, type: .error(.red), title: "삭제에 실패했어요!", subTitle: "헤이 디벨로퍼?")
+                }
+                
             }
             
             Spacer(minLength: 20)
@@ -47,10 +63,31 @@ struct CalendarView: View {
         .fullScreenCover(isPresented: $viewModel.showEdit) {
 
             EditTaskView(showEdit: $viewModel.showEdit)
+                .onDisappear {
+                    viewModel.fetchTasks()
+                    
+                }
         }
         
         
        
+    }
+    
+    func TasksListView() -> some View {
+        VStack(spacing: 15) {
+            if let tasks = viewModel.tasks.filter({ $0.deadLine.isSameDay(with: viewModel.currentDate)}) {
+                if !tasks.isEmpty {
+                    ForEach(tasks) { task in
+                        TaskCardView(viewModel: viewModel, task: task,showDeleteErrorAlert: $showDeleteErrorAlert)
+                    }
+                } else {
+                    Text("오늘은 할 일이 없어요").foregroundColor(.gray)
+                }
+                
+            } else {
+                Text("오늘은 할 일이 없어요")
+            }
+        }
     }
 }
 

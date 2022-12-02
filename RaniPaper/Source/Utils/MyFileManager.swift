@@ -166,6 +166,39 @@ final class MyFileManager {
         
     }
     
+    /// 해당 폴더에 있는 파일들을  배열로 반환합니다.
+    /// - Parameter folder: 꺼내올 파일이 들어있는 폴더 ( Ex: Documents/RaniPaper/Memo/. )
+    /// - Returns: [Codable]
+    func contentsOfDirectory(at folder: Folder) -> Result<[Codable], FindError> {
+        var files: [Codable] = []
+        
+        var directoryPath: URL
+        switch folder {
+        case .memo:
+            directoryPath = memoDirectoryPath
+        case .diary:
+            directoryPath = diaryDirectoryPath
+        }
+        
+        guard let contents = try? FileManager.default.contentsOfDirectory(at: directoryPath, includingPropertiesForKeys: nil) else { return .failure(.unknown) }
+        
+        let fileNames = contents.map { $0.lastPathComponent }
+        
+        fileNames.forEach { fileName in
+            let result = read(at: folder, fileName: fileName)
+            
+            switch result {
+            case .success(let file):
+                files.append(file)
+            case .failure(let error):
+                print("파일명: \(fileName) 을 불러오지 못했습니다.", error.errorDescription)
+            }
+        }
+        
+        return .success(files)
+        
+    }
+    
 }
 
 extension MyFileManager {
@@ -237,6 +270,17 @@ extension MyFileManager {
             switch self {
             case .invalidName:
                 return NSLocalizedString("🔥 invalidName exception", comment: "파일명이 잘못됨")
+            case .unknown:
+                return NSLocalizedString("🔥 unknown exception", comment: "unknown")
+            }
+        }
+    }
+    
+    enum FindError: Error {
+        case unknown
+        
+        public var errorDescription: String {
+            switch self {
             case .unknown:
                 return NSLocalizedString("🔥 unknown exception", comment: "unknown")
             }
