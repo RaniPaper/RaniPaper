@@ -26,6 +26,8 @@
 		7B796F8729378CD500799616 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8629378CD500799616 /* HomeViewModel.swift */; };
 		7B796F8929384FEA00799616 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8829384FEA00799616 /* MemoModel.swift */; };
 		7B796F8E2938DA9D00799616 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7B796F8D2938DA9D00799616 /* AlertToast */; };
+		7B796F90293A22FA00799616 /* MailBoxAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */; };
+		7B796F92293A462A00799616 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F91293A462A00799616 /* RollingPaperView.swift */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
 		D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE23292DE28E002C8E89 /* Extension.swift */; };
@@ -80,6 +82,8 @@
 		7B796F8429378CB300799616 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7B796F8629378CD500799616 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7B796F8829384FEA00799616 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
+		7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailBoxAnimationView.swift; sourceTree = "<group>"; };
+		7B796F91293A462A00799616 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
 		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		D86ACE23292DE28E002C8E89 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				7B796F8429378CB300799616 /* HomeView.swift */,
+				7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */,
+				7B796F91293A462A00799616 /* RollingPaperView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -521,11 +527,13 @@
 				D86ACE2C292DF57F002C8E89 /* LockView.swift in Sources */,
 				493527002930F46C0066F083 /* SideMenuView.swift in Sources */,
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
+				7B796F90293A22FA00799616 /* MailBoxAnimationView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
 				D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */,
+				7B796F92293A462A00799616 /* RollingPaperView.swift in Sources */,
 				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,
 				D8D549BE2934B1A0001E4287 /* CalendarViewModel.swift in Sources */,
