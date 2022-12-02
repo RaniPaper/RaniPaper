@@ -58,6 +58,7 @@ struct TaskCardView: View {
                 }
                 
                 
+
                 Text(task.title)
                     .font(.title2.bold())
                     .foregroundColor(.black)
