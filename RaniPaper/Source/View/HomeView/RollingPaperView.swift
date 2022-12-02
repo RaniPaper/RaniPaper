@@ -46,6 +46,6 @@ struct RollingPaperView: View {
 
 struct RollingPaperView_Previews: PreviewProvider {
     static var previews: some View {
-        RollingPaperView()
+        RollingPaperView(rollingPaper: "rolling_paper_temp_2")
     }
 }
