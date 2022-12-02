@@ -50,7 +50,7 @@ struct CalendarView: View {
                                Image("Floating")
                                    .resizable()
                                    .aspectRatio(contentMode: .fill)
-                                   .frame(width: 50, height: 50)
+                                   .frame(width: 70, height: 70)
                                    .padding(.bottom,10)
                                    .padding(.trailing,10)
                            }

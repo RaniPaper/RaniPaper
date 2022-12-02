@@ -109,9 +109,9 @@ struct CustomDatePicker: View {
         
         
     
-        let _ = calendar.range(of: .day, in: .month, for: lastMonth)! //해당하는 달의 날짜가 몇일까지 있는지
+        let lastMonthRange = calendar.range(of: .day, in: .month, for: lastMonth)! //해당하는 달의 날짜가 몇일까지 있는지
         
-        
+        let dayOfLastMonth = lastMonthRange.last!
     
         
         VStack{
