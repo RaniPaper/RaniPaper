@@ -27,12 +27,6 @@ struct HomeView: View {
             
             fileManagerTestButtonView() // 테스트용입니다.
             
-            Button{
-                MySoundSetting.instance.playSound()
-            } label: {
-                Text("play music")
-            }
-            
             if isAnimating {
                 LottieView(name: "mail-boxletter-box", loopMode: .playOnce)
                     .background(Color.black.opacity(0.6))
