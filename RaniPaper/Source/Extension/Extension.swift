@@ -144,6 +144,12 @@ extension Date {
     
 }
 
+extension Array {
+    mutating func popFirst() -> Element? {
+        return self[self.indices].popFirst()
+    }
+}
+
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) // 키보드 없애기
