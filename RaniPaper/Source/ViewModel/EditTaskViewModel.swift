@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 final class EditTaskViewModel:ObservableObject{
+    var taskId: String?
     @Published var taskTitle:String = ""
     @Published var taskDeadLine:Date = Date()
     @Published var taskColor:String = "ine"
@@ -52,7 +53,7 @@ final class EditTaskViewModel:ObservableObject{
     
     func save() -> Bool {
         let taskModel = TaskModel(title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
-        let result = MyFileManager.shared.create(at: .diary, fileName: "\(taskTitle).json", taskModel)
+        let result = MyFileManager.shared.create(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
         
         switch result {
         case .success():
@@ -65,8 +66,9 @@ final class EditTaskViewModel:ObservableObject{
     }
     
     func update() -> Bool {
-        let taskModel = TaskModel(title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
-        let result = MyFileManager.shared.update(at: .diary, fileName: "\(taskTitle).json", taskModel)
+        // 기존 task 편집시엔 이미 taskId가 있으므로 해당 taskId로 저장, 신규면 새 UUID
+        let taskModel = TaskModel(id: taskId ?? UUID().uuidString, title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
+        let result = MyFileManager.shared.update(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
         
         switch result {
         case .success():
