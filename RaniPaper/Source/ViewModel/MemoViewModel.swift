@@ -14,4 +14,13 @@ final class MemoViewModel:ObservableObject {
     @Published var showDatePicker:Bool = false
     @Published var showEditView:Bool = false
     
+    
+    init()
+    {
+        print("✅ MemoViewModel 생성")
+    }
+    
+    deinit{
+        print("❌ MemoViewModel 소멸")
+    }
 }
