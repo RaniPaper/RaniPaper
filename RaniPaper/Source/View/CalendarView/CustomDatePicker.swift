@@ -131,9 +131,9 @@ struct CustomDatePicker: View {
         
         
     
-        let lastMonthRange = calendar.range(of: .day, in: .month, for: lastMonth)! //해당하는 달의 날짜가 몇일까지 있는지
+        let _ = calendar.range(of: .day, in: .month, for: lastMonth)! //해당하는 달의 날짜가 몇일까지 있는지
         
-        let dayOfLastMonth = lastMonthRange.last!
+        
     
         
         VStack{
@@ -229,7 +229,7 @@ struct CustomDatePicker: View {
         let firstWeekDay = calendar.component(.weekday, from: days.first?.date ?? Date())
         //해당 날짜의 첫번째 주 평일을 갖고 온다
         
-        for i in 0..<firstWeekDay-1 {
+        for _ in 0..<firstWeekDay-1 {
             days.insert(DateModel(day: -1, date: Date()),at:0)
         } //부족한 갯수만큼 -1을 넣어줌
         

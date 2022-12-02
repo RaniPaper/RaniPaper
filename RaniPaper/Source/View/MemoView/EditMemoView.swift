@@ -13,6 +13,7 @@ struct EditMemoView: View {
     @ObservedObject var viewModel:EditMemoViewModel = EditMemoViewModel()
     
     var body: some View {
+        let inputColor:Color = Color.init(hexcode: "FFFDEB")
         ZStack {
 
             VStack(){
@@ -47,9 +48,49 @@ struct EditMemoView: View {
                         .frame(maxWidth: .infinity,maxHeight: 10)
                 }
                 
-                ScrollView(){
-                    
+                
+                TextField("", text: $viewModel.title)
+                    .lineLimit(1)
+                    .font(.beomsuk(30))
+                    .textFieldStyle(.roundedBorder)
+                    .border(Color.memoPrimary,width:3)
+                    .colorMultiply(inputColor) //배경색
+                    .padding(.top,10)
+                    .padding(.horizontal,5)
+                   
+                VStack {
+                    TextEditor(text: $viewModel.content)
+                        .font(.beomsuk(30))
+                        .colorMultiply(inputColor)
+                        .multilineTextAlignment(.leading)
+                        .padding(.horizontal,5) //글자 들여쓰기를 위한 패딩
                 }
+                .background(inputColor)
+                .border(Color.memoPrimary,width:3)
+                .padding(.top,5)
+                .padding(.horizontal,5)
+                .padding(.bottom,30)
+                .overlay {
+                    VStack{
+                        Button {
+                            UIApplication.shared.endEditing()
+                            
+                        } label: {
+                            Image("memoSave")
+                        }
+                        
+                        .padding(.bottom,5)
+                        .padding(.trailing,5)
+                        
+
+                    }.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottomTrailing)
+                }
+                    
+                    
+                   
+                    
+                
+                
                 
                 
                
