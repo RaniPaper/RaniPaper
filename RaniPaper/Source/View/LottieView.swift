@@ -14,11 +14,17 @@ import UIKit
 struct LottieView: UIViewRepresentable {
     var name : String
     var loopMode: LottieLoopMode
+    private let completion: () -> Void
     
     // 간단하게 View로 JSON 파일 이름으로 애니메이션을 실행합니다.
-    init(name: String, loopMode : LottieLoopMode = .loop){
+    public init(
+        name: String,
+        loopMode : LottieLoopMode = .loop,
+        completion: @escaping () -> Void = {}
+    ){
         self.name = name
         self.loopMode = loopMode
+        self.completion = completion
     }
     
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
@@ -32,7 +38,10 @@ struct LottieView: UIViewRepresentable {
         // 애니메이션은 기본으로 Loop합니다.
         animationView.loopMode = loopMode
         // 애니메이션을 재생합니다
-        animationView.play()
+        // 재생이 끝나면 completion 을 실행합니다.
+        animationView.play { _ in
+            completion()
+        }
         // 백그라운드에서 재생이 멈추는 오류를 잡습니다
         animationView.backgroundBehavior = .pauseAndRestore
         
@@ -55,6 +64,6 @@ struct LottieView: UIViewRepresentable {
 
 struct LottieView_Previews: PreviewProvider {
     static var previews: some View {
-        LottieView(name: "mail-boxletter-box")
+        LottieView(name: "mail-boxletter-box", completion: {})
     }
 }
