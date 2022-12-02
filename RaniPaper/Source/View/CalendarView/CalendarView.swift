@@ -55,9 +55,11 @@ struct CalendarView: View {
         }
         .fullScreenCover(isPresented: $viewModel.showEdit) {
 
-            EditTaskView(showEdit: $viewModel.showEdit).onDisappear {
-                viewModel.fetchTasks()
-            }
+            EditTaskView(showEdit: $viewModel.showEdit)
+                .onDisappear {
+                    viewModel.fetchTasks()
+                    
+                }
         }
         
         
