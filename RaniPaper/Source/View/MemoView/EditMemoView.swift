@@ -107,7 +107,7 @@ struct EditMemoView: View {
             guard let existMemo else { return }
             print("기존 memo를 불러옵니다:", existMemo)
             viewModel.memoId = existMemo.id
-            viewModel.nowDate = existMemo.date // 업데이트 날짜로 반영해야하나?
+        //    viewModel.nowDate = existMemo.date // 업데이트 날짜로 반영해야하나?
             viewModel.title = existMemo.title
             viewModel.content = existMemo.content
         }

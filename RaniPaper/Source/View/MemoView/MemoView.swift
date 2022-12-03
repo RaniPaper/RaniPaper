@@ -33,7 +33,7 @@ struct MemoView: View {
                             Text("기록")
                                 .font(.efDiary(30))
                                 .foregroundColor(.memoPrimary)
-                            Text("(-)")
+                            Text("(\(viewModel.memos.count))")
                                 .font(.efDiary(20))
                                 .foregroundColor(.memoPrimary)
                                 .frame(maxWidth:proxy.size.width)

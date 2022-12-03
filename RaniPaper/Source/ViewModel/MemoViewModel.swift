@@ -31,9 +31,9 @@ final class MemoViewModel:ObservableObject {
         switch result {
         case .success(let date):
             memos = date.map{$0 as! MemoModel}.sorted(by: {
-                $0.date > $1.date
+                $0.date > $1.date //최신 순 반영
             })
-            print(memos)
+            //print(memos)
 
         case .failure(let error):
             print(error.errorDescription)
