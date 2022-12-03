@@ -76,7 +76,9 @@ class MySoundSetting: ObservableObject{
         switch soundType {
         case .BGM:
             if self.isEnable{
-                self.play()
+                if !self.isPlaying(){
+                    self.play()
+                }
             }
             else{
                 self.stop()

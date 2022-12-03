@@ -12,9 +12,7 @@ class HomeViewModel: ObservableObject {
     init() {
         // 처음 Home 진입 시 설정
         // 배경음 설정이 on이고 기존에 노래가 재생되고 있지 않았다면 배경음 재생
-        if !MySoundSetting.BGM.isPlaying() {
-            MySoundSetting.BGM.play()
-        }
+        MySoundSetting.BGM.updateSoundState(soundType: .BGM)
         
         print("✅ HomeViewModel 생성")
     }
