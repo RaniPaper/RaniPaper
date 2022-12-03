@@ -36,15 +36,8 @@ struct HomeView: View {
                     Text("play SFX")
                 }
             }
-            Button(action:{
-                MySoundSetting.SFX.play()
-            }){
-                Text("play SFX")
-            }
             .ignoresSafeArea()
         }
-        
-        
     }
 }
 

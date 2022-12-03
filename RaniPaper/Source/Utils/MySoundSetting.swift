@@ -47,7 +47,6 @@ class MySoundSetting: ObservableObject{
         if self.isEnable{
             player?.play()
         }
-        print("✅ MySoundSetting init")
     }
     
     //음원 정지

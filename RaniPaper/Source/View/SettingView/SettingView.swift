@@ -11,10 +11,10 @@ struct SettingView: View {
     @ObservedObject var viewModel = SettingViewModel()
     var body: some View {
         ZStack{
-            Image("mainTmp")
+            Image("main_static")
                 .resizable()
-                .blur(radius: 5)
                 .aspectRatio(contentMode: .fill)
+                .blur(radius: 5)
             VStack{
                 Image("viic1")
                 
