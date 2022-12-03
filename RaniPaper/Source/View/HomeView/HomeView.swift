@@ -30,8 +30,11 @@ struct HomeView: View {
                                 .contentShape(Rectangle())
                         }
                     })
-
-                
+                Button(action:{
+                    MySoundSetting.SFX.play()
+                }){
+                    Text("play SFX")
+                }
             }
             Button(action:{
                 MySoundSetting.SFX.play()

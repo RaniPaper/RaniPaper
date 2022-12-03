@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 final class SettingViewModel: ObservableObject {
-    var defaults = UserDefaults.standard
     @Published var settingList: [SettingContent]
     {
         didSet{
