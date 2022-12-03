@@ -12,17 +12,14 @@ class MySoundSetting: ObservableObject{
     static let BGM = MySoundSetting(url: "testBGM", extension: ".flac", .BGM) // BGM 컨트롤용 인스턴스
     static let SFX = MySoundSetting(url: "testSFX", extension: ".mp3", .SFX) // SFX 컨트롤용 인스턴스
     
+    let urlName: String
+    let extensionName: String
     var player: AVAudioPlayer?
     var isEnable: Bool = true
     
     private init(url urlName: String, extension extensionName: String, _ type: SoundType){
-        guard let url = Bundle.main.url(forResource: urlName, withExtension: extensionName) else {return} // 번들에서 url 불러오기, 에러 처리 필요
-        // 해당 url의 음원 재생하는 플레이어 생성
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-        } catch let error {
-            print("음원을 불러오는데 오류가 발생했습니다.\(error.localizedDescription)")
-        }
+        self.urlName = urlName
+        self.extensionName = extensionName
         
         // 해당 음성 타입의 활성 상태 초기화
         switch type {
@@ -38,6 +35,15 @@ class MySoundSetting: ObservableObject{
     
     //음원 재생
     func play() {
+        guard let url = Bundle.main.url(forResource: self.urlName, withExtension: self.extensionName) else {return} // 번들에서 url 불러오기, 에러 처리 필요
+        
+        // 해당 url의 음원 재생하는 플레이어 생성
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+        } catch let error {
+            print("음원을 불러오는데 오류가 발생했습니다.\(error.localizedDescription)")
+        }
+        
         if self.isEnable{
             player?.play()
         }
