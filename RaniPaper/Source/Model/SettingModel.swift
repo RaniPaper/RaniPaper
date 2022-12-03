@@ -10,12 +10,14 @@ import SwiftUI
 
 struct SettingContent: Identifiable {
     let id: UUID
+    let soundType: SoundType
     let key: String
     var isOn: Bool
     
-    init(key: String, isOn: Bool) {
+    init(soundType: SoundType) {
         id = UUID()
-        self.key = key
-        self.isOn = isOn
+        self.soundType = soundType
+        self.key = self.soundType.rawValue
+        self.isOn = MyUserDefaults.shared.getValue(key: self.key) as! Bool
     }
 }

@@ -15,9 +15,6 @@ final class SettingViewModel: ObservableObject {
         didSet{
             for settingContent in settingList{
                 defaults.set(settingContent.isOn, forKey: settingContent.key)
-                if settingContent.key == "배경음"{
-                    
-                }
             }
         }
     }
@@ -25,8 +22,8 @@ final class SettingViewModel: ObservableObject {
     
     init() {
         settingList =
-        [SettingContent(key: "배경음", isOn: defaults.bool(forKey: "배경음")),
-            SettingContent(key: "효과음", isOn: defaults.bool(forKey: "효과음"))]
+        [SettingContent(soundType: .BGM),
+         SettingContent(soundType: .SFX)]
         
         print("✅ SettingViewModel 생성")
     }
