@@ -10,15 +10,8 @@ import SwiftUI
 struct MemoView: View {
     @ObservedObject var viewModel:MemoViewModel = MemoViewModel()
     let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
-    let memos:[MemoModel] = [MemoModel(title: "제목1", content: "간다라ㅏㅁ암앎ㅇ라asdasdsdadasdaas"),
-                             MemoModel(title: "제목2", content: "내용22222222222222222222"),
-                             MemoModel(title: "제목3", content: "내용33333333333333333333"),
-                             MemoModel(title: "제목4", content: "내용44444444444444444444"),
-                             MemoModel(title: "제목5", content: "내용55555555555555555555"),
-                             MemoModel(title: "제목6", content: "내용66666666666666666666"),
-                             MemoModel(title: "제목7", content: "내용66666666666666666666"),
-                             MemoModel(title: "제목8", content: "내용66666666666666666666"),
-                             MemoModel(title: "제목9", content: "내용66666666666666666666")]
+
+   
     var body: some View {
         ZStack(alignment:.bottom) {
             VStack(spacing:0){
@@ -166,8 +159,13 @@ struct MemoView: View {
                     if(viewModel.wayToShow == "크게보기")
                     {
                         LazyVGrid(columns: columns) {
-                            ForEach(memos){ memo in
+                            ForEach(viewModel.memos){ memo in
                                 LargeStickerView(memo: memo)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture { 
+                                        viewModel.showEditView = true
+                                        viewModel.existMemo = memo
+                                    }
                             }
                         }
                     }
@@ -175,8 +173,13 @@ struct MemoView: View {
                     {
                         LazyVGrid(columns:[GridItem(.flexible())])
                         {
-                            ForEach(memos) { memo in
+                            ForEach(viewModel.memos) { memo in
                                 SmallStickerView(memo: memo)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        viewModel.showEditView = true
+                                        viewModel.existMemo = memo
+                                    }
                             }
                         }
                     }
@@ -188,6 +191,7 @@ struct MemoView: View {
                     //MARK: 플로팅 버튼
                     VStack{
                         Button {
+                            viewModel.existMemo = nil
                             viewModel.showEditView = true
                         } label: {
                             Image("memoWrite")
@@ -215,7 +219,10 @@ struct MemoView: View {
  
         .edgesIgnoringSafeArea(.vertical)
         .fullScreenCover(isPresented: $viewModel.showEditView, content: {
-            EditMemoView(showEditView: $viewModel.showEditView)
+            EditMemoView(showEditView: $viewModel.showEditView,existMemo: viewModel.existMemo).onDisappear{
+                //편집 창 꺼지면 fetchMemos
+                viewModel.fetchMemos()
+            }
         })
     }
 }

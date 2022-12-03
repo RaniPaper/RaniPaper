@@ -9,8 +9,10 @@ import SwiftUI
 
 struct EditMemoView: View {
     
-    @Binding var showEditView:Bool
+
     @ObservedObject var viewModel:EditMemoViewModel = EditMemoViewModel()
+    @Binding var showEditView:Bool
+    var existMemo: MemoModel? // 기존의 memo
     
     var body: some View {
         let inputColor:Color = Color.init(hexcode: "FFFDEB")
@@ -73,7 +75,10 @@ struct EditMemoView: View {
                 .overlay {
                     VStack{
                         Button {
-                            UIApplication.shared.endEditing()
+                            if viewModel.update() {
+                                UIApplication.shared.endEditing()
+                                showEditView = false
+                            } 
                             
                         } label: {
                             Image("memoSave")
@@ -98,6 +103,14 @@ struct EditMemoView: View {
         }
         //.edgesIgnoringSafeArea(.vertical)
         .background(Color.memoBg)
+        .onAppear{
+            guard let existMemo else { return }
+            print("기존 memo를 불러옵니다:", existMemo)
+            viewModel.memoId = existMemo.id
+            viewModel.nowDate = existMemo.date // 업데이트 날짜로 반영해야하나?
+            viewModel.title = existMemo.title
+            viewModel.content = existMemo.content
+        }
         
     }
 }

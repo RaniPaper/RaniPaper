@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LargeStickerView: View {
     
+    
     var memo:MemoModel
     
     var body: some View {
@@ -25,6 +26,7 @@ struct LargeStickerView: View {
                 .padding()
                 .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
             }
+            
     }
 }
 
