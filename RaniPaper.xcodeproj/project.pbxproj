@@ -580,6 +580,7 @@
 				D89A06932929FD5000F5D408 /* RaniPaperApp.swift in Sources */,
 				49E87967293A35E90091A101 /* MyUserDefaults.swift in Sources */,
 				D8FF9359293A57A700B0F475 /* EditMemoView.swift in Sources */,
+				49E87967293A35E90091A101 /* MyUserDefaults.swift in Sources */,
 				D8D549BE2934B1A0001E4287 /* CalendarViewModel.swift in Sources */,
 				D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */,
 				D8D549C72936539B001E4287 /* TaskCardView.swift in Sources */,

@@ -46,11 +46,7 @@ class MySoundSetting: ObservableObject{
         
         if self.isEnable{
             player?.play()
-
         }
-        
-        soundType = type
-            
         print("✅ MySoundSetting init")
     }
     
@@ -69,7 +65,6 @@ class MySoundSetting: ObservableObject{
             return false
         }
     }
-    
     //음성 타입 활성 상태 업데이트
     func updateEnable(soundType: SoundType){
         self.isEnable = MyUserDefaults.shared.getValue(key: soundType.rawValue) as! Bool
