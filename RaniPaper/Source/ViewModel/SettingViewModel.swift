@@ -9,12 +9,17 @@ import Foundation
 import SwiftUI
 
 final class SettingViewModel: ObservableObject {
-    var defaults = UserDefaults.standard
     @Published var settingList: [SettingContent]
     {
         didSet{
             for settingContent in settingList{
-                defaults.set(settingContent.isOn, forKey: settingContent.key)
+                MyUserDefaults.shared.setValue(key: settingContent.key, value: settingContent.isOn)
+                switch settingContent.soundType {
+                case .BGM:
+                    MySoundSetting.BGM.updateSoundState(soundType: settingContent.soundType)
+                case .SFX:
+                    MySoundSetting.SFX.updateSoundState(soundType: settingContent.soundType)
+                }
             }
         }
     }

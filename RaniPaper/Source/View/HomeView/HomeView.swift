@@ -39,6 +39,11 @@ struct HomeView: View {
                     }
 
             }
+            Button(action:{
+                MySoundSetting.SFX.play()
+            }){
+                Text("play SFX")
+            }
         }
     }
 }

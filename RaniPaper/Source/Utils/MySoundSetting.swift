@@ -16,18 +16,19 @@ class MySoundSetting: ObservableObject{
     var isEnable: Bool = true
     
     private init(url urlName: String, extension extensionName: String, _ type: SoundType){
-        guard let url = Bundle.main.url(forResource: urlName, withExtension: extensionName) else {return}
+        guard let url = Bundle.main.url(forResource: urlName, withExtension: extensionName) else {return} // 번들에서 url 불러오기, 에러 처리 필요
+        // 해당 url의 음원 재생하는 플레이어 생성
         do {
             player = try AVAudioPlayer(contentsOf: url)
-            player?.numberOfLoops = -1
-            
         } catch let error {
             print("음원을 불러오는데 오류가 발생했습니다.\(error.localizedDescription)")
         }
         
+        // 해당 음성 타입의 활성 상태 초기화
         switch type {
         case .BGM:
             isEnable = MyUserDefaults.shared.getValue(key: "배경음") as! Bool
+            player?.numberOfLoops = -1
         case .SFX:
             isEnable = MyUserDefaults.shared.getValue(key: "효과음") as! Bool
         }
@@ -36,15 +37,19 @@ class MySoundSetting: ObservableObject{
     }
     
     //음원 재생
-    func play(){
-        player?.play()
+    func play() {
+        if self.isEnable{
+            player?.play()
+        }
     }
     
     //음원 정지
     func stop(){
         player?.stop()
+        player?.currentTime = 0
     }
     
+    //음원 재생 상태 확인
     func isPlaying() -> Bool{
         if let isPlaying = player?.isPlaying{
             return isPlaying
@@ -53,8 +58,25 @@ class MySoundSetting: ObservableObject{
             return false
         }
     }
-    //update isEnable
-    func updateEnable(key: String){
-        
+    
+    //음성 타입 활성 상태 업데이트
+    func updateEnable(soundType: SoundType){
+        self.isEnable = MyUserDefaults.shared.getValue(key: soundType.rawValue) as! Bool
+    }
+    
+    // 음성 재생 상태 업데이트
+    func updateSoundState(soundType: SoundType){
+        self.updateEnable(soundType: soundType)
+        switch soundType {
+        case .BGM:
+            if self.isEnable{
+                self.play()
+            }
+            else{
+                self.stop()
+            }
+        default:
+            break
+        }
     }
 }
