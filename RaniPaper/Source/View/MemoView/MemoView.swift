@@ -178,9 +178,27 @@ struct MemoView: View {
                                         }.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
                                     })
                                     .contentShape(Rectangle())
-                                    .onTapGesture { 
-                                        viewModel.showEditView = true
-                                        viewModel.existMemo = memo
+                                    .onTapGesture {
+                                        if(viewModel.deleteMode) //삭제 모드 켜있을 시 메모지 클릭해도 삭제 담기
+                                        {
+                                            if(viewModel.trashSet.contains(memo.id))
+                                            {
+                                                viewModel.trashSet.remove(memo.id)
+                                            }
+                                            else
+                                            {
+                                                viewModel.trashSet.insert(memo.id)
+                                            }
+                                        }
+                                        else //아닐 시 편집화면
+                                        {
+                                            viewModel.showEditView = true
+                                            viewModel.existMemo = memo
+                                        }
+                                        
+                                    }
+                                    .onLongPressGesture(minimumDuration: 1) {
+                                        viewModel.deleteMode = true
                                     }
                             }
                         }
@@ -223,8 +241,26 @@ struct MemoView: View {
                                     })
                                     .contentShape(Rectangle())
                                     .onTapGesture {
-                                        viewModel.showEditView = true
-                                        viewModel.existMemo = memo
+                                        if(viewModel.deleteMode) //삭제 모드 켜있을 시 메모지 클릭해도 삭제 담기
+                                        {
+                                            if(viewModel.trashSet.contains(memo.id))
+                                            {
+                                                viewModel.trashSet.remove(memo.id)
+                                            }
+                                            else
+                                            {
+                                                viewModel.trashSet.insert(memo.id)
+                                            }
+                                        }
+                                        else //아닐 시 편집화면
+                                        {
+                                            viewModel.showEditView = true
+                                            viewModel.existMemo = memo
+                                        }
+                                        
+                                    }
+                                    .onLongPressGesture(minimumDuration: 1) {
+                                        viewModel.deleteMode = true
                                     }
                             }
                         }
@@ -237,9 +273,9 @@ struct MemoView: View {
                     //MARK: 플로팅 버튼
                     VStack{
                         Button {
-                           // viewModel.existMemo = nil
+                           //viewModel.existMemo = nil
                             //viewModel.showEditView = true
-                            viewModel.showDeleteModal.toggle()
+                           viewModel.showDeleteModal.toggle()
                         } label: {
                             Image("memoWrite")
                                 .resizable()
@@ -268,7 +304,6 @@ struct MemoView: View {
             
             
         }
- 
         .edgesIgnoringSafeArea(.vertical)
         .fullScreenCover(isPresented: $viewModel.showEditView, content: {
             EditMemoView(showEditView: $viewModel.showEditView,existMemo: viewModel.existMemo).onDisappear{
@@ -277,7 +312,7 @@ struct MemoView: View {
             }
         })
         .popup(isPresented: $viewModel.showDeleteModal,closeOnTap: false,closeOnTapOutside: true,backgroundColor: .black.opacity(0.2)) {
-            //Callback
+            viewModel.fetchMemos()
         } view: {
             // MARK: 팝업 뷰
             ZStack(alignment: .top){
@@ -290,7 +325,9 @@ struct MemoView: View {
                    Text("*지운 메모는 복구할 수 없습니다.").font(.efDiary(15)).foregroundColor(Color.init(hexcode: "D09393"))
                     HStack(spacing:20){
                         Button {
-                            print("삭제")
+                            viewModel.deleteMemos()
+                            viewModel.showDeleteModal = false
+                            viewModel.deleteMode = false
                         } label: {
                             Text("삭제")
                                 .font(.efDiary(30))
@@ -298,7 +335,7 @@ struct MemoView: View {
                         }
 
                         Button {
-                            print("취소")
+                            viewModel.showDeleteModal = false
                         } label: {
                             Text("취소")
                                 .font(.efDiary(30))
@@ -320,7 +357,9 @@ struct MemoView: View {
             
                 
         }
-
+        .onTapGesture {
+            viewModel.deleteMode = false
+        }
     }
 }
 

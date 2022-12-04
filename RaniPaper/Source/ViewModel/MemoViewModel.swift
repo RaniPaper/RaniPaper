@@ -40,10 +40,10 @@ final class MemoViewModel:ObservableObject {
         }
     }
     
-    func deleteMemos(trash:Set<String>) ->Bool {
+    func deleteMemos() ->Bool {
         
         var success:Bool = true
-        for id in trash{
+        for id in trashSet{
             
             success = deleteMemo(id)
         }
