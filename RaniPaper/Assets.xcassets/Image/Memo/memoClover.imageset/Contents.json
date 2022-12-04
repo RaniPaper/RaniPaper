@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "memoBottomBanner 1.png",
+      "filename" : "memoClover.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "memoBottomBanner 2.png",
+      "filename" : "memoClover 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "memoBottomBanner 3.png",
+      "filename" : "memoClover 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

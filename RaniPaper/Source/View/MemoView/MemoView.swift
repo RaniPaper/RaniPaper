@@ -253,10 +253,14 @@ struct MemoView: View {
                 }
                 
                 // MARK: 하단 배너
-                Image("memoBottomBanner")
-                    .resizable()
-                    .frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
-                    .aspectRatio(contentMode: .fit)
+                VStack{
+                    Image("memoClover")
+                        .resizable()
+                        .frame(width: ScreenSize.width/6, height: ScreenSize.width/6)
+                        .scaledToFit()
+                }.frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
+                    .background(Color.memoBg)
+              
                     
                     
                 
@@ -272,10 +276,49 @@ struct MemoView: View {
                 viewModel.fetchMemos()
             }
         })
-        .popup(isPresented: $viewModel.showDeleteModal) {
-            
+        .popup(isPresented: $viewModel.showDeleteModal,closeOnTap: false,closeOnTapOutside: true,backgroundColor: .black.opacity(0.2)) {
+            //Callback
         } view: {
+            // MARK: 팝업 뷰
+            ZStack(alignment: .top){
+               RoundedRectangle(cornerRadius:15).fill(Color.init(hexcode: "FFF0BB")) //채우기
+               RoundedRectangle(cornerRadius:15).stroke(Color.memoPrimary,lineWidth: 3) //테두리
+                VStack(spacing:20){
+                   Image("memoDeleteTrash")
+                   Text("정말로 삭제하시겠습니까?").font(.efDiary(25)).foregroundColor(Color.init(hexcode: "9E4242"))
+                   
+                   Text("*지운 메모는 복구할 수 없습니다.").font(.efDiary(15)).foregroundColor(Color.init(hexcode: "D09393"))
+                    HStack(spacing:20){
+                        Button {
+                            print("삭제")
+                        } label: {
+                            Text("삭제")
+                                .font(.efDiary(30))
+                                .foregroundColor(Color.init(hexcode: "EC3A3A"))
+                        }
+
+                        Button {
+                            print("취소")
+                        } label: {
+                            Text("취소")
+                                .font(.efDiary(30))
+                                .foregroundColor(Color.init(hexcode: "5E2121"))
+                        }
+
+                    }
+                    .frame(maxWidth:.infinity)
+                 
+                   
+                   
+               }
+               .padding(.top,20)
             
+               
+            }
+            .frame(maxWidth:ScreenSize.width/1.3,maxHeight: ScreenSize.width/1.5)
+                 
+            
+                
         }
 
     }
