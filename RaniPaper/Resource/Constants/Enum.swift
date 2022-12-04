@@ -36,6 +36,6 @@ enum ViewSelection: CaseIterable {
 }
 
 enum SoundType: String{
-    case BGM = "배경음", SFX = "효과음"
+    case BGM = "배경음", SFX = "효과음", ALARM = "알람"
     //case Alarm:
 }

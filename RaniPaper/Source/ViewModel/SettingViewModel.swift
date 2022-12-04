@@ -14,12 +14,7 @@ final class SettingViewModel: ObservableObject {
         didSet{
             for settingContent in settingList{
                 MyUserDefaults.shared.setValue(key: settingContent.key, value: settingContent.isOn)
-                switch settingContent.soundType {
-                case .BGM:
-                    MySoundSetting.BGM.updateSoundState(soundType: settingContent.soundType)
-                case .SFX:
-                    MySoundSetting.SFX.updateSoundState(soundType: settingContent.soundType)
-                }
+                MySoundSetting.getInstance(soundType: settingContent.soundType).updateSoundState(soundType: settingContent.soundType)
             }
         }
     }
@@ -28,7 +23,8 @@ final class SettingViewModel: ObservableObject {
     init() {
         settingList =
         [SettingContent(soundType: .BGM),
-         SettingContent(soundType: .SFX)]
+         SettingContent(soundType: .SFX),
+         SettingContent(soundType: .ALARM)]
         
         print("✅ SettingViewModel 생성")
     }

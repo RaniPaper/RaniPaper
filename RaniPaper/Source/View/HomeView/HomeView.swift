@@ -30,11 +30,7 @@ struct HomeView: View {
                                 .contentShape(Rectangle())
                         }
                     })
-                Button(action:{
-                    MySoundSetting.SFX.play()
-                }){
-                    Text("play SFX")
-                }
+                soundSettingTestButtonView()
             }
             .ignoresSafeArea()
         }
@@ -96,6 +92,28 @@ extension HomeView {
                 }
             } label: {
                 Text("DELETE").padding().background(RoundedRectangle(cornerRadius: 8).foregroundColor(.gray))
+            }
+        }
+    }
+}
+
+//소리 테스트용
+extension HomeView {
+    func soundSettingTestButtonView() -> some View{
+        VStack{
+            Button(action:{
+                MySoundSetting.SFX.play()
+            }){
+                Text("play SFX")
+            }
+            Button(action:{
+                if MySoundSetting.Alarm.isPlaying(){
+                    MySoundSetting.Alarm.stop()
+                } else{
+                    MySoundSetting.Alarm.play()
+                }
+            }){
+                Text("play Alarm")
             }
         }
     }
