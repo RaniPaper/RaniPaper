@@ -16,7 +16,7 @@ final class MemoViewModel:ObservableObject {
     @Published var memos:[MemoModel] = []
     
     var existMemo:MemoModel?
-    var trashSet:Set<String>?
+    @Published var trashSet:Set<String>
     
     init()
     {
@@ -66,7 +66,6 @@ final class MemoViewModel:ObservableObject {
     
     deinit{
         print("❌ MemoViewModel 소멸")
-        trashSet = nil
         existMemo = nil
     }
 }

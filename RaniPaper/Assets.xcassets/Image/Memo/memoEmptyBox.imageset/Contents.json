@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "memoSave.png",
+      "filename" : "memoEmptyBox.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "memoSave 1.png",
+      "filename" : "memoEmptyBox 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "memoSave 2.png",
+      "filename" : "memoEmptyBox 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

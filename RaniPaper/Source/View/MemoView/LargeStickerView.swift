@@ -11,14 +11,18 @@ struct LargeStickerView: View {
     
     
     var memo:MemoModel
+ 
     
     var body: some View {
         Image("largeSticker")
             .overlay() {
                 VStack{
+                    
+                    
                     Text(memo.title)
                         .font(.beomsuk(20))
                         .lineLimit(1)
+                        .padding(.top,20)
                     Divider()
                     Text(memo.content).lineLimit(2).frame(maxWidth:.infinity,alignment: .leading)
                         .font(.samanco(15))

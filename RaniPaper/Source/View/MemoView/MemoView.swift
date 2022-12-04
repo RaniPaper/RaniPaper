@@ -116,8 +116,9 @@ struct MemoView: View {
                                         //MARK: 삭제버튼
                                         Button {
                                             viewModel.deleteMode.toggle()
+                                            viewModel.trashSet.removeAll()
                                         } label: {
-                                            Image("memoTrash")
+                                            Image(viewModel.deleteMode ? "memoRedTrash" : "memoTrash")
                                         }.padding(.trailing,thinPadding*2)
 
                                     }
@@ -161,6 +162,34 @@ struct MemoView: View {
                         LazyVGrid(columns: columns) {
                             ForEach(viewModel.memos){ memo in
                                 LargeStickerView(memo: memo)
+                                    .overlay(content: {
+                                        VStack{
+                                            if(viewModel.deleteMode)
+                                            {
+                                                Button {
+                                                    if(viewModel.trashSet.contains(memo.id))
+                                                    {
+                                                        viewModel.trashSet.remove(memo.id)
+                                                    }
+                                                    else
+                                                    {
+                                                        viewModel.trashSet.insert(memo.id)
+                                                    }
+                                                    
+                                                } label: {
+                                                    
+                                                Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
+                                                }
+                                                .padding(.leading,5)
+                                                .padding(.top,5)
+                                                       
+                                                       
+                                                    
+
+                                            }
+                                            
+                                        }.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
+                                    })
                                     .contentShape(Rectangle())
                                     .onTapGesture { 
                                         viewModel.showEditView = true
@@ -175,6 +204,34 @@ struct MemoView: View {
                         {
                             ForEach(viewModel.memos) { memo in
                                 SmallStickerView(memo: memo)
+                                    .overlay(content: {
+                                        VStack{
+                                            if(viewModel.deleteMode)
+                                            {
+                                                Button {
+                                                    if(viewModel.trashSet.contains(memo.id))
+                                                    {
+                                                        viewModel.trashSet.remove(memo.id)
+                                                    }
+                                                    else
+                                                    {
+                                                        viewModel.trashSet.insert(memo.id)
+                                                    }
+                                                    
+                                                } label: {
+                                                    
+                                                Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
+                                                }
+                                                .padding(.leading,5)
+                                                .padding(.top,5)
+                                                       
+                                                       
+                                                    
+
+                                            }
+                                            
+                                        }.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
+                                    })
                                     .contentShape(Rectangle())
                                     .onTapGesture {
                                         viewModel.showEditView = true
