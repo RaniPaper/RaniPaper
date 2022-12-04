@@ -16,10 +16,10 @@
 		493526FA292F59460066F083 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526F9292F59460066F083 /* MenuView.swift */; };
 		493526FE292FFC030066F083 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FD292FFC030066F083 /* MenuModel.swift */; };
 		493527002930F46C0066F083 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FF2930F46C0066F083 /* SideMenuView.swift */; };
-		49D812F7293CF669009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F6293CF669009A2748 /* testAlarm.mp3 */; };
+		49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F8293D1C79009A2748 /* testAlarm.mp3 */; };
+		49D812FB293D1C85009A2748 /* testBGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812FA293D1C85009A2748 /* testBGM.mp3 */; };
 		49E703F029353A150035215F /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703EF29353A150035215F /* CreditView.swift */; };
 		49E703F3293543EC0035215F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703F2293543EC0035215F /* InfoView.swift */; };
-		49E879622938F9F00091A101 /* testBGM.flac in Resources */ = {isa = PBXBuildFile; fileRef = 49E879602938F9EF0091A101 /* testBGM.flac */; };
 		49E879632938F9F00091A101 /* testSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E879612938F9EF0091A101 /* testSFX.mp3 */; };
 		49E879652938FA450091A101 /* MySoundSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E879642938FA450091A101 /* MySoundSetting.swift */; };
 		49E87967293A35E90091A101 /* MyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E87966293A35E90091A101 /* MyUserDefaults.swift */; };
@@ -81,10 +81,10 @@
 		493526F9292F59460066F083 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		493526FD292FFC030066F083 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		493526FF2930F46C0066F083 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		49D812F6293CF669009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
+		49D812F8293D1C79009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
+		49D812FA293D1C85009A2748 /* testBGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testBGM.mp3; sourceTree = "<group>"; };
 		49E703EF29353A150035215F /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		49E703F2293543EC0035215F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		49E879602938F9EF0091A101 /* testBGM.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = testBGM.flac; sourceTree = "<group>"; };
 		49E879612938F9EF0091A101 /* testSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSFX.mp3; sourceTree = "<group>"; };
 		49E879642938FA450091A101 /* MySoundSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySoundSetting.swift; sourceTree = "<group>"; };
 		49E87966293A35E90091A101 /* MyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserDefaults.swift; sourceTree = "<group>"; };
@@ -210,8 +210,8 @@
 		49E8795F2938F97E0091A101 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				49D812F6293CF669009A2748 /* testAlarm.mp3 */,
-				49E879602938F9EF0091A101 /* testBGM.flac */,
+				49D812F8293D1C79009A2748 /* testAlarm.mp3 */,
+				49D812FA293D1C85009A2748 /* testBGM.mp3 */,
 				49E879612938F9EF0091A101 /* testSFX.mp3 */,
 			);
 			path = Audio;
@@ -517,8 +517,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86ACE4B29309772002C8E89 /* Bold.otf in Resources */,
+				49D812FB293D1C85009A2748 /* testBGM.mp3 in Resources */,
 				D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */,
-				49E879622938F9F00091A101 /* testBGM.flac in Resources */,
 				7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */,
 				49E879632938F9F00091A101 /* testSFX.mp3 in Resources */,
 				D86ACE50293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf in Resources */,
@@ -528,7 +528,7 @@
 				D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */,
 				D86ACE45292F43B4002C8E89 /* JUA_otf.otf in Resources */,
 				D86ACE4D2930977A002C8E89 /* KOTRA_HOPE.otf in Resources */,
-				49D812F7293CF669009A2748 /* testAlarm.mp3 in Resources */,
+				49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */,
 				D86ACE43292F43B4002C8E89 /* SSAMANCO-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
