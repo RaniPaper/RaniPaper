@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct MemoView: View {
     @ObservedObject var viewModel:MemoViewModel = MemoViewModel()
     let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
@@ -106,20 +107,7 @@ struct MemoView: View {
                                         
                                         Spacer()
                                         
-                                        //MARK: 달력버튼
-                                        Button {
-                                            viewModel.showDatePicker.toggle()
-                                        } label: {
-                                            Image("memoCalendar")
-                                        }
                                       
-                                        //MARK: 삭제버튼
-                                        Button {
-                                            viewModel.deleteMode.toggle()
-                                            viewModel.trashSet.removeAll()
-                                        } label: {
-                                            Image(viewModel.deleteMode ? "memoRedTrash" : "memoTrash")
-                                        }.padding(.trailing,thinPadding*2)
 
                                     }
                                 }
@@ -248,8 +236,9 @@ struct MemoView: View {
                     //MARK: 플로팅 버튼
                     VStack{
                         Button {
-                            viewModel.existMemo = nil
-                            viewModel.showEditView = true
+                           // viewModel.existMemo = nil
+                            //viewModel.showEditView = true
+                            viewModel.showDeleteModal.toggle()
                         } label: {
                             Image("memoWrite")
                                 .resizable()
@@ -281,6 +270,14 @@ struct MemoView: View {
                 viewModel.fetchMemos()
             }
         })
+        .popup(isPresented: $viewModel.showDeleteModal) {
+            
+            VStack{
+                Image("memoDeleteTrash")
+            }
+            .padding()
+            //.background(RoundedRectangle(cornerRadius:10))
+        }
     }
 }
 
