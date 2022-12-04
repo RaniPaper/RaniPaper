@@ -168,7 +168,8 @@ struct MemoView: View {
                                                     
                                                 Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
                                                 }
-                                                
+                                                .padding(.leading,5)
+                                                .padding(.top,5)
                                                        
                                                        
                                                     
