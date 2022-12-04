@@ -13,7 +13,8 @@ final class SettingViewModel: ObservableObject {
     {
         didSet{
             for settingContent in settingList{
-                UserDefaults.standard.set(settingContent.isOn, forKey: settingContent.key)
+                MyUserDefaults.shared.setValue(key: settingContent.key, value: settingContent.isOn)
+                MySoundSetting.getInstance(soundType: settingContent.soundType).updateSoundState(soundType: settingContent.soundType)
             }
         }
     }
@@ -21,8 +22,9 @@ final class SettingViewModel: ObservableObject {
     
     init() {
         settingList =
-            [SettingContent(key: "배경음", isOn: UserDefaults.standard.bool(forKey: "배경음")),
-            SettingContent(key: "효과음", isOn: UserDefaults.standard.bool(forKey: "효과음"))]
+        [SettingContent(soundType: .BGM),
+         SettingContent(soundType: .SFX),
+         SettingContent(soundType: .ALARM)]
         
         print("✅ SettingViewModel 생성")
     }
