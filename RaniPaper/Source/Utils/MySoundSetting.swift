@@ -9,9 +9,6 @@ import Foundation
 import AVKit
 
 class MySoundSetting: ObservableObject{
-    static let BGM = MySoundSetting(url: "testBGM", extension: ".flac", .BGM) // BGM 컨트롤용 인스턴스
-    static let SFX = MySoundSetting(url: "testSFX", extension: ".mp3", .SFX) // SFX 컨트롤용 인스턴스
-    
     let urlName: String
     let extensionName: String
     var player: AVAudioPlayer?
@@ -87,4 +84,14 @@ class MySoundSetting: ObservableObject{
             break
         }
     }
+}
+
+// 인스턴스 관리
+extension MySoundSetting {
+    static let BGM = MySoundSetting(url: "testBGM", extension: ".flac", .BGM)
+    // BGM 컨트롤용 인스턴스
+    static let SFX = MySoundSetting(url: "testSFX", extension: ".mp3", .SFX)
+    // SFX 컨트롤용 인스턴스
+    
+    // 효과음 추가되면 위 형식으로 인스턴스 추가해서 사용 가능
 }
