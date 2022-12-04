@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import PopupView
 
 struct MemoView: View {
     @ObservedObject var viewModel:MemoViewModel = MemoViewModel()
@@ -19,15 +19,15 @@ struct MemoView: View {
                 
                 GeometryReader { proxy in
                     let thin:CGFloat = 5
-                    let thinPadding:CGFloat = 10
+                    let thinPadding:CGFloat = 20
                     ZStack {
                         //MARK: 왼쪽 사각형
                         VStack{
                             Rectangle()
                                 .fill(Color.memoPrimary)
                                 .frame(maxWidth:thin,maxHeight: proxy.size.height)
-                                .padding(.leading,thinPadding)
                         }.frame(maxWidth:proxy.size.width,alignment: .leading)
+                        .padding(.leading,thinPadding)
                         
                         VStack(spacing: 2) {
                         
@@ -45,13 +45,14 @@ struct MemoView: View {
                                                 viewModel.isDropDown.toggle()
                                             
                                         } label: {
+                                            // MARK: 보는방법 텍스트
                                             HStack(spacing: 0){
                                                 Text(viewModel.wayToShow)
-                                                    .padding(.leading,10)
                                                     .font(.kotra(20))
                                                     .foregroundColor(.memoPrimary)
                                                 Image(systemName: "arrowtriangle.down.fill").foregroundColor(.memoPrimary)
                                             }
+                                            .padding(.leading,10)
                                         }
                                         .overlay(alignment:.topLeading) {
                                             //MARK: 드랍다운
@@ -94,7 +95,6 @@ struct MemoView: View {
                                                             
                                                         }
                                                 }
-                                               // .padding(.horizontal,5)
                                                 .background(Color.memoDropDownBg)
                                                 .offset(y:25)
                                                 
@@ -117,7 +117,7 @@ struct MemoView: View {
                             Rectangle()
                                 .fill(Color.memoPrimary)
                                 .frame(maxWidth:proxy.size.width,maxHeight: 10)
-                                .padding(.bottom,thinPadding).zIndex(1)
+                                .padding(.bottom,10).zIndex(1)
                             
                             Rectangle()
                                 .fill(Color.memoPrimary)
@@ -168,8 +168,7 @@ struct MemoView: View {
                                                     
                                                 Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
                                                 }
-                                                .padding(.leading,5)
-                                                .padding(.top,5)
+                                                
                                                        
                                                        
                                                     
@@ -185,6 +184,8 @@ struct MemoView: View {
                                     }
                             }
                         }
+                        .padding(.leading,5)
+                        .padding(.top,5)
                     }
                     else
                     {
@@ -244,7 +245,7 @@ struct MemoView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 50, height: 50)
-                                .padding(.bottom,10)
+                                .padding(.bottom,20)
                                 .padding(.trailing,10)
                         }
                     }.frame(maxWidth:.infinity,maxHeight: .infinity,alignment: .bottomTrailing)
@@ -254,8 +255,9 @@ struct MemoView: View {
                 // MARK: 하단 배너
                 Image("memoBottomBanner")
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
                     .frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
+                    .aspectRatio(contentMode: .fit)
+                    
                     
                 
             }
@@ -272,12 +274,10 @@ struct MemoView: View {
         })
         .popup(isPresented: $viewModel.showDeleteModal) {
             
-            VStack{
-                Image("memoDeleteTrash")
-            }
-            .padding()
-            //.background(RoundedRectangle(cornerRadius:10))
+        } view: {
+            
         }
+
     }
 }
 
