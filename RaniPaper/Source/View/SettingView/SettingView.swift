@@ -9,13 +9,12 @@ import SwiftUI
 
 struct SettingView: View {
     @ObservedObject var viewModel = SettingViewModel()
-    @State var toggle: Bool = true
     var body: some View {
         ZStack{
-            Image("mainTmp")
+            Image("main_static")
                 .resizable()
-                .blur(radius: 5)
                 .aspectRatio(contentMode: .fill)
+                .blur(radius: 5)
             VStack{
                 Image("viic1")
                 
@@ -28,7 +27,6 @@ struct SettingView: View {
                 }
                 .listStyle(.plain)
                 .padding(.horizontal, 20)
-                
             }
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
         }
