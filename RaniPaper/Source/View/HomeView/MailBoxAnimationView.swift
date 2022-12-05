@@ -26,7 +26,7 @@ struct MailBoxAnimationView: View {
                 // MARK: LottieView
                 if isAnimating { // 애니메이션 시작
                     
-                    LottieView(name: "mail-boxletter-box", isPlaying: true) {
+                    LottieView(name: "mail-boxletter-box", speed: 0.7) {
                         isAnimating = false
                         
                         //남은 롤링페이퍼가 있을 경우에만 보여줌
@@ -38,12 +38,16 @@ struct MailBoxAnimationView: View {
                     
                 } else { // 애니메이션 시작 전
                     
-                    // 남은 롤링페이퍼가 있을 경우 애니메이션 첫 프레임
                     if !viewModel.rollingPapers.isEmpty {
-                        LottieView(name: "mail-boxletter-box", isPlaying: false)
-                            .background(Color.black.opacity(0.6))
+                        // 남은 롤링페이퍼가 있을 경우 애니메이션 첫 프레임
+                        //LottieView(name: "mail-boxletter-box", isPlaying: false)
+                            //.background(Color.black.opacity(0.6))
+                        Image("mail_box_temp")
+                            .resizable()
+                            .scaledToFit()
+                        
                             .onTapGesture {
-                                isAnimating = true
+                                withAnimation { isAnimating = true }
                             }
                     } else { // 남은 롤링페이퍼가 없는 경우
                         RollingPaperEmptyView()
