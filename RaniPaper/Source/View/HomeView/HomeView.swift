@@ -34,20 +34,7 @@ struct HomeView: View {
                     })
                 
                 // MARK: 테스트용 뷰
-                VStack {
-                    Spacer()
-                    
-                    if userState.userType == .viichan {
-                        Text("계정상태: viiChan")
-                    } else { if userState.userType == .fan {
-                        Text("계정상태: fan")
-                    } else {
-                        Text("계정상태: none")
-                    } }
-                    
-                    soundSettingTestButtonView()
-                    Spacer().frame(height: 50)
-                }
+                TestView()
                 
             }
             .ignoresSafeArea()
@@ -64,6 +51,29 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 extension HomeView {
+    func TestView() -> some View {
+        VStack {
+            Spacer()
+            
+            if userState.userType == .viichan {
+                Text("계정상태: viiChan")
+            } else { if userState.userType == .fan {
+                Text("계정상태: fan")
+            } else {
+                Text("계정상태: none")
+            } }
+            Button {
+                withAnimation { userState.update(.none) }
+            } label: {
+                Text("뒤로가기").foregroundColor(.red)
+            }
+
+            
+            soundSettingTestButtonView()
+            Spacer().frame(height: 50)
+        }
+    }
+    
     func fileManagerTestButtonView() -> some View {
         VStack {
             Button {
