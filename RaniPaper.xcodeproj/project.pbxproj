@@ -33,6 +33,7 @@
 		7B796F8E2938DA9D00799616 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7B796F8D2938DA9D00799616 /* AlertToast */; };
 		7B796F90293A22FA00799616 /* MailBoxAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */; };
 		7B796F92293A462A00799616 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F91293A462A00799616 /* RollingPaperView.swift */; };
+		7B796F94293D74BB00799616 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F93293D74BB00799616 /* HapticManager.swift */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
 		D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE23292DE28E002C8E89 /* Extension.swift */; };
@@ -99,6 +100,7 @@
 		7B796F8829384FEA00799616 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
 		7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailBoxAnimationView.swift; sourceTree = "<group>"; };
 		7B796F91293A462A00799616 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
+		7B796F93293D74BB00799616 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		D86ACE23292DE28E002C8E89 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				7B796F7C2936DABC00799616 /* MyFileManager.swift */,
 				49E879642938FA450091A101 /* MySoundSetting.swift */,
 				49E87966293A35E90091A101 /* MyUserDefaults.swift */,
+				7B796F93293D74BB00799616 /* HapticManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
+				7B796F94293D74BB00799616 /* HapticManager.swift in Sources */,
 				D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */,
 				D8FF935A293A57A700B0F475 /* LargeStickerView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
