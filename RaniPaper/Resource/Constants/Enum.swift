@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-enum UserType {
-    case none
-    case viichan
-    case fan
+enum UserType: String {
+    case none = "none"
+    case viichan = "viichan"
+    case fan = "fan"
 }
 
 enum ScreenSize {
