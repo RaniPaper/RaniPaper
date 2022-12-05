@@ -26,12 +26,6 @@ struct SettingView: View {
                     .background(Color.clear)
                     .listRowBackground(Color.clear)
                     
-                    Button(action: {
-                        withAnimation {
-                            userState.update(.none)
-                        }
-                    }, label: { Text("로그아웃").foregroundColor(.red) })
-                    
                 }
                 .listStyle(.plain)
                 .padding(.horizontal, 20)
