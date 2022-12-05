@@ -27,11 +27,14 @@ struct MailBoxAnimationView: View {
                 if isAnimating { // 애니메이션 시작
                     
                     LottieView(name: "mail-boxletter-box", speed: 0.7) {
-                        isAnimating = false
-                        
-                        //남은 롤링페이퍼가 있을 경우에만 보여줌
-                        rollingPaper = viewModel.rollingPapers.popFirst()
-                        if rollingPaper != nil { shouldShowRollingPaper = true }
+                        //애니메이션이 너무 빨리 끝나서 0.5초 딜레이
+                        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                            isAnimating = false
+                            
+                            //남은 롤링페이퍼가 있을 경우에만 보여줌
+                            rollingPaper = viewModel.rollingPapers.popFirst()
+                            if rollingPaper != nil { shouldShowRollingPaper = true }
+                        }
                      
                     }
                     .background(Color.black.opacity(0.6))
