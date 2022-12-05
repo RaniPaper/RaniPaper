@@ -20,6 +20,7 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .overlay(content: {
+                        Image("mail_box_static")
                         Circle().frame(width: 20).foregroundColor(.blue) // 이미지 중심
                         NavigationLink {
                             MailBoxAnimationView(viewModel: viewModel)
