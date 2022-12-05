@@ -11,7 +11,7 @@ import SwiftUI
 struct RaniPaperApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView().environmentObject(UserState.shared)
         }
     }
 }
