@@ -28,13 +28,11 @@ struct MailBoxAnimationView: View {
                     
                     LottieView(name: "mail-boxletter-box", speed: 0.7) {
                         //애니메이션이 너무 빨리 끝나서 0.5초 딜레이
-                        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                            isAnimating = false
-                            
-                            //남은 롤링페이퍼가 있을 경우에만 보여줌
-                            rollingPaper = viewModel.rollingPapers.popFirst()
-                            if rollingPaper != nil { shouldShowRollingPaper = true }
-                        }
+                        isAnimating = false
+                        
+                        //남은 롤링페이퍼가 있을 경우에만 보여줌
+                        rollingPaper = viewModel.rollingPapers.popFirst()
+                        if rollingPaper != nil { shouldShowRollingPaper = true }
                      
                     }
                     .background(Color.black.opacity(0.6))
@@ -42,9 +40,6 @@ struct MailBoxAnimationView: View {
                 } else { // 애니메이션 시작 전
                     
                     if !viewModel.rollingPapers.isEmpty {
-                        // 남은 롤링페이퍼가 있을 경우 애니메이션 첫 프레임
-                        //LottieView(name: "mail-boxletter-box", isPlaying: false)
-                            //.background(Color.black.opacity(0.6))
                         Image("mail_box_temp")
                             .resizable()
                             .scaledToFit()
