@@ -13,8 +13,8 @@ struct MainView: View {
     
     var body: some View {
         
-        if viewModel.lockState == .locked {
-            ConfirmView(lockState: $viewModel.lockState)
+        if viewModel.userType == .none {
+            ConfirmView(userType: $viewModel.userType)
 
         }
         else{
