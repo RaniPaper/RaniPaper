@@ -274,11 +274,19 @@ struct MemoView: View {
                     //MARK: 플로팅 버튼
                     VStack{
                         Button {
-                           //viewModel.existMemo = nil
-                            //viewModel.showEditView = true
-                           viewModel.showDeleteModal.toggle()
+                            if(viewModel.deleteMode)
+                            {
+                                viewModel.showDeleteModal.toggle()
+                            }
+                            else
+                            {
+                                viewModel.existMemo = nil
+                                 viewModel.showEditView = true
+                            }
+                           
+                           
                         } label: {
-                            Image("memoWrite")
+                            Image(viewModel.deleteMode ? "memoFloatingDelete" : "memoFloatingPen")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 50, height: 50)
