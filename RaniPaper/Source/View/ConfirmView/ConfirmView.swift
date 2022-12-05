@@ -10,7 +10,7 @@ import PopupView
 
 
 struct ConfirmView: View {
-    @Binding var userType: UserType
+    @EnvironmentObject var userState: UserState
     @State var showLockView: Bool = false
     let textSize: CGFloat = 27
     
@@ -41,7 +41,7 @@ struct ConfirmView: View {
                         Button {
                             DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
                                 withAnimation {
-                                    userType = .fan
+                                    userState.update(.fan)
                                 }
                             }
                         } label: {
@@ -59,7 +59,7 @@ struct ConfirmView: View {
             }
         }.popup(isPresented: $showLockView,closeOnTap: false,closeOnTapOutside: true,backgroundColor: .black.opacity(0.2)) {
             
-            LockView(userType: $userType,showLockView:$showLockView)
+            LockView(showLockView:$showLockView).environmentObject(userState)
         }
         .edgesIgnoringSafeArea(.vertical)
     
@@ -69,7 +69,7 @@ struct ConfirmView: View {
 
 struct ConfirmView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfirmView(userType: .constant(.none))
+        ConfirmView().environmentObject(UserState.shared)
     }
 }
 
