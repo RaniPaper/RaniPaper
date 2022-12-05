@@ -12,7 +12,7 @@ struct MailBoxAnimationView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: HomeViewModel
     @State var isAnimating = false // lottie 애니메이션
-    @State var isShowRollingPaper = false // 롤링페이퍼
+    @State var shouldShowRollingPaper = false // 롤링페이퍼
     @State var rollingPaper: String?
     
     public init(viewModel: HomeViewModel) {
@@ -31,7 +31,7 @@ struct MailBoxAnimationView: View {
                         
                         //남은 롤링페이퍼가 있을 경우에만 보여줌
                         rollingPaper = viewModel.rollingPapers.popFirst()
-                        if rollingPaper != nil { isShowRollingPaper = true }
+                        if rollingPaper != nil { shouldShowRollingPaper = true }
                      
                     }
                     .background(Color.black.opacity(0.6))
@@ -62,7 +62,7 @@ struct MailBoxAnimationView: View {
                 .padding(.bottom, 30)
 
         }
-        .fullScreenCover(isPresented: $isShowRollingPaper) {
+        .fullScreenCover(isPresented: $shouldShowRollingPaper) {
             RollingPaperView(rollingPaper: rollingPaper!)
         }
         
