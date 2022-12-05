@@ -13,6 +13,7 @@ import UIKit
 // 로티 애니메이션 뷰
 struct LottieView: UIViewRepresentable {
     var name : String
+    var speed: CGFloat
     var loopMode: LottieLoopMode
     let isPlaying: Bool
     private let completion: () -> Void
@@ -20,11 +21,13 @@ struct LottieView: UIViewRepresentable {
     // 간단하게 View로 JSON 파일 이름으로 애니메이션을 실행합니다.
     public init(
         name: String,
+        speed: CGFloat = 1,
         loopMode : LottieLoopMode = .playOnce,
-        isPlaying: Bool,
+        isPlaying: Bool = true,
         completion: @escaping () -> Void = {}
     ){
         self.name = name
+        self.speed = speed
         self.loopMode = loopMode
         self.isPlaying = isPlaying
         self.completion = completion
@@ -40,7 +43,8 @@ struct LottieView: UIViewRepresentable {
         animationView.contentMode = .scaleAspectFit
         // 애니메이션은 기본으로 한번 동작합니다.
         animationView.loopMode = loopMode
-        
+        // 애니메이션 속도를 조절합니다 (기본 1배속)
+        animationView.animationSpeed = speed
         // 애니메이션을 재생합니다
         // 재생이 끝나면 completion 을 실행합니다.
         if isPlaying {
@@ -71,6 +75,6 @@ struct LottieView: UIViewRepresentable {
 
 struct LottieView_Previews: PreviewProvider {
     static var previews: some View {
-        LottieView(name: "mail-boxletter-box", isPlaying: true, completion: {})
+        LottieView(name: "mail-boxletter-box", loopMode: .loop, completion: {})
     }
 }
