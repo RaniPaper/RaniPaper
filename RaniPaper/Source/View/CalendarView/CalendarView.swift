@@ -23,7 +23,7 @@ struct CalendarView: View {
                     CustomDatePicker(viewModel: viewModel)
                     
                     HStack {
-                        Text("Tasks").font(.title2.bold())
+                        Text("오늘의 할 일").font(.title2.bold())
                         Spacer()
                     }.padding(.horizontal, 15)
                     

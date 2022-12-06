@@ -25,7 +25,7 @@ struct EditTaskView: View {
         
         VStack(spacing: 0){
             // - MARK: 타이틀 및 뒤로가기
-            Text("Edit Task")
+            Text("[일정 추가]")
                 .font(.title3.bold())
                 .frame(maxWidth: .infinity)
                 .overlay(alignment:.leading){
@@ -163,20 +163,19 @@ struct EditTaskView: View {
                                 }
                                 
                             } label: {
-                                Text("스케쥴 저장하기")
-                                    .font(.callout)
-                                    .fontWeight(.semibold)
+                                Text("일정 저장하기")
+                                    .font(Font.efDiary(15))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical,12)
                                     .foregroundColor(.white)
                                     .background {
                                         Capsule()
-                                            .fill(.black)
+                                            .fill(viewModel.taskTitle == "" ? Color(hexcode: "84CC89") : Color(hexcode: "4A734D") )
                                     }
                             }
                             //    .padding(.bottom,10)
                             .disabled(viewModel.taskTitle == "")
-                            .opacity(viewModel.taskTitle == "" ? 0.6 : 1)
+                         
                             .id(bottom)
                             
                         }
