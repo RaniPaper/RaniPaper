@@ -67,6 +67,15 @@ extension HomeView {
             } label: {
                 Text("뒤로가기").foregroundColor(.red)
             }
+            
+            NavigationLink {
+                hapticTestView()
+            } label: {
+                Text("햅틱테스트뷰 가기")
+            }
+
+           
+
 
             
             soundSettingTestButtonView()
@@ -124,6 +133,38 @@ extension HomeView {
                 Text("DELETE").padding().background(RoundedRectangle(cornerRadius: 8).foregroundColor(.gray))
             }
         }
+    }
+    
+    func hapticTestView() -> some View{
+        NavigationView {
+                    VStack(spacing: 20) {
+                        HStack {
+                            Image(systemName: "iphone.radiowaves.left.and.right").foregroundColor(.orange)
+                            Text("Notification type".uppercased())
+                        }
+                        .font(.title.bold())
+                        Button("warning") { HapticManager.shared.notification(type: .warning) }
+                        Button("error") { HapticManager.shared.notification(type: .error) }
+                        Button("success") { HapticManager.shared.notification(type: .success) }
+                        
+                    
+                        
+                        Group { //stack이 10개가 넘어가기 때문에 group 적용
+                            HStack {
+                                Image(systemName: "iphone.radiowaves.left.and.right").foregroundColor(.orange)
+                                Text("impact style".uppercased())
+                            }
+                                .font(.title.bold())
+                            Button("heavy") { HapticManager.shared.impact(style: .heavy) }
+                            Button("light") { HapticManager.shared.impact(style: .light) }
+                            Button("medium") { HapticManager.shared.impact(style: .medium) }
+                            Button("rigid") { HapticManager.shared.impact(style: .rigid) }
+                            Button("soft") { HapticManager.shared.impact(style: .soft) }
+                        }
+                    }
+                    .navigationBarTitle("햅틱 티스트 뷰")
+                }
+            
     }
 }
 
