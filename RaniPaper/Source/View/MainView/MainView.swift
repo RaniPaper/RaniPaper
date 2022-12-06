@@ -9,12 +9,13 @@ import SwiftUI
 
 
 struct MainView: View {
+    @EnvironmentObject var userState: UserState
     @StateObject var viewModel = MainViewModel()
     
     var body: some View {
         
-        if viewModel.lockState == .locked {
-            ConfirmView(lockState: $viewModel.lockState)
+        if userState.userType == .none {
+            ConfirmView().environmentObject(userState)
 
         }
         else{
@@ -60,7 +61,7 @@ struct MainView: View {
                         }
                     }
                     MenuView(selection: $viewModel.selection)
-                }
+                }.environmentObject(UserState.shared)
             }
         }
     }
@@ -68,6 +69,6 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView().environmentObject(UserState.shared)
     }
 }

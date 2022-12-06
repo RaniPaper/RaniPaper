@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-enum LockState{
-    case locked
-    case viichan
-    case rani
+enum UserType: String {
+    case none = "none"
+    case viichan = "viichan"
+    case fan = "fan"
 }
 
 enum ScreenSize {

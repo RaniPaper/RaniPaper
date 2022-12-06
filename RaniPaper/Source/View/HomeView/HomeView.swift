@@ -10,6 +10,7 @@ import UIKit
 import Lottie
 
 struct HomeView: View {
+    @EnvironmentObject var userState: UserState
     @StateObject var viewModel = HomeViewModel()
     @State var isAnimating = false
     
@@ -31,7 +32,10 @@ struct HomeView: View {
                                 .contentShape(Rectangle())
                         }
                     })
-                soundSettingTestButtonView()
+                
+                // MARK: 테스트용 뷰
+                TestView()
+                
             }
             .ignoresSafeArea()
         }
@@ -42,11 +46,34 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(UserState.shared)
     }
 }
 
 extension HomeView {
+    func TestView() -> some View {
+        VStack {
+            Spacer()
+            
+            if userState.userType == .viichan {
+                Text("계정상태: viiChan")
+            } else { if userState.userType == .fan {
+                Text("계정상태: fan")
+            } else {
+                Text("계정상태: none")
+            } }
+            Button {
+                withAnimation { userState.update(.none) }
+            } label: {
+                Text("뒤로가기").foregroundColor(.red)
+            }
+
+            
+            soundSettingTestButtonView()
+            Spacer().frame(height: 50)
+        }
+    }
+    
     func fileManagerTestButtonView() -> some View {
         VStack {
             Button {

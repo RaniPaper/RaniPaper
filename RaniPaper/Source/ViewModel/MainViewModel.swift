@@ -10,13 +10,11 @@ import Combine
 import SwiftUI
 
 final class MainViewModel : ObservableObject {
-    @Published var isLoading:Bool
-    @Published var lockState:LockState
+    @Published var isLoading: Bool
     @Published var selection: ViewSelection
 
     init(){
         self.isLoading = true
-        self.lockState = .locked
         self.selection = .home
         
         print("✅ MainViewModel 생성")

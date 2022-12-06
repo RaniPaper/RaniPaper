@@ -9,8 +9,8 @@ import SwiftUI
 import Combine
 
 struct LockView: View {
-    @Binding var lockState:LockState
-    @Binding var showLockView:Bool
+    @EnvironmentObject var userState: UserState
+    @Binding var showLockView: Bool
     @StateObject var viewModel = LockViewModel()
     let gangfont:Font = Font.gangwonBold(20)
     fileprivate let bgGradient = Color(hexcode: "e7f4ea")
@@ -61,7 +61,7 @@ struct LockView: View {
                     showLockView = false
                     DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
                         withAnimation {
-                            lockState = .viichan
+                            userState.update(.viichan)
                         }
                     }
                 }
@@ -98,6 +98,6 @@ struct LockView: View {
 
 struct LockView_Previews: PreviewProvider {
     static var previews: some View {
-        LockView(lockState: .constant(.locked),showLockView: .constant(false))
+        LockView(showLockView: .constant(false)).environmentObject(UserState.shared)
     }
 }

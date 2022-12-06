@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject var userState: UserState
     @ObservedObject var viewModel = SettingViewModel()
     var body: some View {
         ZStack{
@@ -24,6 +25,7 @@ struct SettingView: View {
                     }
                     .background(Color.clear)
                     .listRowBackground(Color.clear)
+                    
                 }
                 .listStyle(.plain)
                 .padding(.horizontal, 20)
@@ -36,6 +38,6 @@ struct SettingView: View {
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView().environmentObject(UserState.shared)
     }
 }
