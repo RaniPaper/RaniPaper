@@ -18,21 +18,16 @@ struct MemoView: View {
             VStack(spacing:0){
                 
                 GeometryReader { proxy in
-                    let thin:CGFloat = 5
                     let thinPadding:CGFloat = 20
                     ZStack {
                         //MARK: 왼쪽 사각형
-                        VStack{
-                            Rectangle()
-                                .fill(Color.memoPrimary)
-                                .frame(maxWidth:thin,maxHeight: proxy.size.height)
-                        }.frame(maxWidth:proxy.size.width,alignment: .leading)
-                        .padding(.leading,thinPadding)
+                        
                         
                         VStack(spacing: 2) {
                         
                             Text("기록")
                                 .font(.efDiary(30))
+                                .bold()
                                 .foregroundColor(.memoPrimary)
                             Text("(\(viewModel.memos.count))")
                                 .font(.efDiary(20))
@@ -126,14 +121,6 @@ struct MemoView: View {
                         }
                         .frame(maxWidth:proxy.size.width,maxHeight:proxy.size.height,alignment: .bottom)
                         
-                        
-                        //MARK: 오른 사각형
-                        VStack{
-                            Rectangle()
-                                .fill(Color.memoPrimary)
-                                .frame(maxWidth:thin,maxHeight: proxy.size.height)
-                                .padding(.trailing,thinPadding)
-                        }.frame(maxWidth:proxy.size.width,alignment: .trailing)
                     }
                     
                 }
