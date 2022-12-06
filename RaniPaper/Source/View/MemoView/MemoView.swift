@@ -186,7 +186,7 @@ struct MemoView: View {
                                         
                                     }
                                     .onLongPressGesture(minimumDuration: 1) {
-                                        HapticManager.shared.impact(style: .light)
+                                        HapticManager.shared.impact(style: .medium)
                                         viewModel.deleteMode = true
                                     }
                             }
@@ -249,7 +249,7 @@ struct MemoView: View {
                                         
                                     }
                                     .onLongPressGesture(minimumDuration: 1) {
-                                        HapticManager.shared.impact(style: .light)
+                                        HapticManager.shared.impact(style: .medium)
                                         viewModel.deleteMode = true
                                     }
                             }
