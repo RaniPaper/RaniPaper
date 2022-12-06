@@ -50,13 +50,14 @@ struct EditMemoView: View {
                         
                     }.foregroundColor(.memoPrimary)
  
+                    // MARK: 제목
                     TextField("", text: $viewModel.title)
                         .font(.kotra(20))
                         .foregroundColor(Color.memoPrimary)
                     // 텍스트 필드 모양 결정하는 패딩
                         .padding(.vertical,10)
                         .padding(.horizontal,25)
-                        .background(RoundedRectangle(cornerRadius: 580).fill(inputColor))
+                        .background(RoundedRectangle(cornerRadius: 8).fill(inputColor))
                         .lineLimit(1)
                         .overlay(RoundedRectangle(cornerRadius: 8.0).strokeBorder(Color.memoPrimary, style: StrokeStyle(lineWidth: 2.0)))
                         .overlay {
