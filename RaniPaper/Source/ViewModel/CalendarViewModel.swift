@@ -36,6 +36,7 @@ final class CalendarViewModel: ObservableObject{
     
     func deleteTask(id: String) -> Bool {
         let result = MyFileManager.shared.delete(at: .diary, fileName: "task-\(id).json")
+        MyUserNotifications.shared.delete(id: id)
         switch result {
         case .success():
             return true

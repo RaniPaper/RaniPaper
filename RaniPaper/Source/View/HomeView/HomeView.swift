@@ -31,7 +31,7 @@ struct HomeView: View {
                                 .contentShape(Rectangle())
                         }
                     })
-                soundSettingTestButtonView()
+//                soundSettingTestButtonView()
                 TaskAlarmTestView()
             }
             .ignoresSafeArea()
@@ -129,6 +129,12 @@ extension HomeView {
     func TaskAlarmTestView() -> some View{
         VStack{
             Text("UserNotification")
+            
+            Button(action:{
+                MyUserNotifications.shared.read()
+            }){
+                Text("read alarm")
+            }
         }.padding(.horizontal, 30)
         .onAppear(perform: { MyUserNotifications.shared.getPermission()
         })
