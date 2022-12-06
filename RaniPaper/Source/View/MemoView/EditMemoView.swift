@@ -16,7 +16,7 @@ struct EditMemoView: View {
     var existMemo: MemoModel? // 기존의 memo
     
     var body: some View {
-        let inputColor:Color = Color.init(hexcode: "FFFDEB")
+        let inputColor:Color = Color.init(hexcode: "FFFDF4")
         ZStack {
 
             VStack(){
@@ -45,7 +45,7 @@ struct EditMemoView: View {
                         Image("footPrint").padding(.bottom)
                         
                         Text("(\(viewModel.content.count))")
-                            .font(.kotra(25)).offset(x:-5).frame(maxWidth:.infinity,alignment: .trailing)
+                            .font(.efDiary(25)).offset(x:-5).frame(maxWidth:.infinity,alignment: .trailing)
                             
                         
                     }.foregroundColor(.memoPrimary)
@@ -112,9 +112,11 @@ struct EditMemoView: View {
                     
                     HStack{
                         Spacer()
+                        
+                        // MARK: 비챤 스탬프
                         Image("viichanStemp")
                             .resizable()
-                            .frame(width:60,height: 60)
+                            .frame(width:70,height: 70)
                             .scaledToFit()
                     }.padding(.trailing,10)
                         .padding(.bottom,10)
