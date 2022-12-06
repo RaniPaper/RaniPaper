@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "memoSave.png",
+      "filename" : "저장버튼1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "memoSave 1.png",
+      "filename" : "저장버튼2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "memoSave 2.png",
+      "filename" : "memoSave.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

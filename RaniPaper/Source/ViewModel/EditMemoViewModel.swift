@@ -13,7 +13,7 @@ final class EditMemoViewModel:ObservableObject{
     @Published var nowDate:Date = Date()
     @Published var title:String = ""
     @Published var content:String = ""
-    
+    @Published var showAlert:Bool = false
 
     init()
     {

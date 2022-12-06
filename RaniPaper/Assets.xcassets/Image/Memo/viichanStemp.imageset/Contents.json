@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "smallSticker.png",
+      "filename" : "viichanStemp.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "smallSticker 1.png",
+      "filename" : "viichanStemp 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "smallSticker 2.png",
+      "filename" : "viichanStemp 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

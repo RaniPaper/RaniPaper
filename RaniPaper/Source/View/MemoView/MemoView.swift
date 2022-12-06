@@ -329,17 +329,17 @@ struct MemoView: View {
                RoundedRectangle(cornerRadius:15).stroke(Color.memoPrimary,lineWidth: 3) //테두리
                 VStack(spacing:20){
                    Image("memoDeleteTrash")
-                   Text("정말로 삭제하시겠습니까?").font(.efDiary(25)).foregroundColor(Color.init(hexcode: "9E4242"))
+                   Text("정말로 삭제하시겠습니까?").font(.efDiary(18)).foregroundColor(Color.init(hexcode: "9E4242"))
                    
-                   Text("*지운 메모는 복구할 수 없습니다.").font(.efDiary(15)).foregroundColor(Color.init(hexcode: "D09393"))
-                    HStack(spacing:20){
+                   Text("*지운 메모는 복구할 수 없습니다.").font(.efDiary(13)).foregroundColor(Color.init(hexcode: "D09393"))
+                    HStack(spacing:30){
                         Button {
                             viewModel.deleteMemos()
                             viewModel.showDeleteModal = false
                             viewModel.deleteMode = false
                         } label: {
                             Text("삭제")
-                                .font(.efDiary(30))
+                                .font(.efDiary(28))
                                 .foregroundColor(Color.init(hexcode: "EC3A3A"))
                         }
 
@@ -347,7 +347,7 @@ struct MemoView: View {
                             viewModel.showDeleteModal = false
                         } label: {
                             Text("취소")
-                                .font(.efDiary(30))
+                                .font(.efDiary(28))
                                 .foregroundColor(Color.init(hexcode: "5E2121"))
                         }
 
@@ -361,7 +361,7 @@ struct MemoView: View {
             
                
             }
-            .frame(maxWidth:ScreenSize.width/1.3,maxHeight: ScreenSize.width/1.5)
+            .frame(maxWidth:ScreenSize.width/1.5,maxHeight: ScreenSize.width/1.7)
                  
             
                 
