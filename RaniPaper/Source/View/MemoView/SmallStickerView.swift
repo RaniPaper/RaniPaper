@@ -11,6 +11,8 @@ struct SmallStickerView: View {
     
     var memo:MemoModel
     
+
+    
     var body: some View {
         Image("smallSticker")
             .overlay() {
@@ -18,6 +20,7 @@ struct SmallStickerView: View {
                     Text(memo.title)
                         .font(.beomsuk(20))
                         .lineLimit(1)
+                        .padding(.leading,20)
                 }
                 .padding()
                 .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)

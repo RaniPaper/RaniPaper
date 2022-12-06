@@ -6,41 +6,30 @@
 //
 
 import SwiftUI
+import PopupView
 
 struct MemoView: View {
     @ObservedObject var viewModel:MemoViewModel = MemoViewModel()
     let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
-    let memos:[MemoModel] = [MemoModel(title: "제목1", content: "간다라ㅏㅁ암앎ㅇ라asdasdsdadasdaas"),
-                             MemoModel(title: "제목2", content: "내용22222222222222222222"),
-                             MemoModel(title: "제목3", content: "내용33333333333333333333"),
-                             MemoModel(title: "제목4", content: "내용44444444444444444444"),
-                             MemoModel(title: "제목5", content: "내용55555555555555555555"),
-                             MemoModel(title: "제목6", content: "내용66666666666666666666"),
-                             MemoModel(title: "제목7", content: "내용66666666666666666666"),
-                             MemoModel(title: "제목8", content: "내용66666666666666666666"),
-                             MemoModel(title: "제목9", content: "내용66666666666666666666")]
+
+   
     var body: some View {
         ZStack(alignment:.bottom) {
             VStack(spacing:0){
                 
                 GeometryReader { proxy in
-                    let thin:CGFloat = 5
-                    let thinPadding:CGFloat = 10
+                    let thinPadding:CGFloat = 20
                     ZStack {
                         //MARK: 왼쪽 사각형
-                        VStack{
-                            Rectangle()
-                                .fill(Color.memoPrimary)
-                                .frame(maxWidth:thin,maxHeight: proxy.size.height)
-                                .padding(.leading,thinPadding)
-                        }.frame(maxWidth:proxy.size.width,alignment: .leading)
+                        
                         
                         VStack(spacing: 2) {
                         
                             Text("기록")
                                 .font(.efDiary(30))
+                                .bold()
                                 .foregroundColor(.memoPrimary)
-                            Text("(-)")
+                            Text("(\(viewModel.memos.count))")
                                 .font(.efDiary(20))
                                 .foregroundColor(.memoPrimary)
                                 .frame(maxWidth:proxy.size.width)
@@ -51,13 +40,14 @@ struct MemoView: View {
                                                 viewModel.isDropDown.toggle()
                                             
                                         } label: {
+                                            // MARK: 보는방법 텍스트
                                             HStack(spacing: 0){
                                                 Text(viewModel.wayToShow)
-                                                    .padding(.leading,10)
                                                     .font(.kotra(20))
                                                     .foregroundColor(.memoPrimary)
                                                 Image(systemName: "arrowtriangle.down.fill").foregroundColor(.memoPrimary)
                                             }
+                                            .padding(.leading,10)
                                         }
                                         .overlay(alignment:.topLeading) {
                                             //MARK: 드랍다운
@@ -100,7 +90,6 @@ struct MemoView: View {
                                                             
                                                         }
                                                 }
-                                               // .padding(.horizontal,5)
                                                 .background(Color.memoDropDownBg)
                                                 .offset(y:25)
                                                 
@@ -113,19 +102,7 @@ struct MemoView: View {
                                         
                                         Spacer()
                                         
-                                        //MARK: 달력버튼
-                                        Button {
-                                            viewModel.showDatePicker.toggle()
-                                        } label: {
-                                            Image("memoCalendar")
-                                        }
                                       
-                                        //MARK: 삭제버튼
-                                        Button {
-                                            viewModel.deleteMode.toggle()
-                                        } label: {
-                                            Image("memoTrash")
-                                        }.padding(.trailing,thinPadding*2)
 
                                     }
                                 }
@@ -135,7 +112,7 @@ struct MemoView: View {
                             Rectangle()
                                 .fill(Color.memoPrimary)
                                 .frame(maxWidth:proxy.size.width,maxHeight: 10)
-                                .padding(.bottom,thinPadding).zIndex(1)
+                                .padding(.bottom,10).zIndex(1)
                             
                             Rectangle()
                                 .fill(Color.memoPrimary)
@@ -144,14 +121,6 @@ struct MemoView: View {
                         }
                         .frame(maxWidth:proxy.size.width,maxHeight:proxy.size.height,alignment: .bottom)
                         
-                        
-                        //MARK: 오른 사각형
-                        VStack{
-                            Rectangle()
-                                .fill(Color.memoPrimary)
-                                .frame(maxWidth:thin,maxHeight: proxy.size.height)
-                                .padding(.trailing,thinPadding)
-                        }.frame(maxWidth:proxy.size.width,alignment: .trailing)
                     }
                     
                 }
@@ -166,17 +135,121 @@ struct MemoView: View {
                     if(viewModel.wayToShow == "크게보기")
                     {
                         LazyVGrid(columns: columns) {
-                            ForEach(memos){ memo in
+                            ForEach(viewModel.memos){ memo in
                                 LargeStickerView(memo: memo)
+                                    .overlay(content: {
+                                        VStack{
+                                            if(viewModel.deleteMode)
+                                            {
+                                                Button {
+                                                    if(viewModel.trashSet.contains(memo.id))
+                                                    {
+                                                        viewModel.trashSet.remove(memo.id)
+                                                    }
+                                                    else
+                                                    {
+                                                        viewModel.trashSet.insert(memo.id)
+                                                    }
+                                                    
+                                                } label: {
+                                                    
+                                                Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
+                                                }
+                                                .padding(.leading,5)
+                                                .padding(.top,5)
+                                                       
+                                                       
+                                                    
+
+                                            }
+                                            
+                                        }.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
+                                    })
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        if(viewModel.deleteMode) //삭제 모드 켜있을 시 메모지 클릭해도 삭제 담기
+                                        {
+                                            if(viewModel.trashSet.contains(memo.id))
+                                            {
+                                                viewModel.trashSet.remove(memo.id)
+                                            }
+                                            else
+                                            {
+                                                viewModel.trashSet.insert(memo.id)
+                                            }
+                                        }
+                                        else //아닐 시 편집화면
+                                        {
+                                            viewModel.showEditView = true
+                                            viewModel.existMemo = memo
+                                        }
+                                        
+                                    }
+                                    .onLongPressGesture(minimumDuration: 1) {
+                                        viewModel.deleteMode = true
+                                    }
                             }
                         }
+                        .padding(.leading,5)
+                        .padding(.top,5)
                     }
                     else
                     {
                         LazyVGrid(columns:[GridItem(.flexible())])
                         {
-                            ForEach(memos) { memo in
+                            ForEach(viewModel.memos) { memo in
                                 SmallStickerView(memo: memo)
+                                    .overlay(content: {
+                                        VStack{
+                                            if(viewModel.deleteMode)
+                                            {
+                                                Button {
+                                                    if(viewModel.trashSet.contains(memo.id))
+                                                    {
+                                                        viewModel.trashSet.remove(memo.id)
+                                                    }
+                                                    else
+                                                    {
+                                                        viewModel.trashSet.insert(memo.id)
+                                                    }
+                                                    
+                                                } label: {
+                                                    
+                                                Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
+                                                }
+                                                .padding(.leading,5)
+                                                .padding(.top,5)
+                                                       
+                                                       
+                                                    
+
+                                            }
+                                            
+                                        }.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
+                                    })
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        if(viewModel.deleteMode) //삭제 모드 켜있을 시 메모지 클릭해도 삭제 담기
+                                        {
+                                            if(viewModel.trashSet.contains(memo.id))
+                                            {
+                                                viewModel.trashSet.remove(memo.id)
+                                            }
+                                            else
+                                            {
+                                                viewModel.trashSet.insert(memo.id)
+                                            }
+                                        }
+                                        else //아닐 시 편집화면
+                                        {
+                                            viewModel.showEditView = true
+                                            viewModel.existMemo = memo
+                                        }
+                                        
+                                    }
+                                    .onLongPressGesture(minimumDuration: 1) {
+                                        viewModel.deleteMode = true
+                                    }
                             }
                         }
                     }
@@ -188,13 +261,23 @@ struct MemoView: View {
                     //MARK: 플로팅 버튼
                     VStack{
                         Button {
-                            viewModel.showEditView = true
+                            if(viewModel.deleteMode)
+                            {
+                                viewModel.showDeleteModal.toggle()
+                            }
+                            else
+                            {
+                                viewModel.existMemo = nil
+                                 viewModel.showEditView = true
+                            }
+                           
+                           
                         } label: {
-                            Image("memoWrite")
+                            Image(viewModel.deleteMode ? "memoFloatingDelete" : "memoFloatingPen")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 50, height: 50)
-                                .padding(.bottom,10)
+                                .padding(.bottom,20)
                                 .padding(.trailing,10)
                         }
                     }.frame(maxWidth:.infinity,maxHeight: .infinity,alignment: .bottomTrailing)
@@ -202,21 +285,89 @@ struct MemoView: View {
                 }
                 
                 // MARK: 하단 배너
-                Image("memoBottomBanner")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
+                VStack(spacing:0){
+                    Rectangle()
+                        .fill(Color.memoPrimary)
+                        .frame(maxWidth:.infinity,maxHeight: 1)
+                    Spacer()
+                    Rectangle()
+                        .fill(Color(hexcode: "F4D4B6"))
+                        .frame(maxWidth:ScreenSize.width/3,maxHeight: 2)
+                        .padding(.bottom,15)
+                    Image("memoClover")
+                        .resizable()
+                        .frame(width: ScreenSize.width/6, height: ScreenSize.width/6)
+                        .scaledToFit()
+                        .padding(.bottom,15)
+                        
+                    
+                    Spacer()
+                }.frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
+                    .background(Color.memoBg)
+              
+                    
                     
                 
             }
             
             
         }
- 
         .edgesIgnoringSafeArea(.vertical)
         .fullScreenCover(isPresented: $viewModel.showEditView, content: {
-            EditMemoView(showEditView: $viewModel.showEditView)
+            EditMemoView(showEditView: $viewModel.showEditView,existMemo: viewModel.existMemo).onDisappear{
+                //편집 창 꺼지면 fetchMemos
+                viewModel.fetchMemos()
+            }
         })
+        .popup(isPresented: $viewModel.showDeleteModal,closeOnTap: false,closeOnTapOutside: true,backgroundColor: .black.opacity(0.2)) {
+            viewModel.fetchMemos()
+        } view: {
+            // MARK: 팝업 뷰
+            ZStack(alignment: .top){
+               RoundedRectangle(cornerRadius:15).fill(Color.init(hexcode: "FFF0BB")) //채우기
+               RoundedRectangle(cornerRadius:15).stroke(Color.memoPrimary,lineWidth: 3) //테두리
+                VStack(spacing:20){
+                   Image("memoDeleteTrash")
+                   Text("정말로 삭제하시겠습니까?").font(.efDiary(18)).foregroundColor(Color.init(hexcode: "9E4242"))
+                   
+                   Text("*지운 메모는 복구할 수 없습니다.").font(.efDiary(13)).foregroundColor(Color.init(hexcode: "D09393"))
+                    HStack(spacing:30){
+                        Button {
+                            viewModel.deleteMemos()
+                            viewModel.showDeleteModal = false
+                            viewModel.deleteMode = false
+                        } label: {
+                            Text("삭제")
+                                .font(.efDiary(28))
+                                .foregroundColor(Color.init(hexcode: "EC3A3A"))
+                        }
+
+                        Button {
+                            viewModel.showDeleteModal = false
+                        } label: {
+                            Text("취소")
+                                .font(.efDiary(28))
+                                .foregroundColor(Color.init(hexcode: "5E2121"))
+                        }
+
+                    }
+                    .frame(maxWidth:.infinity)
+                 
+                   
+                   
+               }
+               .padding(.top,20)
+            
+               
+            }
+            .frame(maxWidth:ScreenSize.width/1.5,maxHeight: ScreenSize.width/1.7)
+                 
+            
+                
+        }
+        .onTapGesture {
+            viewModel.deleteMode = false
+        }
     }
 }
 

@@ -14,7 +14,6 @@ final class EditTaskViewModel:ObservableObject{
     @Published var taskDeadLine:Date = Date()
     @Published var taskColor:String = "ine"
     @Published var taskTicket:String = "우왁굳"
-    
     @Published var showDatePicker:Bool = false
     @Published private(set) var keyboardHeight: CGFloat = 0
     
