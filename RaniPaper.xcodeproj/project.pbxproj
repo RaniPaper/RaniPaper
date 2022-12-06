@@ -18,6 +18,7 @@
 		493527002930F46C0066F083 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FF2930F46C0066F083 /* SideMenuView.swift */; };
 		49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F8293D1C79009A2748 /* testAlarm.mp3 */; };
 		49D812FB293D1C85009A2748 /* testBGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812FA293D1C85009A2748 /* testBGM.mp3 */; };
+		49D812FD293F7FB5009A2748 /* MyUserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */; };
 		49E703F029353A150035215F /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703EF29353A150035215F /* CreditView.swift */; };
 		49E703F3293543EC0035215F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703F2293543EC0035215F /* InfoView.swift */; };
 		49E879632938F9F00091A101 /* testSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E879612938F9EF0091A101 /* testSFX.mp3 */; };
@@ -83,6 +84,7 @@
 		493526FF2930F46C0066F083 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		49D812F8293D1C79009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
 		49D812FA293D1C85009A2748 /* testBGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testBGM.mp3; sourceTree = "<group>"; };
+		49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserNotifications.swift; sourceTree = "<group>"; };
 		49E703EF29353A150035215F /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		49E703F2293543EC0035215F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		49E879612938F9EF0091A101 /* testSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSFX.mp3; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				7B796F7C2936DABC00799616 /* MyFileManager.swift */,
 				49E879642938FA450091A101 /* MySoundSetting.swift */,
 				49E87966293A35E90091A101 /* MyUserDefaults.swift */,
+				49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				493527002930F46C0066F083 /* SideMenuView.swift in Sources */,
 				D8FF935E293A586800B0F475 /* EditMemoViewModel.swift in Sources */,
 				D86ACE29292DF409002C8E89 /* BlurView.swift in Sources */,
+				49D812FD293F7FB5009A2748 /* MyUserNotifications.swift in Sources */,
 				7B796F90293A22FA00799616 /* MailBoxAnimationView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
@@ -734,6 +738,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RaniPaper/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -772,6 +777,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RaniPaper/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

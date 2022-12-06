@@ -69,6 +69,7 @@ final class EditTaskViewModel:ObservableObject{
         // 기존 task 편집시엔 이미 taskId가 있으므로 해당 taskId로 저장, 신규면 새 UUID
         let taskModel = TaskModel(id: taskId ?? UUID().uuidString, title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
         let result = MyFileManager.shared.update(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
+        MyUserNotifications.shared.create(taskModel)
         
         switch result {
         case .success():

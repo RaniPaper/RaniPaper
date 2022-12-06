@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import Lottie
+import UserNotifications
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
@@ -31,8 +32,10 @@ struct HomeView: View {
                         }
                     })
                 soundSettingTestButtonView()
+                TaskAlarmTestView()
             }
             .ignoresSafeArea()
+
         }
         
         
@@ -118,5 +121,16 @@ extension HomeView {
                 Text("play Alarm")
             }
         }
+    }
+}
+
+//notification test
+extension HomeView {
+    func TaskAlarmTestView() -> some View{
+        VStack{
+            Text("UserNotification")
+        }.padding(.horizontal, 30)
+        .onAppear(perform: { MyUserNotifications.shared.getPermission()
+        })
     }
 }
