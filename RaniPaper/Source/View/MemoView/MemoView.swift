@@ -285,11 +285,23 @@ struct MemoView: View {
                 }
                 
                 // MARK: 하단 배너
-                VStack{
+                VStack(spacing:0){
+                    Rectangle()
+                        .fill(Color.memoPrimary)
+                        .frame(maxWidth:.infinity,maxHeight: 1)
+                    Spacer()
+                    Rectangle()
+                        .fill(Color(hexcode: "F4D4B6"))
+                        .frame(maxWidth:ScreenSize.width/3,maxHeight: 2)
+                        .padding(.bottom,15)
                     Image("memoClover")
                         .resizable()
                         .frame(width: ScreenSize.width/6, height: ScreenSize.width/6)
                         .scaledToFit()
+                        .padding(.bottom,15)
+                        
+                    
+                    Spacer()
                 }.frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
                     .background(Color.memoBg)
               
