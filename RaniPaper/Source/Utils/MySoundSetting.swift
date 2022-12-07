@@ -104,7 +104,8 @@ extension MySoundSetting {
     static let SFX = MySoundSetting(url: "testSFX", extension: "mp3", .SFX)
     // SFX 컨트롤용 인스턴스
     static let Alarm = MySoundSetting(url: "testAlarm", extension: "mp3", .ALARM)
-    static let bookFlip = MySoundSetting(url: "wavTest2", extension: "wav", .SFX)
+    static let openSideMenu = MySoundSetting(url: "openSideMenu", extension: "wav", .SFX)
+    static let closeSideMenu = MySoundSetting(url: "closeSideMenu", extension: "wav", .SFX)
     
     // 효과음 추가되면 위 형식으로 인스턴스 추가해서 사용 가능
     
