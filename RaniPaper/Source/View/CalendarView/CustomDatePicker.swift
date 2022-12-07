@@ -18,82 +18,90 @@ struct CustomDatePicker: View {
     
     var body: some View {
         
-        VStack(spacing:35){
-            
-            let days:[String] = ["일","월","화","수","목","금","토"]
-            
-            HStack(spacing:20){
-                VStack(alignment: .leading,spacing: 10) {
+        ZStack {
+            Color.white
+            VStack(spacing:35){
+                
+                let days:[String] = ["일","월","화","수","목","금","토"]
+                let calendarBg = Color(hexcode: "F4EDDB")
+                
+                // MARK: 년 월 죄우 버튼
+                VStack {
+                    let buttonColor = Color(hexcode: "D6B5A3")
                     Text(extraData()[0])
-                        .font(.caption2)
-                        .fontWeight(.semibold)
+                        .font(.efDiary(20))
+                    .fontWeight(.semibold)
+                    HStack(spacing:20){
+                        Spacer()
+                        Button {
+                                currentMonth -= 1
+                            
+                        } label: {
+                            Image(systemName: "arrowtriangle.left.fill")
+                                .font(.title2)
+                                .foregroundColor(buttonColor)
+                        }
                     
-                    Text(extraData()[1])
-                        .font(.title.bold())
+                            
+                        Text(extraData()[1])
+                            .font(.efDiary(30))
+                        
+                            
+         
+                            Button {
+                          
+                                    currentMonth += 1
+                                
+                            } label: {
+                                Image(systemName: "arrowtriangle.right.fill")
+                                    .font(.title2)
+                                    .foregroundColor(buttonColor)
+                            }
+                        Spacer()
+                        
+                    }
                 }
-                    
-                    Spacer(minLength: 0)
-                    
-                    Button {
+                .padding(.horizontal)
+           
+                
+                HStack(spacing:0)
+                {
+                    ForEach(days,id:\.self){ day in
                         
-                            currentMonth -= 1
-                        
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .font(.title2)
+                        Text(day)
+                            .font(.efDiary(18))
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(day == "일" ? .red : .black)
                     }
-                    
-                    Button {
-                  
-                            currentMonth += 1
-                        
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .font(.title2)
+                }
+                
+                // Dates...
+                // Lazy Grid..
+                
+                LazyVGrid(columns: columns,spacing:15) {
+                    ForEach(extractDate()){ value in
+                        CardView(value: value)
+                            .background(
+                                Capsule().fill(.pink)
+                                    .padding(.horizontal,8)
+                                    .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
+                            )
+                            .onTapGesture {
+                                withAnimation {
+                                    viewModel.currentDate = value.date
+                                }
+                                
+                            }
                     }
-
+                }
                 
             }
-            .padding(.horizontal)
-            //Day View
-            
-            HStack(spacing:0)
-            {
-                ForEach(days,id:\.self){ day in
-                    
-                    Text(day)
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(day == "일" ? .red : .black)
-                }
-            }
-            
-            // Dates...
-            // Lazy Grid..
-            
-            LazyVGrid(columns: columns,spacing:15) {
-                ForEach(extractDate()){ value in
-                    CardView(value: value)
-                        .background(
-                            Capsule().fill(.pink)
-                                .padding(.horizontal,8)
-                                .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
-                        )
-                        .onTapGesture {
-                            withAnimation {
-                                viewModel.currentDate = value.date
-                            }
-                            
-                        }
-                }
-            }
-            
+            .onChange(of: currentMonth) { newValue in
+                //udapteMonth
+                
+                viewModel.currentDate = getCurrentMonth()
         }
-        .onChange(of: currentMonth) { newValue in
-            //udapteMonth
-            
-            viewModel.currentDate = getCurrentMonth()
         }
         //VStack
     }
@@ -155,7 +163,7 @@ struct CustomDatePicker: View {
     //화면에 보여주기 위해 Year과 Month 추출하기
     func extraData() ->[String] {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY MMMM"
+        formatter.dateFormat = "YYYY MM" // MM:숫자 , MMM:월 줄임단어, MMMM:월 풀네임
         
         let date = formatter.string(from: viewModel.currentDate)
         
