@@ -37,6 +37,7 @@ final class MyUserNotifications {
         permission = MyUserDefaults.shared.getValue(key: "notification") as! Bool
     }
     
+    // Create UserNotification Request
     func create(_ taskModel: TaskModel){
         if permission{
             content.title = taskModel.title
@@ -58,6 +59,8 @@ final class MyUserNotifications {
         
     }
     
+    // Read Pending Notification Request
+    // 사용처가 확실해지면 리턴 형태 수정 예정, 현재 테스트용
     func read(){
         center.getPendingNotificationRequests(completionHandler:{ requests in
                 for request in requests{
@@ -70,6 +73,8 @@ final class MyUserNotifications {
         })
     }
     
+    // Update Notification Request
+    // 기존 알림 제거하고 새로운 알림 생성
     func update(_ taskModel: TaskModel){
         if permission{
             delete(id: taskModel.id)
@@ -79,8 +84,10 @@ final class MyUserNotifications {
         }
     }
     
+    // Delete Notification Request
     func delete(id: String){
         center.removePendingNotificationRequests(withIdentifiers: [id])
+        // 해당 ID의 request가 없을 경우 무시
         print("알람이 삭제됩니다. TaskModel ID: \(id)")
     }
     
