@@ -25,8 +25,8 @@ struct EditTaskView: View {
         
         VStack(spacing: 0){
             // - MARK: 타이틀 및 뒤로가기
-            Text("[일정 추가]")
-                .font(.title3.bold())
+            Text("일정 추가")
+                .font(.beomsuk(20))
                 .frame(maxWidth: .infinity)
                 .overlay(alignment:.leading){
                     Button {
