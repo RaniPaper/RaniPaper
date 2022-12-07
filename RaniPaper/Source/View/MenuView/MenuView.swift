@@ -41,6 +41,7 @@ struct MenuView: View {
                         viewModel.Offset = Menu.minOffset
                     }
                 }
+                MySoundSetting.bookFlip.play()
             }
         
         ZStack{

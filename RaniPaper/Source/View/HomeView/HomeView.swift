@@ -136,7 +136,5 @@ extension HomeView {
                 Text("read alarm")
             }
         }.padding(.horizontal, 30)
-        .onAppear(perform: { MyUserNotifications.shared.getPermission()
-        })
     }
 }

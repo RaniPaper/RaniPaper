@@ -17,6 +17,7 @@ final class MyUserNotifications {
     
     init(){
         print("✅ MyUserNotifications init")
+        getPermission()
     }
     
     //Get Permission
