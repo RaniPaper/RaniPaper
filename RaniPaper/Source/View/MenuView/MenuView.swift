@@ -59,6 +59,7 @@ struct MenuView: View {
                 .onTapGesture {
                     viewModel.Offset = Menu.minOffset
                     viewModel.isOpen = false
+                    MySoundSetting.closeSideMenu.play()
                 }
             
             SideMenuView(isOpen: $viewModel.isOpen,
