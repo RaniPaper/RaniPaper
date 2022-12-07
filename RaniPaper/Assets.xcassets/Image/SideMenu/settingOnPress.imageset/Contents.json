@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "side_setting_onPress-1.png",
+      "filename" : "settingOnPress.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "side_setting_onPress@2x-1.png",
+      "filename" : "settingOnPress@2x-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "side_setting_onPress@3x-1.png",
+      "filename" : "settingOnPress@3x-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

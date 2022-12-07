@@ -19,44 +19,60 @@ struct SideMenuView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             
-            HStack() {
-                VStack(alignment: .leading){
+            HStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 0){
                     Spacer()
-                        .frame(height: ScreenSize.height * 0.127)
-                    ForEach(viewModel.menuList) { menu in
-                        if !menu.isUnder {
-                            Button(action:{
-                                isOpen.toggle()
-                                offset = Menu.minOffset
-                                selection = menu.viewSelection
-                            }) {
-                                Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
+                        .frame(height: ScreenSize.height * 0.225)
+                    
+                    // - MARK: UpSide Menu
+                    VStack(alignment: .leading, spacing: ScreenSize.height * 0.0565){
+                        ForEach(viewModel.menuList) { menu in
+                            if !menu.isUnder {
+                                Button(action:{
+                                    isOpen.toggle()
+                                    offset = Menu.minOffset
+                                    selection = menu.viewSelection
+                                }) {
+                                    Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: ScreenSize.height * 0.044)
+                                }
                             }
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 37, trailing: 0))
                         }
                     }
 
                     Spacer()
                     
-                    ForEach(viewModel.menuList) { menu in
-                        if menu.isUnder {
-                            Button(action:{
-                                isOpen.toggle()
-                                offset = Menu.minOffset
-                                selection = menu.viewSelection
-                            }) {
-                                Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
+                    // - MARK: DownSide Menu
+                    VStack(alignment: .leading, spacing: ScreenSize.height * 0.008){
+                        ForEach(viewModel.menuList) { menu in
+                            if menu.isUnder {
+                                Button(action:{
+                                    isOpen.toggle()
+                                    offset = Menu.minOffset
+                                    selection = menu.viewSelection
+                                }) {
+                                    Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: ScreenSize.height * 0.044)
+                                }
                             }
                         }
                     }
+                    .padding(EdgeInsets(top: ScreenSize.height * 0.004, leading: 0, bottom: 0, trailing: 0))
+                    
+                    Spacer()
+                        .frame(height: ScreenSize.height * 0.128)
                 }
-                .padding(EdgeInsets(top: 80, leading: 30, bottom: 60, trailing: 50))
+                .padding(EdgeInsets(top: 0, leading: ScreenSize.width * 0.13, bottom: 0, trailing: 0))
                 
                 Spacer()
             }
         }
-        .ignoresSafeArea()
         .frame(height: ScreenSize.height)
+        .ignoresSafeArea()
     }
 }
 

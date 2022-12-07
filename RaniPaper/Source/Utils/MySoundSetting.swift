@@ -25,19 +25,22 @@ class MySoundSetting: ObservableObject{
         soundType = type
             
         print("✅ MySoundSetting init")
-        print("\(type.rawValue) 인스턴스 생성")
+        print("\(type.rawValue) 인스턴스 생성, fileName: \(self.urlName).\(self.extensionName)")
     }
     
     //음원 재생
     func play() {
         // 번들에서 url 불러오기, 에러 처리 필요
-        guard let url = Bundle.main.url(forResource: self.urlName, withExtension: self.extensionName) else {return}
+        guard let url = Bundle.main.url(forResource: self.urlName, withExtension: self.extensionName) else {
+            print("🔥 url을 불러오지 못했습니다.")
+            return
+        }
         
         // 해당 url의 음원 재생하는 플레이어 생성
         do {
             player = try AVAudioPlayer(contentsOf: url)
         } catch let error {
-            print("🔥음원을 불러오는데 오류가 발생했습니다.\(error.localizedDescription)")
+            print("🔥 음원을 불러오는데 오류가 발생했습니다.\(error.localizedDescription)")
         }
         
         // 소리 종류에 따라 루프 여부 결정
@@ -96,11 +99,13 @@ class MySoundSetting: ObservableObject{
 
 // 인스턴스 관리
 extension MySoundSetting {
-    static let BGM = MySoundSetting(url: "testBGM", extension: ".mp3", .BGM)
+    static let BGM = MySoundSetting(url: "testBGM", extension: "mp3", .BGM)
     // BGM 컨트롤용 인스턴스
-    static let SFX = MySoundSetting(url: "testSFX", extension: ".mp3", .SFX)
+    static let SFX = MySoundSetting(url: "testSFX", extension: "mp3", .SFX)
     // SFX 컨트롤용 인스턴스
-    static let Alarm = MySoundSetting(url: "testAlarm", extension: ".mp3", .ALARM)
+    static let Alarm = MySoundSetting(url: "testAlarm", extension: "mp3", .ALARM)
+    static let openSideMenu = MySoundSetting(url: "openSideMenu", extension: "wav", .SFX)
+    static let closeSideMenu = MySoundSetting(url: "closeSideMenu", extension: "wav", .SFX)
     
     // 효과음 추가되면 위 형식으로 인스턴스 추가해서 사용 가능
     

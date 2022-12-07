@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuView: View {
     @StateObject var viewModel = MenuViewModel()
     @Binding var selection: ViewSelection
+    @State var isPlayed = false
     var body: some View {
                 
         let drag = DragGesture()
@@ -26,6 +27,10 @@ struct MenuView: View {
                     if $0.startLocation.x > Menu.openEdge{
                         viewModel.Offset = Menu.minOffset + $0.translation.width > Menu.maxOffset ? Menu.minOffset + $0.translation.width : Menu.maxOffset
                     }
+                    if !isPlayed{
+                        MySoundSetting.openSideMenu.play()
+                        isPlayed = true
+                    }
                 }
             }
             .onEnded{ _ in
@@ -37,15 +42,19 @@ struct MenuView: View {
                 }
                 else {
                     withAnimation{
+                        if viewModel.isOpen{
+                            MySoundSetting.closeSideMenu.play()
+                        }
                         viewModel.isOpen = false
                         viewModel.Offset = Menu.minOffset
                     }
                 }
+                isPlayed = false
             }
         
         ZStack{
             Color.black
-                .opacity(viewModel.Offset == Menu.minOffset ? 0 : Double((360-viewModel.Offset))/1300)
+                .opacity(viewModel.Offset == Menu.minOffset ? 0 : Double((ScreenSize.width-viewModel.Offset))/1300)
                 .animation(.easeIn, value: viewModel.Offset)
                 .onTapGesture {
                     viewModel.Offset = Menu.minOffset
@@ -82,4 +91,11 @@ struct MenuView_Previews: PreviewProvider {
     }
 }
 
-
+extension DragGesture{
+    func playOpenSound(isOpen: Bool) -> some Gesture{
+        if !isOpen{
+            MySoundSetting.openSideMenu.play()
+        }
+        return self
+    }
+}

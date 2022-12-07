@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "side_credit_onPress.png",
+      "filename" : "creditOnPressUI-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "side_credit_onPress@2x-1.png",
+      "filename" : "creditOnPress@2x-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "side_credit_onPress@3x-1.png",
+      "filename" : "creditOnPress@3x-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
