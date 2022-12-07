@@ -24,16 +24,17 @@ struct TaskCardView: View {
         Button {
             showEdit = true
         } label: {
+            let textColor = Color(hexcode: "423434")
             VStack(alignment: .leading,spacing: 10) {
                 HStack{
                     Text(task.ticket)
-                        .font(.callout)
-                        .foregroundColor(.black)
+                        .font(.efDiary(20))
+                        .foregroundColor(textColor)
                         .padding(.vertical,5)
                         .padding(.horizontal)
                         .background{
                             Capsule()
-                                .fill(.gray.opacity(0.3))
+                                .fill(.white.opacity(0.2))
                         }
                     Spacer()
                     
@@ -42,7 +43,8 @@ struct TaskCardView: View {
                             showDeleteAlert = true
                         } label: {
                             Image(systemName: "trash")
-                                .foregroundColor(.black)
+                                .font(.efDiary(20))
+                                .foregroundColor(textColor)
                                 .padding(5)
                         }
                         .alert("정말로 삭제하시겠습니까?", isPresented: $showDeleteAlert) {
@@ -59,29 +61,31 @@ struct TaskCardView: View {
                 
                 
                 Text(task.title)
-                    .font(.title2.bold())
-                    .foregroundColor(.black)
+                    .font(.efDiary(30))
+                    .foregroundColor(textColor)
                     .padding(.vertical,10)
                 
                 HStack(alignment: .bottom,spacing: 0) {
                     VStack(alignment: .leading,spacing: 10) {
                         Label{
                             Text(task.deadLine.formatted(date: .long, time: .omitted))
-                                .foregroundColor(.black)
+                            
                         } icon: {
                             Image(systemName: "calendar")
-                                .foregroundColor(.black)
+                                
                         }
-                        .font(.caption)
+                        .font(.efDiary(15))
+                        .foregroundColor(textColor)
                         
                         Label{
                             Text(task.deadLine.formatted(date: .omitted, time: .shortened))
-                                .foregroundColor(.black)
+                               
                         } icon: {
                             Image(systemName: "clock")
-                                .foregroundColor(.black)
+                                
                         }
-                        .font(.caption)
+                        .font(.efDiary(15))
+                        .foregroundColor(textColor)
                     }
                     .frame(maxWidth: .infinity,alignment: .leading)
                     
