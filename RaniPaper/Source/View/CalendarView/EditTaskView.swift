@@ -86,28 +86,20 @@ struct EditTaskView: View {
                                     .font(.caption)
                                     .foregroundColor(.gray)
                                 
-                                Text(viewModel.taskDeadLine.formatted(date: .numeric, time: .shortened))
-                                    .font(.callout)
-                                    .fontWeight(.semibold)
-                                    .padding(.top,8)
-                                    .onTapGesture {
-                                        UIApplication.shared.endEditing()
-                                        viewModel.showDatePicker = true
-                                    }
-                                
-                                
-                            }
-                            .frame(maxWidth: .infinity,alignment: .leading)
-                            .overlay(alignment:.bottomTrailing) {
-                                Button {
-                                    UIApplication.shared.endEditing()
-                                    viewModel.showDatePicker.toggle()
-                                } label: {
-                                    Image(systemName: "calendar")
-                                        .foregroundColor(.black)
+                                HStack {
+                                    DatePicker.init("", selection: $viewModel.taskDeadLine,
+                                                    in:Date.now...Date.distantFuture,
+                                                    displayedComponents: [.date, .hourAndMinute]
+                                    )
+                                    .datePickerStyle(.automatic)
+                                    .labelsHidden()
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "calendar").foregroundColor(.black)
                                 }
-                                
                             }
+                                
                             Divider()
                                 .padding(.vertical,10)
                             
@@ -210,51 +202,6 @@ struct EditTaskView: View {
             }
             
             
-        }
-        .overlay { //가장 바깥에 두어 전부다 Blur뷰로 덮기위해
-            ZStack{
-                if viewModel.showDatePicker{
-                    Rectangle()
-                        .fill(.ultraThinMaterial)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            viewModel.showDatePicker = false
-                        }
-                    
-                    
-                    // MARK: DataPicker
-                    //현재부터 미래 까지
-                    //데이터 피커와 viewModel 데드라인 연결
-                    VStack(spacing: 5) {
-                        DatePicker.init("", selection: $viewModel.taskDeadLine,
-                                        in:Date.now...Date.distantFuture)
-                        .datePickerStyle(.graphical) //달력과 시간을 그래픽컬하게
-                        .labelsHidden()
-                        .background(.white,in: RoundedRectangle(cornerRadius: 12,style: .continuous))
-                        .padding(30) //시간 선택창 짤림화면 방지 패딩
-                        /* Button {
-                         viewModel.showDatePicker = false
-                         } label: {
-                         Text("날짜 저장하기")
-                         .font(.callout)
-                         .fontWeight(.semibold)
-                         
-                         .padding(15)
-                         .foregroundColor(.white)
-                         .background {
-                         Capsule()
-                         .fill(.blue)
-                         
-                         
-                         }
-                         }*/
-                    }
-                    
-                    
-                    
-                }
-            }
-            .animation(.easeInOut, value: viewModel.showDatePicker)
         }
         .onAppear {
             print("EditTaskview - onAppear")
