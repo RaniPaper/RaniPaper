@@ -75,7 +75,7 @@ struct CustomDatePicker: View {
                                 .font(.efDiary(18))
                                 .fontWeight(.semibold)
                                 .frame(maxWidth: .infinity)
-                                .foregroundColor(day == "일" ? .red : .memoPrimary)
+                                .foregroundColor(day == "일" ? Color(hexcode: "E74B4B") : .memoPrimary)
                                 .overlay {
                                     VStack{
                                         Circle().fill(Color(hexcode: "E9D1B5"))
