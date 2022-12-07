@@ -64,37 +64,63 @@ struct CustomDatePicker: View {
                 .padding(.horizontal)
            
                 
-                HStack(spacing:0)
-                {
-                    ForEach(days,id:\.self){ day in
-                        
-                        Text(day)
-                            .font(.efDiary(18))
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(day == "일" ? .red : .black)
+                VStack {
+                    
+                    // MARK: 요일
+                    HStack(spacing:0)
+                    {
+                        ForEach(days,id:\.self){ day in
+                            
+                            Text(day)
+                                .font(.efDiary(18))
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(day == "일" ? .red : .memoPrimary)
+                                .overlay {
+                                    VStack{
+                                        Circle().fill(Color(hexcode: "E9D1B5"))
+                                            .offset(y:-25)
+                                            .frame(width: 20,height: 20)
+                                            .overlay {
+                                                Capsule()
+                                                    .fill(Color(hexcode: "D6B5A3"))
+                                                    .frame(width: 15,height: 35)
+                                                    .offset(y:-35)
+                                            }
+                                    }
+                                    
+                                    .frame(maxHeight: .infinity,alignment: .top)
+                                }
+                        }
+                }
+                    // MARK: 일
+                    LazyVGrid(columns: columns,spacing:15) {
+                        ForEach(extractDate()){ value in
+                            CardView(value: value)
+                                .background(
+                                    Capsule().fill(.pink)
+                                        .padding(.horizontal,8)
+                                        .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
+                                )
+                                .onTapGesture {
+                                    withAnimation {
+                                        viewModel.currentDate = value.date
+                                    }
+                                    
+                                }
+                        }
                     }
                 }
+                .padding()
+                .padding(.vertical,10)
+                .background(calendarBg)
+                .zIndex(2.0)
                 
                 // Dates...
                 // Lazy Grid..
                 
-                LazyVGrid(columns: columns,spacing:15) {
-                    ForEach(extractDate()){ value in
-                        CardView(value: value)
-                            .background(
-                                Capsule().fill(.pink)
-                                    .padding(.horizontal,8)
-                                    .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
-                            )
-                            .onTapGesture {
-                                withAnimation {
-                                    viewModel.currentDate = value.date
-                                }
-                                
-                            }
-                    }
-                }
+               
+                
                 
             }
             .onChange(of: currentMonth) { newValue in
