@@ -35,15 +35,15 @@ struct MailBoxAnimationView: View {
                             if rollingPaper != nil { shouldShowRollingPaper = true }
                          
                         }
-                        .background(Color.black.opacity(0.6))
+                        .background(Image("mail_box_ready").blur(radius: 50))
+                        .transition(.opacity)
                         
                     } else { // 애니메이션 시작 전
                         
                         if !viewModel.rollingPapers.isEmpty {
-                            Image("mail_box_temp")
+                            Image("mail_box_ready")
                                 .resizable()
-                                .scaledToFit()
-                            
+                                .frame(width: ScreenSize.width, height: ScreenSize.height)
                                 .onTapGesture {
                                     withAnimation { isAnimating = true }
                                 }
@@ -53,8 +53,9 @@ struct MailBoxAnimationView: View {
                         
                     }
                 }
-                
-                // MARK: 뒤로가기 버튼 & 갤러리 이동 버튼
+            }
+            
+            // MARK: 뒤로가기 버튼 & 갤러리 이동 버튼
                 HStack {
                     DismissButton()
                     Spacer()
@@ -67,12 +68,12 @@ struct MailBoxAnimationView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
-
-            }
-            .fullScreenCover(isPresented: $shouldShowRollingPaper) {
-                RollingPaperView(rollingPaper: rollingPaper!)
-            }
+            
+            
         }
+        .fullScreenCover(isPresented: $shouldShowRollingPaper) {
+            RollingPaperView(rollingPaper: rollingPaper!)
+        }.ignoresSafeArea()
         
         
  
