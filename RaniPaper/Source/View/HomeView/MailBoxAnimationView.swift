@@ -59,7 +59,8 @@ struct MailBoxAnimationView: View {
                     DismissButton()
                     Spacer()
                     NavigationLink {
-                        GalleryView().navigationBarBackButtonHidden()
+                        GalleryView()
+                            //.navigationBarBackButtonHidden()
                     } label: {
                         Text("갤러리로 이동")
                     }
