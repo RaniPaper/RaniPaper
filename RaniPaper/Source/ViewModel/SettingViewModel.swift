@@ -14,7 +14,9 @@ final class SettingViewModel: ObservableObject {
         didSet{
             for settingContent in settingList{
                 MyUserDefaults.shared.setValue(key: settingContent.key, value: settingContent.isOn)
-                MySoundSetting.getInstance(soundType: settingContent.soundType).updateSoundState(soundType: settingContent.soundType)
+                for instance in MySoundSetting.getInstance(soundType: settingContent.soundType){
+                    instance.updateSoundState(soundType: settingContent.soundType)
+                }
             }
         }
     }

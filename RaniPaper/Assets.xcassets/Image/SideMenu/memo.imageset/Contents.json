@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "side_memo.png",
+      "filename" : "memo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "side_memo@2x.png",
+      "filename" : "memo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "side_memo@3x.png",
+      "filename" : "memoUI@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "side_diary.png",
+      "filename" : "diaryUI.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "side_diary@2x.png",
+      "filename" : "diaryUI@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "side_diary@3x.png",
+      "filename" : "diaryUI@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

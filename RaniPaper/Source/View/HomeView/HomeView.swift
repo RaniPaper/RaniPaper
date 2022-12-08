@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import Lottie
+import UserNotifications
 
 struct HomeView: View {
     @EnvironmentObject var userState: UserState
@@ -32,12 +33,12 @@ struct HomeView: View {
                                 .contentShape(Rectangle())
                         }
                     })
-                
                 // MARK: 테스트용 뷰
                 TestView()
-                
+//                TaskAlarmTestView()
             }
             .ignoresSafeArea()
+
         }
         
         
@@ -73,12 +74,6 @@ extension HomeView {
             } label: {
                 Text("햅틱테스트뷰 가기")
             }
-
-           
-
-
-            
-            soundSettingTestButtonView()
             Spacer().frame(height: 50)
         }
     }
@@ -187,5 +182,20 @@ extension HomeView {
                 Text("play Alarm")
             }
         }
+    }
+}
+
+//notification test
+extension HomeView {
+    func TaskAlarmTestView() -> some View{
+        VStack{
+            Text("UserNotification")
+            
+            Button(action:{
+                MyUserNotifications.shared.read()
+            }){
+                Text("read alarm")
+            }
+        }.padding(.horizontal, 30)
     }
 }
