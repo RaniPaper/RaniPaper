@@ -13,7 +13,6 @@ import UserNotifications
 struct HomeView: View {
     @EnvironmentObject var userState: UserState
     @StateObject var viewModel = HomeViewModel()
-    @State var isAnimating = false
     
     var body: some View {
         NavigationView {
