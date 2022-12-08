@@ -53,28 +53,26 @@ struct MailBoxAnimationView: View {
                         
                     }
                 }
-            }
-            
-            // MARK: 뒤로가기 버튼 & 갤러리 이동 버튼
-                HStack {
-                    DismissButton()
-                    Spacer()
-                    NavigationLink {
-                        GalleryView()
-                            //.navigationBarBackButtonHidden()
-                    } label: {
-                        Text("갤러리로 이동")
+                
+                // MARK: 뒤로가기 버튼 & 갤러리 이동 버튼
+                    HStack {
+                        DismissButton()
+                        Spacer()
+                        NavigationLink {
+                            GalleryView()
+                                //.navigationBarBackButtonHidden()
+                        } label: {
+                            Text("갤러리로 이동")
+                        }
                     }
-                }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 30)
-            
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 30)
+            }// ZStack
+            .fullScreenCover(isPresented: $shouldShowRollingPaper) {
+                RollingPaperView(rollingPaper: rollingPaper!)
+            }.ignoresSafeArea()
             
         }
-        .fullScreenCover(isPresented: $shouldShowRollingPaper) {
-            RollingPaperView(rollingPaper: rollingPaper!)
-        }.ignoresSafeArea()
-        
         
  
         
