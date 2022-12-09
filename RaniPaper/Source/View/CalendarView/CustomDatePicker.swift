@@ -11,7 +11,7 @@ struct CustomDatePicker: View {
     @ObservedObject var viewModel: CalendarViewModel
     @State var currentMonth: Int = 0
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
-    
+    let selectedColor:Color = Color(hexcode: "FCC778")
     init(viewModel: CalendarViewModel) {
         self.viewModel = viewModel
     }
@@ -98,7 +98,7 @@ struct CustomDatePicker: View {
                         ForEach(extractDate()){ value in
                             CardView(value: value)
                                 .background(
-                                    Capsule().fill(.pink)
+                                    Capsule().fill(selectedColor)
                                         .padding(.horizontal,8)
                                         .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
                                 )
@@ -158,19 +158,19 @@ struct CustomDatePicker: View {
                     
                     //현재 선택한 날짜와 cardView 날짜가 같으면
                     Text("\(value.day)")
-                        .font(.title3.bold())
+                        .font(.efDiary(18))
                         .foregroundColor(value.date.isSameDay(with: viewModel.currentDate) ? .white : .black)
                         .frame(maxWidth:.infinity)
                     
                     Spacer()
                     
                     Circle()
-                        .fill(value.date.isSameDay(with: viewModel.currentDate) ? .white : .pink)
+                        .fill(value.date.isSameDay(with: viewModel.currentDate) ? .white : selectedColor )
                         .frame(width:8,height: 8)
                 }
                 else { //만약 현재 날짜에 테스크가 없다면
                     Text("\(value.day)")
-                    .font(.title3.bold())
+                    .font(.efDiary(18))
                     .foregroundColor(value.date.isSameDay(with: viewModel.currentDate) ? .white : .black)
                     .frame(maxWidth:.infinity)
                     
