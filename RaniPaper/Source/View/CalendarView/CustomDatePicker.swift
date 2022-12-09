@@ -11,89 +11,128 @@ struct CustomDatePicker: View {
     @ObservedObject var viewModel: CalendarViewModel
     @State var currentMonth: Int = 0
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
-    
+    let selectedColor:Color = Color(hexcode: "FCC778")
     init(viewModel: CalendarViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
         
-        VStack(spacing:35){
-            
-            let days:[String] = ["일","월","화","수","목","금","토"]
-            
-            HStack(spacing:20){
-                VStack(alignment: .leading,spacing: 10) {
+        ZStack {
+            Color.white
+            VStack(spacing:35){
+                
+                let days:[String] = ["일","월","화","수","목","금","토"]
+                let calendarBg = Color(hexcode: "F4EDDB")
+                
+                // MARK: 년 월 죄우 버튼
+                VStack {
+                    let buttonColor = Color(hexcode: "D6B5A3")
                     Text(extraData()[0])
-                        .font(.caption2)
-                        .fontWeight(.semibold)
+                        .font(.efDiary(20))
+                    .fontWeight(.semibold)
+                    HStack(spacing:20){
+                        Spacer()
+                        Button {
+                                currentMonth -= 1
+                            
+                        } label: {
+                            Image(systemName: "arrowtriangle.left.fill")
+                                .font(.title2)
+                                .foregroundColor(buttonColor)
+                        }
                     
-                    Text(extraData()[1])
-                        .font(.title.bold())
+                            
+                        Text(extraData()[1])
+                            .font(.efDiary(30))
+                        
+                            
+         
+                            Button {
+                          
+                                    currentMonth += 1
+                                
+                            } label: {
+                                Image(systemName: "arrowtriangle.right.fill")
+                                    .font(.title2)
+                                    .foregroundColor(buttonColor)
+                            }
+                        Spacer()
+                        
+                    }
                 }
-                    
-                    Spacer(minLength: 0)
-                    
-                    Button {
+                .padding(.horizontal)
+           
+                
+                VStack {
+                    VStack {
                         
-                            currentMonth -= 1
-                        
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .font(.title2)
+                        // MARK: 요일
+                        HStack(spacing:0)
+                        {
+                            ForEach(days,id:\.self){ day in
+                                
+                                Text(day)
+                                    .font(.efDiary(18))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(day == "일" ? Color(hexcode: "E74B4B") : .memoPrimary)
+                                    .overlay {
+                                        VStack{
+                                            Circle().fill(Color(hexcode: "E9D1B5"))
+                                                .offset(y:-25)
+                                                .frame(width: 20,height: 20)
+                                                .overlay {
+                                                    Capsule()
+                                                        .fill(Color(hexcode: "D6B5A3"))
+                                                        .frame(width: 15,height: 35)
+                                                        .offset(y:-35)
+                                                }
+                                        }
+                                        
+                                        .frame(maxHeight: .infinity,alignment: .top)
+                                    }
+                            }
                     }
-                    
-                    Button {
-                  
-                            currentMonth += 1
-                        
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .font(.title2)
+                        // MARK: 일
+                        LazyVGrid(columns: columns,spacing:15) {
+                            ForEach(extractDate()){ value in
+                                CardView(value: value)
+                                    .background(
+                                        Capsule().fill(selectedColor)
+                                            .padding(.horizontal,8)
+                                            .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
+                                    )
+                                    .onTapGesture {
+                                        withAnimation {
+                                            viewModel.currentDate = value.date
+                                        }
+                                        
+                                    }
+                            }
+                        }
                     }
-
+                    .padding()
+                    .padding(.vertical,10)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(calendarBg))
+                    .padding(.bottom,20)
+                    .padding(.top,2)
+                .zIndex(2.0)
+                }.background(RoundedRectangle(cornerRadius: 10).fill(Color(hexcode: "E9CDCB")))
+                   // .padding(.bottom,10)
+                
+                // Dates...
+                // Lazy Grid..
+                
+               
+                
                 
             }
-            .padding(.horizontal)
-            //Day View
-            
-            HStack(spacing:0)
-            {
-                ForEach(days,id:\.self){ day in
-                    
-                    Text(day)
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(day == "일" ? .red : .black)
-                }
-            }
-            
-            // Dates...
-            // Lazy Grid..
-            
-            LazyVGrid(columns: columns,spacing:15) {
-                ForEach(extractDate()){ value in
-                    CardView(value: value)
-                        .background(
-                            Capsule().fill(.pink)
-                                .padding(.horizontal,8)
-                                .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
-                        )
-                        .onTapGesture {
-                            withAnimation {
-                                viewModel.currentDate = value.date
-                            }
-                            
-                        }
-                }
-            }
-            
+            .onChange(of: currentMonth) { newValue in
+                //udapteMonth
+                
+                viewModel.currentDate = getCurrentMonth()
         }
-        .onChange(of: currentMonth) { newValue in
-            //udapteMonth
-            
-            viewModel.currentDate = getCurrentMonth()
         }
         //VStack
     }
@@ -124,19 +163,19 @@ struct CustomDatePicker: View {
                     
                     //현재 선택한 날짜와 cardView 날짜가 같으면
                     Text("\(value.day)")
-                        .font(.title3.bold())
+                        .font(.efDiary(18))
                         .foregroundColor(value.date.isSameDay(with: viewModel.currentDate) ? .white : .black)
                         .frame(maxWidth:.infinity)
                     
                     Spacer()
                     
                     Circle()
-                        .fill(value.date.isSameDay(with: viewModel.currentDate) ? .white : .pink)
+                        .fill(value.date.isSameDay(with: viewModel.currentDate) ? .white : selectedColor )
                         .frame(width:8,height: 8)
                 }
                 else { //만약 현재 날짜에 테스크가 없다면
                     Text("\(value.day)")
-                    .font(.title3.bold())
+                    .font(.efDiary(18))
                     .foregroundColor(value.date.isSameDay(with: viewModel.currentDate) ? .white : .black)
                     .frame(maxWidth:.infinity)
                     
@@ -155,7 +194,7 @@ struct CustomDatePicker: View {
     //화면에 보여주기 위해 Year과 Month 추출하기
     func extraData() ->[String] {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY MMMM"
+        formatter.dateFormat = "YYYY MM" // MM:숫자 , MMM:월 줄임단어, MMMM:월 풀네임
         
         let date = formatter.string(from: viewModel.currentDate)
         

@@ -15,7 +15,7 @@ struct EditTaskView: View {
     var existTask: TaskModel? // 기존의 task
     
     //keyboardHandler = KeyboardHander()
-    let colors:[String] =  ["ine","jingburger","lilpa","jururu","gosegu","viichan"]
+    let colors:[String] =  ["woowakgood","ine","jingburger","lilpa","jururu","gosegu","viichan","panzee"]
     let tickets:[String] = ["우왁굳","아이네","징버거","릴파","주르르","고세구","비챤","현생"]
     let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
     @Namespace var animation
@@ -25,8 +25,8 @@ struct EditTaskView: View {
         
         VStack(spacing: 0){
             // - MARK: 타이틀 및 뒤로가기
-            Text("Edit Task")
-                .font(.title3.bold())
+            Text("일정 추가")
+                .font(.beomsuk(20))
                 .frame(maxWidth: .infinity)
                 .overlay(alignment:.leading){
                     Button {
@@ -163,20 +163,19 @@ struct EditTaskView: View {
                                 }
                                 
                             } label: {
-                                Text("스케쥴 저장하기")
-                                    .font(.callout)
-                                    .fontWeight(.semibold)
+                                Text("일정 저장하기")
+                                    .font(Font.efDiary(15))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical,12)
                                     .foregroundColor(.white)
                                     .background {
                                         Capsule()
-                                            .fill(.black)
+                                            .fill(viewModel.taskTitle == "" ? Color(hexcode: "84CC89") : Color(hexcode: "4A734D") )
                                     }
                             }
                             //    .padding(.bottom,10)
                             .disabled(viewModel.taskTitle == "")
-                            .opacity(viewModel.taskTitle == "" ? 0.6 : 1)
+                         
                             .id(bottom)
                             
                         }

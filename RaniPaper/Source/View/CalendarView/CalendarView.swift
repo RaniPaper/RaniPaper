@@ -23,7 +23,8 @@ struct CalendarView: View {
                     CustomDatePicker(viewModel: viewModel)
                     
                     HStack {
-                        Text("Tasks").font(.title2.bold())
+                        Image("diaryNote")
+                        Text("오늘의 할 일").font(.efDiary(20))
                         Spacer()
                     }.padding(.horizontal, 15)
                     
@@ -47,7 +48,7 @@ struct CalendarView: View {
                                //Place your action here
                                viewModel.showEdit = true
                            }) {
-                               Image("Floating")
+                               Image("diaryWrite")
                                    .resizable()
                                    .aspectRatio(contentMode: .fill)
                                    .frame(width: 50, height: 50)
@@ -81,11 +82,18 @@ struct CalendarView: View {
                         TaskCardView(viewModel: viewModel, task: task,showDeleteErrorAlert: $showDeleteErrorAlert)
                     }
                 } else {
-                    Text("오늘은 할 일이 없어요").foregroundColor(.gray)
+                    VStack(spacing: 0){
+                        Image("noTaskViichan")
+                        Text("오늘은 할 일이 없어요").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090"))
+                    }
+                    
                 }
                 
             } else {
-                Text("오늘은 할 일이 없어요")
+                VStack(spacing: 0){
+                    Image("noTaskViichan")
+                    Text("오늘은 할 일이 없어요").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090"))
+                }
             }
         }
     }
