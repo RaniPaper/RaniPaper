@@ -12,7 +12,7 @@ final class EditTaskViewModel:ObservableObject{
     var taskId: String?
     @Published var taskTitle:String = ""
     @Published var taskDeadLine:Date = Date()
-    @Published var taskColor:String = "ine"
+    @Published var taskColor:String = "woowakgood"
     @Published var taskTicket:String = "우왁굳"
     @Published var showDatePicker:Bool = false
     @Published private(set) var keyboardHeight: CGFloat = 0

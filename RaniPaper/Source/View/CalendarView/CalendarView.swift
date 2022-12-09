@@ -48,7 +48,7 @@ struct CalendarView: View {
                                //Place your action here
                                viewModel.showEdit = true
                            }) {
-                               Image("Floating")
+                               Image("diaryWrite")
                                    .resizable()
                                    .aspectRatio(contentMode: .fill)
                                    .frame(width: 50, height: 50)
