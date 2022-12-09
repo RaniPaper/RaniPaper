@@ -65,56 +65,61 @@ struct CustomDatePicker: View {
            
                 
                 VStack {
-                    
-                    // MARK: 요일
-                    HStack(spacing:0)
-                    {
-                        ForEach(days,id:\.self){ day in
-                            
-                            Text(day)
-                                .font(.efDiary(18))
-                                .fontWeight(.semibold)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(day == "일" ? Color(hexcode: "E74B4B") : .memoPrimary)
-                                .overlay {
-                                    VStack{
-                                        Circle().fill(Color(hexcode: "E9D1B5"))
-                                            .offset(y:-25)
-                                            .frame(width: 20,height: 20)
-                                            .overlay {
-                                                Capsule()
-                                                    .fill(Color(hexcode: "D6B5A3"))
-                                                    .frame(width: 15,height: 35)
-                                                    .offset(y:-35)
-                                            }
+                    VStack {
+                        
+                        // MARK: 요일
+                        HStack(spacing:0)
+                        {
+                            ForEach(days,id:\.self){ day in
+                                
+                                Text(day)
+                                    .font(.efDiary(18))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(day == "일" ? Color(hexcode: "E74B4B") : .memoPrimary)
+                                    .overlay {
+                                        VStack{
+                                            Circle().fill(Color(hexcode: "E9D1B5"))
+                                                .offset(y:-25)
+                                                .frame(width: 20,height: 20)
+                                                .overlay {
+                                                    Capsule()
+                                                        .fill(Color(hexcode: "D6B5A3"))
+                                                        .frame(width: 15,height: 35)
+                                                        .offset(y:-35)
+                                                }
+                                        }
+                                        
+                                        .frame(maxHeight: .infinity,alignment: .top)
                                     }
-                                    
-                                    .frame(maxHeight: .infinity,alignment: .top)
-                                }
-                        }
-                }
-                    // MARK: 일
-                    LazyVGrid(columns: columns,spacing:15) {
-                        ForEach(extractDate()){ value in
-                            CardView(value: value)
-                                .background(
-                                    Capsule().fill(selectedColor)
-                                        .padding(.horizontal,8)
-                                        .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
-                                )
-                                .onTapGesture {
-                                    withAnimation {
-                                        viewModel.currentDate = value.date
+                            }
+                    }
+                        // MARK: 일
+                        LazyVGrid(columns: columns,spacing:15) {
+                            ForEach(extractDate()){ value in
+                                CardView(value: value)
+                                    .background(
+                                        Capsule().fill(selectedColor)
+                                            .padding(.horizontal,8)
+                                            .opacity(value.date.isSameDay(with: viewModel.currentDate) ? 1 : 0)
+                                    )
+                                    .onTapGesture {
+                                        withAnimation {
+                                            viewModel.currentDate = value.date
+                                        }
+                                        
                                     }
-                                    
-                                }
+                            }
                         }
                     }
-                }
-                .padding()
-                .padding(.vertical,10)
-                .background(calendarBg)
+                    .padding()
+                    .padding(.vertical,10)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(calendarBg))
+                    .padding(.bottom,20)
+                    .padding(.top,2)
                 .zIndex(2.0)
+                }.background(RoundedRectangle(cornerRadius: 10).fill(Color(hexcode: "E9CDCB")))
+                   // .padding(.bottom,10)
                 
                 // Dates...
                 // Lazy Grid..
