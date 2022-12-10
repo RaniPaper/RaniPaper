@@ -102,7 +102,7 @@ class MySoundSetting: ObservableObject{
 
 /// 인스턴스 관리
 extension MySoundSetting {
-    static let BGM = MySoundSetting(url: "testBGM", extension: "mp3", .BGM)
+    static let BGM = MySoundSetting(url: "BGM", extension: "wav", .BGM)
     // BGM 컨트롤용 인스턴스
     static let SFX = MySoundSetting(url: "testSFX", extension: "mp3", .SFX)
     // SFX 컨트롤용 인스턴스

@@ -26,10 +26,11 @@ struct MenuView: View {
                 } else {
                     if $0.startLocation.x > Menu.openEdge{
                         viewModel.Offset = Menu.minOffset + $0.translation.width > Menu.maxOffset ? Menu.minOffset + $0.translation.width : Menu.maxOffset
-                    }
-                    if !isPlayed{
-                        MySoundSetting.openSideMenu.play()
-                        isPlayed = true
+                        
+                        if !isPlayed{
+                            MySoundSetting.openSideMenu.play()
+                            isPlayed = true
+                        }
                     }
                 }
             }
@@ -59,6 +60,7 @@ struct MenuView: View {
                 .onTapGesture {
                     viewModel.Offset = Menu.minOffset
                     viewModel.isOpen = false
+                    MySoundSetting.closeSideMenu.play()
                 }
             
             SideMenuView(isOpen: $viewModel.isOpen,
