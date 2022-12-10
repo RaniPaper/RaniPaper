@@ -16,17 +16,28 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         center.delegate = self
         return true
     }
+    
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate{
     // Notification을 클릭하면 실행될 함수
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+        let application = UIApplication.shared
+        
+        print("userNotificationCenter Activate")
+        
         // Notification Center에 신호를 post
-        NotificationCenter.default.post(name: NSNotification.Name("Noti Tabbed"), object: nil)
-        print("✅ Noti Clicked")
-        completionHandler()
+        if application.applicationState == .active{
+            print("앱 켜짐")
+        }
+        
+        if application.applicationState == .background{
+            print("앱 꺼짐")
+            NotificationCenter.default.post(name: NSNotification.Name("Noti Tabbed"), object: nil)
+            print("✅ Noti Clicked")
+        }
     }
 }
 
-// 프로그램 종료 상태에서도 noti 클릭 컨트롤 필요
+// force quit 상황에서는 작동하지 않음
