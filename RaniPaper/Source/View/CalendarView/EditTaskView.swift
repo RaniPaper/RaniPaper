@@ -23,35 +23,43 @@ struct EditTaskView: View {
     
     var body: some View {
         
-        VStack(spacing: 0){
+        VStack(spacing: 10){
             // - MARK: 타이틀 및 뒤로가기
-            Text("일정 추가")
-                .font(.beomsuk(20))
+          
+                Image("editDiaryNote")
+                    .frame(maxWidth:.infinity)
+                    .overlay(alignment:.leading){
+                        Button {
+                            UIApplication.shared.endEditing()
+                            showEdit = false
+                        }label: {
+                            Image(systemName: "arrow.left")
+                                .font(.title3)
+                                .foregroundColor(Color(hexcode: "E5BE83"))
+                        }.padding()
+                        
+                    }
+            
+            Text("일정 편집")
+                .font(.efDiary(25))
                 .frame(maxWidth: .infinity)
-                .overlay(alignment:.leading){
-                    Button {
-                        UIApplication.shared.endEditing()
-                        showEdit = false
-                    }label: {
-                        Image(systemName: "arrow.left")
-                            .font(.title3)
-                            .foregroundColor(.black)
-                    }.padding()
-                    
-                }
+                
             
             
             
             GeometryReader { proxy in
                 ScrollViewReader { scrollProxy in
                     ScrollView {
+                        let titleColor = Color(hexcode: "786E6E")
+                        let divideColor = Color(hexcode: "EBDCDC")
+                        let titleSize:CGFloat = 15
                         VStack{
                             // - MARK: Sample Card Colors
-                            VStack(alignment:.leading,spacing: 12) {
-                                Text("Color")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                HStack(spacing: 15){
+                            VStack(spacing: 12) {
+                                Text("색")
+                                    .font(Font.efDiary(titleSize))
+                                    .foregroundColor(titleColor)
+                                HStack(spacing:10){
                                     ForEach(colors,id:\.self){ color in
                                         Circle()
                                             .fill(Color(color))
@@ -72,31 +80,35 @@ struct EditTaskView: View {
                                         
                                     }
                                 }.padding(.top,10)
-                                
+                                Divider()
+                                    .background(divideColor)
                             }
                             .frame(maxWidth: .infinity,alignment: .leading)
                             .padding(.top,30)
                             
-                            Divider()
-                                .padding(.vertical,10)
+                           
                             
                             // - MARK: Deadline
-                            VStack(alignment: .leading,spacing: 12) {
-                                Text("Task Deadline")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
+                            VStack(spacing: 12) {
+                                Text("일정")
+                                    .font(Font.efDiary(titleSize))
+                                    .foregroundColor(titleColor)
+                                
                                 
                                 HStack {
+                                    Spacer()
+                                    Image(systemName: "calendar").foregroundColor(.brown)
                                     DatePicker.init("", selection: $viewModel.taskDeadLine,
                                                     in:Date.now...Date.distantFuture,
                                                     displayedComponents: [.date, .hourAndMinute]
                                     )
                                     .datePickerStyle(.automatic)
                                     .labelsHidden()
-                                    
+                                    .font(Font.efDiary())
+                                    .colorMultiply(.brown) // 배경 색
                                     Spacer()
                                     
-                                    Image(systemName: "calendar").foregroundColor(.black)
+                                    
                                 }
                             }
                                 
@@ -104,39 +116,40 @@ struct EditTaskView: View {
                                 .padding(.vertical,10)
                             
                             // - MARK: Title
-                            VStack(alignment: .leading,spacing: 12) {
-                                Text("Task Title")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                    .padding(.vertical,10)
+                            VStack(spacing: 12) {
+                                Text("내용")
+                                    .font(Font.efDiary(titleSize))
+                                    .foregroundColor(titleColor)
                                 TextField("할 일",text: $viewModel.taskTitle)
+                                    .font(Font.efDiary(18))
+                                    .foregroundColor(Color(hexcode: "988B8B"))
                                     .frame(maxWidth: .infinity)
                                 Divider()
                             }
                             
                             // MARK:  Ticket
-                            VStack(alignment: .leading,spacing: 12) {
-                                Text("Ticket")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                    .padding(.vertical,10)
+                            VStack(spacing: 12) {
+                                Text("티켓")
+                                    .font(Font.efDiary(titleSize))
+                                    .foregroundColor(titleColor)
                                 
                                 LazyVGrid(columns: columns) {
+                                    let ticketColor = Color(hexcode: "988B8B")
                                     ForEach(tickets,id:\.self){ ticket in
                                         Text(ticket)
                                             .font(.callout)
                                             .padding(.vertical,8)
                                             .frame(maxWidth:.infinity)
-                                            .foregroundColor(viewModel.taskTicket == ticket ? .white : .black)
+                                            .foregroundColor(viewModel.taskTicket == ticket ? .white : ticketColor)
                                             .background{
                                                 if viewModel.taskTicket == ticket{
                                                     Capsule()
-                                                        .fill(.black)
+                                                        .fill(ticketColor)
                                                         .matchedGeometryEffect(id: "Ticket", in: animation)
                                                 }
                                                 else{
                                                     Capsule()
-                                                        .strokeBorder(.black)
+                                                        .strokeBorder(ticketColor)
                                                 }
                                             }
                                             .contentShape(Capsule())
@@ -149,8 +162,7 @@ struct EditTaskView: View {
                                             }
                                     }
                                 }
-                                
-                                Divider()
+
                             }
                             
                             Spacer()
@@ -170,7 +182,7 @@ struct EditTaskView: View {
                                     .foregroundColor(.white)
                                     .background {
                                         Capsule()
-                                            .fill(viewModel.taskTitle == "" ? Color(hexcode: "84CC89") : Color(hexcode: "4A734D") )
+                                            .fill(viewModel.taskTitle == "" ? Color(hexcode: "988B8B") : Color(hexcode: "E5BE83") )
                                     }
                             }
                             //    .padding(.bottom,10)
@@ -199,6 +211,7 @@ struct EditTaskView: View {
                     
                 }
             }
+            .padding(.horizontal)
             
             
         }
