@@ -61,7 +61,14 @@ struct MainView: View {
                         }
                     }
                     MenuView(selection: $viewModel.selection)
-                }.environmentObject(UserState.shared)
+                }
+                .onAppear{
+                    NotificationCenter.default.addObserver(forName: NSNotification.Name("Noti Tabbed"), object: nil, queue: .main){(_) in
+                        
+                        viewModel.selection = .diary
+                    }
+                }
+                .environmentObject(UserState.shared)
             }
         }
     }

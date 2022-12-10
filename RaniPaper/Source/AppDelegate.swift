@@ -10,10 +10,10 @@ import UIKit
 import UserNotifications
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    let userNotificationCenter = UNUserNotificationCenter.current()
+    let center = UNUserNotificationCenter.current()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        userNotificationCenter.delegate = self
+        center.delegate = self
         return true
     }
 }
@@ -23,8 +23,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         // Notification Center에 신호를 post
-        NotificationCenter.default.post(name: Notification.Name("Noti Tabbed"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("Noti Tabbed"), object: nil)
         print("✅ Noti Clicked")
         completionHandler()
     }
 }
+
+// 프로그램 종료 상태에서도 noti 클릭 컨트롤 필요
