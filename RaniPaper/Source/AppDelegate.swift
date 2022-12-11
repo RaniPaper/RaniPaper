@@ -25,7 +25,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
         let application = UIApplication.shared
         
-        print("userNotificationCenter Activate")
+        print("Execute didReceive")
         
         // Notification Center에 신호를 post
         if application.applicationState == .active{
@@ -34,9 +34,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
         if application.applicationState == .background{
             print("앱 꺼짐")
-            NotificationCenter.default.post(name: NSNotification.Name("Noti Tabbed"), object: nil)
-            print("✅ Noti Clicked")
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name("Noti Tabbed"), object: nil)
+        print("✅ Noti Clicked")
+    }
+    
+    // app이 forground 상태일 때 실행할 함수
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Execute willPresent")
+        completionHandler([.banner, .sound])
     }
 }
 
