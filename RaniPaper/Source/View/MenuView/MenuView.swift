@@ -91,12 +91,3 @@ struct MenuView_Previews: PreviewProvider {
         }
     }
 }
-
-extension DragGesture{
-    func playOpenSound(isOpen: Bool) -> some Gesture{
-        if !isOpen{
-            MySoundSetting.openSideMenu.play()
-        }
-        return self
-    }
-}
