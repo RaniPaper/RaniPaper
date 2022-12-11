@@ -14,9 +14,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         center.delegate = self
+        print("didFinishLaunchingWithOptions")
         return true
     }
     
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        center.delegate = self
+        print("willFinishLaunchingWithOptions")
+        return true
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate{
