@@ -25,6 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+// Notification 관련 extension
 extension AppDelegate: UNUserNotificationCenterDelegate{
     // Notification을 클릭하면 실행될 함수
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
