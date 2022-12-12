@@ -17,18 +17,44 @@ struct SettingView: View {
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 5)
             VStack{
-                Image("viic1")
-                
-                List{
-                    ForEach($viewModel.settingList){ $setting in
-                        Toggle(setting.key, isOn: $setting.isOn)
+                Form{
+                    Section(header: Text("")){
+                        HStack{
+                            Image("viic1")
+                            VStack(alignment: .leading){
+                                Text("비챤 님")
+                                    .bold()
+                                Text("모시깽 모시깽")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
                     }
-                    .background(Color.clear)
-                    .listRowBackground(Color.clear)
                     
+                    Section(header: Text("소리")){
+                        ForEach($viewModel.soundSettingList){ $setting in
+                            Toggle(setting.key, isOn: $setting.isOn)
+                        }
+                        //                    .background(Color.clear)
+                        //                    .listRowBackground(Color.clear)
+                    }
+                    
+                    ForEach(SettingModel.Section.allCases, id: \.self){ section in
+                        Section(header: Text(section.rawValue)){
+                            ForEach(viewModel.settingList){ setting in
+                                if setting.section.rawValue == section.rawValue {
+                                    Button(action: {
+                                        
+                                    }){
+                                        Text(setting.content)
+                                    }
+                                    .foregroundColor(.black)
+                                }
+                            }
+                        }
+                    }
                 }
-                .listStyle(.plain)
-                .padding(.horizontal, 20)
+//                .listStyle(.plain)
+//                .padding(.horizontal, 20)
             }
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
         }

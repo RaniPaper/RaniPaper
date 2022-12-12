@@ -9,24 +9,32 @@ import Foundation
 import SwiftUI
 
 final class SettingViewModel: ObservableObject {
-    @Published var settingList: [SettingContent]
+    @Published var soundSettingList: [SoundSettingModel]
     {
         didSet{
-            for settingContent in settingList{
-                MyUserDefaults.shared.setValue(key: settingContent.key, value: settingContent.isOn)
-                for instance in MySoundSetting.getInstance(soundType: settingContent.soundType){
-                    instance.updateSoundState(soundType: settingContent.soundType)
+            for soundSettingModel in soundSettingList{
+                MyUserDefaults.shared.setValue(key: soundSettingModel.key, value: soundSettingModel.isOn)
+                for instance in MySoundSetting.getInstance(soundType: soundSettingModel.soundType){
+                    instance.updateSoundState(soundType: soundSettingModel.soundType)
                 }
             }
         }
     }
+    @Published var settingList: [SettingModel]
     
     
     init() {
+        soundSettingList =
+        [SoundSettingModel(soundType: .BGM),
+         SoundSettingModel(soundType: .SFX),
+         SoundSettingModel(soundType: .ALARM)]
+        
         settingList =
-        [SettingContent(soundType: .BGM),
-         SettingContent(soundType: .SFX),
-         SettingContent(soundType: .ALARM)]
+        [SettingModel(content: "비밀번호 설정", action: .setPassword, section: .privacy),
+         SettingModel(content: "데이터 내보내기", action: .exportData, section: .data),
+         SettingModel(content: "데이터 초기화", action: .resetData, section: .data),
+         SettingModel(content: "RaniPaper 사용법", action: .showOnBoard, section: .etc)
+        ]
         
         print("✅ SettingViewModel 생성")
     }
