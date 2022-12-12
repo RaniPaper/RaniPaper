@@ -26,7 +26,6 @@ struct MenuView: View {
                 } else {
                     if $0.startLocation.x > Menu.openEdge{
                         viewModel.Offset = Menu.minOffset + $0.translation.width > Menu.maxOffset ? Menu.minOffset + $0.translation.width : Menu.maxOffset
-                        
                         if !isPlayed{
                             MySoundSetting.openSideMenu.play()
                             isPlayed = true
@@ -90,14 +89,5 @@ struct MenuView_Previews: PreviewProvider {
         VStack{
             prev()
         }
-    }
-}
-
-extension DragGesture{
-    func playOpenSound(isOpen: Bool) -> some Gesture{
-        if !isOpen{
-            MySoundSetting.openSideMenu.play()
-        }
-        return self
     }
 }

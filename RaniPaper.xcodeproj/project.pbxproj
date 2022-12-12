@@ -19,6 +19,7 @@
 		494967C72940EAC8001E5E8A /* openSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 494967C62940EAC8001E5E8A /* openSideMenu.wav */; };
 		49762B7E294151C300D3DD18 /* closeSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49762B7D294151C300D3DD18 /* closeSideMenu.wav */; };
 		49762B80294151DB00D3DD18 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49762B7F294151DB00D3DD18 /* BGM.wav */; };
+		49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49762B812941595C00D3DD18 /* AppDelegate.swift */; };
 		49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F8293D1C79009A2748 /* testAlarm.mp3 */; };
 		49D812FD293F7FB5009A2748 /* MyUserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */; };
 		49E703F029353A150035215F /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703EF29353A150035215F /* CreditView.swift */; };
@@ -91,6 +92,7 @@
 		494967C62940EAC8001E5E8A /* openSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = openSideMenu.wav; sourceTree = "<group>"; };
 		49762B7D294151C300D3DD18 /* closeSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = closeSideMenu.wav; path = ../../../RaniPaper_SFX/closeSideMenu.wav; sourceTree = "<group>"; };
 		49762B7F294151DB00D3DD18 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
+		49762B812941595C00D3DD18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49D812F8293D1C79009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
 		49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserNotifications.swift; sourceTree = "<group>"; };
 		49E703EF29353A150035215F /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				D86ACE22292DE272002C8E89 /* Extension */,
 				D86ACE1B292DDF00002C8E89 /* ViewModel */,
 				D86ACE19292DDDA4002C8E89 /* View */,
+				49762B812941595C00D3DD18 /* AppDelegate.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				7B796F94293D74BB00799616 /* HapticManager.swift in Sources */,
 				D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */,
+				49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */,
 				D8FF935A293A57A700B0F475 /* LargeStickerView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				492DB7442931202B0027EEB1 /* DummyView2.swift in Sources */,

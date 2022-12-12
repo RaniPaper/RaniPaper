@@ -28,6 +28,11 @@ struct MainView: View {
 //                        }
 //                    }
 
+                    NotificationCenter.default.addObserver(forName: NSNotification.Name("Noti Tabbed"), object: nil, queue: .main){(_) in
+                        
+                        viewModel.selection = .diary
+                    }
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                         withAnimation {
                             viewModel.isLoading.toggle()
@@ -61,7 +66,12 @@ struct MainView: View {
                         }
                     }
                     MenuView(selection: $viewModel.selection)
-                }.environmentObject(UserState.shared)
+                }
+//                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification, object: nil)){(_) in
+//                    print("Test")
+//                    
+//                }
+                .environmentObject(UserState.shared)
             }
         }
     }
