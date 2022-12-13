@@ -12,6 +12,8 @@
 		<string>KOTRA_HOPE.otf</string>
 		<string>ONE_Mobile_OTF_Bold.otf</string>
 		<string>ONE_Mobile_Title_OTF.otf</string>
+		<string>Nanum.ttf</string>
+		<string>ChosunNm.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

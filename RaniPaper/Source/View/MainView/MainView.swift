@@ -20,7 +20,9 @@ struct MainView: View {
         }
         else{
             if viewModel.isLoading{
-                LaunchView().transition(.opacity).onAppear{
+                LaunchView().transition(.opacity)
+                    .environmentObject(userState)
+                    .onAppear{
 //                    for family: String in UIFont.familyNames{
 //                        print(family)
 //                        for names : String in UIFont.fontNames(forFamilyName: family){

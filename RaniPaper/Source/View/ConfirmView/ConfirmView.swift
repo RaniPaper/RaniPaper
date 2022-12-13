@@ -31,7 +31,7 @@ struct ConfirmView: View {
                                 }
                             
                         } label: {
-                            CircleImage(source: "viic1",color:Color.green1)
+                            CircleImage(source: "viichan",color:Color.green1)
                             
                         }
                         Text("비챤")

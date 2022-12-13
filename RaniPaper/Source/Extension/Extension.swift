@@ -112,6 +112,18 @@ extension Font{
         return Font.custom("GangwonEduAll-OTFBold",size: size)
     }
     
+    public static func chosun(_ size:CGFloat = 10)->Font{
+        return Font.custom("ChosunilboNM",size: size)
+    }
+    
+    public static func nanum(_ size:CGFloat = 10)->Font{
+        return Font.custom("NanumHaNaSonGeurSsi",size: size)
+    }
+    
+    
+    
+    
+    
 }
 
 extension ViewSelection: Equatable{
