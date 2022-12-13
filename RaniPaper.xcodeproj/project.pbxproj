@@ -17,7 +17,6 @@
 		493526FE292FFC030066F083 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FD292FFC030066F083 /* MenuModel.swift */; };
 		493527002930F46C0066F083 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FF2930F46C0066F083 /* SideMenuView.swift */; };
 		494967C72940EAC8001E5E8A /* openSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 494967C62940EAC8001E5E8A /* openSideMenu.wav */; };
-		49762B7E294151C300D3DD18 /* closeSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49762B7D294151C300D3DD18 /* closeSideMenu.wav */; };
 		49762B80294151DB00D3DD18 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49762B7F294151DB00D3DD18 /* BGM.wav */; };
 		49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49762B812941595C00D3DD18 /* AppDelegate.swift */; };
 		49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F8293D1C79009A2748 /* testAlarm.mp3 */; };
@@ -90,7 +89,6 @@
 		493526FD292FFC030066F083 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		493526FF2930F46C0066F083 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		494967C62940EAC8001E5E8A /* openSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = openSideMenu.wav; sourceTree = "<group>"; };
-		49762B7D294151C300D3DD18 /* closeSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = closeSideMenu.wav; path = ../../../RaniPaper_SFX/closeSideMenu.wav; sourceTree = "<group>"; };
 		49762B7F294151DB00D3DD18 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
 		49762B812941595C00D3DD18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49D812F8293D1C79009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 			children = (
 				49D812F8293D1C79009A2748 /* testAlarm.mp3 */,
 				49762B7F294151DB00D3DD18 /* BGM.wav */,
-				49762B7D294151C300D3DD18 /* closeSideMenu.wav */,
 				494967C62940EAC8001E5E8A /* openSideMenu.wav */,
 				49E879612938F9EF0091A101 /* testSFX.mp3 */,
 			);
@@ -561,7 +558,6 @@
 				D86ACE45292F43B4002C8E89 /* JUA_otf.otf in Resources */,
 				494967C72940EAC8001E5E8A /* openSideMenu.wav in Resources */,
 				D86ACE4D2930977A002C8E89 /* KOTRA_HOPE.otf in Resources */,
-				49762B7E294151C300D3DD18 /* closeSideMenu.wav in Resources */,
 				49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */,
 				D86ACE43292F43B4002C8E89 /* SSAMANCO-Bold.otf in Resources */,
 			);
