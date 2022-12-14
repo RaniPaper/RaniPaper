@@ -9,7 +9,9 @@ import SwiftUI
 
 struct SettingView: View {
     @EnvironmentObject var userState: UserState
+    @Environment(\.openURL) var openURL
     @ObservedObject var viewModel = SettingViewModel()
+    @State var isOnboardOn = false
     var body: some View {
         ZStack{
             Image("main_static")
@@ -29,18 +31,25 @@ struct SettingView: View {
                 .frame(width: ScreenSize.width * 0.24)
                 .offset(y: -ScreenSize.height * 0.395)
             
+            Image("settingLeaf")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: ScreenSize.width * 0.2)
+                .offset(x: ScreenSize.width * 0.26, y: ScreenSize.height * 0.38)
+            
             VStack(alignment: .center, spacing: 0){
-                VStack(alignment: .leading, spacing: ScreenSize.height * 0.007){
+                VStack(alignment: .leading, spacing: ScreenSize.height * 0.008){
                     Section(header:
                         Text("온/오프")
-                            .font(.caption)
+                            .font(.efDiary(10))
                             .foregroundColor(.secondary)
                         ){
-                        VStack(spacing: ScreenSize.height * 0.005){
+                        VStack(spacing: ScreenSize.height * 0.007){
                             ForEach($viewModel.soundSettingList){ $setting in
                                 Toggle(isOn: $setting.isOn){
                                     HStack{
                                         Text(setting.key)
+                                            .font(.efDiary(17))
                                         Spacer()
                                         Image(setting.getUIName())
                                             .resizable()
@@ -49,23 +58,26 @@ struct SettingView: View {
                                     }
                                     .frame(height: ScreenSize.height * 0.04)
                                 }
+                                .toggleStyle(MyToggleStyle())
                             }
                             Toggle(isOn: $viewModel.isAnimationOn){
                                 HStack{
                                     Text("애니메이션")
+                                        .font(.efDiary(17))
                                     Spacer()
                                     Image("animation")
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: ScreenSize.width * 0.14)
                                 }
-                                .frame(height: ScreenSize.height * 0.03)
+                                .frame(height: ScreenSize.height * 0.04)
                             }
+                            .toggleStyle(MyToggleStyle())
                         }
                     }
                     
                     Spacer()
-                        .frame(height: ScreenSize.height * 0.066)
+                        .frame(height: ScreenSize.height * 0.062)
                     
                     SettingListView()
                     
@@ -76,6 +88,14 @@ struct SettingView: View {
                 .offset(y: ScreenSize.height * 0.06)
             }
             .padding(.top, ScreenSize.height * 0.01)
+            
+            //온보딩 화면 display 구현 부분
+            if isOnboardOn{
+                DummyView1()
+                    .onTapGesture {
+                        isOnboardOn = false
+                    }
+            }
         }
         .ignoresSafeArea()
     }
@@ -90,10 +110,10 @@ struct SettingView_Previews: PreviewProvider {
 extension SettingView{
     func SettingListView() -> some View{
         ForEach(SettingModel.Section.allCases, id: \.self){ section in
-            VStack(alignment: .leading, spacing: ScreenSize.height * 0.012){
+            VStack(alignment: .leading, spacing: ScreenSize.height * 0.01){
                 Section(header:
                             Text(section.rawValue)
-                    .font(.caption)
+                    .font(.efDiary(10))
                     .foregroundColor(.secondary)
                 ){
                     SectionContentView(section: section.rawValue)
@@ -107,9 +127,19 @@ extension SettingView{
             ForEach(viewModel.settingList){ setting in
                 if setting.section.rawValue == section {
                     Button(action: {
-                        print("button cliked")
+                        switch setting.action{
+                        case .showOnBoard:
+                            isOnboardOn = true
+                        case .showWebsite:
+                            openURL(URL(string: "https://rani-paper.tistory.com/m/category/Rani%20Paper")!)
+                        case .ask:
+                            openURL(URL(string: "https://cafe.naver.com/steamindiegame")!)
+                        default:
+                            break
+                        }
                     }){
                         Text(setting.content)
+                            .font(.efDiary(17))
                     }
                     .foregroundColor(.black)
                 }
@@ -118,4 +148,31 @@ extension SettingView{
     }
 }
 
-
+extension SettingView{
+    // 커스텀 토글 버튼
+    struct MyToggleStyle: ToggleStyle{
+        private let width = ScreenSize.width * 0.15
+        
+        func makeBody(configuration: Configuration) -> some View {
+            return HStack{
+                configuration.label
+                
+                ZStack(alignment: configuration.isOn ? .trailing : .leading){
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: width, height: width/2.3)
+                        .foregroundColor(configuration.isOn ? .settingToggleOn : .settingToggleOff)
+                    
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: width/1.8, height: width/2.3-2)
+                        .padding(1)
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            withAnimation{
+                                configuration.$isOn.wrappedValue.toggle()
+                            }
+                        }
+                }
+            }
+        }
+    }
+}
