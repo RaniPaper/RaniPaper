@@ -21,12 +21,15 @@ struct SettingView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: ScreenSize.width)
+                .offset(y: ScreenSize.height * 0.06)
+            
+            Image("viic1")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: ScreenSize.width * 0.24)
+                .offset(y: -ScreenSize.height * 0.395)
             
             VStack(alignment: .center, spacing: 0){
-                Image("viic1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: ScreenSize.width*0.21)
                 VStack(alignment: .leading, spacing: ScreenSize.height * 0.007){
                     Section(header:
                         Text("온/오프")
@@ -70,6 +73,7 @@ struct SettingView: View {
                 }
                 .padding(EdgeInsets(top: ScreenSize.height * 0.03, leading: ScreenSize.width * 0.13, bottom: ScreenSize.height * 0.06, trailing: ScreenSize .width * 0.05))
                 .frame(width: ScreenSize.width * 0.9, height: ScreenSize.height * 0.7)
+                .offset(y: ScreenSize.height * 0.06)
             }
             .padding(.top, ScreenSize.height * 0.01)
         }
@@ -113,3 +117,5 @@ extension SettingView{
         }
     }
 }
+
+
