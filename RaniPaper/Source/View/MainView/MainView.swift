@@ -19,28 +19,17 @@ struct MainView: View {
 
         }
         else{
-            if viewModel.isLoading{
+            if viewModel.isLoading {
                 LaunchView().transition(.opacity)
                     .environmentObject(userState)
-                    .onAppear{
-//                    for family: String in UIFont.familyNames{
-//                        print(family)
-//                        for names : String in UIFont.fontNames(forFamilyName: family){
-//                            print("=== \(names)")
-//                        }
-//                    }
-
-                    NotificationCenter.default.addObserver(forName: NSNotification.Name("Noti Tabbed"), object: nil, queue: .main){(_) in
-                        
-                        viewModel.selection = .diary
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now()+2) {
-                        withAnimation {
-                            viewModel.isLoading.toggle()
-
+                    .onAppear {
+                        NotificationCenter.default.addObserver(forName: NSNotification.Name("Noti Tabbed"), object: nil, queue: .main){(_) in
+                            viewModel.selection = .diary
                         }
-                    }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                            withAnimation { viewModel.isLoading.toggle() }
+                        }
                 }
             }
             else
