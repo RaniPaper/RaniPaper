@@ -13,7 +13,7 @@ struct MailBoxAnimationView: View {
     @ObservedObject var viewModel: HomeViewModel
     @State var isAnimating = false // lottie 애니메이션
     @State var shouldShowRollingPaper = false // 롤링페이퍼
-    @State var rollingPaper: String?
+    @State var rollingPaper: RollingPaper?
     
     public init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -31,7 +31,7 @@ struct MailBoxAnimationView: View {
                             isAnimating = false
                             
                             //남은 롤링페이퍼가 있을 경우에만 보여줌
-                            rollingPaper = viewModel.rollingPapers.popFirst()
+                            rollingPaper = viewModel.randomRollingPaper()
                             if rollingPaper != nil { shouldShowRollingPaper = true }
                          
                         }
@@ -40,7 +40,7 @@ struct MailBoxAnimationView: View {
                         
                     } else { // 애니메이션 시작 전
                         
-                        if !viewModel.rollingPapers.isEmpty {
+                        if ((MyUserDefaults.rollingPaperList?.isEmpty) != nil) {
                             Image("mail_box_ready")
                                 .resizable()
                                 .frame(width: ScreenSize.width, height: ScreenSize.height)
@@ -74,7 +74,7 @@ struct MailBoxAnimationView: View {
                     .padding(.bottom, 30)
             }// ZStack
             .fullScreenCover(isPresented: $shouldShowRollingPaper) {
-                RollingPaperView(rollingPaper: rollingPaper!)
+                RollingPaperView(rollingPaper: rollingPaper!, size: CGSize(width: 200, height: 200))
             }.ignoresSafeArea()
             
         }

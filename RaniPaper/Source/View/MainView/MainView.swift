@@ -19,28 +19,23 @@ struct MainView: View {
 
         }
         else{
-            if viewModel.isLoading{
+            if viewModel.isLoading {
                 LaunchView().transition(.opacity)
                     .environmentObject(userState)
-                    .onAppear{
-//                    for family: String in UIFont.familyNames{
-//                        print(family)
-//                        for names : String in UIFont.fontNames(forFamilyName: family){
-//                            print("=== \(names)")
-//                        }
-//                    }
-
-                    NotificationCenter.default.addObserver(forName: NSNotification.Name("Noti Tabbed"), object: nil, queue: .main){(_) in
-                        
-                        viewModel.selection = .diary
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now()+2) {
-                        withAnimation {
-                            viewModel.isLoading.toggle()
-
+                    .onAppear {
+                        // 앱 진입 시 유저디폴트에 롤링페이퍼가 없을 경우 롤링페이퍼 불러오기
+                        if MyUserDefaults.rollingPaperList == nil {
+                            MyUserDefaults.rollingPaperList = rollingPaperList
+                            print(MyUserDefaults.rollingPaperList ?? "🔥 추가 실패")
                         }
-                    }
+                        
+                        NotificationCenter.default.addObserver(forName: NSNotification.Name("Noti Tabbed"), object: nil, queue: .main){(_) in
+                            viewModel.selection = .diary
+                        }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                            withAnimation { viewModel.isLoading.toggle() }
+                        }
                 }
             }
             else

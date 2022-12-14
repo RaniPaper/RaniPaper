@@ -55,24 +55,33 @@ extension HomeView {
         VStack {
             Spacer()
             
-            if userState.userType == .viichan {
-                Text("계정상태: viiChan")
-            } else { if userState.userType == .fan {
-                Text("계정상태: fan")
-            } else {
-                Text("계정상태: none")
-            } }
-            Button {
-                withAnimation { userState.update(.none) }
-            } label: {
-                Text("뒤로가기").foregroundColor(.red)
-            }
-            
-            NavigationLink {
-                hapticTestView()
-            } label: {
-                Text("햅틱테스트뷰 가기")
-            }
+            VStack {
+                if userState.userType == .viichan {
+                    Text("계정상태: viiChan")
+                } else { if userState.userType == .fan {
+                    Text("계정상태: fan")
+                } else {
+                    Text("계정상태: none")
+                } }
+                Button {
+                    withAnimation { userState.update(.none) }
+                } label: {
+                    Text("뒤로가기").foregroundColor(.red)
+                }
+                
+                Button {
+                    UserDefaults.standard.set(nil, forKey: "rollingPaperList")
+                    print("❌ 유저디폴트 롤링페이퍼 삭제")
+                } label: {
+                    Text("유저디폴트 롤링페이퍼 삭제하기").foregroundColor(.red)
+                }
+                
+                NavigationLink {
+                    hapticTestView()
+                } label: {
+                    Text("햅틱테스트뷰 가기")
+                }
+            }.background(RoundedRectangle(cornerRadius: 8).foregroundColor(.white))
             Spacer().frame(height: 50)
         }
     }

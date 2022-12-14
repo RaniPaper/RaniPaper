@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RollingPaperView: View {
     @Environment(\.dismiss) private var dismiss
-    let rollingPaper: String
+    let rollingPaper: RollingPaper
+    let size: CGSize
     
     var body: some View {
         ZStack {
@@ -26,9 +27,16 @@ struct RollingPaperView: View {
                 
                 Spacer()
                 
-                Image(rollingPaper)
+                Image(rollingPaper.contentImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(CGSize(width: 1, height: 1),contentMode: .fit)
+                    .frame(width: size.width, height: size.height)
+                    .padding(80)
+                    .background {
+                        Image(rollingPaper.backgroundImage)
+                            .resizable()
+                            .scaledToFit()
+                    }
                 
                 Spacer()
             }
@@ -46,6 +54,6 @@ struct RollingPaperView: View {
 
 struct RollingPaperView_Previews: PreviewProvider {
     static var previews: some View {
-        RollingPaperView(rollingPaper: "rolling_paper_temp_2")
+        RollingPaperView(rollingPaper: RollingPaper(contentImage: "rolling_paper_3", backgroundImage: "paper_heart"), size: CGSize(width: 200, height: 200))
     }
 }
