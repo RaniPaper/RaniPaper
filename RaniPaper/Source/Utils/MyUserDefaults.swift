@@ -19,12 +19,12 @@ final class MyUserDefaults {
         defaults.set(value, forKey: key)
     }
     
-    func getValue(key: String) -> Any {
+    func getValue(key: String) -> Any? {
         if let value = defaults.object(forKey: key){
             return value
         } else {
             print("키 \(key)에 해당하는 값이 없습니다")
-            return false
+            return nil
         }
     }
 }

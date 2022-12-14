@@ -21,6 +21,12 @@ final class SettingViewModel: ObservableObject {
         }
     }
     @Published var settingList: [SettingModel]
+    @Published var isAnimationOn: Bool
+    {
+        didSet{
+            MyUserDefaults.shared.setValue(key: "isAnimationOn", value: isAnimationOn)
+        }
+    }
     
     
     init() {
@@ -30,11 +36,18 @@ final class SettingViewModel: ObservableObject {
          SoundSettingModel(soundType: .ALARM)]
         
         settingList =
-        [SettingModel(content: "비밀번호 설정", action: .setPassword, section: .privacy),
-         SettingModel(content: "데이터 내보내기", action: .exportData, section: .data),
-         SettingModel(content: "데이터 초기화", action: .resetData, section: .data),
-         SettingModel(content: "RaniPaper 사용법", action: .showOnBoard, section: .etc)
+//        [SettingModel(content: "비밀번호 설정", action: .setPassword, section: .privacy),
+//         SettingModel(content: "데이터 초기화", action: .resetData, section: .data),
+         [SettingModel(content: "사용법", action: .showOnBoard, section: .etc),
+         SettingModel(content: "개발자 웹사이트", action: .showWebsite, section: .etc),
+         SettingModel(content: "문의하기", action: .ask, section: .etc)
         ]
+        
+        if let value = MyUserDefaults.shared.getValue(key: "isAnimationOn"){
+            isAnimationOn = value as! Bool
+        } else{
+            isAnimationOn = true
+        }
         
         print("✅ SettingViewModel 생성")
     }

@@ -20,7 +20,11 @@ class MySoundSetting: ObservableObject{
         self.extensionName = extensionName
         
         // 해당 음성 타입의 활성 상태 초기화
-        isEnable = MyUserDefaults.shared.getValue(key: type.rawValue) as! Bool
+        if let value = MyUserDefaults.shared.getValue(key: type.rawValue){
+            self.isEnable = value as! Bool
+        } else{
+            self.isEnable = true
+        }
         player = nil
         soundType = type
             
@@ -121,7 +125,9 @@ extension MySoundSetting {
         case .BGM:
             return [MySoundSetting.BGM]
         case .SFX:
-            return [MySoundSetting.SFX, MySoundSetting.openSideMenu, MySoundSetting.closeSideMenu]
+            return [MySoundSetting.SFX,
+                    MySoundSetting.openSideMenu,
+                    MySoundSetting.closeSideMenu]
         case .ALARM:
             return [MySoundSetting.Alarm]
         }

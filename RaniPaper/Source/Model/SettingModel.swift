@@ -18,7 +18,23 @@ struct SoundSettingModel: Identifiable {
         id = UUID()
         self.soundType = soundType
         self.key = self.soundType.rawValue
-        self.isOn = MyUserDefaults.shared.getValue(key: self.key) as! Bool
+        
+        if let value = MyUserDefaults.shared.getValue(key: self.key){
+            self.isOn = value as! Bool
+        } else {
+            self.isOn = true
+        }
+    }
+    
+    func getUIName() -> String{
+        switch self.soundType{
+        case .SFX:
+            return "SFX"
+        case .BGM:
+            return "BGM"
+        case .ALARM:
+            return "alarm"
+        }
     }
 }
 
@@ -42,11 +58,13 @@ extension SettingModel{
         case exportData
         case resetData
         case showOnBoard
+        case showWebsite
+        case ask
     }
     
     enum Section: String, CaseIterable{
-        case privacy = "개인정보"
-        case data = "데이터 처리"
+//        case privacy = "개인정보"
+//        case data = "데이터 처리"
         case etc = "기타"
     }
 }
