@@ -8,7 +8,7 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    var rollingPapers: [String] = ["rolling_paper_temp_1", "rolling_paper_temp_2", "rolling_paper_temp_3"]
+    
     init() {
         // 처음 Home 진입 시 설정
         // 배경음 설정이 on이고 기존에 노래가 재생되고 있지 않았다면 배경음 재생
@@ -19,5 +19,16 @@ class HomeViewModel: ObservableObject {
     
     deinit {
         print("❌ HomeViewModel 소멸")
+    }
+    
+    func randomRollingPaper() -> RollingPaper? {
+        var item = MyUserDefaults.rollingPaperList?.filter { $0.firstChecked == false }.randomElement()
+        item?.firstChecked = true
+        
+        MyUserDefaults.rollingPaperList = MyUserDefaults.rollingPaperList?.map { $0.id == item?.id ? item : $0 } as? [RollingPaper]
+        
+        print("랜덤 아이템:", item ?? "item is nil")
+        
+        return item
     }
 }
