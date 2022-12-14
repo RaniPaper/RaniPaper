@@ -14,7 +14,10 @@ struct RollingPaperView: View {
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.9).ignoresSafeArea()
+            Image("mail_box_ready")
+                .resizable()
+                .ignoresSafeArea()
+                .blur(radius: 30)
             
             VStack {
                 HStack {
