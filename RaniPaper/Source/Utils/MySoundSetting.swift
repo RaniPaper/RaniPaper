@@ -81,7 +81,11 @@ class MySoundSetting: ObservableObject{
     /// 음성 설정 상태 업데이트 : 설정에서 해당 종류의 음원 온/오프 여부를 업데이트 합니다.
     /// - Parameter SoundType: 음원 종류(BGM, SFX, ALARM)
     func updateEnable(soundType: SoundType){
-        self.isEnable = MyUserDefaults.shared.getValue(key: soundType.rawValue) as! Bool
+        if let value = MyUserDefaults.shared.getValue(key: soundType.rawValue){
+            self.isEnable =  value as! Bool
+        } else {
+            self.isEnable = true
+        }
     }
     
     /// 음성 재생 상태 업데이트 : 설정에서 음원 온/오프 여부에 따라 현재 음원의 재생 상태를 업데이트 합니다.

@@ -18,77 +18,81 @@ struct SettingView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 5)
-            
-            Image("settingBG")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: ScreenSize.width)
-                .offset(y: ScreenSize.height * 0.06)
-            
-            Image("viic1")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: ScreenSize.width * 0.24)
-                .offset(y: -ScreenSize.height * 0.395)
-            
-            Image("settingLeaf")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: ScreenSize.width * 0.2)
-                .offset(x: ScreenSize.width * 0.26, y: ScreenSize.height * 0.38)
-            
-            VStack(alignment: .center, spacing: 0){
-                VStack(alignment: .leading, spacing: ScreenSize.height * 0.008){
-                    Section(header:
-                        Text("온/오프")
-                            .font(.efDiary(10))
-                            .foregroundColor(.secondary)
-                        ){
-                        VStack(spacing: ScreenSize.height * 0.007){
-                            ForEach($viewModel.soundSettingList){ $setting in
-                                Toggle(isOn: $setting.isOn){
-                                    HStack{
-                                        Text(setting.key)
-                                            .font(.efDiary(17))
+            VStack(spacing: 0){
+                Image("viic1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: ScreenSize.width * 0.24)
+                    .padding(.top, 20)
+                
+                ZStack{
+                    GeometryReader{ geometry in
+                        let height = geometry.size.height
+                        Image("settingBG")
+                            .resizable()
+                            .frame(width: ScreenSize.width)
+                            .overlay{
+                                VStack(alignment: .center, spacing: 0){
+                                    VStack(alignment: .leading, spacing: height * 0.014){
+                                        Section(header:
+                                                    Text("온/오프")
+                                            .font(.efDiary(10))
+                                            .foregroundColor(.secondary)
+                                        ){
+                                            VStack(spacing: height * 0.007){
+                                                ForEach($viewModel.soundSettingList){ $setting in
+                                                    Toggle(isOn: $setting.isOn){
+                                                        HStack{
+                                                            Text(setting.key)
+                                                                .font(.efDiary(17))
+                                                            Spacer()
+                                                            Image(setting.getUIName())
+                                                                .resizable()
+                                                                .aspectRatio(contentMode: .fill)
+                                                                .frame(width: ScreenSize.width * 0.14)
+                                                        }
+                                                        .frame(height: ScreenSize.height * 0.04)
+                                                    }
+                                                    .toggleStyle(MyToggleStyle())
+                                                }
+                                                Toggle(isOn: $viewModel.isAnimationOn){
+                                                    HStack{
+                                                        Text("애니메이션")
+                                                            .font(.efDiary(17))
+                                                        Spacer()
+                                                        Image("animation")
+                                                            .resizable()
+                                                            .aspectRatio(contentMode: .fill)
+                                                            .frame(width: ScreenSize.width * 0.14)
+                                                    }
+                                                    .frame(height: ScreenSize.height * 0.04)
+                                                }
+                                                .toggleStyle(MyToggleStyle())
+                                            }
+                                        }
+                                        
                                         Spacer()
-                                        Image(setting.getUIName())
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: ScreenSize.width * 0.14)
+                                            .frame(height: height * 0.062)
+                                        
+                                        SettingListView(height)
+                                        
+                                        Spacer()
                                     }
-                                    .frame(height: ScreenSize.height * 0.04)
+                                    .padding(EdgeInsets(top: height * 0.038, leading: ScreenSize.width * 0.13, bottom: 0, trailing: ScreenSize .width * 0.05))
+                                    .frame(width: ScreenSize.width * 0.9, height: height * 0.85)
                                 }
-                                .toggleStyle(MyToggleStyle())
+                                .padding(.top, height * 0.01)
                             }
-                            Toggle(isOn: $viewModel.isAnimationOn){
-                                HStack{
-                                    Text("애니메이션")
-                                        .font(.efDiary(17))
-                                    Spacer()
-                                    Image("animation")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: ScreenSize.width * 0.14)
-                                }
-                                .frame(height: ScreenSize.height * 0.04)
-                            }
-                            .toggleStyle(MyToggleStyle())
-                        }
+                    
+                        Image("settingLeaf")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: height * 0.07)
+                            .offset(x: geometry.size.width * 0.7, y: geometry.size.height * 0.85)
                     }
-                    
-                    Spacer()
-                        .frame(height: ScreenSize.height * 0.062)
-                    
-                    SettingListView()
-                    
-                    Spacer()
+                    .frame(height: ScreenSize.height * 0.82)
                 }
-                .padding(EdgeInsets(top: ScreenSize.height * 0.03, leading: ScreenSize.width * 0.13, bottom: ScreenSize.height * 0.06, trailing: ScreenSize .width * 0.05))
-                .frame(width: ScreenSize.width * 0.9, height: ScreenSize.height * 0.7)
-                .offset(y: ScreenSize.height * 0.06)
             }
-            .padding(.top, ScreenSize.height * 0.01)
-            
             //온보딩 화면 display 구현 부분
             if isOnboardOn{
                 DummyView1()
@@ -108,22 +112,22 @@ struct SettingView_Previews: PreviewProvider {
 }
 
 extension SettingView{
-    func SettingListView() -> some View{
+    func SettingListView(_ height: CGFloat) -> some View{
         ForEach(SettingModel.Section.allCases, id: \.self){ section in
-            VStack(alignment: .leading, spacing: ScreenSize.height * 0.01){
+            VStack(alignment: .leading, spacing: height * 0.012){
                 Section(header:
                             Text(section.rawValue)
                     .font(.efDiary(10))
                     .foregroundColor(.secondary)
                 ){
-                    SectionContentView(section: section.rawValue)
+                    SectionContentView(height, section: section.rawValue)
                 }
             }
         }
     }
     
-    func SectionContentView(section: String) -> some View{
-        VStack(alignment: .leading, spacing: ScreenSize.height * 0.021){
+    func SectionContentView(_ height: CGFloat, section: String) -> some View{
+        VStack(alignment: .leading, spacing: height * 0.02){
             ForEach(viewModel.settingList){ setting in
                 if setting.section.rawValue == section {
                     Button(action: {
