@@ -70,7 +70,7 @@ final class EditTaskViewModel:ObservableObject{
         let taskModel = TaskModel(id: taskId ?? UUID().uuidString, title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket,timeInterval: timeInterval)
         let result = MyFileManager.shared.update(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
         //알림 추가
-        MyUserNotifications.shared.update(taskModel,timeInterval)
+        MyUserNotifications.shared.update(taskModel)
         
         switch result {
         case .success():

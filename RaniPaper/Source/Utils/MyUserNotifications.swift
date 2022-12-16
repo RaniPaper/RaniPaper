@@ -41,14 +41,14 @@ final class MyUserNotifications {
     /// CREAT : TaskModel을 입력 받아 해당 deadline에 알림을 생성합니다.
     /// - Parameter TaskModel: 알림을 받을 TaskModel
     /// UserNotification과 TaskModel은 ID를 공유하게 됩니다.
-    func create(_ taskModel: TaskModel,_ timeInterval:TimeIntervals){
+    func create(_ taskModel: TaskModel){
         if isPermitted{
-            content.title = "\(taskModel.title)이(가)  \(timeInterval.rawValue) 전 입니다."
+            content.title = "\(taskModel.title)이(가)  \(taskModel.timeInterval.rawValue) 전 입니다."
             content.body = "알람: " + taskModel.title
             content.sound = UNNotificationSound.default
             var deadLine = taskModel.deadLine
             
-            switch timeInterval {
+            switch taskModel.timeInterval {
             case .fiveMinAgo:
                 deadLine = Calendar.current.date(byAdding: .minute, value: -5, to: deadLine)!
             case .tenMinAgo :
@@ -76,7 +76,7 @@ final class MyUserNotifications {
             
             center.add(request, withCompletionHandler: nil)
             
-            print("알람이 설정됩니다. dateComponents: \(taskModel.deadLine) \(timeInterval)전 ")
+            print("알람이 설정됩니다. dateComponents: \(taskModel.deadLine) \(taskModel.timeInterval)전 ")
         } else{
             print("푸시 알림이 거부된 상태입니다.")
         }
@@ -99,10 +99,10 @@ final class MyUserNotifications {
     
     /// UPDATE : TaskModel을 입력 받아 해당 ID를 갖고 있는 기존 알림을 제거하고 변경된 TaskModel로 알림을 생성합니다.
     /// - Parameter TaskModel: 내용이 변경된 TaskModel
-    func update(_ taskModel: TaskModel,_ timeInterval:TimeIntervals){
+    func update(_ taskModel: TaskModel){
         if isPermitted{
             delete(id: taskModel.id)
-            create(taskModel,timeInterval)
+            create(taskModel)
         } else{
             print("푸시 알림이 거부된 상태입니다.")
         }
