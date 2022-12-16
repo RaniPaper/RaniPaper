@@ -19,12 +19,21 @@ struct SettingView: View {
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 5)
             VStack(spacing: 0){
-                Image("viic1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: ScreenSize.width * 0.24)
-                    .padding(.top, 20)
-                
+                if let value = MyUserDefaults.shared.getValue(key: "userState"){
+                    if value as! String == "viichan"{
+                        Image("viic1")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: ScreenSize.width * 0.24)
+                            .padding(.top, 20)
+                    }
+                } else {
+                    Image("leaves")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: ScreenSize.width * 0.24)
+                        .padding(.top, 20)
+                }
                 ZStack{
                     GeometryReader{ geometry in
                         let height = geometry.size.height
@@ -71,8 +80,7 @@ struct SettingView: View {
                                             }
                                         }
                                         
-                                        Spacer()
-                                            .frame(height: height * 0.062)
+                                        Spacer(minLength: height * 0.062)
                                         
                                         SettingListView(height)
                                         
@@ -114,20 +122,21 @@ struct SettingView_Previews: PreviewProvider {
 extension SettingView{
     func SettingListView(_ height: CGFloat) -> some View{
         ForEach(SettingModel.Section.allCases, id: \.self){ section in
-            VStack(alignment: .leading, spacing: height * 0.012){
+            VStack(alignment: .leading, spacing: height * 0.016){
                 Section(header:
                             Text(section.rawValue)
                     .font(.efDiary(10))
                     .foregroundColor(.secondary)
                 ){
                     SectionContentView(height, section: section.rawValue)
+                    Spacer()
                 }
             }
         }
     }
     
     func SectionContentView(_ height: CGFloat, section: String) -> some View{
-        VStack(alignment: .leading, spacing: height * 0.02){
+        VStack(alignment: .leading, spacing: height * 0.022){
             ForEach(viewModel.settingList){ setting in
                 if setting.section.rawValue == section {
                     Button(action: {
