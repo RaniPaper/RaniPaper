@@ -41,11 +41,11 @@ struct SettingView: View {
                             .resizable()
                             .frame(width: ScreenSize.width)
                             .overlay{
-                                VStack(alignment: .center, spacing: 0){
-                                    VStack(alignment: .leading, spacing: height * 0.014){
+                                VStack(alignment: .leading, spacing: 0){
+                                    VStack(alignment: .leading, spacing: height * 0.016){
                                         Section(header:
                                                     Text("온/오프")
-                                            .font(.efDiary(10))
+                                            .font(.efDiary(height/66.6))
                                             .foregroundColor(.secondary)
                                         ){
                                             VStack(spacing: height * 0.007){
@@ -53,7 +53,7 @@ struct SettingView: View {
                                                     Toggle(isOn: $setting.isOn){
                                                         HStack{
                                                             Text(setting.key)
-                                                                .font(.efDiary(17))
+                                                                .font(.efDiary(height/39))
                                                             Spacer()
                                                             Image(setting.getUIName())
                                                                 .resizable()
@@ -67,7 +67,7 @@ struct SettingView: View {
                                                 Toggle(isOn: $viewModel.isAnimationOn){
                                                     HStack{
                                                         Text("애니메이션")
-                                                            .font(.efDiary(17))
+                                                            .font(.efDiary(height/39))
                                                         Spacer()
                                                         Image("animation")
                                                             .resizable()
@@ -75,31 +75,42 @@ struct SettingView: View {
                                                             .frame(width: ScreenSize.width * 0.14)
                                                     }
                                                     .frame(height: ScreenSize.height * 0.04)
+                                                    .padding(.top, -height * 0.003)
                                                 }
                                                 .toggleStyle(MyToggleStyle())
                                             }
                                         }
-                                        
-                                        Spacer(minLength: height * 0.062)
-                                        
-                                        SettingListView(height)
-                                        
-                                        Spacer()
                                     }
-                                    .padding(EdgeInsets(top: height * 0.038, leading: ScreenSize.width * 0.13, bottom: 0, trailing: ScreenSize .width * 0.05))
-                                    .frame(width: ScreenSize.width * 0.9, height: height * 0.85)
+                                    
+                                    ForEach(SettingModel.Section.allCases, id: \.self){ section in
+                                        VStack(alignment: .leading){
+                                            Section(header:
+                                                        Text(section.rawValue)
+                                                .font(.efDiary(height/66.6))
+                                                .foregroundColor(.secondary)
+                                                .padding(.bottom, -height * 0.004)
+                                            ){
+                                                SectionContentView(height, section: section.rawValue)
+                                            }
+                                        }
+                                        .padding(.top, height * 0.09)
+                                    }
+                                    Spacer()
+                                        .padding(.bottom)
                                 }
-                                .padding(.top, height * 0.01)
+                                .padding(EdgeInsets(top: height * 0.118, leading: ScreenSize.width * 0.2, bottom: 0, trailing: ScreenSize .width * 0.12))
                             }
-                    
-                        Image("settingLeaf")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: height * 0.07)
-                            .offset(x: geometry.size.width * 0.7, y: geometry.size.height * 0.85)
+                            .overlay{
+                                Image("settingLeaf")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: height * 0.07)
+                                .offset(x: geometry.size.width * 0.28, y: geometry.size.height * 0.39)
+                                
+                            }
                     }
-                    .frame(height: ScreenSize.height * 0.82)
                 }
+                .frame(height: ScreenSize.height * 0.82)
             }
             //온보딩 화면 display 구현 부분
             if isOnboardOn{
@@ -120,23 +131,9 @@ struct SettingView_Previews: PreviewProvider {
 }
 
 extension SettingView{
-    func SettingListView(_ height: CGFloat) -> some View{
-        ForEach(SettingModel.Section.allCases, id: \.self){ section in
-            VStack(alignment: .leading, spacing: height * 0.016){
-                Section(header:
-                            Text(section.rawValue)
-                    .font(.efDiary(10))
-                    .foregroundColor(.secondary)
-                ){
-                    SectionContentView(height, section: section.rawValue)
-                    Spacer()
-                }
-            }
-        }
-    }
     
     func SectionContentView(_ height: CGFloat, section: String) -> some View{
-        VStack(alignment: .leading, spacing: height * 0.022){
+        VStack(alignment: .leading, spacing: height * 0.007){
             ForEach(viewModel.settingList){ setting in
                 if setting.section.rawValue == section {
                     Button(action: {
@@ -152,9 +149,10 @@ extension SettingView{
                         }
                     }){
                         Text(setting.content)
-                            .font(.efDiary(17))
+                            .font(.efDiary(height/39))
                     }
                     .foregroundColor(.black)
+                    .frame(height: ScreenSize.height * 0.04)
                 }
             }
         }
