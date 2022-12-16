@@ -18,7 +18,7 @@ struct EditTaskView: View {
     var existTask: TaskModel? // 기존의 task
     
     //keyboardHandler = KeyboardHander()
-    let colors:[String] =  ["woowakgood","ine","jingburger","lilpa","jururu","gosegu","viichan","panzee"]
+    let colors:[String] =  ["woowakgood","ine","jingburger","lilpa","jururu","gosegu","viichan","twoMoreThen"]
     let tickets:[String] = ["우왁굳","아이네","징버거","릴파","주르르","고세구","비챤","2인 이상"]
     let timeIntervals:[TimeIntervals] = [.fiveMinAgo,.tenMinAgo,.thirtyMinAgo,.oneHourAgo,.twoHourAgo,.threeHourAgo]
     let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 3)

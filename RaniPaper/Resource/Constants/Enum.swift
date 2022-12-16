@@ -41,10 +41,10 @@ enum SoundType: String{
 }
 
 enum TimeIntervals: String,Codable{
-    case fiveMinAgo = "5분",
-    tenMinAgo = "10분",
-    thirtyMinAgo = "30분",
-    oneHourAgo = "1시간",
-    twoHourAgo = "2시간",
-    threeHourAgo = "3시간"
+    case fiveMinAgo = "5분 전",
+    tenMinAgo = "10분 전",
+    thirtyMinAgo = "30분 전",
+    oneHourAgo = "1시간 전",
+    twoHourAgo = "2시간 전",
+    threeHourAgo = "3시간 전"
 }
