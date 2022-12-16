@@ -43,19 +43,40 @@ final class MyUserNotifications {
     /// UserNotification과 TaskModel은 ID를 공유하게 됩니다.
     func create(_ taskModel: TaskModel){
         if isPermitted{
-            content.title = taskModel.title
+            content.title = "\(taskModel.title)이(가)  \(taskModel.timeInterval.rawValue) 전 입니다."
             content.body = "알람: " + taskModel.title
             content.sound = UNNotificationSound.default
+            var deadLine = taskModel.deadLine
             
-            let deadLine = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: taskModel.deadLine)
+            switch taskModel.timeInterval {
+            case .fiveMinAgo:
+                deadLine = Calendar.current.date(byAdding: .minute, value: -5, to: deadLine)!
+            case .tenMinAgo :
+                deadLine = Calendar.current.date(byAdding: .minute, value: -10, to: deadLine)!
+            case .thirtyMinAgo :
+                deadLine = Calendar.current.date(byAdding: .minute, value: -30, to: deadLine)!
+                
+            case .oneHourAgo :
+                deadLine = Calendar.current.date(byAdding: .hour, value: -1, to: deadLine)!
+                
+            case .twoHourAgo :
+                deadLine = Calendar.current.date(byAdding: .hour, value: -2, to: deadLine)!
+            case .threeHourAgo :
+                deadLine = Calendar.current.date(byAdding: .hour, value: -3, to: deadLine)!
+            }
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: deadLine, repeats: isRepeat)
+            
+            
+            
+            let confirmDeadLine = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: deadLine)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: confirmDeadLine, repeats: isRepeat)
             
             let request = UNNotificationRequest(identifier: taskModel.id, content: content, trigger: trigger)
             
             center.add(request, withCompletionHandler: nil)
             
-            print("알람이 설정됩니다. dateComponents: \(deadLine)")
+            print("알람이 설정됩니다. dateComponents: \(taskModel.deadLine) \(taskModel.timeInterval)전 ")
         } else{
             print("푸시 알림이 거부된 상태입니다.")
         }

@@ -113,6 +113,6 @@ struct TaskCardView: View {
 
 struct TaskCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCardView(viewModel: CalendarViewModel(), task: TaskModel(title: "123",color:"ine",ticket: "우왁굳"), showDeleteErrorAlert: .constant(false))
+        TaskCardView(viewModel: CalendarViewModel(), task: TaskModel(title: "123",color:"ine",ticket: "우왁굳",timeInterval: .threeHourAgo), showDeleteErrorAlert: .constant(false))
     }
 }

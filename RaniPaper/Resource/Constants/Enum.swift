@@ -39,3 +39,12 @@ enum SoundType: String{
     case BGM = "배경음", SFX = "효과음", ALARM = "알람"
     //case Alarm:
 }
+
+enum TimeIntervals: String,Codable{
+    case fiveMinAgo = "5분",
+    tenMinAgo = "10분",
+    thirtyMinAgo = "30분",
+    oneHourAgo = "1시간",
+    twoHourAgo = "2시간",
+    threeHourAgo = "3시간"
+}
