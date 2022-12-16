@@ -8,6 +8,9 @@
 import SwiftUI
 import AlertToast
 
+
+
+
 struct EditTaskView: View {
     @StateObject var viewModel = EditTaskViewModel()
     @Binding var showEdit: Bool
@@ -16,7 +19,8 @@ struct EditTaskView: View {
     
     //keyboardHandler = KeyboardHander()
     let colors:[String] =  ["woowakgood","ine","jingburger","lilpa","jururu","gosegu","viichan","panzee"]
-    let tickets:[String] = ["우왁굳","아이네","징버거","릴파","주르르","고세구","비챤","현생"]
+    let tickets:[String] = ["우왁굳","아이네","징버거","릴파","주르르","고세구","비챤","2인 이상"]
+    let timeIntervals:[TimeIntervals] = [.fiveMinAgo,.tenMinAgo,.thirtyMinAgo,.oneHourAgo,.twoHourAgo,.threeHourAgo]
     let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
     @Namespace var animation
     @Namespace var bottom //keyboard 올라올 때 사용할 bottom 버튼 ID
@@ -127,6 +131,7 @@ struct EditTaskView: View {
                                 Divider()
                             }
                             
+                            
                             // MARK:  Ticket
                             VStack(spacing: 12) {
                                 Text("티켓")
@@ -137,7 +142,7 @@ struct EditTaskView: View {
                                     let ticketColor = Color(hexcode: "988B8B")
                                     ForEach(tickets,id:\.self){ ticket in
                                         Text(ticket)
-                                            .font(.callout)
+                                            .font(Font.efDiary(15))
                                             .padding(.vertical,8)
                                             .frame(maxWidth:.infinity)
                                             .foregroundColor(viewModel.taskTicket == ticket ? .white : ticketColor)
@@ -162,8 +167,53 @@ struct EditTaskView: View {
                                             }
                                     }
                                 }
+                                
+                                Divider()
 
                             }
+                            .id(bottom)
+                            // MARK:  TimeIntervals
+                            VStack(spacing: 12) {
+                                Text("알림")
+                                    .font(Font.efDiary(titleSize))
+                                    .foregroundColor(titleColor)
+                                
+                                LazyVGrid(columns: columns) {
+                                    let ticketColor = Color(hexcode: "988B8B")
+                                    ForEach(timeIntervals,id:\.self){ timeInterval in
+                                        Text(timeInterval.rawValue)
+                                            .font(Font.efDiary(15))
+                                            .padding(.vertical,8)
+                                            .frame(maxWidth:.infinity)
+                                            .foregroundColor(viewModel.timeInterval == timeInterval ? .white : ticketColor)
+                                            .background{
+                                                if viewModel.timeInterval == timeInterval {
+                                                    Capsule()
+                                                        .fill(ticketColor)
+                                                        .matchedGeometryEffect(id: "timeInterval", in: animation)
+                                                }
+                                                else{
+                                                    Capsule()
+                                                        .strokeBorder(ticketColor)
+                                                }
+                                            }
+                                            .contentShape(Capsule())
+                                            .onTapGesture {
+                                                withAnimation{
+                                                    UIApplication.shared.endEditing()
+                                                    viewModel.timeInterval = timeInterval
+                                                    
+                                                }
+                                            }
+                                    }
+                                }
+                                
+                             
+
+                            }
+                            
+                            
+                            
                             
                             Spacer()
                             Button {
@@ -188,7 +238,7 @@ struct EditTaskView: View {
                             //    .padding(.bottom,10)
                             .disabled(viewModel.taskTitle == "")
                          
-                            .id(bottom)
+                            
                             
                         }
                         .frame(minHeight:proxy.size.height)
@@ -200,7 +250,7 @@ struct EditTaskView: View {
                             {
                                 //키보드가 나올 때 바텀 버튼으로 스크롤, top 까지
                                 withAnimation {
-                                    scrollProxy.scrollTo(bottom, anchor: .top)
+                                    scrollProxy.scrollTo(bottom, anchor: .center)
                                 }
                             }
                             
@@ -225,12 +275,13 @@ struct EditTaskView: View {
             viewModel.taskColor = existTask.color
             viewModel.taskDeadLine = existTask.deadLine
             viewModel.taskTicket = existTask.ticket
+            viewModel.timeInterval = existTask.timeInterval
         }
         .onDisappear {
             print("EditTaskview - onDisAppear")
         }
         .toast(isPresenting: $showToast) {
-            AlertToast(displayMode: .hud, type: .error(.red), title: "이미 있는 제목이에요", subTitle: "다른 버그일수도?")
+            AlertToast(displayMode: .hud, type: .error(.red), title: "이미 있는 제목이에요.", subTitle: "다시 시도해주세요.")
         }
    
         

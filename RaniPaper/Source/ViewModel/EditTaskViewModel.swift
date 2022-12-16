@@ -8,12 +8,14 @@
 import SwiftUI
 import Combine
 
+
 final class EditTaskViewModel:ObservableObject{
     var taskId: String?
     @Published var taskTitle:String = ""
     @Published var taskDeadLine:Date = Date()
     @Published var taskColor:String = "woowakgood"
     @Published var taskTicket:String = "우왁굳"
+    @Published var timeInterval:TimeIntervals = .fiveMinAgo
     @Published private(set) var keyboardHeight: CGFloat = 0
     
     
@@ -50,7 +52,7 @@ final class EditTaskViewModel:ObservableObject{
     }
     
     func save() -> Bool {
-        let taskModel = TaskModel(title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
+        let taskModel = TaskModel(title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket, timeInterval: timeInterval)
         let result = MyFileManager.shared.create(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
         
         switch result {
@@ -65,10 +67,10 @@ final class EditTaskViewModel:ObservableObject{
     
     func update() -> Bool {
         // 기존 task 편집시엔 이미 taskId가 있으므로 해당 taskId로 저장, 신규면 새 UUID
-        let taskModel = TaskModel(id: taskId ?? UUID().uuidString, title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket)
+        let taskModel = TaskModel(id: taskId ?? UUID().uuidString, title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket,timeInterval: timeInterval)
         let result = MyFileManager.shared.update(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
         //알림 추가
-        MyUserNotifications.shared.update(taskModel)
+        MyUserNotifications.shared.update(taskModel,timeInterval)
         
         switch result {
         case .success():
