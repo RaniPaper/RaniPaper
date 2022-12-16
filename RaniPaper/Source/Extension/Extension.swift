@@ -65,6 +65,10 @@ extension Color
         return Color.init(hexcode: "D3ECD0")
     }
     
+    public static var settingBoldLine:Color{
+        return Color.init(hexcode: "A9C9A5")
+    }
+    
 }
 
 extension UIDevice {

@@ -101,12 +101,18 @@ struct SettingView: View {
                                 .padding(EdgeInsets(top: height * 0.118, leading: ScreenSize.width * 0.2, bottom: 0, trailing: ScreenSize .width * 0.12))
                             }
                             .overlay{
-                                Image("settingLeaf")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: height * 0.07)
-                                .offset(x: geometry.size.width * 0.28, y: geometry.size.height * 0.39)
-                                
+                                VStack(alignment: .trailing, spacing: 0){
+                                    Image("settingLeaf")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: height * 0.07)
+                                        .padding(.trailing, ScreenSize.width * 0.04)
+                                    Rectangle()
+                                        .fill(Color.settingBoldLine)
+                                        .frame(width: ScreenSize.width * 0.732, height: height * 0.0012)
+
+                                }
+                                .offset(x: ScreenSize.width * 0.042,y: geometry.size.height * 0.388)
                             }
                     }
                 }
