@@ -64,11 +64,6 @@ struct MailBoxAnimationView: View {
                         } label: {
                             Text("갤러리로 이동")
                         }
-                        NavigationLink {
-                            TestGalleryView()
-                        } label: {
-                            Text("테스트 갤러리로 이동").background(Color.yellow)
-                        }
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 30)

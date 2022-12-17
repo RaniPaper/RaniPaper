@@ -11,10 +11,9 @@ struct GalleryView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: true) {
             HStack(spacing: 0) {
-                Image("gallery_1").resizable().scaledToFit()
-                Image("gallery_2").resizable().scaledToFit()
-                Image("gallery_3").resizable().scaledToFit()
-                Image("gallery_4").resizable().scaledToFit()
+                Image("gallery_first").resizable().scaledToFit()
+                Image("gallery_n").resizable().scaledToFit()
+                Image("gallery_last").resizable().scaledToFit()
             }
         }
     }
