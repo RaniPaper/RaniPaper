@@ -57,7 +57,17 @@ extension Color
         return Color.init(hexcode: "8E6868")
     }
     
+    public static var settingToggleOff:Color{
+        return Color.init(hexcode: "ADC9B3")
+    }
     
+    public static var settingToggleOn:Color{
+        return Color.init(hexcode: "D3ECD0")
+    }
+    
+    public static var settingBoldLine:Color{
+        return Color.init(hexcode: "A9C9A5")
+    }
     
 }
 
