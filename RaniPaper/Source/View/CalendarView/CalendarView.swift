@@ -83,8 +83,8 @@ struct CalendarView: View {
                     }
                 } else {
                     VStack(spacing: 0){
-                        Image("noTaskViichan")
-                        Text("오늘은 할 일이 없어요").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090"))
+                        Image("noTask\(viewModel.randomInt)")
+                        Text("\(viewModel.noTaskMessages[viewModel.randomInt])").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090"))
                     }
                     
                 }
@@ -92,7 +92,7 @@ struct CalendarView: View {
             } else {
                 VStack(spacing: 0){
                     Image("noTaskViichan")
-                    Text("오늘은 할 일이 없어요").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090"))
+                    Text("오늘은 할 일이 없어요").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090")).frame(maxWidth:.infinity)
                 }
             }
         }
