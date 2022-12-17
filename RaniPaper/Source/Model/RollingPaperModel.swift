@@ -19,6 +19,7 @@ struct RollingPaper: Identifiable, Codable {
     var contentImage: String
     var backgroundImage: String
     var firstChecked: Bool = false
+    var position: CGSize = CGSize()
 }
 
 let rollingPaperList = [
