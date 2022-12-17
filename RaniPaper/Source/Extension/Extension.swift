@@ -200,13 +200,3 @@ extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) // 키보드 없애기
     }
 }
-
-extension View{
-    @ViewBuilder func scrollEnabled(_ enable: Bool) -> some View{
-        if enable{
-            self
-        } else{
-            simultaneousGesture(DragGesture(minimumDistance: 0), including: .all)
-        }
-    }
-}
