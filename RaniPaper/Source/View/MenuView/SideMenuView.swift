@@ -32,7 +32,7 @@ struct SideMenuView: View {
                                     isOpen.toggle()
                                     offset = Menu.minOffset
                                     selection = menu.viewSelection
-                                    MySoundSetting.closeSideMenu.play()
+                                    MySoundSetting.clickSideMenu.play()
                                 }) {
                                     Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                                         .resizable()
@@ -53,7 +53,7 @@ struct SideMenuView: View {
                                     isOpen.toggle()
                                     offset = Menu.minOffset
                                     selection = menu.viewSelection
-                                    MySoundSetting.closeSideMenu.play()
+                                    MySoundSetting.clickSideMenu.play()
                                 }) {
                                     Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                                         .resizable()

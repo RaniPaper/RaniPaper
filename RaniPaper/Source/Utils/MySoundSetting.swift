@@ -112,11 +112,10 @@ class MySoundSetting: ObservableObject{
 extension MySoundSetting {
     static let BGM = MySoundSetting(url: "BGM", extension: "wav", .BGM)
     // BGM 컨트롤용 인스턴스
-    static let SFX = MySoundSetting(url: "testSFX", extension: "mp3", .SFX)
-    // SFX 컨트롤용 인스턴스
     static let Alarm = MySoundSetting(url: "testAlarm", extension: "mp3", .ALARM)
     static let openSideMenu = MySoundSetting(url: "openSideMenu", extension: "wav", .SFX)
     static let closeSideMenu = MySoundSetting(url: "closeSideMenu", extension: "wav", .SFX)
+    static let clickSideMenu = MySoundSetting(url: "clickSideMenu", extension: "wav", .SFX)
     
     // MARK: 사용 예시
     // static let MySound = MySoundSetting(url: "MySoundFileName", extension: "mp3", .SFX)
@@ -129,9 +128,9 @@ extension MySoundSetting {
         case .BGM:
             return [MySoundSetting.BGM]
         case .SFX:
-            return [MySoundSetting.SFX,
-                    MySoundSetting.openSideMenu,
-                    MySoundSetting.closeSideMenu]
+            return [MySoundSetting.openSideMenu,
+                    MySoundSetting.closeSideMenu,
+                    MySoundSetting.clickSideMenu]
         case .ALARM:
             return [MySoundSetting.Alarm]
         }

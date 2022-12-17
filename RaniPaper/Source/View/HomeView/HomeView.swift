@@ -176,7 +176,7 @@ extension HomeView {
     func soundSettingTestButtonView() -> some View{
         VStack{
             Button(action:{
-                MySoundSetting.SFX.play()
+                MySoundSetting.clickSideMenu.play()
             }){
                 Text("play SFX")
             }

@@ -21,9 +21,10 @@
 		49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49762B812941595C00D3DD18 /* AppDelegate.swift */; };
 		49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F8293D1C79009A2748 /* testAlarm.mp3 */; };
 		49D812FD293F7FB5009A2748 /* MyUserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */; };
+		49E52DC9294D9F3300473B17 /* clickSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E52DC8294D9F3300473B17 /* clickSideMenu.wav */; };
+		49E52DCB294DA13E00473B17 /* closeSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E52DCA294DA13B00473B17 /* closeSideMenu.wav */; };
 		49E703F029353A150035215F /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703EF29353A150035215F /* CreditView.swift */; };
 		49E703F3293543EC0035215F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E703F2293543EC0035215F /* InfoView.swift */; };
-		49E879632938F9F00091A101 /* testSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E879612938F9EF0091A101 /* testSFX.mp3 */; };
 		49E879652938FA450091A101 /* MySoundSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E879642938FA450091A101 /* MySoundSetting.swift */; };
 		49E87967293A35E90091A101 /* MyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E87966293A35E90091A101 /* MyUserDefaults.swift */; };
 		7B0BCE6B2941DD560084ACA7 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0BCE6A2941DD560084ACA7 /* GalleryView.swift */; };
@@ -96,9 +97,10 @@
 		49762B812941595C00D3DD18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49D812F8293D1C79009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
 		49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserNotifications.swift; sourceTree = "<group>"; };
+		49E52DC8294D9F3300473B17 /* clickSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clickSideMenu.wav; sourceTree = "<group>"; };
+		49E52DCA294DA13B00473B17 /* closeSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = closeSideMenu.wav; path = ../../../RaniPaper_SFX/closeSideMenu.wav; sourceTree = "<group>"; };
 		49E703EF29353A150035215F /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		49E703F2293543EC0035215F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		49E879612938F9EF0091A101 /* testSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSFX.mp3; sourceTree = "<group>"; };
 		49E879642938FA450091A101 /* MySoundSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySoundSetting.swift; sourceTree = "<group>"; };
 		49E87966293A35E90091A101 /* MyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserDefaults.swift; sourceTree = "<group>"; };
 		7B0BCE6A2941DD560084ACA7 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
@@ -233,8 +235,9 @@
 			children = (
 				49D812F8293D1C79009A2748 /* testAlarm.mp3 */,
 				49762B7F294151DB00D3DD18 /* BGM.wav */,
+				49E52DC8294D9F3300473B17 /* clickSideMenu.wav */,
+				49E52DCA294DA13B00473B17 /* closeSideMenu.wav */,
 				494967C62940EAC8001E5E8A /* openSideMenu.wav */,
-				49E879612938F9EF0091A101 /* testSFX.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -560,9 +563,10 @@
 				D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */,
 				D805DB35294877F30053723E /* ChosunNm.ttf in Resources */,
 				7B5E2D07292A05BA000EA21C /* InfoPlist.strings in Resources */,
-				49E879632938F9F00091A101 /* testSFX.mp3 in Resources */,
 				D86ACE50293098DF002C8E89 /* ONE_Mobile_OTF_Bold.otf in Resources */,
+				49E52DCB294DA13E00473B17 /* closeSideMenu.wav in Resources */,
 				D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */,
+				49E52DC9294D9F3300473B17 /* clickSideMenu.wav in Resources */,
 				D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */,
 				D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */,
 				D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */,
