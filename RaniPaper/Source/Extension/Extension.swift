@@ -57,7 +57,17 @@ extension Color
         return Color.init(hexcode: "8E6868")
     }
     
+    public static var settingToggleOff:Color{
+        return Color.init(hexcode: "ADC9B3")
+    }
     
+    public static var settingToggleOn:Color{
+        return Color.init(hexcode: "D3ECD0")
+    }
+    
+    public static var settingBoldLine:Color{
+        return Color.init(hexcode: "A9C9A5")
+    }
     
 }
 
@@ -188,5 +198,15 @@ extension Array {
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) // 키보드 없애기
+    }
+}
+
+extension View{
+    @ViewBuilder func scrollEnabled(_ enable: Bool) -> some View{
+        if enable{
+            self
+        } else{
+            simultaneousGesture(DragGesture(minimumDistance: 0), including: .all)
+        }
     }
 }
