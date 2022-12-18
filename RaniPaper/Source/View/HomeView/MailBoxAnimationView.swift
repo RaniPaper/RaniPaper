@@ -11,9 +11,9 @@ import Lottie
 struct MailBoxAnimationView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: HomeViewModel
-    @State var isAnimating = false // lottie 애니메이션
-    @State var shouldShowRollingPaper = false // 롤링페이퍼
-    @State var rollingPaper: RollingPaper?
+    @State private var isAnimating = false // lottie 애니메이션
+    @State private var shouldShowRollingPaper = false // 롤링페이퍼
+    @State private var rollingPaper: RollingPaper?
     
     public init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -69,7 +69,7 @@ struct MailBoxAnimationView: View {
                     .padding(.bottom, 30)
             }// ZStack
             .fullScreenCover(isPresented: $shouldShowRollingPaper) {
-                RollingPaperView(rollingPaper: rollingPaper!, size: CGSize(width: 200, height: 200))
+                RollingPaperView(rollingPaper: rollingPaper!, size: CGSize(width: 220, height: 220))
             }.ignoresSafeArea()
             
         }
@@ -78,7 +78,7 @@ struct MailBoxAnimationView: View {
         
     }
     
-    func DismissButton() -> some View {
+    private func DismissButton() -> some View {
         Button {
             dismiss()
         } label: {
@@ -92,7 +92,7 @@ struct MailBoxAnimationView: View {
         }
     }
     
-    func RollingPaperEmptyView() -> some View {
+    private func RollingPaperEmptyView() -> some View {
         VStack {
             Spacer()
             Text("남은 롤링페이퍼가 없을 때 나오는 화면")
