@@ -15,8 +15,8 @@ final class EditMemoViewModel:ObservableObject{
     @Published var content:String = ""
     @Published var showAlert:Bool = false
     @Published var showStamps:Bool = false
-    @Published var selectedStamp:Int = 1
-    let stamps:[Int:String] = [1:"viichanStemp0",]
+    @Published var selectedStamp:Int = 0
+    let stamps:[Int] = [0,1,2,3,4]
 
     init()
     {

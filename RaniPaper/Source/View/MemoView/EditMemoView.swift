@@ -114,12 +114,24 @@ struct EditMemoView: View {
                     if(viewModel.showStamps)
                     {
                         HStack{
-                            Image("viichanStemp")
-                                .resizable()
-                                .frame(width:70,height: 70)
-                                .scaledToFit()
-                                .contentShape(Rectangle())
-                                .padding(.vertical,5)
+                            
+                            ForEach(viewModel.stamps.filter({
+                                $0 != viewModel.selectedStamp
+                            }),id: \.self) { (id:Int) in
+                                Image("viichanStemp\(id)")
+                                    .resizable()
+                                    .frame(width:70,height: 70)
+                                    .scaledToFit()
+                                    .contentShape(Rectangle())
+                                    .padding(.vertical,5)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        viewModel.selectedStamp = id
+                                        viewModel.showStamps = false
+                                    }
+                            }
+                            
+                            
                         }.frame(maxWidth:.infinity)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 8.0).strokeBorder(Color.memoPrimary, style: StrokeStyle(lineWidth: 2.0))
@@ -134,7 +146,7 @@ struct EditMemoView: View {
                         Spacer()
                         
                         // MARK: 비챤 스탬프
-                        Image("viichanStemp0")
+                        Image("viichanStemp\(viewModel.selectedStamp)")
                             .resizable()
                             .frame(width:70,height: 70)
                             .scaledToFit()
