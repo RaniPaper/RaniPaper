@@ -94,7 +94,7 @@ fileprivate struct GalleryRollingPaperView: View {
             .overlay {
                 Image(rollingPaper.contentImage).resizable()
                     .frame(width: size.width, height: size.height)
-                    .background { Color.white }
+                    //.background { Color.white }
             }
     }
 }
