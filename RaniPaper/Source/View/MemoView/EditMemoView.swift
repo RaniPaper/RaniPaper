@@ -110,16 +110,46 @@ struct EditMemoView: View {
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal,5) //글자 들여쓰기를 위한 패딩
                     
+                    
+                    if(viewModel.showStamps)
+                    {
+                        HStack{
+                            Image("viichanStemp")
+                                .resizable()
+                                .frame(width:70,height: 70)
+                                .scaledToFit()
+                                .contentShape(Rectangle())
+                                .padding(.vertical,5)
+                        }.frame(maxWidth:.infinity)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8.0).strokeBorder(Color.memoPrimary, style: StrokeStyle(lineWidth: 2.0))
+                            }
+                            .padding(.horizontal)
+                            .transition(.scale)
+                            
+                    }
+                    
+                    
                     HStack{
                         Spacer()
                         
                         // MARK: 비챤 스탬프
-                        Image("viichanStemp")
+                        Image("viichanStemp0")
                             .resizable()
                             .frame(width:70,height: 70)
                             .scaledToFit()
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                
+                                withAnimation {
+                                    viewModel.showStamps.toggle()
+                                }
+                                
+                                
+                            }
                     }.padding(.trailing,10)
                         .padding(.bottom,10)
+                        
                     
                 }
                 .overlay(content: {
