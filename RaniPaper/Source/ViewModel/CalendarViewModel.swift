@@ -12,11 +12,21 @@ final class CalendarViewModel: ObservableObject{
     @Published var currentDate: Date = Date()
     @Published var showEdit: Bool = false
     @Published var tasks: [TaskModel] = []
+    @Published var randomInt:Int = 0
+    
+
+    let noTaskMessages:[String] = ["할 일 없는 날! 낮잠이라도 자볼까요?"
+                                   ,"할 일이 없네요! 여유를 즐기세요!"
+                                   ,"할 일이 없군요. 오늘은 쉬는 날!"
+                                   ,"오늘 할 일이 없나요? 더블체크 필수!"
+                                   ,"할 일이 없어요. 잊은건 없으시죠?"]
+    
+   
     
     init(){
         print("✅ CalendarViewModel 생성")
-        
         fetchTasks()
+        randomInt = Int.random(in: 0..<5)
         
     }
     

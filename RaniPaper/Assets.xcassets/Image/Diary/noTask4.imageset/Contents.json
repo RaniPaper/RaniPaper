@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "noTaskViichan.png",
+      "filename" : "noTask4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "noTaskViichan 1.png",
+      "filename" : "noTask4 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "noTaskViichan 2.png",
+      "filename" : "noTask4 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
