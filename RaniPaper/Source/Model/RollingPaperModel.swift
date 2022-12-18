@@ -22,12 +22,4 @@ struct RollingPaper: Identifiable, Codable {
     var position: CGSize = CGSize()
 }
 
-let rollingPaperList = [
-    RollingPaper(contentImage: "rolling_paper_1", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue),
-    RollingPaper(contentImage: "rolling_paper_2", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue),
-    RollingPaper(contentImage: "rolling_paper_3", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue),
-    RollingPaper(contentImage: "rolling_paper_4", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue),
-    RollingPaper(contentImage: "rolling_paper_5", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue),
-    RollingPaper(contentImage: "rolling_paper_6", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue),
-    RollingPaper(contentImage: "rolling_paper_7", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue)
-]
+let rollingPaperList: [RollingPaper] = (1...110).map { RollingPaper(contentImage: "rolling_paper_\($0)", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue) }
