@@ -126,8 +126,13 @@ struct EditMemoView: View {
                                     .padding(.vertical,5)
                                     .contentShape(Rectangle())
                                     .onTapGesture {
-                                        viewModel.selectedStamp = id
-                                        viewModel.showStamps = false
+                                        
+                                        withAnimation {
+                                            viewModel.selectedStamp = id
+                                            viewModel.showStamps = false
+                                        }
+                                        
+                                        
                                     }
                             }
                             
