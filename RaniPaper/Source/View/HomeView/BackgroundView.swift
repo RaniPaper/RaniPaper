@@ -9,8 +9,10 @@ import SwiftUI
 
 struct BackgroundView: View {
     @StateObject var viewModel = HomeViewModel()
+    //테스트용 변수들
     @State var testTime = Date()
-    let time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var isTest = false
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         ZStack{
             ZStack{
@@ -44,8 +46,13 @@ struct BackgroundView: View {
                         .animation(.easeInOut(duration: 1.0), value: viewModel.backgroundTime)
                 }
             }
-            .onReceive(time){ input in
-                viewModel.backgroundTime = viewModel.getCurrentTime(input: testTime)
+            .onReceive(timer){ input in
+                var time = input
+                if isTest{
+                    time = testTime
+                }
+                viewModel.backgroundTime = viewModel.getCurrentTime(input: time)
+                    
             }
             
             TimeTestButtonView()
@@ -63,6 +70,17 @@ struct BackgroundView_Previews: PreviewProvider {
 extension BackgroundView{    
     private func TimeTestButtonView() -> some View{
         VStack{
+            Button(action:{
+                isTest = !isTest
+            }){
+                if !isTest{
+                    Text("Real Time Mode")
+                        .foregroundColor(.red)
+                } else{
+                    Text("Time Test Mode")
+                        .foregroundColor(.red)
+                }
+            }
             ForEach(HomeViewModel.BackgroundTime.allCases, id: \.self){ time in
                 Button(action:{
                     withAnimation{
@@ -81,6 +99,7 @@ extension BackgroundView{
                     Text(time.rawValue)
                 }
             }
+            Text("현재 시간: \(isTest ? testTime : Date())")
         }
         .padding(.bottom, 500)
     }
