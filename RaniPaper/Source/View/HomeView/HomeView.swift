@@ -26,6 +26,12 @@ struct HomeView: View {
                         NavigationLink {
                             MailBoxAnimationView(viewModel: viewModel)
                                 .navigationBarBackButtonHidden()
+                                .onAppear{
+                                    userState.isMenuEnable = false
+                                }
+                                .onDisappear{
+                                    userState.isMenuEnable = true
+                                }
                         } label: {
                             Rectangle().strokeBorder(lineWidth: 3) // 터치 범위
                                 .frame(width:100, height: 180)

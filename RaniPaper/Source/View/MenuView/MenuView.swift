@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
+    @EnvironmentObject var userState: UserState
     @StateObject var viewModel = MenuViewModel()
     @Binding var selection: ViewSelection
     @State var isPlayed = false
@@ -72,7 +73,7 @@ struct MenuView: View {
             .animation(.linear, value: viewModel.Offset)
         }
         .contentShape(Rectangle())
-        .gesture(drag)
+        .gesture(userState.isMenuEnable ? drag : nil)
         .ignoresSafeArea()
     }
 }
@@ -81,6 +82,7 @@ struct prev: View{
     @State var select: ViewSelection = .home
     var body: some View{
         MenuView(selection: $select)
+            .environmentObject(UserState.shared)
     }
 }
 

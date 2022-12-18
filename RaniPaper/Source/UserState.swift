@@ -11,10 +11,12 @@ class UserState: ObservableObject {
     static let shared = UserState()
     
     @Published var userType: UserType
+    @Published var isMenuEnable: Bool
     
     init() {
         print("✅ UserState 생성")
         self.userType = .none
+        self.isMenuEnable = true
         fetch()
     }
     
