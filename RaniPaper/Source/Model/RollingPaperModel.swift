@@ -22,4 +22,4 @@ struct RollingPaper: Identifiable, Codable {
     var position: CGSize = CGSize()
 }
 
-let rollingPaperList: [RollingPaper] = (1...110).map { RollingPaper(contentImage: "rolling_paper_\($0)", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue) }
+let rollingPaperList: [RollingPaper] = (1...111).map { RollingPaper(contentImage: "rolling_paper_\($0)", backgroundImage: BackgroundImageFormat.allCases.randomElement()!.rawValue) }
