@@ -30,15 +30,14 @@ struct RollingPaperView: View {
                 
                 Spacer()
                 
-                Image(rollingPaper.contentImage)
+                Image(rollingPaper.backgroundImage)
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 1),contentMode: .fit)
-                    .frame(width: size.width, height: size.height)
-                    .padding(80)
-                    .background {
-                        Image(rollingPaper.backgroundImage)
+                    .overlay {
+                        Image(rollingPaper.contentImage)
                             .resizable()
-                            .scaledToFit()
+                            .frame(width: size.width, height: size.height)
+                            //.background { Color.white }
                     }
                 
                 Spacer()
@@ -47,7 +46,7 @@ struct RollingPaperView: View {
         }
     }
     
-    func DismissButton() -> some View {
+    private func DismissButton() -> some View {
         Button { dismiss() } label: {
             Image(systemName: "xmark")
                 .font(.title).foregroundColor(.white)
@@ -57,6 +56,7 @@ struct RollingPaperView: View {
 
 struct RollingPaperView_Previews: PreviewProvider {
     static var previews: some View {
-        RollingPaperView(rollingPaper: RollingPaper(contentImage: "rolling_paper_3", backgroundImage: "paper_heart"), size: CGSize(width: 200, height: 200))
+        RollingPaperView(rollingPaper: RollingPaper(contentImage: "rolling_paper_29", backgroundImage: "paper_flower"), size: CGSize(width: 220, height: 220))
+        RollingPaperView(rollingPaper: RollingPaper(contentImage: "rolling_paper_29", backgroundImage: "paper_flower"), size: CGSize(width: 220, height: 220)).previewDevice("iPhone 8")
     }
 }
