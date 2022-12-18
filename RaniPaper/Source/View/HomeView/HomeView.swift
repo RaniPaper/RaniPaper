@@ -17,9 +17,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("main_static")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                BackgroundView()
                     .overlay(content: {
                         Image("mail_box_static")
                         Circle().frame(width: 20).foregroundColor(.blue) // 이미지 중심
