@@ -30,6 +30,6 @@ struct SmallStickerView: View {
 
 struct SmallStickerView_Previews: PreviewProvider {
     static var previews: some View {
-        SmallStickerView(memo: MemoModel(title: "1234", content: "125521512"))
+        SmallStickerView(memo: MemoModel(title: "1234", content: "125521512",stamp: 0))
     }
 }

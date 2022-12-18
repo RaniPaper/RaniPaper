@@ -12,4 +12,5 @@ struct MemoModel: Identifiable, Codable {
     var date: Date = Date()
     var title:String
     var content: String
+    var stamp:Int
 }
