@@ -13,11 +13,13 @@ final class CalendarViewModel: ObservableObject{
     @Published var showEdit: Bool = false
     @Published var tasks: [TaskModel] = []
     @Published var randomInt:Int = 0
-    let noTaskMessages:[String] = ["지난 시간 수고하셨어요.\n지친 당신에게 휴식을 선물해보세요"
-                                   ,"할 일이 없네요!\n여유를 즐기세요!"
-                                   ,"할 일이 없군요.\n오늘은 쉬는 날!"
-                                   ,"혹시 오늘 할 일이 없나요?\n더블체크 필수!"
-                                   ,"할 일이 없어요.\n뭔가 잊은건 없으시죠?"]
+    
+
+    let noTaskMessages:[String] = ["할 일 없는 날! 낮잠이라도 자볼까요?"
+                                   ,"할 일이 없네요! 여유를 즐기세요!"
+                                   ,"할 일이 없군요. 오늘은 쉬는 날!"
+                                   ,"오늘 할 일이 없나요? 더블체크 필수!"
+                                   ,"할 일이 없어요. 잊은건 없으시죠?"]
     
    
     

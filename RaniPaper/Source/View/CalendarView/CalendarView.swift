@@ -28,8 +28,8 @@ struct CalendarView: View {
                         Spacer()
                     }.padding(.horizontal, 15)
                     
-                    TasksListView().padding(15)
-                    
+                    TasksListView().padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 15))
+                    Spacer(minLength: 40)
                     
                 }
                 .padding(.vertical)
@@ -39,7 +39,7 @@ struct CalendarView: View {
                 
             }
             
-            Spacer(minLength: 20)
+           
             HStack {
                            
                            Spacer()
@@ -52,8 +52,8 @@ struct CalendarView: View {
                                    .resizable()
                                    .aspectRatio(contentMode: .fill)
                                    .frame(width: 50, height: 50)
-                                   .padding(.bottom,10)
-                                   .padding(.trailing,10)
+                                   .padding(.bottom,20)
+                                   .padding(.trailing,20)
                            }
                            
                            
@@ -86,13 +86,12 @@ struct CalendarView: View {
                         Image("noTask\(viewModel.randomInt)")
                         Text("\(viewModel.noTaskMessages[viewModel.randomInt])").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090"))
                     }
-                    
                 }
                 
             } else {
                 VStack(spacing: 0){
-                    Image("noTaskViichan")
-                    Text("오늘은 할 일이 없어요").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090")).frame(maxWidth:.infinity)
+                    Image("noTask\(viewModel.randomInt)")
+                    Text("\(viewModel.noTaskMessages[viewModel.randomInt])").font(.efDiary(20)).foregroundColor(Color(hexcode: "909090"))
                 }
             }
         }
