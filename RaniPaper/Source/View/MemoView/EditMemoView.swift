@@ -142,8 +142,9 @@ struct EditMemoView: View {
                                 RoundedRectangle(cornerRadius: 8.0).strokeBorder(Color.memoPrimary, style: StrokeStyle(lineWidth: 2.0))
                             }
                             .padding(.horizontal)
-                            .transition(.scale)
-                            
+                            .transition(.asymmetric(insertion: .opacity, removal: .scale(scale: .zero)))
+                           
+                        
                     }
                     
                     
