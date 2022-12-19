@@ -95,7 +95,7 @@ extension HomeView {
     func fileManagerTestButtonView() -> some View {
         VStack {
             Button {
-                let result = MyFileManager.shared.create(at: .memo, fileName: "memo01.json", MemoModel(title: "테스트용 메모제목", content: "테스트용 내용입니다."))
+                let result = MyFileManager.shared.create(at: .memo, fileName: "memo01.json", MemoModel(title: "테스트용 메모제목", content: "테스트용 내용입니다.",stamp: 0))
                 switch result {
                 case .success():
                     print("success")
@@ -119,7 +119,7 @@ extension HomeView {
             }
             
             Button {
-                let result = MyFileManager.shared.update(at: .memo, fileName: "memo01.json", MemoModel(title: "테스트용 메모제목2222", content: "테스트용 내용입니다.2222"))
+                let result = MyFileManager.shared.update(at: .memo, fileName: "memo01.json", MemoModel(title: "테스트용 메모제목2222", content: "테스트용 내용입니다.2222",stamp: 0))
                 switch result {
                 case .success():
                     print("success")

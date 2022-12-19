@@ -36,6 +36,6 @@ struct LargeStickerView: View {
 
 struct StickerView_Previews: PreviewProvider {
     static var previews: some View {
-        LargeStickerView(memo: MemoModel(title: "1234", content: "125521512"))
+        LargeStickerView(memo: MemoModel(title: "1234", content: "125521512",stamp: 0))
     }
 }

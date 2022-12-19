@@ -110,16 +110,64 @@ struct EditMemoView: View {
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal,5) //글자 들여쓰기를 위한 패딩
                     
+                    
+                    if(viewModel.showStamps)
+                    {
+                        HStack{
+                            
+                            ForEach(viewModel.stamps.filter({
+                                $0 != viewModel.selectedStamp
+                            }),id: \.self) { (id:Int) in
+                                Image("viichanStemp\(id)")
+                                    .resizable()
+                                    .frame(width:70,height: 70)
+                                    .scaledToFit()
+                                    .contentShape(Rectangle())
+                                    .padding(.vertical,5)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        
+                                        withAnimation {
+                                            viewModel.selectedStamp = id
+                                            viewModel.showStamps = false
+                                        }
+                                        
+                                        
+                                    }
+                            }
+                            
+                            
+                        }.frame(maxWidth:.infinity)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8.0).strokeBorder(Color.memoPrimary, style: StrokeStyle(lineWidth: 2.0))
+                            }
+                            .padding(.horizontal)
+                            .transition(.asymmetric(insertion: .opacity, removal: .scale(scale: .zero)))
+                           
+                        
+                    }
+                    
+                    
                     HStack{
                         Spacer()
                         
                         // MARK: 비챤 스탬프
-                        Image("viichanStemp")
+                        Image("viichanStemp\(viewModel.selectedStamp)")
                             .resizable()
                             .frame(width:70,height: 70)
                             .scaledToFit()
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                
+                                withAnimation {
+                                    viewModel.showStamps.toggle()
+                                }
+                                
+                                
+                            }
                     }.padding(.trailing,10)
                         .padding(.bottom,10)
+                        
                     
                 }
                 .overlay(content: {
@@ -150,6 +198,7 @@ struct EditMemoView: View {
         //    viewModel.nowDate = existMemo.date // 업데이트 날짜로 반영해야하나?
             viewModel.title = existMemo.title
             viewModel.content = existMemo.content
+            viewModel.selectedStamp = existMemo.stamp
         }
         .toast(isPresenting: $viewModel.showAlert) {
             AlertToast(displayMode: .hud, type: .error(.red), title: "제목이 비어있습니다!", subTitle: "제목을 입력해주세요")
