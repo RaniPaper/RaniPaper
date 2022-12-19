@@ -76,11 +76,12 @@ struct CustomDatePicker: View {
                                 .frame(width:100,height: 150)
                             
                         }.frame(maxWidth: .infinity)
-                            .padding(.bottom,20)
+                            .padding(.bottom,10)
                             
                     }
                 }
                 .padding(.horizontal)
+                .padding(.bottom,7)
            
                 
                 VStack {
