@@ -66,16 +66,18 @@ struct CustomDatePicker: View {
                         HStack{
                             Image("calLeft\(date[1])")
                                 .resizable()
-                                .scaledToFit()
-                                .frame(width:100,height: 100)
+                                .scaledToFill()
+                                .frame(width:100,height: 150)
                                 
                             Spacer()
                             Image("calRight\(date[1])")
                                 .resizable()
-                                .scaledToFit()
-                                .frame(width:100,height: 100)
+                                .scaledToFill()
+                                .frame(width:100,height: 150)
                             
                         }.frame(maxWidth: .infinity)
+                            .padding(.bottom,20)
+                            
                     }
                 }
                 .padding(.horizontal)
