@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "calLeft1.png",
+      "filename" : "calLeft01.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "calLeft1 1.png",
+      "filename" : "calLeft01 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "calLeft1 2.png",
+      "filename" : "calLeft01 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
