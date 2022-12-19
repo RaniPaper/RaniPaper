@@ -28,10 +28,12 @@ struct CustomDatePicker: View {
                 // MARK: 년 월 죄우 버튼
                 VStack {
                     let buttonColor = Color(hexcode: "D6B5A3")
-                    Text(extraData()[0])
+                    let date = extraData() //date[0]: year , date[1] month
+                    Text(date[0])
                         .font(.efDiary(20))
                     .fontWeight(.semibold)
                     HStack(spacing:20){
+                                                
                         Spacer()
                         Button {
                                 currentMonth -= 1
@@ -43,7 +45,7 @@ struct CustomDatePicker: View {
                         }
                     
                             
-                        Text(extraData()[1])
+                        Text(date[1])
                             .font(.efDiary(30))
                         
                             
@@ -59,6 +61,21 @@ struct CustomDatePicker: View {
                             }
                         Spacer()
                         
+                    }
+                    .overlay {
+                        HStack{
+                            Image("calLeft\(date[1])")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:100,height: 100)
+                                
+                            Spacer()
+                            Image("calRight\(date[1])")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:100,height: 100)
+                            
+                        }.frame(maxWidth: .infinity)
                     }
                 }
                 .padding(.horizontal)
