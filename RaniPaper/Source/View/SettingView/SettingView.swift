@@ -12,6 +12,7 @@ struct SettingView: View {
     @Environment(\.openURL) var openURL
     @ObservedObject var viewModel = SettingViewModel()
     @State var isOnboardOn = false
+    @State var volume = 1.0
     var body: some View {
         ZStack{
             Image("main_static")
@@ -95,6 +96,12 @@ struct SettingView: View {
                                         }
                                         .padding(.top, height * 0.09)
                                     }
+                                    
+                                    Slider(value: $volume, in: 0...1.0, step: 0.05,
+                                           onEditingChanged: {(_) in
+                                        MySoundSetting.BGM.setChannelVolume(Float(volume))
+                                    })
+                                    Text("\(volume)")
                                     Spacer()
                                         .padding(.bottom)
                                 }

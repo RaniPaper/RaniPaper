@@ -55,6 +55,9 @@ class MySoundSetting: ObservableObject{
             break
         }
         
+        //볼륨 설정
+        player?.setVolume(1, fadeDuration: 0)
+        
         // 소리 설정이 활성 상태면 음원 재생
         if self.isEnable{
             player?.play()
@@ -105,6 +108,10 @@ class MySoundSetting: ObservableObject{
         default:
             break
         }
+    }
+    
+    func setChannelVolume(_ volume: Float){
+        self.player?.setVolume(volume, fadeDuration: 0)
     }
 }
 
