@@ -65,17 +65,19 @@ struct CustomDatePicker: View {
                     .overlay {
                         HStack{
                             let length = ScreenSize.width/3.5
+                            
                             Image("calLeft\(date[1])")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width:length,height:length)
+                               
                                 
                             Spacer()
                             Image("calRight\(date[1])")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width:length,height: length)
-                            
+                               
                         }.frame(maxWidth: .infinity)
                             .padding(.bottom,10)
                             
