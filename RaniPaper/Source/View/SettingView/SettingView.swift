@@ -11,7 +11,8 @@ struct SettingView: View {
     @EnvironmentObject var userState: UserState
     @Environment(\.openURL) var openURL
     @ObservedObject var viewModel = SettingViewModel()
-    @State var isOnboardOn = false
+    @State var isOnBoard = MyUserDefaults.shared.getValue(key: "SettingOnBoard") as? Bool ?? true
+    @State var isReOnboard = false
     var body: some View {
         ZStack{
             Image("main_static")
@@ -119,10 +120,10 @@ struct SettingView: View {
                 .frame(height: ScreenSize.height * 0.82)
             }
             //온보딩 화면 display 구현 부분
-            if isOnboardOn{
+            if isReOnboard{
                 DummyView1()
                     .onTapGesture {
-                        isOnboardOn = false
+                        isReOnboard = false
                     }
             }
         }
@@ -145,7 +146,7 @@ extension SettingView{
                     Button(action: {
                         switch setting.action{
                         case .showOnBoard:
-                            isOnboardOn = true
+                            isReOnboard = true
                         case .showWebsite:
                             openURL(URL(string: "https://rani-paper.tistory.com/m/category/Rani%20Paper")!)
                         case .ask:

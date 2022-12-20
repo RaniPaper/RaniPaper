@@ -87,6 +87,12 @@ extension HomeView {
                 } label: {
                     Text("햅틱테스트뷰 가기")
                 }
+                
+                Button(action:{
+                    MyUserDefaults.shared.clear()
+                }){
+                    Text("clear userDefaults")
+                }
             }.background(RoundedRectangle(cornerRadius: 8).foregroundColor(.white))
             Spacer().frame(height: 50)
         }

@@ -69,6 +69,14 @@ extension Color
         return Color.init(hexcode: "A9C9A5")
     }
     
+    public static var onBoardBackground:Color{
+        return Color.init(hexcode: "F9FFF9")
+    }
+    
+    public static var onBoardBorder:Color{
+        return Color.init(hexcode: "769873")
+    }
+    
 }
 
 extension UIDevice {

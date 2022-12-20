@@ -30,6 +30,12 @@ final class MyUserDefaults {
             return nil
         }
     }
+    
+    func clear(){
+        if let bundleID = Bundle.main.bundleIdentifier{
+            UserDefaults.standard.removePersistentDomain(forName: bundleID)
+        }
+    }
 }
 
 @propertyWrapper
