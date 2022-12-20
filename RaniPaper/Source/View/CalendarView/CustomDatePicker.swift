@@ -32,7 +32,7 @@ struct CustomDatePicker: View {
                     Text(date[0])
                         .font(.efDiary(20))
                     .fontWeight(.semibold)
-                    HStack(spacing:20){
+                    HStack(spacing:10){
                                                 
                         Spacer()
                         Button {
@@ -62,25 +62,24 @@ struct CustomDatePicker: View {
                         Spacer()
                         
                     }
-                    .overlay {
+                    .background {
                         HStack{
-                            let length = ScreenSize.width/3.5
-                            
+                            let length = ScreenSize.width/3
+                            let mayLen = ScreenSize.width/3.5
                             Image("calLeft\(date[1])")
                                 .resizable()
-                                .scaledToFill()
-                                .frame(width:length,height:length)
-                               
+                                .scaledToFit()
+                                .frame(width:date[1] != "05" ? length:mayLen,height:date[1] != "05" ? length:mayLen)
+                                
                                 
                             Spacer()
                             Image("calRight\(date[1])")
                                 .resizable()
-                                .scaledToFill()
-                                .frame(width:length,height: length)
+                                .scaledToFit()
+                                .frame(width:date[1] != "05" ? length:mayLen,height: date[1] != "05" ? length:mayLen)
                                
                         }.frame(maxWidth: .infinity)
                             .padding(.bottom,10)
-                            
                     }
                 }
                 .padding(.horizontal)
