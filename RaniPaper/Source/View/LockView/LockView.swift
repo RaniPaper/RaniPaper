@@ -16,7 +16,7 @@ struct LockView: View {
     fileprivate let bgGradient = Color(hexcode: "e7f4ea")
     fileprivate let textFieldColor = Color(hexcode: "69ad72")
     fileprivate let textColor = Color(hexcode: "3e6c45")
-    let secretCode:String = "1234"
+    let secretCode:String = "always v happy"
     
     
     var body: some View {
