@@ -19,6 +19,7 @@
 		494967C72940EAC8001E5E8A /* openSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 494967C62940EAC8001E5E8A /* openSideMenu.wav */; };
 		49762B80294151DB00D3DD18 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49762B7F294151DB00D3DD18 /* BGM.wav */; };
 		49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49762B812941595C00D3DD18 /* AppDelegate.swift */; };
+		497A847E29535EF6007F3A56 /* BackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */; };
 		4983001B294F0CEF007BB571 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4983001A294F0CEF007BB571 /* BackgroundView.swift */; };
 		49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F8293D1C79009A2748 /* testAlarm.mp3 */; };
 		49D812FD293F7FB5009A2748 /* MyUserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */; };
@@ -96,6 +97,7 @@
 		494967C62940EAC8001E5E8A /* openSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = openSideMenu.wav; sourceTree = "<group>"; };
 		49762B7F294151DB00D3DD18 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
 		49762B812941595C00D3DD18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewModel.swift; sourceTree = "<group>"; };
 		4983001A294F0CEF007BB571 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		49D812F8293D1C79009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
 		49D812FC293F7FB5009A2748 /* MyUserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserNotifications.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */,
 				D8D549C329362A47001E4287 /* KeyboardHandler.swift */,
 				490A025F2937B9F600FD9384 /* SettingViewModel.swift */,
+				497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				7B796F90293A22FA00799616 /* MailBoxAnimationView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
+				497A847E29535EF6007F3A56 /* BackgroundViewModel.swift in Sources */,
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
 				D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */,

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BackgroundView: View {
-    @StateObject var viewModel = HomeViewModel()
+    @StateObject var viewModel = BackgroundViewModel()
     //테스트용 변수들
     @State var testTime = Date()
     @State var isTest = false
@@ -55,7 +55,7 @@ struct BackgroundView: View {
                     
             }
             
-            TimeTestButtonView()
+            TimeTestButtonView() // 테스트
         }
         .ignoresSafeArea()
     }
@@ -81,7 +81,7 @@ extension BackgroundView{
                         .foregroundColor(.red)
                 }
             }
-            ForEach(HomeViewModel.BackgroundTime.allCases, id: \.self){ time in
+            ForEach(BackgroundViewModel.BackgroundTime.allCases, id: \.self){ time in
                 Button(action:{
                     withAnimation{
                         switch time{
