@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnBoardView: View {
     @EnvironmentObject var userState: UserState
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = OnBoardViewModel()
     @State var isOpen = false
     @State var currentView: ViewSelection
@@ -42,9 +43,15 @@ struct OnBoardView: View {
                     }
                     Button(action:{
                         isOpen = false
+                        dismiss()
                     }){
-                        Text("close")
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.onBoardBorder)
+                            .frame(width: ScreenSize.width * 0.05)
                     }
+                    .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.42)
                 }
                 .frame(width: ScreenSize.width, height:  ScreenSize.height)
                 .onAppear{
@@ -59,6 +66,7 @@ struct OnBoardView: View {
         .ignoresSafeArea()
         .onAppear(perform: {
             fetch()
+            print("isOpen: \(isOpen)")
         })
     }
 }

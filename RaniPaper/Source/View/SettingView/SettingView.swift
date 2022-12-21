@@ -124,10 +124,7 @@ struct SettingView: View {
             
             //온보딩 화면 display 구현 부분
             if isReOnboard{
-                DummyView1()
-                    .onTapGesture {
-                        isReOnboard = false
-                    }
+                AllOnBoardView(isOpen: $isReOnboard)
             }
         }
         .ignoresSafeArea()
