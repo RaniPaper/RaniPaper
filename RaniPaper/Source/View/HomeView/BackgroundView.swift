@@ -54,8 +54,6 @@ struct BackgroundView: View {
                 viewModel.backgroundTime = viewModel.getCurrentTime(input: time)
                     
             }
-            
-            TimeTestButtonView() // 테스트
         }
         .ignoresSafeArea()
     }
