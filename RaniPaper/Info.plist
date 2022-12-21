@@ -16,9 +16,7 @@
 		<string>ChosunNm.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
+	<array/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 </dict>
