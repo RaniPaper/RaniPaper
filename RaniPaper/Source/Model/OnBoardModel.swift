@@ -13,14 +13,14 @@ final class OnBoardModel: Identifiable{
     var contents: [String]
     var view: ViewSelection?
     var images: String
-    var depth: Bool
+    var page: Int
     
-    init(title: String, contents: [String], view: ViewSelection, images: String, depth: Bool = false){
+    init(title: String, contents: [String], view: ViewSelection, images: String, page: Int = 1){
         id = UUID()
         self.title = title
         self.contents = contents
         self.view = view
         self.images = images
-        self.depth = depth
+        self.page = page
     }
 }
