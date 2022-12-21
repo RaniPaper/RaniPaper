@@ -9,7 +9,6 @@ import SwiftUI
 
 struct OnBoardView: View {
     @EnvironmentObject var userState: UserState
-    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = OnBoardViewModel()
     @State var isOpen = false
     @State var currentView: ViewSelection
@@ -43,7 +42,6 @@ struct OnBoardView: View {
                     }
                     Button(action:{
                         isOpen = false
-                        dismiss()
                     }){
                         Image(systemName: "xmark")
                             .resizable()
