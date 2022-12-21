@@ -43,6 +43,7 @@
 		7B796F96293E312000799616 /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F95293E312000799616 /* UserState.swift */; };
 		D805DB35294877F30053723E /* ChosunNm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D805DB33294877F30053723E /* ChosunNm.ttf */; };
 		D805DB36294877F30053723E /* Nanum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D805DB34294877F30053723E /* Nanum.ttf */; };
+		D84883F52953409900AF7D77 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84883F42953409900AF7D77 /* WebView.swift */; };
 		D86ACE1D292DDF1F002C8E89 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */; };
 		D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */; };
 		D86ACE24292DE28E002C8E89 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86ACE23292DE28E002C8E89 /* Extension.swift */; };
@@ -120,6 +121,7 @@
 		7B796F95293E312000799616 /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
 		D805DB33294877F30053723E /* ChosunNm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ChosunNm.ttf; sourceTree = "<group>"; };
 		D805DB34294877F30053723E /* Nanum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nanum.ttf; sourceTree = "<group>"; };
+		D84883F42953409900AF7D77 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		D86ACE1C292DDF1F002C8E89 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D86ACE1F292DE0E0002C8E89 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		D86ACE23292DE28E002C8E89 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -282,6 +284,14 @@
 			path = HomeView;
 			sourceTree = "<group>";
 		};
+		D84883F32953408C00AF7D77 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				D84883F42953409900AF7D77 /* WebView.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		D86ACE18292DDD93002C8E89 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +309,7 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D84883F32953408C00AF7D77 /* WebView */,
 				490A025C2937B77C00FD9384 /* SettingView */,
 				49E703F1293543B80035215F /* InfoView */,
 				49E703EE293539C00035215F /* CreditView */,
@@ -606,6 +617,7 @@
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				492DB7442931202B0027EEB1 /* DummyView2.swift in Sources */,
 				D86ACE6129349E78002C8E89 /* TaskModel.swift in Sources */,
+				D84883F52953409900AF7D77 /* WebView.swift in Sources */,
 				D8D549C2293611CB001E4287 /* EditTaskViewModel.swift in Sources */,
 				D86ACE31292DFCAD002C8E89 /* LockViewModel.swift in Sources */,
 				49E703F3293543EC0035215F /* InfoView.swift in Sources */,
