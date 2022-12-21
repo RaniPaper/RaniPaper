@@ -63,7 +63,6 @@ struct MainView: View {
                         }
                     }
                     MenuView(selection: $viewModel.selection)
-                    OnBoardView(currentView: viewModel.selection)
                 }
 //                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification, object: nil)){(_) in
 //                    print("Test")

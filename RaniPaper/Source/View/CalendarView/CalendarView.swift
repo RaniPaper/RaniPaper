@@ -60,6 +60,8 @@ struct CalendarView: View {
             }
             //HStack
             
+            OnBoardView(currentView: .diary)
+            
         }
         .fullScreenCover(isPresented: $viewModel.showEdit) {
 

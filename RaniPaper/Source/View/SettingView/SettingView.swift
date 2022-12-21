@@ -119,6 +119,9 @@ struct SettingView: View {
                 }
                 .frame(height: ScreenSize.height * 0.82)
             }
+            
+            OnBoardView(currentView: .setting)
+            
             //온보딩 화면 display 구현 부분
             if isReOnboard{
                 DummyView1()

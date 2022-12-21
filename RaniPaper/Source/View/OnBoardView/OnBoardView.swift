@@ -11,45 +11,35 @@ struct OnBoardView: View {
     @EnvironmentObject var userState: UserState
     @ObservedObject var viewModel = OnBoardViewModel()
     @State var isOpen = false
-    @State var currentView: ViewSelection{
-        didSet{
-            print("Did Set")
-            isOpen = MyUserDefaults.shared.getValue(key: currentView.Name + "OnBoard") as? Bool ?? true
-        }
-    }
+    @State var currentView: ViewSelection
+    let radius = ScreenSize.width * 0.06
     
     var body: some View {
         ZStack{
             if isOpen{
                 ZStack{
-                    TabView(){
-                        ForEach(viewModel.onBoardModels){ model in
-                            if model.view == currentView{
-                                ZStack{
-                                    ExplainView()
-                                        .overlay(content: {
-                                            GeometryReader{ proxi in
-                                                VStack(spacing: proxi.size.height * 0.01){
-                                                    Text("\(model.title)") //title
-                                                        .font(.efDiary(15))
-                                                        .frame(width: proxi.size.width)
-                                                        .padding(.bottom, proxi.size.height * 0.02)
-                                                    ForEach(model.contents, id: \.self){ content in
-                                                        Text("\(content)")
-                                                            .font(.efDiary(11))
-                                                            .frame(width: proxi.size.width)
-                                                    }
-                                                }
-                                                .fixedSize()
-                                                .padding(.top, proxi.size.height * 0.03)
-                                            }
-                                        })
-                                        .offset(y: ScreenSize.height * 0.65)
+                    Color.black.overlay{
+                        ScrollView(.horizontal){
+                            TabView{
+                                ForEach(viewModel.onBoardModels){ model in
+                                    if model.view == currentView{
+                                        ZStack{
+                                            Image(model.images)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                            ExplainView()
+                                                .overlay(content: {
+                                                    OverlayView(model: model)
+                                                })
+                                                .offset(y: ScreenSize.height * 0.65)
+                                        }
+                                    }
                                 }
                             }
+                            .frame(width: ScreenSize.width, height:  ScreenSize.height)
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                         }
                     }
-                    .tabViewStyle(PageTabViewStyle())
                     Button(action:{
                         isOpen = false
                     }){
@@ -63,11 +53,9 @@ struct OnBoardView: View {
                     userState.isMenuEnable = true
                     MyUserDefaults.shared.setValue(key: currentView.Name + "OnBoard", value: false)
                 }
-                .ignoresSafeArea()
-            } else{
-                EmptyView()
             }
         }
+        .ignoresSafeArea()
         .onAppear(perform: {
             fetch()
         })
@@ -76,20 +64,34 @@ struct OnBoardView: View {
 
 struct OnBoardView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardView(currentView: .home)
+        OnBoardView(currentView: .memo)
             .environmentObject(UserState.shared)
     }
 }
 
 extension OnBoardView{
     func ExplainView() -> some View {
-        ZStack{
-            let radius = ScreenSize.width * 0.06
-            
-            Color.onBoardBackground
-                .overlay(RoundedRectangle(cornerRadius: radius)
-                    .stroke(Color.onBoardBorder, lineWidth: 3))
-                .clipShape(RoundedRectangle(cornerRadius: radius))
+        Color.onBoardBackground
+            .overlay(RoundedRectangle(cornerRadius: radius)
+                .stroke(Color.onBoardBorder, lineWidth: 3))
+            .clipShape(RoundedRectangle(cornerRadius: radius))
+    }
+    
+    func OverlayView(model: OnBoardModel) -> some View{
+        GeometryReader{ proxi in
+            VStack(spacing: proxi.size.height * 0.01){
+                Text("\(model.title)") //title
+                    .font(.efDiary(17))
+                    .frame(width: proxi.size.width)
+                    .padding(.bottom, proxi.size.height * 0.02)
+                ForEach(model.contents, id: \.self){ content in
+                    Text("\(content)")
+                        .font(.efDiary(14))
+                        .frame(width: proxi.size.width)
+                }
+            }
+            .fixedSize()
+            .padding(.top, proxi.size.height * 0.03)
         }
     }
     

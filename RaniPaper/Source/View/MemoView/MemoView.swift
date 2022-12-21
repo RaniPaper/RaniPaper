@@ -312,7 +312,7 @@ struct MemoView: View {
                 
             }
             
-            
+            OnBoardView(currentView: .memo)
         }
         .edgesIgnoringSafeArea(.vertical)
         .fullScreenCover(isPresented: $viewModel.showEditView, content: {

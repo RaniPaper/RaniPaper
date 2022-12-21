@@ -41,6 +41,7 @@ struct HomeView: View {
                 // MARK: 테스트용 뷰
                 TestView()
 //                TaskAlarmTestView()
+                OnBoardView(currentView: .home)
             }
             .ignoresSafeArea()
 
