@@ -37,7 +37,7 @@ struct InfoView: View {
                 .background {
                     Color.memoBg
             }
-                Spacer()
+                
                 
                 // MARK: 내용
                 VStack(spacing:0){
