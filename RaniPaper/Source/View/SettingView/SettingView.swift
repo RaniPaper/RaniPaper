@@ -19,21 +19,19 @@ struct SettingView: View {
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 5)
             VStack(spacing: 0){
-                if let value = MyUserDefaults.shared.getValue(key: "userState"){
-                    if value as! String == "viichan"{
-                        Image("viic1")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: ScreenSize.width * 0.24)
-                            .padding(.top, 20)
-                    }
-                } else {
+                if userState.userType == .viichan{
+                    Image("viic1")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: ScreenSize.width * 0.24)
+                        .padding(.top, 20)
+                    } else {
                     Image("leaves")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: ScreenSize.width * 0.24)
                         .padding(.top, 20)
-                }
+                    }
                 ZStack{
                     GeometryReader{ geometry in
                         let height = geometry.size.height
@@ -149,7 +147,7 @@ extension SettingView{
                         case .showWebsite:
                             openURL(URL(string: "https://rani-paper.tistory.com/m/category/Rani%20Paper")!)
                         case .ask:
-                            openURL(URL(string: "https://cafe.naver.com/steamindiegame")!)
+                            openURL(URL(string: "https://forms.gle/n6wsw9H1uK8LMcVw8")!)
                         default:
                             break
                         }
