@@ -1,54 +1,97 @@
 //
-//  CreditView.swift
+//  InfoView.swift
 //  RaniPaper
 //
 //  Created by SeaSalt on 2022/11/29.
 //
-//  Credit View For Test
+// Info View For Test
+
 
 import SwiftUI
 
 struct CreditView: View {
+    
+    let height = ScreenSize.height/6
+    
+    
     var body: some View {
         ZStack{
-            VStack{
-                Text("라니 페이퍼")
-                    .bold()
-                    .font(.efDiary(30))
-                    .padding(40)
-                VStack(){
-                    Group{
-                        Text("팀장: ㅇ 테아")
-                            .padding(20)
-                        Text("기획: 모시깽1, 모시깽2")
-                            .padding(20)
-                        Text("개발: 모시깽3, 모시깽4")
-                            .padding(20)
-                        Text("사운드: 모시깽5")
-                            .padding(20)
-                        Text("연출: 모시깽6, 모시깽7, 모시깽8")
-                            .padding(20)
-                        Text("일러스트: 모시깽9, 모시깽10, 모시깽11")
-                            .padding(20)
-                        Text("UI: 모시깽12, 모시깽13, 모시깽14")
-                            .padding(20)
-                    }
+            Color(hexcode: "B2BFAC")
+            
+            VStack(spacing: 0) {
+                // MARK: Header
+                VStack(spacing: 0){
+                    Spacer()
+                    Text("크레딧")
+                        .font(.efDiary(35))
+                        .foregroundColor(.memoPrimary)
+                    Text("credits")
+                        .font(.efDiary(13))
+                        .foregroundColor(.memoPrimary)
                     
-                    Image("Launch")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
+                    Spacer()
+                    Rectangle().frame(maxHeight: 2).foregroundColor(.memoPrimary)
                 }
-                .frame(width: ScreenSize.width)
+                .padding(.top,20)
+                .frame(maxWidth: .infinity,maxHeight: height)
+                .background {
+                    Color.memoBg
             }
-            .frame(height: ScreenSize.height)
+                Spacer()
+                
+                
+                    
+                
+                
+                
+                // MARK: Footer
+                VStack(spacing:20){
+                    Rectangle()
+                        .fill(Color.memoPrimary)
+                        .frame(maxWidth:.infinity,maxHeight: 1)
+                    Rectangle()
+                        .fill(Color.memoPrimary)
+                        .frame(maxWidth:ScreenSize.width/3,maxHeight: 2)
+                   
+                    
+                        
+                    
+                    Spacer()
+                }.frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6,alignment: .top)
+                    .background(Color.memoBg)
+            }
+           
+            
+            
         }
         .ignoresSafeArea()
     }
 }
 
-struct CreditView_Previews: PreviewProvider {
+
+
+
+struct Credit_Previews: PreviewProvider {
     static var previews: some View {
         CreditView()
     }
 }
+
+struct CreditDetailView: View {
+    
+    var content:String
+    
+    var body: some View {
+        HStack{
+            Image("infoLeaf")
+                .resizable()
+                .scaledToFit()
+                .frame(width:20,height: 20)
+            Text(content)
+                .foregroundColor(.memoPrimary)
+                .font(.efDiary(15))
+            
+        }.frame(maxWidth: .infinity).padding(.horizontal,15)
+    }
+}
+
