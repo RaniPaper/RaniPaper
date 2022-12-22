@@ -16,12 +16,7 @@
 		<string>ChosunNm.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-		<string>fetch</string>
-		<string>processing</string>
-		<string>remote-notification</string>
-	</array>
+	<array/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 </dict>

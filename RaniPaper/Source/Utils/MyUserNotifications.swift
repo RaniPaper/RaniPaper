@@ -11,7 +11,7 @@ import UserNotifications
 final class MyUserNotifications {
     static let shared = MyUserNotifications()
     let center = UNUserNotificationCenter.current()
-    var isPermitted = MyUserDefaults.shared.getValue(key: "notification") as! Bool
+    var isPermitted = MyUserDefaults.shared.getValue(key: "notification") as? Bool ?? false
     let content = UNMutableNotificationContent()
     let isRepeat = false
     
