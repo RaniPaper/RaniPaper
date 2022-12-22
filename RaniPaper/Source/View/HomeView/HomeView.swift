@@ -41,6 +41,7 @@ struct HomeView: View {
                 // MARK: 테스트용 뷰
                 //TestView()
 //                TaskAlarmTestView()
+                TestView()
                 OnBoardView(currentView: .home)
             }
             .ignoresSafeArea()
@@ -63,6 +64,12 @@ extension HomeView {
             Spacer()
             
             VStack {
+                Button(action:{
+                    MyUserDefaults.shared.clear()
+                }){
+                    Text("Clear UserDefault")
+                }
+                
                 if userState.userType == .viichan {
                     Text("계정상태: viiChan")
                 } else { if userState.userType == .fan {
