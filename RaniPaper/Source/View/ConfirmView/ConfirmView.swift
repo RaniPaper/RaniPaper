@@ -22,6 +22,7 @@ struct ConfirmView: View {
             VStack(spacing:30){
                 Text("나는..")
                     .font(.efDiary(30))
+                    .foregroundColor(.black)
                 
                 HStack(spacing:30){
                     VStack{
@@ -36,6 +37,7 @@ struct ConfirmView: View {
                         }
                         Text("비챤")
                             .font(.efDiary(textSize))
+                            .foregroundColor(.black)
                     }
                     VStack{
                         Button {
@@ -50,6 +52,7 @@ struct ConfirmView: View {
                         }
                         Text("이파리")
                             .font(.efDiary(textSize))
+                            .foregroundColor(.black)
                     }
                    
                     

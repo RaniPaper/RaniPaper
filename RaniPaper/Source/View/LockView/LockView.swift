@@ -22,12 +22,12 @@ struct LockView: View {
     var body: some View {
         VStack(spacing:10){
             HStack(spacing:5){
-                Text("안녕하세요").font(gangfont)
+                Text("안녕하세요").font(gangfont).foregroundColor(.black)
                 Text("비챤님").font(gangfont).foregroundColor(textColor)
             }
             HStack(spacing:0){
                 Text("비밀번호").font(gangfont).foregroundColor(textColor)
-                Text("를 입력해주세요").font(gangfont)
+                Text("를 입력해주세요").font(gangfont).foregroundColor(.black)
                 Text("💚").font(.caption)
             }.padding(.bottom,20)
             
