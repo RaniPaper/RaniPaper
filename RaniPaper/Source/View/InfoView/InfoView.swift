@@ -86,10 +86,11 @@ struct InfoView: View {
                     
                     VStack(spacing:5){
                         InfoGrid("라이센스", "License")
-                        HStack{
+                        
                             InfoDetailView(content: "무료글꼴, 얼리폰트, EF다이어리체")
+                            InfoDetailView(content: "무료글꼴, 이범석, 휴먼범석체")
                             
-                        }
+                        
                         
                         
                         Line()
