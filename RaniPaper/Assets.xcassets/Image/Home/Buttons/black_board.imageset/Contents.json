@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "paper_flower.png",
+      "filename" : "black_board.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "paper_flower@2x.png",
+      "filename" : "black_board@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "paper_flower@3x.png",
+      "filename" : "black_board@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
