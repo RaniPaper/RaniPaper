@@ -22,11 +22,11 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fill)
                     .overlay(content: {
                         Image("mail_box_static")
-                        Circle().frame(width: 20).foregroundColor(.blue) // 이미지 중심
                         NavigationLink {
                             MailBoxAnimationView(viewModel: viewModel)
                                 .navigationBarBackButtonHidden()
                                 .onAppear{
+                                    HapticManager.shared.impact(style: .heavy)
                                     userState.isMenuEnable = false
                                 }
                                 .onDisappear{
@@ -36,10 +36,12 @@ struct HomeView: View {
                             Rectangle().strokeBorder(lineWidth: 3) // 터치 범위
                                 .frame(width:100, height: 180)
                                 .contentShape(Rectangle())
+                                .opacity(0)
                         }
+                        .disabled(!(userState.userType == .viichan))
                     })
                 // MARK: 테스트용 뷰
-                TestView()
+                //TestView()
 //                TaskAlarmTestView()
             }
             .ignoresSafeArea()

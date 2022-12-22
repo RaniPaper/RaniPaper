@@ -21,9 +21,8 @@ struct MailBoxAnimationView: View {
     
     var body: some View {
         NavigationView {
-            ZStack(alignment: .bottomLeading) {
+            ZStack(alignment: .center) {
                 VStack {
-                    
                     // MARK: LottieView
                     if isAnimating { // 애니메이션 시작
                         
@@ -43,33 +42,39 @@ struct MailBoxAnimationView: View {
                         if ((MyUserDefaults.rollingPaperList?.isEmpty) != nil) {
                             Image("mail_box_ready")
                                 .resizable()
-                                .frame(width: ScreenSize.width, height: ScreenSize.height)
                                 .onTapGesture {
                                     withAnimation { isAnimating = true }
                                 }
                         } else { // 남은 롤링페이퍼가 없는 경우
                             RollingPaperEmptyView()
+                                .onTapGesture {
+                                    HapticManager.shared.impact(style: .heavy)
+                                }
                         }
                         
                     }
                 }
+                .frame(width: ScreenSize.width, height: ScreenSize.height)
                 
                 // MARK: 뒤로가기 버튼 & 갤러리 이동 버튼
-                    HStack {
-                        DismissButton()
+                    VStack {
                         Spacer()
-                        NavigationLink {
-                            GalleryView()
-                                //.navigationBarBackButtonHidden()
-                        } label: {
-                            Text("갤러리로 이동")
+                        HStack(alignment: .bottom) {
+                            DismissButton()
+                            Spacer()
+                            GalleryButton()
                         }
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 30)
+                    .opacity(isAnimating ? 0 : 1)
+                    .padding(.horizontal, 10)
+                    .padding(.top, SafeAreaInsets.top)
+                    .padding(.bottom, SafeAreaInsets.bottom + 30)
             }// ZStack
             .fullScreenCover(isPresented: $shouldShowRollingPaper) {
                 RollingPaperView(rollingPaper: rollingPaper!, size: CGSize(width: 220, height: 220))
+                    .onAppear {
+                        HapticManager.shared.impact(style: .soft)
+                    }
             }.ignoresSafeArea()
             
         }
@@ -82,22 +87,29 @@ struct MailBoxAnimationView: View {
         Button {
             dismiss()
         } label: {
-            Circle()
-                .frame(width:50, height: 50)
-                .foregroundColor(.gray)
+            Image("arrow_left_yellow")
+                .resizable()
+                .frame(width: 75, height: 70)
+        }
+    }
+    
+    private func GalleryButton() -> some View {
+        NavigationLink {
+            GalleryView().navigationBarBackButtonHidden()
+        } label: {
+            Image("black_board")
                 .overlay {
-                    Image(systemName: "arrow.left")
+                    Text("해금도 " + "구현중%")
+                        .font(.efDiary(16))
                         .foregroundColor(.white)
                 }
         }
     }
     
     private func RollingPaperEmptyView() -> some View {
-        VStack {
-            Spacer()
-            Text("남은 롤링페이퍼가 없을 때 나오는 화면")
-            Spacer()
-        }
+        Image("mail_box_empty")
+            .resizable()
+            .frame(width: ScreenSize.width, height: ScreenSize.height)
     }
     
 }

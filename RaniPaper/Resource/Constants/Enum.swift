@@ -19,6 +19,17 @@ enum ScreenSize {
     static let height = UIScreen.main.bounds.size.height
 }
 
+enum SafeAreaInsets {
+    private static let insets = UIApplication.shared.connectedScenes
+        .filter({$0.activationState == .foregroundActive})
+        .map({$0 as? UIWindowScene})
+        .compactMap({$0})
+        .first?.windows.first{$0.isKeyWindow }?.safeAreaInsets
+    
+    static let top = insets?.top ?? 0
+    static let bottom = insets?.bottom ?? 0
+}
+
 enum Menu {
     static let minOffset = ScreenSize.width
     static let maxOffset = ScreenSize.width * 0.5
