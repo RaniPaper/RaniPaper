@@ -15,39 +15,39 @@ struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                BackgroundView()
-                    .overlay(content: {
-                        Image("mail_box_static")
-                        NavigationLink {
-                            MailBoxAnimationView(viewModel: viewModel)
-                                .navigationBarBackButtonHidden()
-                                .onAppear{
-                                    HapticManager.shared.impact(style: .heavy)
-                                    userState.isMenuEnable = false
-                                }
-                                .onDisappear{
-                                    userState.isMenuEnable = true
-                                }
-                        } label: {
-                            Rectangle().strokeBorder(lineWidth: 3) // 터치 범위
-                                .frame(width:100, height: 180)
-                                .contentShape(Rectangle())
-                                .opacity(0)
-                        }
-                        .disabled(!(userState.userType == .viichan))
-                    })
-                // MARK: 테스트용 뷰
-                //TestView()
-//                TaskAlarmTestView()
-                OnBoardView(currentView: .home)
+        ZStack{
+            NavigationView {
+                ZStack {
+                    BackgroundView()
+                        .overlay(content: {
+                            Image("mail_box_static")
+                            NavigationLink {
+                                MailBoxAnimationView(viewModel: viewModel)
+                                    .navigationBarBackButtonHidden()
+                                    .onAppear{
+                                        HapticManager.shared.impact(style: .heavy)
+                                        userState.isMenuEnable = false
+                                    }
+                                    .onDisappear{
+                                        userState.isMenuEnable = true
+                                    }
+                            } label: {
+                                Rectangle().strokeBorder(lineWidth: 3) // 터치 범위
+                                    .frame(width:100, height: 180)
+                                    .contentShape(Rectangle())
+                                    .opacity(0)
+                            }
+                            .disabled(!(userState.userType == .viichan))
+                        })
+                    // MARK: 테스트용 뷰
+                    //TestView()
+                    //                TaskAlarmTestView()
+                }
+                .ignoresSafeArea()
+                
             }
-            .ignoresSafeArea()
-
+            OnBoardView(currentView: .home)
         }
-        
-        
     }
 }
 

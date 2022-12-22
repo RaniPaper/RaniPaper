@@ -10,7 +10,7 @@ import SwiftUI
 struct OnBoardView: View {
     @EnvironmentObject var userState: UserState
     @ObservedObject var viewModel = OnBoardViewModel()
-    @State var isOpen = true
+    @State var isOpen = false
     @State var currentView: ViewSelection
     let radius = ScreenSize.width * 0.06
     
@@ -39,18 +39,21 @@ struct OnBoardView: View {
                             .frame(width: ScreenSize.width, height:  ScreenSize.height)
                             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                         }
+                        .overlay(content: {
+                            Button(action:{
+                                isOpen = false
+                            }){
+                                Image(systemName: "xmark")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.onBoardBorder)
+                                    .frame(width: ScreenSize.width * 0.05)
+                                    .padding(10)
+                            }
+                            .padding(10)
+                            .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.42)
+                        })
                     }
-                    Button(action:{
-                        isOpen = false
-                    }){
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.onBoardBorder)
-                            .frame(width: ScreenSize.width * 0.05)
-                    }
-                    .padding(10)
-                    .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.42)
                 }
                 .frame(width: ScreenSize.width, height:  ScreenSize.height)
                 .onAppear{
@@ -64,7 +67,7 @@ struct OnBoardView: View {
         }
         .ignoresSafeArea()
         .onAppear(perform: {
-//            fetch()
+            fetch()
             print("isOpen: \(isOpen)")
         })
     }
