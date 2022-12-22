@@ -172,6 +172,7 @@ struct CreditGridView: View {
 
 struct SpecialThanksView: View {
     
+    let columns:[GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
     let supports = ["뚱이99", "컹스캉스콩스", "9급갓무원", "우유니화이트",
                     "개털",
                     "빛고래",
@@ -286,23 +287,26 @@ struct SpecialThanksView: View {
     
     var body: some View {
         let size:CGFloat = 13
-        LazyVStack(spacing:5){
+        VStack(spacing:5){
             Text("Special Thanks").font(.efDiary(30))
                 .foregroundColor(.memoPrimary)
             
             
-            ForEach(supports,id:\.self){ (support:String) in
-                HStack(spacing:0){
-                    
-                        Image("infoLeaf")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width:size,height: size)
-                        Text(support)
-                            .font(.efDiary(size)).foregroundColor(.memoPrimary)
-                    }
-                    
-            }.padding(.vertical,5)
+            LazyVGrid(columns: columns) {
+                ForEach(supports,id:\.self){ (support:String) in
+                    HStack(spacing:0){
+                        
+                            Image("infoLeaf")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:size,height: size)
+                            Text(support)
+                                .font(.efDiary(size)).foregroundColor(.memoPrimary)
+                        }
+                        
+                }.padding(.vertical,5)
+            }
+            
             }
              
         }
