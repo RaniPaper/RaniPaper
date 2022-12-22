@@ -13,6 +13,8 @@ struct SettingView: View {
     @ObservedObject var viewModel = SettingViewModel()
     @State var isOnBoard = MyUserDefaults.shared.getValue(key: "SettingOnBoard") as? Bool ?? true
     @State var isReOnboard = false
+    @State var BGMVolume = 1.0
+    @State var SFXVolume = 1.0
     var body: some View {
         ZStack{
             Image("main_static")
@@ -20,21 +22,19 @@ struct SettingView: View {
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 5)
             VStack(spacing: 0){
-                if let value = MyUserDefaults.shared.getValue(key: "userState"){
-                    if value as! String == "viichan"{
-                        Image("viic1")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: ScreenSize.width * 0.24)
-                            .padding(.top, 20)
-                    }
-                } else {
+                if userState.userType == .viichan{
+                    Image("viic1")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: ScreenSize.width * 0.24)
+                        .padding(.top, 20)
+                    } else {
                     Image("leaves")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: ScreenSize.width * 0.24)
                         .padding(.top, 20)
-                }
+                    }
                 ZStack{
                     GeometryReader{ geometry in
                         let height = geometry.size.height
@@ -96,6 +96,24 @@ struct SettingView: View {
                                         }
                                         .padding(.top, height * 0.09)
                                     }
+                                    
+                                    Slider(value: $BGMVolume, in: 0...1.0, step: 0.05,
+                                           onEditingChanged: {(_) in
+                                        MySoundSetting.BGM.setChannelVolume(Float(BGMVolume))
+                                        }
+                                    )
+                                    
+                                    Text("BGM: \(BGMVolume)")
+                                    
+                                    Slider(value: $SFXVolume, in: 0...1.0, step: 0.05,
+                                           onEditingChanged: {(_) in
+                                        for instance in MySoundSetting.getInstance(soundType: .SFX){
+                                            instance.setChannelVolume(Float(SFXVolume))
+                                        }
+                                    }
+                                    )
+                                    
+                                    Text("SFX: \(SFXVolume)")
                                     Spacer()
                                         .padding(.bottom)
                                 }
@@ -150,7 +168,7 @@ extension SettingView{
                         case .showWebsite:
                             openURL(URL(string: "https://rani-paper.tistory.com/m/category/Rani%20Paper")!)
                         case .ask:
-                            openURL(URL(string: "https://cafe.naver.com/steamindiegame")!)
+                            openURL(URL(string: "https://forms.gle/n6wsw9H1uK8LMcVw8")!)
                         default:
                             break
                         }

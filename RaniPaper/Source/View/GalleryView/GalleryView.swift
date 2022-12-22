@@ -8,34 +8,64 @@
 import SwiftUI
 
 struct GalleryView: View {
+    @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel = GalleryViewModel()
     @State private var selectedRollingPaper: RollingPaper? = nil
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: true) {
-            ZStack {
-                Color(hexcode: "052111") // 이미지 틈새 칠판색으로 메꾸기 위해
-                
-                BlackBoardView()
-                
-                Rectangle().foregroundColor(.yellow).opacity(0)
-                    // 칠판 영역
-                    .overlay(alignment: .topLeading) {
-                        // 편지 부분
-                        ForEach(viewModel.list) { rollingPaper in
-                            GalleryRollingPaperView(rollingPaper: rollingPaper)
-                                .offset(rollingPaper.position)
-                                .onTapGesture { selectedRollingPaper = rollingPaper }
+        VStack(spacing: 0) {
+            CustomNavigationBar()
+                .frame(height: 40)
+            
+            ScrollView(.horizontal, showsIndicators: true) {
+                ZStack {
+                    Color(hexcode: "052111") // 이미지 틈새 칠판색으로 메꾸기 위해
+                    
+                    BlackBoardView()
+                    
+                    Rectangle().foregroundColor(.yellow).opacity(0)
+                        // 칠판 영역
+                        .overlay(alignment: .topLeading) {
+                            // 편지 부분
+                            ForEach(viewModel.list) { rollingPaper in
+                                GalleryRollingPaperView(rollingPaper: rollingPaper)
+                                    .offset(rollingPaper.position)
+                                    .onTapGesture { selectedRollingPaper = rollingPaper }
+                            }
                         }
-                    }
-                    .padding(.vertical, 60)
-                    .padding(.horizontal, 60)
+                        .padding(.vertical, 60)
+                        .padding(.horizontal, 60)
+                }
             }
         }
         .fullScreenCover(item: $selectedRollingPaper) { rollingPaper in
             rollingPaperDetailView(rollingPaper)
         }
         
+    }
+    
+    private func CustomNavigationBar() -> some View {
+        HStack {
+            Button { dismiss() } label: {
+                Image("arrow_left_mailbox")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(10)
+            }
+            
+            Spacer()
+            
+            Button { dismiss() } label: {
+                Image("black_board")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(5)
+                    .overlay {
+                        Text("잠김").font(.efDiary(13)).foregroundColor(.white)
+                        //Text("100% 보상").font(.efDiary(10)).foregroundColor(.white)
+                    }
+            }
+        }
     }
     
     private func BlackBoardView() -> some View {
@@ -70,6 +100,7 @@ struct GalleryView: View {
 fileprivate struct GalleryRollingPaperView: View {
     let rollingPaper: RollingPaper
     var size: CGSize
+    var messageOffset: CGSize = .init(width: 0, height: 0)
     
     init(rollingPaper: RollingPaper) {
         self.rollingPaper = rollingPaper
@@ -80,11 +111,12 @@ fileprivate struct GalleryRollingPaperView: View {
         case "paper_butterfly":
             size = .init(width: 95, height: 95)
         case "paper_heart":
-            size = .init(width: 70, height: 70)
+            size = .init(width: 80, height: 80)
+            messageOffset = .init(width: 0, height: -9)
         case "paper_flower":
-            size = .init(width: 70, height: 70)
+            size = .init(width: 80, height: 80)
         default:
-            size = .init(width: 70, height: 70)
+            size = .init(width: 75, height: 75)
         }
     }
     
@@ -94,6 +126,7 @@ fileprivate struct GalleryRollingPaperView: View {
             .overlay {
                 Image(rollingPaper.contentImage).resizable()
                     .frame(width: size.width, height: size.height)
+                    .offset(messageOffset)
                     //.background { Color.white }
             }
     }

@@ -19,13 +19,18 @@ struct LaunchView: View {
             LinearGradient(colors: [.white,userState.userType == .viichan ? Color(hexcode: "e8f4ea") : Color(hexcode: "fff1d4")], startPoint: .top, endPoint: .bottom)
             
                    VStack(spacing:0){
-                       Text("라니페이퍼").font(.nanum(40))
+                       Text("라니페이퍼")
+                           .font(.nanum(40))
+                           .foregroundColor(.black)
                            .padding(.bottom,5)
                        Image("Launch")
                            .resizable()
                            .aspectRatio(contentMode: .fit)
                            .padding(.horizontal,50)
-                       Text(userState.userType == .viichan ? titleViichan : titleFan).font(.chosun(20)).padding(.horizontal)
+                       Text(userState.userType == .viichan ? titleViichan : titleFan)
+                           .font(.chosun(20))
+                           .foregroundColor(.black)
+                           .padding(.horizontal)
                        
                    }
 
