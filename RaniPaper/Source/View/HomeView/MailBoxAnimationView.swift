@@ -93,11 +93,9 @@ struct MailBoxAnimationView: View {
     }
     
     private func RollingPaperEmptyView() -> some View {
-        VStack {
-            Spacer()
-            Text("남은 롤링페이퍼가 없을 때 나오는 화면")
-            Spacer()
-        }
+        Image("mail_box_empty")
+            .resizable()
+            .frame(width: ScreenSize.width, height: ScreenSize.height)
     }
     
 }
