@@ -89,8 +89,7 @@ struct MailBoxAnimationView: View {
     
     private func GalleryButton() -> some View {
         NavigationLink {
-            GalleryView()
-            //.navigationBarBackButtonHidden()
+            GalleryView().navigationBarBackButtonHidden()
         } label: {
             Image("black_board")
                 .overlay {
