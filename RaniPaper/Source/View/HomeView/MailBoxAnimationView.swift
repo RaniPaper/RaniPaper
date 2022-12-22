@@ -47,6 +47,9 @@ struct MailBoxAnimationView: View {
                                 }
                         } else { // 남은 롤링페이퍼가 없는 경우
                             RollingPaperEmptyView()
+                                .onTapGesture {
+                                    HapticManager.shared.impact(style: .heavy)
+                                }
                         }
                         
                     }
@@ -69,6 +72,9 @@ struct MailBoxAnimationView: View {
             }// ZStack
             .fullScreenCover(isPresented: $shouldShowRollingPaper) {
                 RollingPaperView(rollingPaper: rollingPaper!, size: CGSize(width: 220, height: 220))
+                    .onAppear {
+                        HapticManager.shared.impact(style: .soft)
+                    }
             }.ignoresSafeArea()
             
         }
@@ -93,7 +99,7 @@ struct MailBoxAnimationView: View {
         } label: {
             Image("black_board")
                 .overlay {
-                    Text("해금도 " + "100%")
+                    Text("해금도 " + "구현중%")
                         .font(.efDiary(16))
                         .foregroundColor(.white)
                 }
