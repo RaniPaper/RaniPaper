@@ -69,6 +69,7 @@ struct CreditView: View {
                     CreditGridView(teamName: "효과음 / 배경음", teamMembers: ["히사이시죠이시죠"])
                     
                     
+                    SpecialThanksView()
                     
                     
                    
@@ -168,3 +169,142 @@ struct CreditGridView: View {
         }
     }
 }
+
+struct SpecialThanksView: View {
+    
+    let supports = ["뚱이99", "컹스캉스콩스", "9급갓무원", "우유니화이트",
+                    "개털",
+                    "빛고래",
+                    "qlapalal",
+                    "백색큐브",
+                    "리버7",
+                    "김아진03",
+                    "냉동피자",
+                    "재은잉",
+                    "안솔머칸나",
+                    "Funnnnnnn7",
+                    "메루",
+                    "이젠",
+                    "타케하",
+                    "꼬마",
+                    "별뮤",
+                    "탄자나이트",
+                    "개두",
+                    "서라연",
+                    "하루조아",
+                    "열람제한",
+                    "청슬",
+                    "오렌 Oren",
+                    "챤넛",
+                    "밤서",
+                    "혼종밀가루",
+                    "펄슨얼리티",
+                    "놀찬",
+                    "휘뚜루따뚜루",
+                    "Gonei",
+                    "삼월과군청",
+                    "조1l",
+                    "해 무",
+                    "찌가",
+                    "시계소년",
+                    "빈매미",
+                    "웅와",
+                    "전번",
+                    "유해",
+                    "Bbada",
+                    "조은놈",
+                    "짜짜네",
+                    "우리의멋진스노우맨",
+                    "오잉지에이드",
+                    "개굴주먹밥",
+                    "때찌",
+                    "베라기0",
+                    "우워링",
+                    "레모네",
+                    "투헤드",
+                    "애아빠우왁굳",
+                    "랄비",
+                    "취한고라니",
+                    "이시국로동자",
+                    "버동",
+                    "군만두6",
+                    "뱌 밍",
+                    "수우현",
+                    "은한",
+                    "TriShiKa",
+                    "HamHam",
+                    "반갑다구ㄹl",
+                    "이공우",
+                    "마인워크",
+                    "김세윤",
+                    "Undeok",
+                    "송도 살고싶다",
+                    "탈모걸린검사",
+                    "너귤너굴",
+                    "어덜트매드맨",
+                    "대오",
+                    "l 고라니단 l",
+                    "두개바면",
+                    "멍차",
+                    "방석에있는인형",
+                    "파마산치2즈",
+                    "콜라맛마이쭈",
+                    "날구리",
+                    "왁동물원",
+                    "아즈사",
+                    "임쌈장",
+                    "첫눈1103",
+                    "고라윙",
+                    "세제는 피죤",
+                    "이제막유입한팬치",
+                    "새카매요",
+                    "디잔몬",
+                    "구아구아",
+                    "연  풍",
+                    "왁만치",
+                    "굵은소금",
+                    "GongNo20",
+                    "메타범순",
+                    "곽덕팔",
+                    "아몬드사탕",
+                    "원땅",
+                    "3만원",
+                    "레오29",
+                    "Inoue",
+                    "따뜻하니까",
+                    "센티미터",
+                    "anniyong",
+                    "케이",
+                    "냄냄",
+                    "아코",
+                    "품애",
+                    "리버7",
+                    "단이비",
+                    "혓바늘",
+                    "도네최고아이돌"]
+    
+    
+    var body: some View {
+        let size:CGFloat = 13
+        LazyVStack(spacing:5){
+            Text("Special Thanks").font(.efDiary(30))
+                .foregroundColor(.memoPrimary)
+            
+            
+            ForEach(supports,id:\.self){ (support:String) in
+                HStack(spacing:0){
+                    
+                        Image("infoLeaf")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width:size,height: size)
+                        Text(support)
+                            .font(.efDiary(size)).foregroundColor(.memoPrimary)
+                    }
+                    
+            }.padding(.vertical,5)
+            }
+             
+        }
+}
+
