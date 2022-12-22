@@ -17,13 +17,11 @@ struct SettingView: View {
     @State var SFXVolume = 1.0
     var body: some View {
         ZStack{
-            Image("main_static")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+            BackgroundView()
                 .blur(radius: 5)
             VStack(spacing: 0){
                 if userState.userType == .viichan{
-                    Image("viic1")
+                    Image("viichan")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: ScreenSize.width * 0.24)
@@ -137,6 +135,7 @@ struct SettingView: View {
                 }
                 .frame(height: ScreenSize.height * 0.82)
             }
+//            .background(.ultraThinMaterial)
             
             OnBoardView(currentView: .setting)
             
