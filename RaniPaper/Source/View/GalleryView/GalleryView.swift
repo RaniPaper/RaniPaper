@@ -100,6 +100,7 @@ struct GalleryView: View {
 fileprivate struct GalleryRollingPaperView: View {
     let rollingPaper: RollingPaper
     var size: CGSize
+    var messageOffset: CGSize = .init(width: 0, height: 0)
     
     init(rollingPaper: RollingPaper) {
         self.rollingPaper = rollingPaper
@@ -110,9 +111,10 @@ fileprivate struct GalleryRollingPaperView: View {
         case "paper_butterfly":
             size = .init(width: 95, height: 95)
         case "paper_heart":
-            size = .init(width: 75, height: 75)
+            size = .init(width: 80, height: 80)
+            messageOffset = .init(width: 0, height: -9)
         case "paper_flower":
-            size = .init(width: 75, height: 75)
+            size = .init(width: 80, height: 80)
         default:
             size = .init(width: 75, height: 75)
         }
@@ -124,6 +126,7 @@ fileprivate struct GalleryRollingPaperView: View {
             .overlay {
                 Image(rollingPaper.contentImage).resizable()
                     .frame(width: size.width, height: size.height)
+                    .offset(messageOffset)
                     //.background { Color.white }
             }
     }
