@@ -19,6 +19,10 @@
 		494967C72940EAC8001E5E8A /* openSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 494967C62940EAC8001E5E8A /* openSideMenu.wav */; };
 		49762B80294151DB00D3DD18 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49762B7F294151DB00D3DD18 /* BGM.wav */; };
 		49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49762B812941595C00D3DD18 /* AppDelegate.swift */; };
+		497A847C295359A7007F3A56 /* AllOnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A847B295359A7007F3A56 /* AllOnBoardView.swift */; };
+		49D7C37B2951030900626B5C /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7C37A2951030900626B5C /* OnBoardView.swift */; };
+		49D7C37D2951ECF800626B5C /* OnBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7C37C2951ECF800626B5C /* OnBoardModel.swift */; };
+		49D7C37F2951F33C00626B5C /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7C37E2951F33C00626B5C /* OnBoardViewModel.swift */; };
 		497A847E29535EF6007F3A56 /* BackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */; };
 		4983001B294F0CEF007BB571 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4983001A294F0CEF007BB571 /* BackgroundView.swift */; };
 		49D812F9293D1C79009A2748 /* testAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D812F8293D1C79009A2748 /* testAlarm.mp3 */; };
@@ -98,6 +102,10 @@
 		494967C62940EAC8001E5E8A /* openSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = openSideMenu.wav; sourceTree = "<group>"; };
 		49762B7F294151DB00D3DD18 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
 		49762B812941595C00D3DD18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		497A847B295359A7007F3A56 /* AllOnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOnBoardView.swift; sourceTree = "<group>"; };
+		49D7C37A2951030900626B5C /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
+		49D7C37C2951ECF800626B5C /* OnBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardModel.swift; sourceTree = "<group>"; };
+		49D7C37E2951F33C00626B5C /* OnBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
 		497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewModel.swift; sourceTree = "<group>"; };
 		4983001A294F0CEF007BB571 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		49D812F8293D1C79009A2748 /* testAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testAlarm.mp3; sourceTree = "<group>"; };
@@ -216,8 +224,18 @@
 				7B796F8829384FEA00799616 /* MemoModel.swift */,
 				490A02632937D55400FD9384 /* SettingModel.swift */,
 				7B5EF67D2949ABE0002CDD9D /* RollingPaperModel.swift */,
+				49D7C37C2951ECF800626B5C /* OnBoardModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		49D7C379295102F300626B5C /* OnBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				49D7C37A2951030900626B5C /* OnBoardView.swift */,
+				497A847B295359A7007F3A56 /* AllOnBoardView.swift */,
+			);
+			path = OnBoardView;
 			sourceTree = "<group>";
 		};
 		49E703EE293539C00035215F /* CreditView */ = {
@@ -314,6 +332,7 @@
 		D86ACE19292DDDA4002C8E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49D7C379295102F300626B5C /* OnBoardView */,
 				D84883F32953408C00AF7D77 /* WebView */,
 				490A025C2937B77C00FD9384 /* SettingView */,
 				49E703F1293543B80035215F /* InfoView */,
@@ -357,6 +376,7 @@
 				D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */,
 				D8D549C329362A47001E4287 /* KeyboardHandler.swift */,
 				490A025F2937B9F600FD9384 /* SettingViewModel.swift */,
+				49D7C37E2951F33C00626B5C /* OnBoardViewModel.swift */,
 				497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */,
 			);
 			path = ViewModel;
@@ -614,10 +634,12 @@
 				D86ACE5D293476BF002C8E89 /* CustomDatePicker.swift in Sources */,
 				490A025E2937B7A100FD9384 /* SettingView.swift in Sources */,
 				492DB74029311FF90027EEB1 /* DummyView1.swift in Sources */,
+				49D7C37F2951F33C00626B5C /* OnBoardViewModel.swift in Sources */,
 				D89A06952929FD5000F5D408 /* MainView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
 				7B796F94293D74BB00799616 /* HapticManager.swift in Sources */,
 				D8D549C429362A47001E4287 /* KeyboardHandler.swift in Sources */,
+				49D7C37B2951030900626B5C /* OnBoardView.swift in Sources */,
 				49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */,
 				D8FF935A293A57A700B0F475 /* LargeStickerView.swift in Sources */,
 				49E703F029353A150035215F /* CreditView.swift in Sources */,
@@ -629,6 +651,7 @@
 				49E703F3293543EC0035215F /* InfoView.swift in Sources */,
 				D86ACE34292F0A3E002C8E89 /* ConfirmView.swift in Sources */,
 				7B796F8929384FEA00799616 /* MemoModel.swift in Sources */,
+				49D7C37D2951ECF800626B5C /* OnBoardModel.swift in Sources */,
 				D86ACE2F292DF6E2002C8E89 /* Enum.swift in Sources */,
 				493526F5292F57470066F083 /* MenuViewModel.swift in Sources */,
 				7B796F8529378CB300799616 /* HomeView.swift in Sources */,
@@ -641,6 +664,7 @@
 				4983001B294F0CEF007BB571 /* BackgroundView.swift in Sources */,
 				49D812FD293F7FB5009A2748 /* MyUserNotifications.swift in Sources */,
 				7B796F90293A22FA00799616 /* MailBoxAnimationView.swift in Sources */,
+				497A847C295359A7007F3A56 /* AllOnBoardView.swift in Sources */,
 				490A02602937B9F600FD9384 /* SettingViewModel.swift in Sources */,
 				D86ACE5F29347D0B002C8E89 /* DateModel.swift in Sources */,
 				497A847E29535EF6007F3A56 /* BackgroundViewModel.swift in Sources */,

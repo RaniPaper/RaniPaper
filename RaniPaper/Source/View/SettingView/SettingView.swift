@@ -11,7 +11,8 @@ struct SettingView: View {
     @EnvironmentObject var userState: UserState
     @Environment(\.openURL) var openURL
     @ObservedObject var viewModel = SettingViewModel()
-    @State var isOnboardOn = false
+    @State var isOnBoard = MyUserDefaults.shared.getValue(key: "SettingOnBoard") as? Bool ?? true
+    @State var isReOnboard = false
     @State var BGMVolume = 1.0
     @State var SFXVolume = 1.0
     var body: some View {
@@ -136,12 +137,12 @@ struct SettingView: View {
                 }
                 .frame(height: ScreenSize.height * 0.82)
             }
+            
+            OnBoardView(currentView: .setting)
+            
             //온보딩 화면 display 구현 부분
-            if isOnboardOn{
-                DummyView1()
-                    .onTapGesture {
-                        isOnboardOn = false
-                    }
+            if isReOnboard{
+                AllOnBoardView(isOpen: $isReOnboard)
             }
         }
         .ignoresSafeArea()
@@ -163,7 +164,7 @@ extension SettingView{
                     Button(action: {
                         switch setting.action{
                         case .showOnBoard:
-                            isOnboardOn = true
+                            isReOnboard = true
                         case .showWebsite:
                             openURL(URL(string: "https://rani-paper.tistory.com/m/category/Rani%20Paper")!)
                         case .ask:
