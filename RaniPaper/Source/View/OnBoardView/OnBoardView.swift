@@ -39,19 +39,21 @@ struct OnBoardView: View {
                             .frame(width: ScreenSize.width, height:  ScreenSize.height)
                             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                         }
-                    }
-                    Button(action:{
-                        isOpen = false
-                    }){
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.onBoardBorder)
-                            .frame(width: ScreenSize.width * 0.05)
+                        .overlay(content: {
+                            Button(action:{
+                                isOpen = false
+                            }){
+                                Image(systemName: "xmark")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.onBoardBorder)
+                                    .frame(width: ScreenSize.width * 0.05)
+                                    .padding(10)
+                            }
                             .padding(10)
+                            .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.42)
+                        })
                     }
-                    .padding(10)
-                    .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.42)
                 }
                 .frame(width: ScreenSize.width, height:  ScreenSize.height)
                 .onAppear{
