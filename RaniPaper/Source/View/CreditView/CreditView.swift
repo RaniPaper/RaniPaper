@@ -37,7 +37,7 @@ struct CreditView: View {
                 .background {
                     Color.memoBg
             }
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     VStack(spacing:5){
                         Text("팀장").font(.efDiary(20)).foregroundColor(.memoPrimary).frame(maxWidth: .infinity)
                         HStack(spacing:5){
@@ -279,7 +279,6 @@ struct SpecialThanksView: View {
                     "냄냄",
                     "아코",
                     "품애",
-                    "리버7",
                     "단이비",
                     "혓바늘",
                     "도네최고아이돌"]
