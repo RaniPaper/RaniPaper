@@ -14,6 +14,7 @@ class MySoundSetting: ObservableObject{
     let soundType: SoundType
     var player: AVAudioPlayer?
     var isEnable: Bool = true
+    var volume: Float = 1.0
     
     private init(url urlName: String, extension extensionName: String, _ type: SoundType){
         self.urlName = urlName
@@ -54,6 +55,9 @@ class MySoundSetting: ObservableObject{
         default:
             break
         }
+        
+        //볼륨 설정
+        player?.setVolume(volume, fadeDuration: 0)
         
         // 소리 설정이 활성 상태면 음원 재생
         if self.isEnable{
@@ -105,6 +109,11 @@ class MySoundSetting: ObservableObject{
         default:
             break
         }
+    }
+    
+    func setChannelVolume(_ volume: Float){
+        self.player?.setVolume(volume, fadeDuration: 0)
+        self.volume = volume
     }
 }
 
