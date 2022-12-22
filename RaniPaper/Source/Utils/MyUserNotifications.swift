@@ -35,7 +35,7 @@ final class MyUserNotifications {
                 }
             }
         }
-        isPermitted = MyUserDefaults.shared.getValue(key: "notification") as! Bool
+        isPermitted = MyUserDefaults.shared.getValue(key: "notification") as? Bool ?? false
     }
     
     /// CREAT : TaskModel을 입력 받아 해당 deadline에 알림을 생성합니다.
