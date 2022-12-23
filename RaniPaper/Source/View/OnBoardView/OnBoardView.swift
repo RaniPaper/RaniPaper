@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnBoardView: View {
     @EnvironmentObject var userState: UserState
-    @ObservedObject var viewModel = OnBoardViewModel()
+    @StateObject var viewModel = OnBoardViewModel()
     @State var isOpen = false
     @State var currentView: ViewSelection
     let radius = ScreenSize.width * 0.06
