@@ -82,7 +82,7 @@ struct EditMemoView: View {
                                     
                                     
                                 } label: {
-                                    Image("memoSave")
+                                    Image(viewModel.title != "" ? "memoSave" : "memoDisableSave")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                     

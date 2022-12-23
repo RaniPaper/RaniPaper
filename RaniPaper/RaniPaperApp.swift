@@ -14,6 +14,7 @@ struct RaniPaperApp: App {
     var body: some Scene {
         WindowGroup {
             MainView().environmentObject(UserState.shared)
+                
         }
     }
 }

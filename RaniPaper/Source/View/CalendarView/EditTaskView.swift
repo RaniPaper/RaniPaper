@@ -265,6 +265,7 @@ struct EditTaskView: View {
             
             
         }
+        
         .onAppear {
             print("EditTaskview - onAppear")
             // 기존 task가 있으면 뷰모델에 데이터 전달
