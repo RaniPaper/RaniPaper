@@ -11,33 +11,39 @@ struct MenuView: View {
     @EnvironmentObject var userState: UserState
     @StateObject var viewModel = MenuViewModel()
     @Binding var selection: ViewSelection
+    @GestureState var dragState: (CGFloat, Bool) = (Menu.minOffset, false)
     @State var isPlayed = false
-    @State var gestureState: String = ""
+    @State var gestureState = false
     var body: some View {
                 
-        let drag = DragGesture()
-            .onChanged{
-                gestureState = "OnChanged"
+        let drag = DragGesture(minimumDistance: 20)
+            .updating($dragState){(value, state, transcation) in
+                state.1 = true
                 if viewModel.isOpen{
-                    let cmp = Menu.maxOffset - $0.startLocation.x
-                    if ($0.translation.width > 0) && (cmp > 0) {
-                        viewModel.Offset = Menu.maxOffset + $0.translation.width - cmp
+                    let cmp = Menu.maxOffset - value.startLocation.x
+                    if (value.translation.width > 0) && (cmp > 0) {
+                        state.0 = Menu.maxOffset + value.translation.width - cmp
                     }
-                    else if ($0.translation.width > 0) && (cmp < 0) {
-                        viewModel.Offset = Menu.maxOffset + $0.translation.width
+                    else if (value.translation.width > 0) && (cmp < 0) {
+                        state.0 = Menu.maxOffset + value.translation.width
                     }
                 } else {
-                    if $0.startLocation.x > Menu.openEdge{
-                        viewModel.Offset = Menu.minOffset + $0.translation.width > Menu.maxOffset ? Menu.minOffset + $0.translation.width : Menu.maxOffset
-                        if !isPlayed{
-                            MySoundSetting.openSideMenu.play()
-                            isPlayed = true
-                        }
+                    if value.startLocation.x > Menu.openEdge{
+                        state.0 = Menu.minOffset + value.translation.width > Menu.maxOffset ? Menu.minOffset + value.translation.width : Menu.maxOffset
                     }
                 }
             }
+            .onChanged{
+                gestureState = true
+                if !viewModel.isOpen{
+                    if $0.startLocation.x > Menu.openEdge && !isPlayed{
+                        MySoundSetting.openSideMenu.play()
+                        isPlayed = true
+                    }
+                }
+                viewModel.Offset = dragState.0
+            }
             .onEnded{ _ in
-                gestureState = "OnEnded"
                 if viewModel.Offset < (viewModel.isOpen ? Menu.closeThreshold : Menu.openThreshold){
                     withAnimation{
                         viewModel.Offset = Menu.maxOffset
@@ -45,10 +51,10 @@ struct MenuView: View {
                     }
                 }
                 else {
+                    if viewModel.isOpen{
+                        MySoundSetting.closeSideMenu.play()
+                    }
                     withAnimation{
-                        if viewModel.isOpen{
-                            MySoundSetting.closeSideMenu.play()
-                        }
                         viewModel.isOpen = false
                         viewModel.Offset = Menu.minOffset
                     }
@@ -61,9 +67,11 @@ struct MenuView: View {
                 .opacity(viewModel.Offset == Menu.minOffset ? 0 : Double((ScreenSize.width-viewModel.Offset))/1300)
                 .animation(.easeIn, value: viewModel.Offset)
                 .onTapGesture {
-                    viewModel.Offset = Menu.minOffset
-                    viewModel.isOpen = false
-                    MySoundSetting.closeSideMenu.play()
+                    if viewModel.isOpen{
+                        MySoundSetting.closeSideMenu.play()
+                        viewModel.Offset = Menu.minOffset
+                        viewModel.isOpen = false
+                    }
                 }
             
             SideMenuView(isOpen: $viewModel.isOpen,
@@ -71,11 +79,11 @@ struct MenuView: View {
                          selection: $selection,
                          viewModel: viewModel)
             .shadow(radius: 3)
-            .offset(x: viewModel.Offset)
+            .offset(x: dragState.1 ? dragState.0 : viewModel.Offset)
             .transition(.move(edge: .trailing))
             .animation(.linear, value: viewModel.Offset)
             
-            Text(gestureState)
+            Text("\(dragState.0), \(String(dragState.1)), \(viewModel.Offset), \(String(gestureState))")
         }
         .contentShape(Rectangle())
         .highPriorityGesture(userState.isMenuEnable ? drag : nil)

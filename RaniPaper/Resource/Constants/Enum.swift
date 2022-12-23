@@ -35,7 +35,7 @@ enum Menu {
     static let maxOffset = ScreenSize.width * 0.5
     static let openThreshold = Menu.maxOffset * 1.7
     static let closeThreshold = Menu.maxOffset * 1.2
-    static let openEdge = ScreenSize.width * 0.95
+    static let openEdge = ScreenSize.width * 0.92
 }
 
 enum ViewSelection: CaseIterable {
