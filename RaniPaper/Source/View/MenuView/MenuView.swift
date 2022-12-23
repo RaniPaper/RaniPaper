@@ -12,10 +12,12 @@ struct MenuView: View {
     @StateObject var viewModel = MenuViewModel()
     @Binding var selection: ViewSelection
     @State var isPlayed = false
+    @State var gestureState: String = ""
     var body: some View {
                 
         let drag = DragGesture()
             .onChanged{
+                gestureState = "OnChanged"
                 if viewModel.isOpen{
                     let cmp = Menu.maxOffset - $0.startLocation.x
                     if ($0.translation.width > 0) && (cmp > 0) {
@@ -35,7 +37,8 @@ struct MenuView: View {
                 }
             }
             .onEnded{ _ in
-                if viewModel.Offset < Menu.threshold{
+                gestureState = "OnEnded"
+                if viewModel.Offset < (viewModel.isOpen ? Menu.closeThreshold : Menu.openThreshold){
                     withAnimation{
                         viewModel.Offset = Menu.maxOffset
                         viewModel.isOpen = true
@@ -71,9 +74,11 @@ struct MenuView: View {
             .offset(x: viewModel.Offset)
             .transition(.move(edge: .trailing))
             .animation(.linear, value: viewModel.Offset)
+            
+            Text(gestureState)
         }
         .contentShape(Rectangle())
-        .gesture(userState.isMenuEnable ? drag : nil)
+        .highPriorityGesture(userState.isMenuEnable ? drag : nil)
         .ignoresSafeArea()
     }
 }

@@ -36,7 +36,6 @@ struct SideMenuView: View {
                                         selection = menu.viewSelection
                                     }
                                 }) {
-//                                    Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                                     Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
@@ -45,7 +44,6 @@ struct SideMenuView: View {
                             }
                         }
                     }
-//                    TabButtonView(menu: viewModel.menuList[0])
 
                     Spacer()
                     
