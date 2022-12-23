@@ -43,7 +43,7 @@ final class MyUserNotifications {
     /// UserNotification과 TaskModel은 ID를 공유하게 됩니다.
     func create(_ taskModel: TaskModel){
         if isPermitted{
-            content.title = "\(taskModel.title)이(가)  \(taskModel.timeInterval.rawValue) 전 입니다."
+            content.title = "\(taskModel.title)이(가)  \(taskModel.timeInterval.rawValue)입니다."
             content.body = "알람: " + taskModel.title
             content.sound = UNNotificationSound.default
             var deadLine = taskModel.deadLine
