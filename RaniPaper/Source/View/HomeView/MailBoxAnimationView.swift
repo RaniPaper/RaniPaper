@@ -71,7 +71,7 @@ struct MailBoxAnimationView: View {
                     .padding(.bottom, SafeAreaInsets.bottom + 30)
             }// ZStack
             .fullScreenCover(isPresented: $shouldShowRollingPaper) {
-                RollingPaperView(rollingPaper: rollingPaper!, size: CGSize(width: 220, height: 220))
+                RollingPaperView(rollingPaper: rollingPaper!)
                     .onAppear {
                         HapticManager.shared.impact(style: .soft)
                     }
