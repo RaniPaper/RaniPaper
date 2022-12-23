@@ -11,7 +11,11 @@ class BackgroundViewModel: ObservableObject {
     @Published var backgroundTime: BackgroundTime = .moring
     
     init() {
-        backgroundTime = getCurrentTime(input: Date())
+        if MyUserDefaults.shared.getValue(key: "isAnimationOn") as? Bool ?? true{
+            backgroundTime = getCurrentTime(input: Date())
+        } else{
+            backgroundTime = .noon
+        }
         
         print("✅ BackgroundViewModel 생성")
     }

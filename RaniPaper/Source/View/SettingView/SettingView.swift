@@ -65,7 +65,7 @@ struct SettingView: View {
                                                 }
                                                 Toggle(isOn: $viewModel.isAnimationOn){
                                                     HStack{
-                                                        Text("애니메이션")
+                                                        Text("배경 애니메이션")
                                                             .font(.efDiary(height/39))
                                                         Spacer()
                                                         Image("animation")

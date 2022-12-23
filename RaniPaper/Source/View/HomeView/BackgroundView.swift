@@ -9,9 +9,8 @@ import SwiftUI
 
 struct BackgroundView: View {
     @StateObject var viewModel = BackgroundViewModel()
-    //테스트용 변수들
-    @State var testTime = Date()
-    @State var isTest = false
+    @State var defaultTime = Calendar.current.date(from: DateComponents(hour: 11)) ?? Date()
+    @AppStorage("isAnimationOn") var isAnimationOn: Bool = UserDefaults.standard.bool(forKey: "isAnimationOn")
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         ZStack{
@@ -48,8 +47,8 @@ struct BackgroundView: View {
             }
             .onReceive(timer){ input in
                 var time = input
-                if isTest{
-                    time = testTime
+                if !isAnimationOn{
+                    time = defaultTime
                 }
                 viewModel.backgroundTime = viewModel.getCurrentTime(input: time)
                     
@@ -69,9 +68,9 @@ extension BackgroundView{
     private func TimeTestButtonView() -> some View{
         VStack{
             Button(action:{
-                isTest = !isTest
+                isAnimationOn = !isAnimationOn
             }){
-                if !isTest{
+                if !isAnimationOn{
                     Text("Real Time Mode")
                         .foregroundColor(.red)
                 } else{
@@ -84,20 +83,20 @@ extension BackgroundView{
                     withAnimation{
                         switch time{
                         case .moring:
-                            testTime = Calendar.current.date(from: DateComponents(hour: 7)) ?? Date()
+                            defaultTime = Calendar.current.date(from: DateComponents(hour: 7)) ?? Date()
                         case .noon:
-                            testTime = Calendar.current.date(from: DateComponents(hour: 11)) ?? Date()
+                            defaultTime = Calendar.current.date(from: DateComponents(hour: 11)) ?? Date()
                         case .sunset:
-                            testTime = Calendar.current.date(from: DateComponents(hour: 16)) ?? Date()
+                            defaultTime = Calendar.current.date(from: DateComponents(hour: 16)) ?? Date()
                         case .night:
-                            testTime = Calendar.current.date(from: DateComponents(hour: 20)) ?? Date()
+                            defaultTime = Calendar.current.date(from: DateComponents(hour: 20)) ?? Date()
                         }
                     }
                 }){
                     Text(time.rawValue)
                 }
             }
-            Text("현재 시간: \(isTest ? testTime : Date())")
+            Text("현재 시간: \(isAnimationOn ? defaultTime : Date())")
         }
         .padding(.bottom, 500)
     }
