@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-struct RollingPaperView: View {
+struct RollingPaperDetailView<Background: View>: View {
     @Environment(\.dismiss) private var dismiss
     let rollingPaper: RollingPaper
+    private var background: () -> Background
     private let messageRatio: CGFloat
     @State private var messageOffset: CGSize = .init(width: 0, height: 0)
     
-    init(rollingPaper: RollingPaper) {
+    init(
+        rollingPaper: RollingPaper,
+        @ViewBuilder background: @escaping () -> Background = { Color.black.ignoresSafeArea() }
+    ) {
         self.rollingPaper = rollingPaper
+        self.background = background
         
         switch rollingPaper.backgroundImage {
         case "paper_rectangle":
@@ -33,10 +38,7 @@ struct RollingPaperView: View {
     
     var body: some View {
         ZStack {
-            Image("mail_box_ready")
-                .resizable()
-                .ignoresSafeArea()
-                .blur(radius: 30)
+            background()
             
             VStack {
                 HStack {
@@ -76,9 +78,13 @@ struct RollingPaperView: View {
     }
 }
 
-struct RollingPaperView_Previews: PreviewProvider {
+struct RollingPaperDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RollingPaperView(rollingPaper: RollingPaper(contentImage: "rolling_paper_29", backgroundImage: "paper_flower"))
-        RollingPaperView(rollingPaper: RollingPaper(contentImage: "rolling_paper_29", backgroundImage: "paper_flower")).previewDevice("iPhone 8")
+        RollingPaperDetailView(rollingPaper: RollingPaper(contentImage: "rolling_paper_29", backgroundImage: "paper_heart")) {
+            Image("mail_box_ready")
+                .resizable()
+                .ignoresSafeArea()
+                .blur(radius: 30)
+        }
     }
 }
