@@ -13,7 +13,6 @@ struct MenuView: View {
     @Binding var selection: ViewSelection
     @GestureState var dragState: (CGFloat, Bool) = (Menu.minOffset, false)
     @State var isPlayed = false
-    @State var gestureState = false
     var body: some View {
                 
         let drag = DragGesture(minimumDistance: 20)
@@ -34,7 +33,6 @@ struct MenuView: View {
                 }
             }
             .onChanged{
-                gestureState = true
                 if !viewModel.isOpen{
                     if $0.startLocation.x > Menu.openEdge && !isPlayed{
                         MySoundSetting.openSideMenu.play()
@@ -82,8 +80,6 @@ struct MenuView: View {
             .offset(x: dragState.1 ? dragState.0 : viewModel.Offset)
             .transition(.move(edge: .trailing))
             .animation(.linear, value: viewModel.Offset)
-            
-            Text("\(dragState.0), \(String(dragState.1)), \(viewModel.Offset), \(String(gestureState))")
         }
         .contentShape(Rectangle())
         .highPriorityGesture(userState.isMenuEnable ? drag : nil)
