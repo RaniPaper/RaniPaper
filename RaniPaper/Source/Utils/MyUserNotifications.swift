@@ -76,7 +76,7 @@ final class MyUserNotifications {
             
             center.add(request, withCompletionHandler: nil)
             
-            print("알람이 설정됩니다. dateComponents: \(taskModel.deadLine) \(taskModel.timeInterval)전 ")
+            print("알람이 설정됩니다. dateComponents: \(taskModel.deadLine) \(taskModel.timeInterval)")
         } else{
             print("푸시 알림이 거부된 상태입니다.")
         }
