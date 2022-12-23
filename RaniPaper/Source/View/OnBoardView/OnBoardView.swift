@@ -48,7 +48,7 @@ struct OnBoardView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .foregroundColor(.onBoardBorder)
                                     .frame(width: ScreenSize.width * 0.05)
-                                    .padding(10)
+                                    .padding(20)
                             }
                             .padding(10)
                             .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.42)
