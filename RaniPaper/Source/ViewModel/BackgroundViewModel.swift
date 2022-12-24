@@ -11,6 +11,8 @@ class BackgroundViewModel: ObservableObject {
     @Published var backgroundTime: BackgroundTime = .moring
     
     init() {
+        UserDefaults.standard.register(defaults: ["isAnimationOn" : true])
+        
         if MyUserDefaults.shared.getValue(key: "isAnimationOn") as? Bool ?? true{
             backgroundTime = getCurrentTime(input: Date())
         } else{
