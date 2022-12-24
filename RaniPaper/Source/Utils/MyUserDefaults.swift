@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class MyUserDefaults {
     static var shared = MyUserDefaults()
@@ -39,7 +40,7 @@ final class MyUserDefaults {
 }
 
 @propertyWrapper
-struct UserDefaultWrapper<T: Codable> {
+class UserDefaultWrapper<T: Codable> {
     private let key: String
     private let defaultValue: T?
 
@@ -63,7 +64,13 @@ struct UserDefaultWrapper<T: Codable> {
             if let encoded = try? encoder.encode(newValue) {
                 UserDefaults.standard.setValue(encoded, forKey: key)
             }
+            subject.send(newValue)
         }
+    }
+    
+    private lazy var subject = CurrentValueSubject<T?, Error>(wrappedValue)
+    public var projectedValue: AnyPublisher<T?, Error> {
+        return subject.eraseToAnyPublisher()
     }
     
 }
