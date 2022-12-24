@@ -84,7 +84,7 @@ struct GalleryView: View {
         HStack(spacing: 0) {
             Image("gallery_first").resizable().scaledToFit()
             
-            ForEach((1...16), id: \.self) { _ in
+            ForEach((1...17), id: \.self) { _ in
                 Image("gallery_n").resizable().scaledToFit()
             }
             
