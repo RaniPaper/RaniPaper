@@ -23,7 +23,7 @@ struct HomeView: View {
                         .overlay(content: {
                             Image("mail_box_static")
                                 .overlay(alignment: .topLeading) {
-                                    if !viewModel.isAllUnlocked { // 메세지 애니메이션 효과
+                                    if (userState.userType == .viichan && !viewModel.isAllUnlocked) { // 메세지 애니메이션 효과
                                         Image("floating_message").resizable()
                                             .frame(width: 50, height: 50)
                                             .offset(x: -40, y: -30)
