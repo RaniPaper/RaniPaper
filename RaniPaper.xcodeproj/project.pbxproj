@@ -17,7 +17,6 @@
 		493526FE292FFC030066F083 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FD292FFC030066F083 /* MenuModel.swift */; };
 		493527002930F46C0066F083 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493526FF2930F46C0066F083 /* SideMenuView.swift */; };
 		494967C72940EAC8001E5E8A /* openSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 494967C62940EAC8001E5E8A /* openSideMenu.wav */; };
-		49762B80294151DB00D3DD18 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49762B7F294151DB00D3DD18 /* BGM.wav */; };
 		49762B822941595C00D3DD18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49762B812941595C00D3DD18 /* AppDelegate.swift */; };
 		497A847C295359A7007F3A56 /* AllOnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A847B295359A7007F3A56 /* AllOnBoardView.swift */; };
 		497A847E29535EF6007F3A56 /* BackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */; };
@@ -83,6 +82,7 @@
 		D8D549C72936539B001E4287 /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C62936539B001E4287 /* TaskCardView.swift */; };
 		D8D549D529385EE5001E4287 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549D429385EE5001E4287 /* MemoView.swift */; };
 		D8F7E705294DF02700253B3D /* closeSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = D8F7E704294DF02700253B3D /* closeSideMenu.wav */; };
+		D8FD1F5529573C94004FC8D4 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = D8FD1F5429573C94004FC8D4 /* BGM.wav */; };
 		D8FF9358293A57A700B0F475 /* SmallStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF9355293A57A700B0F475 /* SmallStickerView.swift */; };
 		D8FF9359293A57A700B0F475 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF9356293A57A700B0F475 /* EditMemoView.swift */; };
 		D8FF935A293A57A700B0F475 /* LargeStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF9357293A57A700B0F475 /* LargeStickerView.swift */; };
@@ -101,7 +101,6 @@
 		493526FD292FFC030066F083 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		493526FF2930F46C0066F083 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		494967C62940EAC8001E5E8A /* openSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = openSideMenu.wav; sourceTree = "<group>"; };
-		49762B7F294151DB00D3DD18 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
 		49762B812941595C00D3DD18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		497A847B295359A7007F3A56 /* AllOnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOnBoardView.swift; sourceTree = "<group>"; };
 		497A847D29535EF6007F3A56 /* BackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewModel.swift; sourceTree = "<group>"; };
@@ -170,6 +169,7 @@
 		D8D549C62936539B001E4287 /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 		D8D549D429385EE5001E4287 /* MemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		D8F7E704294DF02700253B3D /* closeSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = closeSideMenu.wav; sourceTree = "<group>"; };
+		D8FD1F5429573C94004FC8D4 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
 		D8FF9355293A57A700B0F475 /* SmallStickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallStickerView.swift; sourceTree = "<group>"; };
 		D8FF9356293A57A700B0F475 /* EditMemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
 		D8FF9357293A57A700B0F475 /* LargeStickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeStickerView.swift; sourceTree = "<group>"; };
@@ -259,10 +259,10 @@
 		49E8795F2938F97E0091A101 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				D8FD1F5429573C94004FC8D4 /* BGM.wav */,
 				7BBF1A882957094400014CD0 /* mailbox.wav */,
 				D8F7E704294DF02700253B3D /* closeSideMenu.wav */,
 				49D812F8293D1C79009A2748 /* testAlarm.mp3 */,
-				49762B7F294151DB00D3DD18 /* BGM.wav */,
 				49E52DC8294D9F3300473B17 /* clickSideMenu.wav */,
 				494967C62940EAC8001E5E8A /* openSideMenu.wav */,
 			);
@@ -597,7 +597,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49762B80294151DB00D3DD18 /* BGM.wav in Resources */,
 				7BBF1A892957094400014CD0 /* mailbox.wav in Resources */,
 				D805DB36294877F30053723E /* Nanum.ttf in Resources */,
 				D86ACE4B29309772002C8E89 /* Bold.otf in Resources */,
@@ -608,6 +607,7 @@
 				D8F7E705294DF02700253B3D /* closeSideMenu.wav in Resources */,
 				D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */,
 				49E52DC9294D9F3300473B17 /* clickSideMenu.wav in Resources */,
+				D8FD1F5529573C94004FC8D4 /* BGM.wav in Resources */,
 				D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */,
 				D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */,
 				D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */,
