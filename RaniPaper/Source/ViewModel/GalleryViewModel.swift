@@ -6,18 +6,33 @@
 //
 
 import Foundation
+import Combine
 
 class GalleryViewModel: ObservableObject {
     let list: [RollingPaper]
+    @Published var isAllUnlocked: Bool = false
+    
+    var subscriptions = Set<AnyCancellable>()
     
     init(){
-        var filteredList = MyUserDefaults.rollingPaperList?.filter({ $0.firstChecked == true })
+        var filteredList = MyUserDefaults.rollingPaperList?.filter({ $0.isUnlocked == true })
         //var filteredList: [RollingPaper]? = rollingPaperList // 테스트용
         
         filteredList?.indices.forEach { i in
             filteredList?[i].position = offsets[i]
         }
         list = filteredList ?? []
+        
+        MyUserDefaults.$rollingPaperList.sink { _ in } receiveValue: { [weak self] rollingPaperList in
+            guard let self else { return }
+            guard let rollingPaperList else { return }
+            
+            let totalCount = rollingPaperList.count
+            let unLockedCount = rollingPaperList.filter { $0.isUnlocked == true }.count
+            
+            self.isAllUnlocked = (unLockedCount == totalCount)
+            
+        }.store(in: &subscriptions)
         
         
         print("✅ GalleryViewModel 생성")

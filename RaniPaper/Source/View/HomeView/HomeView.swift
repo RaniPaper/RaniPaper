@@ -13,6 +13,7 @@ import UserNotifications
 struct HomeView: View {
     @EnvironmentObject var userState: UserState
     @StateObject var viewModel = HomeViewModel()
+    @State var messageAnimating: Bool = true
     
     var body: some View {
         ZStack{
@@ -21,6 +22,16 @@ struct HomeView: View {
                     BackgroundView()
                         .overlay(content: {
                             Image("mail_box_static")
+                                .overlay(alignment: .topLeading) {
+                                    if (userState.userType == .viichan && !viewModel.isAllUnlocked) { // 메세지 애니메이션 효과
+                                        Image("floating_message").resizable()
+                                            .frame(width: 50, height: 50)
+                                            .offset(x: -40, y: -30)
+                                            .opacity(messageAnimating ? 1.0 : 0.01)
+                                            .scaleEffect(messageAnimating ? 1.0 : 0.01, anchor: .topLeading)
+                                            .onAppear { messageAnimation() }
+                                    }
+                                }
                             NavigationLink {
                                 MailBoxAnimationView(viewModel: viewModel)
                                     .navigationBarBackButtonHidden()
@@ -41,7 +52,7 @@ struct HomeView: View {
                         })
                     // MARK: 테스트용 뷰
                     //TestView()
-                    //                TaskAlarmTestView()
+                    //TaskAlarmTestView()
                 }
                 .ignoresSafeArea()
                 
@@ -54,6 +65,17 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView().environmentObject(UserState.shared)
+    }
+}
+
+extension HomeView {
+    func messageAnimation() {
+        withAnimation(
+            .easeInOut(duration: 2)
+            .repeatForever(autoreverses: true)
+        ){
+            messageAnimating.toggle()
+        }
     }
 }
 

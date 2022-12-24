@@ -106,7 +106,7 @@ struct MailBoxAnimationView: View {
         } label: {
             Image("black_board")
                 .overlay {
-                    Text("해금도 " + "구현중%")
+                    Text("\(viewModel.unLockPercent)% 해금")
                         .font(.efDiary(16))
                         .foregroundColor(.white)
                 }

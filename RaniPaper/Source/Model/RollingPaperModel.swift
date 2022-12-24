@@ -18,7 +18,7 @@ struct RollingPaper: Identifiable, Codable {
     var id = UUID().uuidString
     var contentImage: String
     var backgroundImage: String
-    var firstChecked: Bool = false
+    var isUnlocked: Bool = false
     var position: CGSize = CGSize()
 }
 
