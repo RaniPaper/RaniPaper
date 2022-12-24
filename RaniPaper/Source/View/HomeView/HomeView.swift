@@ -13,8 +13,7 @@ import UserNotifications
 struct HomeView: View {
     @EnvironmentObject var userState: UserState
     @StateObject var viewModel = HomeViewModel()
-    @State var messageOpacity: CGFloat = 0
-    @State var messageScale: CGSize = .init(width: 0, height: 0)
+    @State var messageAnimating: Bool = true
     
     var body: some View {
         ZStack{
@@ -23,14 +22,15 @@ struct HomeView: View {
                     BackgroundView()
                         .overlay(content: {
                             Image("mail_box_static")
-                                //.background { Color.white }
                                 .overlay(alignment: .topLeading) {
-                                    Image("floating_message").resizable()
-                                        .frame(width: 50, height: 50)
-                                        .offset(x: -40, y: -30)
-                                        .opacity(messageOpacity)
-                                        .scaleEffect(messageScale, anchor: .topLeading)
-                                        .onAppear { messageAnimation() }
+                                    if !viewModel.isAllUnlocked { // 메세지 애니메이션 효과
+                                        Image("floating_message").resizable()
+                                            .frame(width: 50, height: 50)
+                                            .offset(x: -40, y: -30)
+                                            .opacity(messageAnimating ? 1.0 : 0.01)
+                                            .scaleEffect(messageAnimating ? 1.0 : 0.01, anchor: .topLeading)
+                                            .onAppear { messageAnimation() }
+                                    }
                                 }
                             NavigationLink {
                                 MailBoxAnimationView(viewModel: viewModel)
@@ -74,8 +74,7 @@ extension HomeView {
             .easeInOut(duration: 2)
             .repeatForever(autoreverses: true)
         ){
-            messageOpacity = 1
-            messageScale = CGSize(width: 1, height: 1)
+            messageAnimating.toggle()
         }
     }
 }

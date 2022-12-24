@@ -12,6 +12,7 @@ class HomeViewModel: ObservableObject {
     @Published var unLockPercent: Int = 0 {
         didSet { print("unLockPercent가 변경되었습니다:", unLockPercent) }
     }
+    @Published var isAllUnlocked: Bool = false
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -29,6 +30,7 @@ class HomeViewModel: ObservableObject {
             let unLockedCount = Double(rollingPaperList.filter { $0.isUnlocked == true }.count)
             
             self.unLockPercent = Int(((unLockedCount / totalCount) * 100))
+            self.isAllUnlocked = (unLockedCount == totalCount)
             
         }.store(in: &subscriptions)
         
