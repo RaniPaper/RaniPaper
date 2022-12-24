@@ -39,7 +39,7 @@ struct GalleryView: View {
             }
         }
         .fullScreenCover(item: $selectedRollingPaper) { rollingPaper in
-            rollingPaperDetailView(rollingPaper)
+            RollingPaperDetailView(rollingPaper: rollingPaper)
         }
         
     }
@@ -80,43 +80,28 @@ struct GalleryView: View {
         }
     }
     
-    private func rollingPaperDetailView(_ rollingPaper: RollingPaper) -> some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            VStack {
-                Button(action: { selectedRollingPaper = nil }){
-                    Text("닫기 버튼")
-                }
-                Image(rollingPaper.backgroundImage).resizable().scaledToFit()
-                    .overlay {
-                        Image(rollingPaper.contentImage).resizable().padding(80)
-                    }
-            }
-        }
-    }
-    
 }
 
 fileprivate struct GalleryRollingPaperView: View {
     let rollingPaper: RollingPaper
-    var size: CGSize
-    var messageOffset: CGSize = .init(width: 0, height: 0)
+    private var messageSize: CGSize
+    private var messageOffset: CGSize = .init(width: 0, height: 0)
     
     init(rollingPaper: RollingPaper) {
         self.rollingPaper = rollingPaper
 
         switch rollingPaper.backgroundImage {
         case "paper_rectangle":
-            size = .init(width: 100, height: 100)
+            messageSize = .init(width: 100, height: 100)
         case "paper_butterfly":
-            size = .init(width: 95, height: 95)
+            messageSize = .init(width: 95, height: 95)
         case "paper_heart":
-            size = .init(width: 80, height: 80)
+            messageSize = .init(width: 80, height: 80)
             messageOffset = .init(width: 0, height: -9)
         case "paper_flower":
-            size = .init(width: 80, height: 80)
+            messageSize = .init(width: 80, height: 80)
         default:
-            size = .init(width: 75, height: 75)
+            messageSize = .init(width: 75, height: 75)
         }
     }
     
@@ -125,7 +110,7 @@ fileprivate struct GalleryRollingPaperView: View {
             .frame(width: 125, height: 125)
             .overlay {
                 Image(rollingPaper.contentImage).resizable()
-                    .frame(width: size.width, height: size.height)
+                    .frame(width: messageSize.width, height: messageSize.height)
                     .offset(messageOffset)
                     //.background { Color.white }
             }

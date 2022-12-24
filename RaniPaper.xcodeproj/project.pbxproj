@@ -44,7 +44,7 @@
 		7B796F8929384FEA00799616 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8829384FEA00799616 /* MemoModel.swift */; };
 		7B796F8E2938DA9D00799616 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7B796F8D2938DA9D00799616 /* AlertToast */; };
 		7B796F90293A22FA00799616 /* MailBoxAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */; };
-		7B796F92293A462A00799616 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F91293A462A00799616 /* RollingPaperView.swift */; };
+		7B796F92293A462A00799616 /* RollingPaperDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F91293A462A00799616 /* RollingPaperDetailView.swift */; };
 		7B796F94293D74BB00799616 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F93293D74BB00799616 /* HapticManager.swift */; };
 		7B796F96293E312000799616 /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F95293E312000799616 /* UserState.swift */; };
 		D805DB35294877F30053723E /* ChosunNm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D805DB33294877F30053723E /* ChosunNm.ttf */; };
@@ -128,7 +128,7 @@
 		7B796F8629378CD500799616 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7B796F8829384FEA00799616 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
 		7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailBoxAnimationView.swift; sourceTree = "<group>"; };
-		7B796F91293A462A00799616 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
+		7B796F91293A462A00799616 /* RollingPaperDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperDetailView.swift; sourceTree = "<group>"; };
 		7B796F93293D74BB00799616 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		7B796F95293E312000799616 /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
 		D805DB33294877F30053723E /* ChosunNm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ChosunNm.ttf; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 			children = (
 				7B796F8429378CB300799616 /* HomeView.swift */,
 				7B796F8F293A22FA00799616 /* MailBoxAnimationView.swift */,
-				7B796F91293A462A00799616 /* RollingPaperView.swift */,
+				7B796F91293A462A00799616 /* RollingPaperDetailView.swift */,
 				4983001A294F0CEF007BB571 /* BackgroundView.swift */,
 			);
 			path = HomeView;
@@ -671,7 +671,7 @@
 				493526FE292FFC030066F083 /* MenuModel.swift in Sources */,
 				D86ACE5B293475F7002C8E89 /* CalendarView.swift in Sources */,
 				D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */,
-				7B796F92293A462A00799616 /* RollingPaperView.swift in Sources */,
+				7B796F92293A462A00799616 /* RollingPaperDetailView.swift in Sources */,
 				D86ACE20292DE0E0002C8E89 /* LaunchView.swift in Sources */,
 				7B796F96293E312000799616 /* UserState.swift in Sources */,
 				D8FF9358293A57A700B0F475 /* SmallStickerView.swift in Sources */,
