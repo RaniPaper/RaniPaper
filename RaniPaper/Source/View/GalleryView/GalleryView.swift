@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct GalleryView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel = GalleryViewModel()
     @State private var selectedRollingPaper: RollingPaper? = nil
+    @State private var showToast = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -41,6 +43,9 @@ struct GalleryView: View {
         .fullScreenCover(item: $selectedRollingPaper) { rollingPaper in
             RollingPaperDetailView(rollingPaper: rollingPaper)
         }
+        .toast(isPresenting: $showToast) {
+            AlertToast(displayMode: .hud, type: .complete(.green), title: "클립보드에 시크릿코드를 복사했어요!")
+        }
         
     }
     
@@ -55,16 +60,23 @@ struct GalleryView: View {
             
             Spacer()
             
-            Button { dismiss() } label: {
+            Button {
+                UIPasteboard.general.string = "happy birthday to you!"
+                HapticManager.shared.notification(success: true)
+                showToast.toggle()
+            } label: {
                 Image("black_board")
                     .resizable()
                     .scaledToFit()
                     .padding(5)
                     .overlay {
-                        Text("잠김").font(.efDiary(13)).foregroundColor(.white)
-                        //Text("100% 보상").font(.efDiary(10)).foregroundColor(.white)
+                        Text(viewModel.isAllUnlocked ? "시크릿 코드" : "잠김")
+                            .font(.efDiary(10))
+                            .kerning(-0.7)
+                            .foregroundColor(.white)
                     }
             }
+            .disabled(!viewModel.isAllUnlocked)
         }
     }
     
