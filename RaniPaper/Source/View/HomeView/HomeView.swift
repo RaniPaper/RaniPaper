@@ -29,7 +29,7 @@ struct HomeView: View {
                                         .frame(width: 50, height: 50)
                                         .offset(x: -40, y: -30)
                                         .opacity(messageOpacity)
-                                        .scaleEffect(messageScale, anchor: .center)
+                                        .scaleEffect(messageScale, anchor: .topLeading)
                                         .onAppear { messageAnimation() }
                                 }
                             NavigationLink {
@@ -71,7 +71,7 @@ struct HomeView_Previews: PreviewProvider {
 extension HomeView {
     func messageAnimation() {
         withAnimation(
-            .linear(duration: 1)
+            .easeInOut(duration: 2)
             .repeatForever(autoreverses: true)
         ){
             messageOpacity = 1
