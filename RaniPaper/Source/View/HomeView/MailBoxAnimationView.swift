@@ -26,14 +26,16 @@ struct MailBoxAnimationView: View {
                     // MARK: LottieView
                     if isAnimating { // 애니메이션 시작
                         
-                        LottieView(name: "mail-boxletter-box", speed: 0.7) {
+                        LottieView(name: "mail-boxletter-box", speed: 0.7, completion: {
                             isAnimating = false
                             
                             //남은 롤링페이퍼가 있을 경우에만 보여줌
                             rollingPaper = viewModel.randomRollingPaper()
-                            if rollingPaper != nil { shouldShowRollingPaper = true }
-                         
-                        }
+                            if rollingPaper != nil {
+                                shouldShowRollingPaper = true
+                                MySoundSetting.openMailbox.play()
+                            }
+                        })
                         .background(Image("mail_box_ready").blur(radius: 50))
                         .transition(.opacity)
                         
