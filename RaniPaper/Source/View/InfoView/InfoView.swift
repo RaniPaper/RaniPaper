@@ -44,7 +44,7 @@ struct InfoView: View {
                     
                     VStack(){
                         InfoGrid("앱 버전", "App version")
-                        InfoDetailView(content: "v 1.0.0")
+                        InfoDetailView(content: "v 1.1.0")
                         Line()
                             .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
                             .foregroundColor(Color.memoPrimary)
