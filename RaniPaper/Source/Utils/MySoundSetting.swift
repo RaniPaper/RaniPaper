@@ -123,6 +123,7 @@ extension MySoundSetting {
     static let openSideMenu = MySoundSetting(url: "openSideMenu", extension: "wav", .SFX)
     static let closeSideMenu = MySoundSetting(url: "closeSideMenu", extension: "wav", .SFX)
     static let clickSideMenu = MySoundSetting(url: "clickSideMenu", extension: "wav", .SFX)
+    static let openMailbox = MySoundSetting(url: "mailbox", extension: "wav", .SFX)
     
     // MARK: 사용 예시
     // static let MySound = MySoundSetting(url: "MySoundFileName", extension: "mp3", .SFX)
@@ -137,7 +138,8 @@ extension MySoundSetting {
         case .SFX:
             return [MySoundSetting.openSideMenu,
                     MySoundSetting.closeSideMenu,
-                    MySoundSetting.clickSideMenu]
+                    MySoundSetting.clickSideMenu,
+                    MySoundSetting.openMailbox]
         case .ALARM:
             return [MySoundSetting.Alarm]
         }

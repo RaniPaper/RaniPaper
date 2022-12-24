@@ -47,6 +47,7 @@
 		7B796F92293A462A00799616 /* RollingPaperDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F91293A462A00799616 /* RollingPaperDetailView.swift */; };
 		7B796F94293D74BB00799616 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F93293D74BB00799616 /* HapticManager.swift */; };
 		7B796F96293E312000799616 /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796F95293E312000799616 /* UserState.swift */; };
+		7BBF1A892957094400014CD0 /* mailbox.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7BBF1A882957094400014CD0 /* mailbox.wav */; };
 		D805DB35294877F30053723E /* ChosunNm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D805DB33294877F30053723E /* ChosunNm.ttf */; };
 		D805DB36294877F30053723E /* Nanum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D805DB34294877F30053723E /* Nanum.ttf */; };
 		D84883F52953409900AF7D77 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84883F42953409900AF7D77 /* WebView.swift */; };
@@ -131,6 +132,7 @@
 		7B796F91293A462A00799616 /* RollingPaperDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperDetailView.swift; sourceTree = "<group>"; };
 		7B796F93293D74BB00799616 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		7B796F95293E312000799616 /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
+		7BBF1A882957094400014CD0 /* mailbox.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mailbox.wav; sourceTree = "<group>"; };
 		D805DB33294877F30053723E /* ChosunNm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ChosunNm.ttf; sourceTree = "<group>"; };
 		D805DB34294877F30053723E /* Nanum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nanum.ttf; sourceTree = "<group>"; };
 		D84883F42953409900AF7D77 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		49E8795F2938F97E0091A101 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				7BBF1A882957094400014CD0 /* mailbox.wav */,
 				D8F7E704294DF02700253B3D /* closeSideMenu.wav */,
 				49D812F8293D1C79009A2748 /* testAlarm.mp3 */,
 				49762B7F294151DB00D3DD18 /* BGM.wav */,
@@ -595,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49762B80294151DB00D3DD18 /* BGM.wav in Resources */,
+				7BBF1A892957094400014CD0 /* mailbox.wav in Resources */,
 				D805DB36294877F30053723E /* Nanum.ttf in Resources */,
 				D86ACE4B29309772002C8E89 /* Bold.otf in Resources */,
 				D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */,
