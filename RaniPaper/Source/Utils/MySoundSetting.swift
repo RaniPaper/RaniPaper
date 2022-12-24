@@ -14,7 +14,6 @@ class MySoundSetting: ObservableObject{
     let soundType: SoundType
     var player: AVAudioPlayer?
     var isEnable: Bool = true
-    var volume: Float = 1.0
     
     private init(url urlName: String, extension extensionName: String, _ type: SoundType){
         self.urlName = urlName
@@ -48,16 +47,16 @@ class MySoundSetting: ObservableObject{
             print("🔥 음원을 불러오는데 오류가 발생했습니다.\(error.localizedDescription)")
         }
         
-        // 소리 종류에 따라 루프 여부 결정
+        // 소리 종류에 따라 설정 변경
         switch soundType {
-        case .BGM, .ALARM:
+        case .BGM:
             player?.numberOfLoops = -1
+            player?.setVolume(0.5, fadeDuration: 0)
         default:
-            break
+            player?.setVolume(0.75, fadeDuration: 0)
         }
         
         //볼륨 설정
-        player?.setVolume(volume, fadeDuration: 0)
         
         // 소리 설정이 활성 상태면 음원 재생
         if self.isEnable{
@@ -113,7 +112,6 @@ class MySoundSetting: ObservableObject{
     
     func setChannelVolume(_ volume: Float){
         self.player?.setVolume(volume, fadeDuration: 0)
-        self.volume = volume
     }
 }
 
