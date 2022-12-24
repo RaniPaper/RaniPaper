@@ -88,6 +88,18 @@ extension Color
     public static var onBoardGreen:Color{
         return Color.init(hexcode: "599E58")
     }
+    
+    public static var menuHomeOnPress:Color{
+        return Color.init(hexcode: "FFC5BC")
+    }
+    
+    public static var menuCreditOnPress:Color{
+        return Color.init(hexcode: "D3DF88")
+    }
+    
+    public static var menuOnPress:Color{
+        return Color.init(hexcode: "C0E4C0")
+    }
 }
 
 extension UIDevice {
@@ -164,6 +176,17 @@ extension ViewSelection: Equatable{
         case .setting: return "setting"
         case .info: return "info"
         case .credit: return "credit"
+        }
+    }
+    
+    var ButtonName: String{
+        switch self{
+        case .home: return "홈"
+        case .diary: return "다이어리"
+        case .memo: return "메모"
+        case .setting: return "설정"
+        case .info: return "앱 정보"
+        case .credit: return "크레딧"
         }
     }
     

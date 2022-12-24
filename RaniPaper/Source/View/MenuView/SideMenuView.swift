@@ -31,8 +31,10 @@ struct SideMenuView: View {
                                 Button(action:{
                                     isOpen.toggle()
                                     offset = Menu.minOffset
-                                    selection = menu.viewSelection
                                     MySoundSetting.clickSideMenu.play()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                                        selection = menu.viewSelection
+                                    }
                                 }) {
                                     Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                                         .resizable()
@@ -52,8 +54,10 @@ struct SideMenuView: View {
                                 Button(action:{
                                     isOpen.toggle()
                                     offset = Menu.minOffset
-                                    selection = menu.viewSelection
                                     MySoundSetting.clickSideMenu.play()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                                        selection = menu.viewSelection
+                                    }
                                 }) {
                                     Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
                                         .resizable()
@@ -86,6 +90,32 @@ struct SideMenuView_Previews: PreviewProvider {
                          selection: .constant(.home),
                          viewModel: MenuViewModel()
                          )
+        }
+    }
+}
+
+extension SideMenuView{
+    func TabButtonView(menu: MenuContent) -> some View{
+        HStack(spacing: 10){
+//            Image(menu.viewSelection.Name)
+            Image("viichan")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: ScreenSize.height * 0.044)
+            Text(menu.viewSelection.ButtonName)
+                .font(.efDiary(ScreenSize.width * 0.067))
+                .padding(.trailing, ScreenSize.width * 0.02)
+        }
+        .overlay{
+            if selection == menu.viewSelection{
+                if selection == .home{
+                    Color.menuHomeOnPress.opacity(0.4)
+                } else if selection == .credit{
+                    Color.menuCreditOnPress.opacity(0.4)
+                } else{
+                    Color.menuOnPress
+                }
+            }
         }
     }
 }

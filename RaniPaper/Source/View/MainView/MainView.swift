@@ -62,6 +62,8 @@ struct MainView: View {
                             CreditView()
                         }
                     }
+                }
+                .overlay{
                     MenuView(selection: $viewModel.selection)
                 }
 //                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification, object: nil)){(_) in
