@@ -41,17 +41,13 @@ struct MailBoxAnimationView: View {
                         
                     } else { // 애니메이션 시작 전
                         
-                        if ((MyUserDefaults.rollingPaperList?.isEmpty) != nil) {
+                        if viewModel.isAllUnlocked { // 롤링페이퍼가 모두 해금된 경우
+                            RollingPaperEmptyView()
+                                .onTapGesture {HapticManager.shared.impact(style: .heavy)}
+                        } else {
                             Image("mail_box_ready")
                                 .resizable()
-                                .onTapGesture {
-                                    withAnimation { isAnimating = true }
-                                }
-                        } else { // 남은 롤링페이퍼가 없는 경우
-                            RollingPaperEmptyView()
-                                .onTapGesture {
-                                    HapticManager.shared.impact(style: .heavy)
-                                }
+                                .onTapGesture {withAnimation { isAnimating = true }}
                         }
                         
                     }
