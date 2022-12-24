@@ -13,6 +13,8 @@ import UserNotifications
 struct HomeView: View {
     @EnvironmentObject var userState: UserState
     @StateObject var viewModel = HomeViewModel()
+    @State var messageOpacity: CGFloat = 0
+    @State var messageScale: CGSize = .init(width: 0, height: 0)
     
     var body: some View {
         ZStack{
@@ -21,6 +23,15 @@ struct HomeView: View {
                     BackgroundView()
                         .overlay(content: {
                             Image("mail_box_static")
+                                //.background { Color.white }
+                                .overlay(alignment: .topLeading) {
+                                    Image("floating_message").resizable()
+                                        .frame(width: 50, height: 50)
+                                        .offset(x: -40, y: -30)
+                                        .opacity(messageOpacity)
+                                        .scaleEffect(messageScale, anchor: .center)
+                                        .onAppear { messageAnimation() }
+                                }
                             NavigationLink {
                                 MailBoxAnimationView(viewModel: viewModel)
                                     .navigationBarBackButtonHidden()
@@ -41,7 +52,7 @@ struct HomeView: View {
                         })
                     // MARK: 테스트용 뷰
                     //TestView()
-                    //                TaskAlarmTestView()
+                    //TaskAlarmTestView()
                 }
                 .ignoresSafeArea()
                 
@@ -54,6 +65,18 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView().environmentObject(UserState.shared)
+    }
+}
+
+extension HomeView {
+    func messageAnimation() {
+        withAnimation(
+            .linear(duration: 1)
+            .repeatForever(autoreverses: true)
+        ){
+            messageOpacity = 1
+            messageScale = CGSize(width: 1, height: 1)
+        }
     }
 }
 
