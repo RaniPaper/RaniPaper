@@ -22,8 +22,8 @@ class HomeViewModel: ObservableObject {
     }
     
     func randomRollingPaper() -> RollingPaper? {
-        var item = MyUserDefaults.rollingPaperList?.filter { $0.firstChecked == false }.randomElement()
-        item?.firstChecked = true
+        var item = MyUserDefaults.rollingPaperList?.filter { $0.isUnlocked == false }.randomElement()
+        item?.isUnlocked = true
         
         MyUserDefaults.rollingPaperList = MyUserDefaults.rollingPaperList?.map { $0.id == item?.id ? item : $0 } as? [RollingPaper]
         

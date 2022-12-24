@@ -11,7 +11,7 @@ class GalleryViewModel: ObservableObject {
     let list: [RollingPaper]
     
     init(){
-        var filteredList = MyUserDefaults.rollingPaperList?.filter({ $0.firstChecked == true })
+        var filteredList = MyUserDefaults.rollingPaperList?.filter({ $0.isUnlocked == true })
         //var filteredList: [RollingPaper]? = rollingPaperList // 테스트용
         
         filteredList?.indices.forEach { i in
