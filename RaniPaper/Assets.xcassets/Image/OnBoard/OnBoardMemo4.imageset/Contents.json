@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "OnBoardMemo5.png",
+      "filename" : "Frame 12.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "OnBoardMemo5@2x.png",
+      "filename" : "Frame 12@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "OnBoardMemo5@3x.png",
+      "filename" : "Frame 12@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

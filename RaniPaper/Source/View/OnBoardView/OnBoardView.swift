@@ -118,7 +118,7 @@ extension OnBoardView{
                             .frame(width: proxi.size.width * 0.335, height: proxi.size.height * 0.03)
                             .foregroundColor(.onBoardRed)
                             .offset(x: -proxi.size.width * 0.078, y: proxi.size.height * 0.065)
-                    } else if model.page == 2{
+                    } else if model.page == 4{
                         Image("memoSave")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
