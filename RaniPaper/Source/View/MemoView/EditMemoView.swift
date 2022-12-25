@@ -203,6 +203,9 @@ struct EditMemoView: View {
         .toast(isPresenting: $viewModel.showAlert) {
             AlertToast(displayMode: .hud, type: .error(.red), title: "제목이 비어있습니다!", subTitle: "제목을 입력해주세요")
         }
+        .onTapGesture {
+            UIApplication.shared.endEditing()
+        }
         
     }
 }
