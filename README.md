@@ -122,6 +122,69 @@ Line()
  ```
 </details>
  
+ <details>
+<summary>  키보드 옵저빙 및 스크롤 연동 </summary>
+
+#### Combine을 이용한 키보드 옵저빙
+```swift 
+private var subscription = Set<AnyCancellable>()
+    
+    private let keyboardWillShow =  NotificationCenter.default
+        .publisher(for: UIResponder.keyboardWillShowNotification)
+        .compactMap { output in
+            (output.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height
+            // 유저 정보 맵에서 keyboard 높이를 얻는다.
+        }
+    
+    private let keyboardWillHide = NotificationCenter.default
+        .publisher(for: UIResponder.keyboardWillHideNotification)
+        .map { _ in CGFloat.zero}
+    
+    
+    
+    init(){
+        print("✅ EditTaskViewModel 생성")
+        Publishers.Merge(keyboardWillShow, keyboardWillHide)
+                .subscribe(on: DispatchQueue.main) // UI 변화 이므로 메인. 쓰레
+                .sink(receiveValue: { [weak self] keyboardHeight in
+                    guard let self = self else { return }
+                    self.keyboardHeight = keyboardHeight
+                })
+                .store(in: &subscription)
+                  // .assign(to: \.keyboardHeight, on:  self)
+    }
+ ```
+ 
+#### ScrollViewReader를 이용한 키보드 팝업 시 스크롤 이동
+ 
+```swift 
+  
+@Namespace var bottom //keyboard 올라올 때 사용할 bottom 버튼 ID
+//스크롤 뷰 리더로 덮음   
+ScrollViewReader { scrollProxy in
+                  ScrollView {
+                   ...생략
+  
+                    해당뷰.id(bottom) // 아이디 설정
+                   }
+  
+  
+                  .onChange(of: viewModel.keyboardHeight, perform: { v in
+                            if(v>0)
+                            {
+                                //키보드가 나올 때 바텀 버튼으로 스크롤, center 까지
+                                withAnimation {
+                                    scrollProxy.scrollTo(bottom, anchor: .center)
+                                }
+                            }
+                            
+                        })
+                
+                 }
+ 
+ ```
+</details>
+ 
  
 
 
