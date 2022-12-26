@@ -184,8 +184,100 @@ ScrollViewReader { scrollProxy in
  
  ```
 </details>
+
+<details>
+<summary> 데이트(Date) 관련 정리  </summary>
  
+1. DateComponet,calendar.date,range
+```swift
+ let range2 = calendar.range(of: .day, in: .month, for: tmpDate)! //해당하는 달의 날짜가 몇일까지 있는지
+    
+    print(components)
+    // year: 2022 month: 12 day: 28 isLeapMonth: false  ,윤년이 아닌 2022년 12월 28
+    print(tmpDate)
+    // 2022-12-27 15:00:00 +0000 , 이거는 UTC +0 과 +9 차이
+    print(range2)
+    // 1..<32  (1~31) 12월 31일까지 있음
+```
+              
+2. ByAdding
+```swift
+calendar.date(byAdding: 어떤날짜 단위를?, value: Int값 , to: Date객체)
+
+to값에 value를 더한다 그 때 byAdding단위에 더한다
+
+let tmp = calendar.date(byAdding: .year, value: 5 , to: tmpDate)!
+
+tmpDate = 2022-12-27 15:00:00 +0000 이고 
+단위가 year, value가 5이기 때문에
+tmp 값은 
+2027-12-27 15:00:00 +0000이 된다 , 2022+5 = 2027
+```
+3. DateComponents 추출
+```swift
+func component(_ component: Calendar.Component, from date: Date) -> Int
+
+
+calendar.component(.day, from: date) Date객체인 date으로 부터 .day속성을 추출
+```
  
+4. SameDate ?
+```swift
+func isSameDate(date1: Date, date2: Date)-> Bool{
+        let calendar = Calendar.current
+        return calendar.isDate(date1, inSameDayAs: date2)
+    }
+```
+      
+</details>
+
+<details>
+<summary> Date to String  </summary>
+
+1. Date날짜 문자열로 변환
+```swift
+            Text(Date().formatted(date: .abbreviated, time: .standard)) 
+// Jun 28, 2022, 7:18:59 PM
+            Text(Date().formatted(date: .numeric, time: .omitted))  
+// 6/28/2022
+            Text(Date().formatted(date: .omitted, time: .shortened))    
+// 7:18 PM
+            Text(Date().formatted(date: .long, time: .complete))    
+// June 28, 2022, 7:18:59 PM GMT+9
+            Text(Date().formatted(date: .complete, time: .complete))    
+// Tuesday, June 28, 2022, 7:18:59 PM GMT+9
+            Text(Date().formatted())    
+// 6/28/2022, 7:18 PM            
+  
+date
+
+.complete : Tuesday, June 28, 2022 (요일, 날짜, 년도 순)
+.long : June 28, 2022 (.complete에서 요일만 없어짐)
+.abbreviated : Jun 28, 2022 (월을 3글자로 줄인 후 날짜, 년도는 4자리)
+.numeric : 6/28/2022 (월/일/년도 순)
+.omitted : 생략
+
+time
+
+.complete : 7:18:59 PM GMT+9 (시:분:초 AM/PM 표준시)
+.standard : 7:18:59 PM (표준시 표기 X)
+.shortened : 7:18 PM (초 표기 X)
+.omitted : 생략
+```
+
+2. DateFormatter를 이용한 String 전환
+```swift
+func extraData() ->[String] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY MM" // MM:숫자 , MMM:월 줄임단어, MMMM:월 풀네임
+        
+        let date = formatter.string(from: viewModel.currentDate)
+        
+        return date.components(separatedBy: " ")
+}
+```
+
+</details>
 
 
 
