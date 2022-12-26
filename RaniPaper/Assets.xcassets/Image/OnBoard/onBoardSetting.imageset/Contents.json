@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Simulator_Screen_Shot_-_iPhone_12_-_2022-12-24_at_02.40 1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Simulator_Screen_Shot_-_iPhone_12_-_2022-12-24_at_02.40 1@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Simulator_Screen_Shot_-_iPhone_12_-_2022-12-24_at_02.40 1@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>EF_Diary.ttf</string>
+		<string>BEOMSUK.otf</string>
+		<string>JUA_otf.otf</string>
+		<string>SSAMANCO-Bold.otf</string>
+		<string>Bold.otf</string>
+		<string>KOTRA_HOPE.otf</string>
+		<string>ONE_Mobile_OTF_Bold.otf</string>
+		<string>ONE_Mobile_Title_OTF.otf</string>
+		<string>Nanum.ttf</string>
+		<string>ChosunNm.ttf</string>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+</dict>
+</plist>

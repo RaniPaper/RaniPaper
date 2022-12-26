@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct RaniPaperApp: App {
+    @UIApplicationDelegateAdaptor var delegate: AppDelegate
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView().environmentObject(UserState.shared)
+                
         }
     }
 }
