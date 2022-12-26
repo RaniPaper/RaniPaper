@@ -91,13 +91,38 @@ RaniPaper
   
 </div>
 
-### 🔥 기술적 도전
 
-#### ⏺ Combine
-- 연속된 escaping closure를 피하고, 선언형 프로그래밍을 통한 높은 가독성과 RX 오퍼레이터를 통한 효율적인 비동기처리를 위해 RxSwift를 사용하게 되었습니다.
-- 데이터가 발생하는 시점에서부터 뷰에 그려지기까지 하나의 큰 스트림으로 데이터를 바인딩해주었습니다.
+ 
+ ### 🔥 기술적 도전
+<details>
+<summary>  Path를 이용한 점선찍기 </summary>
 
-
+#### Line Struct 구현
+```swift 
+ struct Line: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: rect.width, y: 0))
+        return path
+    }
+}
+ 
+ ```
+ 
+#### 적용 
+ 
+```swift 
+Line()
+ .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
+ .foregroundColor(Color.memoPrimary)
+ .frame(height: 1).padding(.horizontal,15)
+ .padding(.top,3)
+ 
+ ```
+</details>
+ 
+ 
 
 
 
