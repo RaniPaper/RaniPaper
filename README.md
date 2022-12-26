@@ -80,7 +80,7 @@ RaniPaper
     └── ViewModel
 ```
 <br><br>
-### 🧑‍💻 Authors
+### 🧑‍💻 Contributors
 
 <div align="center"> 
   
