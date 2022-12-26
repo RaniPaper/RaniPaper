@@ -58,7 +58,7 @@
   ...
   
 
-<br/>
+<br>
 
 ### 🗂 Folder Structure
 ```shell
@@ -79,10 +79,23 @@ RaniPaper
     ├── View
     └── ViewModel
 ```
+<br><br>
+### 🧑‍💻 Authors
 
-## Contributors
+<div align="center"> 
+  
+| [Hamp](https://github.com/yongbeomkwak) | [케이](https://github.com/youn9k) | [굵은소금](https://github.com/JiDongseok11) | 
+|:---:|:---:|:---:|
+|<img width="120" alt="알로라" src="https://avatars.githubusercontent.com/u/48616183?v=4">|<img width="120" alt="케이" src="https://avatars.githubusercontent.com/u/60254939?v=4">|<img width="120" alt="굵은소금" src="https://avatars.githubusercontent.com/u/79965837?v=4">
 
-<img src ="https://avatars.githubusercontent.com/u/60254939?v=4">
+  
+</div>
+
+### 🔥 기술적 도전
+
+#### ⏺ Combine
+- 연속된 escaping closure를 피하고, 선언형 프로그래밍을 통한 높은 가독성과 RX 오퍼레이터를 통한 효율적인 비동기처리를 위해 RxSwift를 사용하게 되었습니다.
+- 데이터가 발생하는 시점에서부터 뷰에 그려지기까지 하나의 큰 스트림으로 데이터를 바인딩해주었습니다.
 
 
 
