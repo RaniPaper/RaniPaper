@@ -501,5 +501,81 @@ final class MyFilemanager {
  
 </details>
 
+ <details>
+  <summary> Property Wrapper 를 통해 유저디폴트 접근 편의성 강화  </summary>
+  
+  </br>
+ 
+ - UserDefaultWrapper 라는 커스텀 프로퍼티 래퍼를 만들어 유저디폴트 get, set 코드의 가독성을 높였습니다.
+ - Combine을 활용해 변경사항을 옵저빙하고, 값이 갱신되면 실시간으로 뷰에 반영될 수 있도록 하였습니다.
+ 
+ #### UserDefaultWrapper 구현
+ ```Swift
+ @propertyWrapper
+class UserDefaultWrapper<T: Codable> {
+    private let key: String
+    private let defaultValue: T?
+
+    init(key: String, defaultValue: T?) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+    
+    var wrappedValue: T? {
+        get {
+            if let savedData = UserDefaults.standard.object(forKey: key) as? Data {
+                let decoder = JSONDecoder()
+                if let lodedObejct = try? decoder.decode(T.self, from: savedData) {
+                    return lodedObejct
+                }
+            }
+            return defaultValue
+        }
+        set {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(newValue) {
+                UserDefaults.standard.setValue(encoded, forKey: key)
+            }
+            subject.send(newValue)// 값이 변경되면 subject 로 변경된 값을 보냅니다.
+        }
+    }
+    
+    // CurrentValueSubject는 가장 최근에 발행된 요소를 버퍼에 저장합니다.
+    private lazy var subject = CurrentValueSubject<T?, Error>(wrappedValue) 
+    public var projectedValue: AnyPublisher<T?, Error> {
+        return subject.eraseToAnyPublisher()
+    }
+    
+}
+ 
+ 
+ ```
+  
+ #### 사용 예시
+ ```Swift
+ struct RollingPaper: Codable { }
+ 
+ @UserDefaultWrapper(key: "rollingPaperList", defaultValue: nil)
+ static var rollingPaperList: [RollingPaper]?
+ 
+ // 유저디폴트에 값 저장
+ rollingPaperList = []
+ 
+ // 유저디폴트 내 값 불러오기
+ var list = rollingPaperList
+ 
+ // 유저디폴트 변경사항 옵저빙
+ $rollingPaperList.sink { _ in } receiveValue: { rollingPaperList in
+    ...
+  }.store(in: Set<AnyCancellable>)
+ 
+ ```
+ 
+ 
+  
+ </details>
+ 
+ 
+ 
 
 </div>
