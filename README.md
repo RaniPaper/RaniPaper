@@ -575,7 +575,110 @@ class UserDefaultWrapper<T: Codable> {
   
  </details>
  
+ <details>
+  <summary> UserNotification을 통한 푸시 알림 관리 </summary>
+  
+  </br>
  
+ - MyUserNotification의 인스턴스를 이용해 UserNotification을 관리할 수 있게 했습니다.
+ - MemoView에서 생성되는 MemoModel의 데이터와 연계하여 푸시 알림을 생성할 수 있게 했습니다.
+ 
+ #### UNNotificationCenter에서 알림에 대한 permission 획득
+ ```Swift
+    func getPermission(){
+    // 어플 뱃지, 소리, 푸시에 대한 permission 요청
+        center.requestAuthorization(options: [.badge, .sound, .alert]){(granted, error) in
+            if granted{
+                print("✅ 사용자가 푸시 알림을 승인합니다.")
+                DispatchQueue.main.async{
+                    MyUserDefaults.shared.setValue(key: "notification", value: granted)
+                }
+            } else{
+                if let theError = error{
+                    MyUserDefaults.shared.setValue(key: "notification", value: granted)
+                    print("🔥 사용자가 푸시 알림을 거부합니다. \(theError.localizedDescription)")
+                }
+            }
+        }
+        isPermitted = MyUserDefaults.shared.getValue(key: "notification") as? Bool ?? false
+    }
+ 
+ ```
+  
+  #### 푸시 관련 CRUD
+ ```Swift
+    /// CREAT : TaskModel을 입력 받아 해당 deadline에 알림을 생성합니다.
+    /// - Parameter TaskModel: 알림을 받을 TaskModel
+    /// UserNotification과 TaskModel은 ID를 공유하게 됩니다.
+    func create(_ taskModel: TaskModel){
+        if isPermitted{
+            content.title = "\(taskModel.title)이(가)  \(taskModel.timeInterval.rawValue)입니다."
+            content.body = "알람: " + taskModel.title
+            content.sound = UNNotificationSound.default
+            var deadLine = taskModel.deadLine
+            
+            ...생략
+            // 알림 예정 시간
+            let confirmDeadLine = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: deadLine)
+            // 해당 시간으로 notification trigger 생성
+            let trigger = UNCalendarNotificationTrigger(dateMatching: confirmDeadLine, repeats: isRepeat)
+            // notification에 대한 request 생성
+            let request = UNNotificationRequest(identifier: taskModel.id, content: content, trigger: trigger)
+            // 해당 request를 NotificationCenter에 추가
+            center.add(request, withCompletionHandler: nil)
+            
+            print("알람이 설정됩니다. dateComponents: \(taskModel.deadLine) \(taskModel.timeInterval)")
+        } else{
+            print("푸시 알림이 거부된 상태입니다.")
+        }
+        
+    }
+    
+    /// UPDATE : TaskModel을 입력 받아 해당 ID를 갖고 있는 기존 알림을 제거하고 변경된 TaskModel로 알림을 생성합니다.
+    /// - Parameter TaskModel: 내용이 변경된 TaskModel
+    func update(_ taskModel: TaskModel){
+        if isPermitted{
+            delete(id: taskModel.id)
+            create(taskModel)
+        } else{
+            print("푸시 알림이 거부된 상태입니다.")
+        }
+    }
+    
+    /// DELETE : ID를 입력받아 해당 ID를 가진 예정된 알림을 제거합니다.
+    /// - Parameter id: 삭제할 TaskModel의 ID
+    func delete(id: String){
+        center.removePendingNotificationRequests(withIdentifiers: [id])
+        // 해당 ID의 request가 없을 경우 무시
+        print("알람이 삭제됩니다. TaskModel ID: \(id)")
+    }
+ 
+ ``` 
+  
+ #### 사용 예시
+ ```Swift
+/// EditTaskViewModel.swift
+   func update() -> Bool {
+        let taskModel = TaskModel(id: taskId ?? UUID().uuidString, title: taskTitle, deadLine: taskDeadLine, color: taskColor, ticket: taskTicket,timeInterval: timeInterval)
+        let result = MyFileManager.shared.update(at: .diary, fileName: "task-\(taskModel.id).json", taskModel)
+
+        MyUserNotifications.shared.update(taskModel)
+        
+        ...생략
+    }
+
+
+/// CalendarViewModel.swift
+     func deleteTask(id: String) -> Bool {
+        let result = MyFileManager.shared.delete(at: .diary, fileName: "task-\(id).json")
+        //알림 삭제
+        MyUserNotifications.shared.delete(id: id)
+       
+        ...
+    }
+ ```
+  
+ </details>
  
 
 </div>
