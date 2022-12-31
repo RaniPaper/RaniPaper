@@ -733,26 +733,17 @@ class UserDefaultWrapper<T: Codable> {
    
    // SideMenuView.swift
   struct SideMenuView: View {
-  ...생략
-    VStack(alignment: .leading, spacing: ScreenSize.height * 0.0565){
-        ForEach(viewModel.menuList) { menu in
-            if !menu.isUnder {
-                Button(action:{
-                    isOpen.toggle()
-                    offset = Menu.minOffset
-                    MySoundSetting.clickSideMenu.play()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                        selection = menu.viewSelection
-                    }
-                }) {
-                    Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: ScreenSize.height * 0.044)
-                }
-            }
-        }
-   ...생략
+  ...
+      Button(action:{
+          isOpen.toggle()
+          offset = Menu.minOffset
+          // 사이드메뉴 버튼 클릭 시 clickSideMenu 음원 재생
+          MySoundSetting.clickSideMenu.play()
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+              selection = menu.viewSelection
+          }
+      }) 
+   ...
    }
  
  ```
