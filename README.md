@@ -581,7 +581,7 @@ class UserDefaultWrapper<T: Codable> {
   </br>
  
  - MyUserNotification의 인스턴스를 이용해 UserNotification을 관리할 수 있게 했습니다.
- - MemoView에서 생성되는 MemoModel의 데이터와 연계하여 푸시 알림을 생성할 수 있게 했습니다.
+ - CalendarView에서 생성되는 TaskModel의 데이터와 연계하여 푸시 알림을 생성할 수 있게 했습니다.
  
  #### UNNotificationCenter에서 알림에 대한 permission 획득
  ```Swift
@@ -605,7 +605,7 @@ class UserDefaultWrapper<T: Codable> {
  
  ```
   
-  #### 푸시 관련 CRUD
+   #### Notification request 생성
  ```Swift
     /// CREAT : TaskModel을 입력 받아 해당 deadline에 알림을 생성합니다.
     /// - Parameter TaskModel: 알림을 받을 TaskModel
@@ -634,6 +634,7 @@ class UserDefaultWrapper<T: Codable> {
         
     }
     
+ #### 변경 TaskModel에 대해 Notification request update
     /// UPDATE : TaskModel을 입력 받아 해당 ID를 갖고 있는 기존 알림을 제거하고 변경된 TaskModel로 알림을 생성합니다.
     /// - Parameter TaskModel: 내용이 변경된 TaskModel
     func update(_ taskModel: TaskModel){
@@ -645,6 +646,7 @@ class UserDefaultWrapper<T: Codable> {
         }
     }
     
+  #### 삭제된 TaskModel에 대해 Notification request 삭제
     /// DELETE : ID를 입력받아 해당 ID를 가진 예정된 알림을 제거합니다.
     /// - Parameter id: 삭제할 TaskModel의 ID
     func delete(id: String){
@@ -674,11 +676,86 @@ class UserDefaultWrapper<T: Codable> {
         //알림 삭제
         MyUserNotifications.shared.delete(id: id)
        
-        ...
+        ...생략
     }
  ```
-  
+
  </details>
  
+  <details>
+<summary> AVAudioPlayer를 이용한 음원 재생 </summary>
+
+#### 음원 재생
+```swift 
+   //MySoundSetting.swift
+    func play() {
+        // 번들에서 url 불러오기
+        guard let url = Bundle.main.url(forResource: self.urlName, withExtension: self.extensionName) else {
+            print("🔥 url을 불러오지 못했습니다.")
+            return
+        }
+        
+        // 해당 url의 음원 재생하는 플레이어 생성(오버레이를 위해)
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+        } catch let error {
+            print("🔥 음원을 불러오는데 오류가 발생했습니다.\(error.localizedDescription)")
+        }
+        
+        // 소리 종류에 따라 설정 변경
+        switch soundType {
+        case .BGM:
+            player?.numberOfLoops = -1
+            player?.setVolume(0.5, fadeDuration: 0)
+        default:
+            player?.setVolume(0.75, fadeDuration: 0)
+        }
+        
+        //볼륨 설정
+        
+        // 소리 설정이 활성 상태면 음원 재생
+        if self.isEnable{
+            player?.play()
+        }
+    }
+ ```
+   - 음원별로 player를 각각 생성하지 않으면 음원이 overlay되지 않음
+ 
+#### 사용 예시
+ 
+```swift 
+   // MySoundSetting.swift
+  extension MySoundSetting {
+   // 사이드메뉴 버튼 클릭 효과음 인스턴스
+    static let clickSideMenu = MySoundSetting(url: "clickSideMenu", extension: "wav", .SFX)
+   ...
+   }
+   
+   // SideMenuView.swift
+  struct SideMenuView: View {
+  ...생략
+    VStack(alignment: .leading, spacing: ScreenSize.height * 0.0565){
+        ForEach(viewModel.menuList) { menu in
+            if !menu.isUnder {
+                Button(action:{
+                    isOpen.toggle()
+                    offset = Menu.minOffset
+                    MySoundSetting.clickSideMenu.play()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                        selection = menu.viewSelection
+                    }
+                }) {
+                    Image(menu.viewSelection.Name + (selection == menu.viewSelection ? "OnPress" : ""))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: ScreenSize.height * 0.044)
+                }
+            }
+        }
+   ...생략
+   }
+ 
+ ```
+</details>
 
 </div>
