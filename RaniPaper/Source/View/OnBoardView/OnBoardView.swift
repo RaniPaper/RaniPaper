@@ -59,6 +59,9 @@ struct OnBoardView: View {
                 .frame(width: ScreenSize.width, height:  ScreenSize.height)
                 .onAppear{
                     userState.isMenuEnable = false
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20) {
+                        isOpen = false
+                    }
                 }
                 .onDisappear{
                     userState.isMenuEnable = true
