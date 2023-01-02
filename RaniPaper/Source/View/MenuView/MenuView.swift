@@ -16,7 +16,7 @@ struct MenuView: View {
     var body: some View {
         
         ZStack{
-            if userState.isMenuEnable{
+            if (userState.isMenuEnable) && (selection == .home){
                 Button(action:{
                     if !viewModel.isOpen{
                         viewModel.isOpen = true
@@ -25,12 +25,12 @@ struct MenuView: View {
                         
                     }
                 }){
-                    Image(systemName: "chevron.left")
+                    Image(systemName: "line.3.horizontal")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: ScreenSize.width * 0.045)
+//                        .aspectRatio(contentMode: .fit)
+                        .frame(width: ScreenSize.width * 0.08, height: ScreenSize.height * 0.026)
                         .foregroundColor(Color.black)
-                        .shadow(color: .black, radius: 2, x: 1, y: 1)
+                        .shadow(color: .gray, radius: 3, y: 4)
                         .padding(ScreenSize.width * 0.05)
                 }
                 .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.4)
