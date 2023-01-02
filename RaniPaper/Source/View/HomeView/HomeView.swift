@@ -33,18 +33,6 @@ struct HomeView: View {
                                     }
                                 }
                             
-                            Button(action:{
-                                
-                            }){
-                                Image(systemName: "chevron.left")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: ScreenSize.width * 0.045)
-                                    .foregroundColor(Color.black)
-                                    .shadow(color: .black, radius: 3, x: 1, y: 1)
-                                    .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.4)
-                            }
-                            
                             NavigationLink {
                                 MailBoxAnimationView(viewModel: viewModel)
                                     .navigationBarBackButtonHidden()

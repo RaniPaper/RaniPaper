@@ -16,6 +16,26 @@ struct MenuView: View {
     var body: some View {
         
         ZStack{
+            if userState.isMenuEnable{
+                Button(action:{
+                    if !viewModel.isOpen{
+                        viewModel.isOpen = true
+                        viewModel.Offset = Menu.maxOffset
+                    } else{
+                        
+                    }
+                }){
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: ScreenSize.width * 0.045)
+                        .foregroundColor(Color.black)
+                        .shadow(color: .black, radius: 2, x: 1, y: 1)
+                        .padding(ScreenSize.width * 0.05)
+                }
+                .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.4)
+            }
+            
             Color.black
                 .opacity(viewModel.Offset == Menu.minOffset ? 0 : Double((ScreenSize.width-viewModel.Offset))/1300+0.05)
                 .animation(.easeIn, value: viewModel.Offset)
