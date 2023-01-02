@@ -32,6 +32,7 @@ struct HomeView: View {
                                             .onAppear { messageAnimation() }
                                     }
                                 }
+                            TestView()
                             NavigationLink {
                                 MailBoxAnimationView(viewModel: viewModel)
                                     .navigationBarBackButtonHidden()

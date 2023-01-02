@@ -31,7 +31,7 @@ struct OnBoardView: View {
                                                 .overlay(content: {
                                                     OverlayView(model: model)
                                                 })
-                                                .offset(y: ScreenSize.height * 0.65)
+                                                .offset(y: ScreenSize.height * 0.7)
                                         }
                                     }
                                 }
@@ -48,10 +48,11 @@ struct OnBoardView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .foregroundColor(.onBoardBorder)
                                     .frame(width: ScreenSize.width * 0.05)
-                                    .padding(20)
+                                    .padding(ScreenSize.width * 0.03)
                             }
-                            .padding(10)
+                            .padding(ScreenSize.width * 0.03)
                             .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.42)
+
                         })
                     }
                 }
@@ -92,13 +93,13 @@ extension OnBoardView{
         GeometryReader{ proxi in
             VStack(spacing: proxi.size.height * 0.01){
                 Text("\(model.title)") //title
-                    .font(.efDiary(17))
+                    .font(.efDiary(proxi.size.width * 0.045))
                     .frame(width: proxi.size.width)
                     .padding(.bottom, proxi.size.height * 0.04)
                 ForEach(model.contents, id: \.self){ content in
                     if !content.isEmpty{
                         Text("\(content)")
-                            .font(.efDiary(14))
+                            .font(.efDiary(proxi.size.width * 0.035))
                             .frame(width: proxi.size.width)
                     } else{
                         Rectangle()
@@ -140,7 +141,7 @@ extension OnBoardView{
                             .strokeBorder(lineWidth: 2)
                             .frame(width: proxi.size.width * 0.06)
                             .foregroundColor(.onBoardRed)
-                            .offset(x: -proxi.size.width * 0.44, y: -proxi.size.height * 0.054)
+                            .offset(x: -proxi.size.width * 0.43, y: -proxi.size.height * 0.053)
                     }
                 default:
                     EmptyView()
