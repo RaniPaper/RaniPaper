@@ -79,7 +79,7 @@ struct OnBoardView: View {
 
 struct OnBoardView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardView(currentView: .home)
+        OnBoardView(currentView: .diary)
             .environmentObject(UserState.shared)
     }
 }
@@ -119,15 +119,15 @@ extension OnBoardView{
                     if model.page == 1{
                         RoundedRectangle(cornerRadius: proxi.size.height * 0.05)
                             .strokeBorder()
-                            .frame(width: proxi.size.width * 0.335, height: proxi.size.height * 0.03)
+                            .frame(width: proxi.size.width * 0.31, height: proxi.size.height * 0.03)
                             .foregroundColor(.onBoardRed)
-                            .offset(x: -proxi.size.width * 0.078, y: proxi.size.height * 0.065)
+                            .offset(x: -proxi.size.width * 0.075, y: proxi.size.height * 0.063)
                     } else if model.page == 4{
                         Image("memoSave")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: proxi.size.width * 0.05)
-                            .offset(x: -proxi.size.width * 0.23, y: proxi.size.height * 0.074)
+                            .offset(x: -proxi.size.width * 0.2, y: proxi.size.height * 0.074)
                     }
                     else {
                         EmptyView()
@@ -138,13 +138,13 @@ extension OnBoardView{
                             .strokeBorder(lineWidth: 2)
                             .frame(width: proxi.size.width * 0.06)
                             .foregroundColor(.onBoardGreen)
-                            .offset(x: -proxi.size.width * 0.338, y: proxi.size.height * 0.112)
+                            .offset(x: -proxi.size.width * 0.31, y: proxi.size.height * 0.108)
                     } else if model.page == 2{
                         Circle()
                             .strokeBorder(lineWidth: 2)
                             .frame(width: proxi.size.width * 0.06)
                             .foregroundColor(.onBoardRed)
-                            .offset(x: -proxi.size.width * 0.43, y: -proxi.size.height * 0.053)
+                            .offset(x: -proxi.size.width * 0.437, y: -proxi.size.height * 0.051)
                     }
                 default:
                     EmptyView()
