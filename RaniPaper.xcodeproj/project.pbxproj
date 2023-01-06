@@ -75,6 +75,7 @@
 		D89A06952929FD5000F5D408 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A06942929FD5000F5D408 /* MainView.swift */; };
 		D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06962929FD5000F5D408 /* Assets.xcassets */; };
 		D89A069A2929FD5000F5D408 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89A06992929FD5000F5D408 /* Preview Assets.xcassets */; };
+		D8CFB72029684D840090F897 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = D8CFB71F29684D840090F897 /* BGM.wav */; };
 		D8D549BE2934B1A0001E4287 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549BD2934B1A0001E4287 /* CalendarViewModel.swift */; };
 		D8D549C02934FB06001E4287 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549BF2934FB06001E4287 /* EditTaskView.swift */; };
 		D8D549C2293611CB001E4287 /* EditTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */; };
@@ -82,7 +83,6 @@
 		D8D549C72936539B001E4287 /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549C62936539B001E4287 /* TaskCardView.swift */; };
 		D8D549D529385EE5001E4287 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D549D429385EE5001E4287 /* MemoView.swift */; };
 		D8F7E705294DF02700253B3D /* closeSideMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = D8F7E704294DF02700253B3D /* closeSideMenu.wav */; };
-		D8FD1F5529573C94004FC8D4 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = D8FD1F5429573C94004FC8D4 /* BGM.wav */; };
 		D8FF9358293A57A700B0F475 /* SmallStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF9355293A57A700B0F475 /* SmallStickerView.swift */; };
 		D8FF9359293A57A700B0F475 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF9356293A57A700B0F475 /* EditMemoView.swift */; };
 		D8FF935A293A57A700B0F475 /* LargeStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF9357293A57A700B0F475 /* LargeStickerView.swift */; };
@@ -162,6 +162,7 @@
 		D89A06942929FD5000F5D408 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D89A06962929FD5000F5D408 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D89A06992929FD5000F5D408 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D8CFB71F29684D840090F897 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
 		D8D549BD2934B1A0001E4287 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		D8D549BF2934FB06001E4287 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		D8D549C1293611CB001E4287 /* EditTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewModel.swift; sourceTree = "<group>"; };
@@ -169,7 +170,6 @@
 		D8D549C62936539B001E4287 /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 		D8D549D429385EE5001E4287 /* MemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		D8F7E704294DF02700253B3D /* closeSideMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = closeSideMenu.wav; sourceTree = "<group>"; };
-		D8FD1F5429573C94004FC8D4 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
 		D8FF9355293A57A700B0F475 /* SmallStickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallStickerView.swift; sourceTree = "<group>"; };
 		D8FF9356293A57A700B0F475 /* EditMemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
 		D8FF9357293A57A700B0F475 /* LargeStickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeStickerView.swift; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		49E8795F2938F97E0091A101 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				D8FD1F5429573C94004FC8D4 /* BGM.wav */,
+				D8CFB71F29684D840090F897 /* BGM.wav */,
 				7BBF1A882957094400014CD0 /* mailbox.wav */,
 				D8F7E704294DF02700253B3D /* closeSideMenu.wav */,
 				49D812F8293D1C79009A2748 /* testAlarm.mp3 */,
@@ -607,7 +607,7 @@
 				D8F7E705294DF02700253B3D /* closeSideMenu.wav in Resources */,
 				D86ACE44292F43B4002C8E89 /* BEOMSUK.otf in Resources */,
 				49E52DC9294D9F3300473B17 /* clickSideMenu.wav in Resources */,
-				D8FD1F5529573C94004FC8D4 /* BGM.wav in Resources */,
+				D8CFB72029684D840090F897 /* BGM.wav in Resources */,
 				D86ACE51293098DF002C8E89 /* ONE_Mobile_Title_OTF.otf in Resources */,
 				D89A06972929FD5000F5D408 /* Assets.xcassets in Resources */,
 				D86ACE46292F43B4002C8E89 /* EF_Diary.ttf in Resources */,
@@ -846,7 +846,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaniPaper.RaniPaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -887,7 +887,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaniPaper.RaniPaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
