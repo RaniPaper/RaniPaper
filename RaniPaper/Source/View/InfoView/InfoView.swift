@@ -11,7 +11,7 @@ import SwiftUI
 
 struct InfoView: View {
     
-    let height = ScreenSize.height/6
+    let height = ScreenSize.height/25
     
     
     var body: some View {
@@ -20,23 +20,27 @@ struct InfoView: View {
             
             VStack(spacing: 0) {
                 // MARK: Header
-                VStack(spacing: 0){
-                    Spacer()
-                    Text("앱 정보")
-                        .font(.efDiary(35))
-                        .foregroundColor(.memoPrimary)
-                    Text("App Information")
-                        .font(.efDiary(13))
-                        .foregroundColor(.memoPrimary)
-                    
-                    Spacer()
-                    Rectangle().frame(maxHeight: 2).foregroundColor(.memoPrimary)
-                }
-                .padding(.top,20)
-                .frame(maxWidth: .infinity,maxHeight: height)
-                .background {
+                ZStack() {
                     Color.memoBg
-            }
+                    VStack(spacing:UIDevice.current.hasNotch ? 10 : 0){
+                        Spacer()
+                        Text("앱 정보")
+                            .font(.efDiary(height))
+                            .foregroundColor(.memoPrimary)
+                        
+                        Text("App Information")
+                            .font(.efDiary(height/3))
+                            .foregroundColor(.memoPrimary)
+                        
+                        
+                        
+                        
+                        Rectangle().frame(maxHeight: 2).foregroundColor(.memoPrimary)
+                    }
+                    
+                }
+               
+                
                 
                 
                 // MARK: 내용
@@ -125,27 +129,29 @@ struct InfoView: View {
                         
                         
                             
-                    }.frame(maxWidth:.infinity,maxHeight: .infinity).padding(.horizontal)
+                    }
+                    .padding(.horizontal)
                     .padding(.vertical,5)
                     
                 
                 
                 
                 // MARK: Footer 
-                VStack(spacing:20){
-                    Rectangle()
-                        .fill(Color.memoPrimary)
-                        .frame(maxWidth:.infinity,maxHeight: 1)
-                    Rectangle()
-                        .fill(Color.memoPrimary)
-                        .frame(maxWidth:ScreenSize.width/3,maxHeight: 2)
+                ZStack {
+                    Color.memoBg
+                    VStack(spacing:20){
+                        Rectangle()
+                            .fill(Color.memoPrimary)
+                            .frame(maxWidth:.infinity,maxHeight: 1)
+                    
+                        Rectangle()
+                            .fill(Color.memoPrimary)
+                            .frame(maxWidth:ScreenSize.width/3,maxHeight: 2)
+
+                         Spacer()
+                    }
+                }
                    
-                    
-                        
-                    
-                    Spacer()
-                }.frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6,alignment: .top)
-                    .background(Color.memoBg)
             }
            
             
@@ -155,16 +161,17 @@ struct InfoView: View {
     }
 }
 
-
-func InfoGrid(_ title:String,_ subTitle:String) ->some View
+@ViewBuilder
+func InfoGrid(_ title:String,_ subTitle:String) -> some View
 {
+    let height = ScreenSize.height/30
     VStack(alignment: .leading){
         Text(title)
-            .font(.efDiary(25))
+            .font(.efDiary(height))
             .foregroundColor(.memoPrimary)
             .frame(maxWidth: .infinity,alignment: .leading)
         Text(subTitle)
-            .font(.efDiary(15))
+            .font(.efDiary(height - 10))
             .foregroundColor(.memoPrimary)
             .frame(maxWidth: .infinity,alignment: .leading)
     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))

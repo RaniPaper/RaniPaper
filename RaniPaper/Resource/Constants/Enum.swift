@@ -60,3 +60,5 @@ enum TimeIntervals: String,Codable{
     twoHourAgo = "2시간 전",
     threeHourAgo = "3시간 전"
 }
+
+
