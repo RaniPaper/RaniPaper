@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "memoWriteFloating.png",
+      "filename" : "memoFloatingPen.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "memoWriteFloating 1.png",
+      "filename" : "memoFloatingPen 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "memoWriteFloating 2.png",
+      "filename" : "memoFloatingPen 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
