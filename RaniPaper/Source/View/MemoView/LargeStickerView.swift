@@ -14,8 +14,15 @@ struct LargeStickerView: View {
  
     
     var body: some View {
+        let width = ScreenSize.width / 2.5
+
         Image("largeSticker")
+            .resizable()
+            .frame(maxWidth:width,maxHeight: (width*36)/31)
+            .scaledToFit()
             .overlay() {
+
+                
                 VStack{
                     
                     
@@ -32,6 +39,7 @@ struct LargeStickerView: View {
             }
             
     }
+    
 }
 
 struct StickerView_Previews: PreviewProvider {

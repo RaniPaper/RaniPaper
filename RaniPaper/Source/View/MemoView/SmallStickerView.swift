@@ -14,7 +14,11 @@ struct SmallStickerView: View {
 
     
     var body: some View {
+        let width = ScreenSize.width / 1.2
         Image("smallSticker")
+            .resizable()
+            .frame(maxWidth:width,maxHeight: (width*2)/11)
+            .scaledToFit()
             .overlay() {
                 VStack{
                     Text(memo.title)

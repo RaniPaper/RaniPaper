@@ -135,6 +135,7 @@ struct MemoView: View {
                     if(viewModel.wayToShow == "크게보기")
                     {
                         LazyVGrid(columns: columns) {
+                            let width = ScreenSize.width/3
                             ForEach(viewModel.memos){ memo in
                                 LargeStickerView(memo: memo)
                                     .overlay(content: {
@@ -154,6 +155,9 @@ struct MemoView: View {
                                                 } label: {
                                                     
                                                 Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
+                                                        .resizable()
+                                                        .frame(maxWidth:(width*5)/31,maxHeight:(width*5)/31 )
+                                                        .scaledToFit()
                                                 }
                                                 .padding(.leading,5)
                                                 .padding(.top,5)
@@ -189,8 +193,10 @@ struct MemoView: View {
                                         HapticManager.shared.impact(style: .medium)
                                         viewModel.deleteMode = true
                                     }
+                                    //.frame(maxWidth:155,maxHeight: 181)
                             }
                         }
+                        
                         .padding(.leading,5)
                         .padding(.top,5)
                     }
@@ -198,6 +204,9 @@ struct MemoView: View {
                     {
                         LazyVGrid(columns:[GridItem(.flexible())])
                         {
+                            
+                            let width = ScreenSize.width/3
+                            
                             ForEach(viewModel.memos) { memo in
                                 SmallStickerView(memo: memo)
                                     .overlay(content: {
@@ -216,7 +225,10 @@ struct MemoView: View {
                                                     
                                                 } label: {
                                                     
-                                                Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
+                                                    Image (viewModel.trashSet.contains(memo.id) ? "memoCheckBox": "memoEmptyBox")
+                                                        .resizable()
+                                                        .frame(maxWidth:(width*5)/31,maxHeight:(width*5)/31 )
+                                                        .scaledToFit()
                                                 }
                                                 .padding(.leading,5)
                                                 .padding(.top,5)
