@@ -307,16 +307,16 @@ struct MemoView: View {
                     Rectangle()
                         .fill(Color(hexcode: "F4D4B6"))
                         .frame(maxWidth:ScreenSize.width/3,maxHeight: 2)
-                        .padding(.bottom,15)
+                        .padding(.bottom,5)
                     Image("memoClover")
                         .resizable()
-                        .frame(width: ScreenSize.width/6, height: ScreenSize.width/6)
+                        .frame(width: ScreenSize.width/10, height: ScreenSize.width/10)
                         .scaledToFit()
-                        .padding(.bottom,15)
+                        .padding(.bottom,10)
                         
                     
                     Spacer()
-                }.frame(maxWidth:.infinity,maxHeight: ScreenSize.height/6)
+                }.frame(maxWidth:.infinity,maxHeight: ScreenSize.height/8)
                     .background(Color.memoBg)
               
                     
