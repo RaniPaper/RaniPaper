@@ -102,7 +102,7 @@ struct EditTaskView: View {
                                 HStack {
                                     Spacer()
                                     Image(systemName: "calendar").foregroundColor(.brown)
-                                    DatePicker.init("", selection: $viewModel.taskDeadLine,
+                                    DatePicker("", selection: $viewModel.taskDeadLine,
                                                     in:Date.now...Date.distantFuture,
                                                     displayedComponents: [.date, .hourAndMinute]
                                     )
@@ -239,7 +239,7 @@ struct EditTaskView: View {
                             .disabled(viewModel.taskTitle == "")
                          
                             
-                            
+                        
                         }
                         .frame(minHeight:proxy.size.height)
                         // ScrollView안의 Vstack에서 Spacer를 사용하기위해
@@ -270,7 +270,7 @@ struct EditTaskView: View {
             print("EditTaskview - onAppear")
             // 기존 task가 있으면 뷰모델에 데이터 전달
             guard let existTask else { return }
-            print("기존 task를 불러옵니다:", existTask)
+            print("기존 task를 불러옵니다:", existTask.deadLine)
             viewModel.taskId = existTask.id
             viewModel.taskTitle = existTask.title
             viewModel.taskColor = existTask.color

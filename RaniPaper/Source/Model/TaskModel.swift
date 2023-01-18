@@ -12,7 +12,7 @@ import SwiftUI
 struct TaskModel: Identifiable,Codable{
     var id = UUID().uuidString
     var title: String
-    var deadLine: Date = Date()
+    var deadLine: Date 
     var color: String
     var ticket: String
     var timeInterval:TimeIntervals
