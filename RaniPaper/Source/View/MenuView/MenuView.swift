@@ -16,6 +16,26 @@ struct MenuView: View {
     var body: some View {
         
         ZStack{
+            if (userState.isMenuEnable) && (selection == .home){
+                Button(action:{
+                    if !viewModel.isOpen{
+                        viewModel.isOpen = true
+                        viewModel.Offset = Menu.maxOffset
+                    } else{
+                        
+                    }
+                }){
+                    Image(systemName: "line.3.horizontal")
+                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
+                        .frame(width: ScreenSize.width * 0.08, height: ScreenSize.height * 0.026)
+                        .foregroundColor(Color.black)
+                        .shadow(color: .gray, radius: 3, y: 4)
+                        .padding(ScreenSize.width * 0.05)
+                }
+                .offset(x: ScreenSize.width * 0.4, y: -ScreenSize.height * 0.4)
+            }
+            
             Color.black
                 .opacity(viewModel.Offset == Menu.minOffset ? 0 : Double((ScreenSize.width-viewModel.Offset))/1300+0.05)
                 .animation(.easeIn, value: viewModel.Offset)
