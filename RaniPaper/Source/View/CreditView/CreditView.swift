@@ -66,7 +66,7 @@ struct CreditView: View {
                     
                     CreditGridView(teamName: "애니메이션", teamMembers: ["레모네"])
                     
-                    CreditGridView(teamName: "효과음 / 배경음", teamMembers: ["히사이시죠이시죠"])
+                    CreditGridView(teamName: "효과음 / 배경음", teamMembers: ["히사이시조이시죠"])
                     
                     
                     SpecialThanksView()
