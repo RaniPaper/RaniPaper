@@ -10,7 +10,7 @@
 <img width="1512" alt="image" src ="https://user-images.githubusercontent.com/60254939/209528072-242f1317-04ba-485e-a17a-1b2c4332880f.png" />
 
 <br><br>
-<b>개발 기간: 2022.11.20 ~ 2022.12.25 1개월)</b>
+<b>개발 기간: 2022.11.20 ~ 2022.12.25 (1개월)</b>
 
 <br><br>
 [<img width="220" alt="스크린샷 2021-11-19 오후 3 52 02" src="https://user-images.githubusercontent.com/55099365/196023806-5eb7be0f-c7cf-4661-bb39-35a15146c33a.png">](https://apps.apple.com/kr/app/id1660706595)
